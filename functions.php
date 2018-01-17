@@ -7,29 +7,60 @@ define( 'BOLTS_DISABLE_EMOJIS',    true );
 // Include the Bolts WP library
 require_once get_template_directory() . '/lib/bolts.php';
 
-// End excerpts with an ellipsis
-function custom_excerpt_more($more) {
-	return '...';
-}
-add_filter('excerpt_more', 'custom_excerpt_more');
-
 // Register the menu position utilized by bolts_nav_menu()
-register_nav_menu( 'main', 'Main Menu' );
+register_nav_menu( 'main', 'Menu' );
 
 /**
-* Custom functions
-**/
+ * Theme functions
+ */
 
-// Print get_template_directory_uri()
+// Return whether a post has a specific post type
 
-function theme_uri() {
-	echo get_template_directory_uri();
+function is_post_type( $post_type, $post = false ) {
+	if ( !$post ) {
+		global $post;
+	} else if ( is_int( $post ) ) {
+		$post = get_post( $post );
+	}
+	return $post->post_type == $post_type;
 }
 
-// Get the featured image URL for the specified post id, if no post is passed, the current post is used.
-// Falls back to $fallback (if set), if no image was found
+// Return the current theme directory url
 
-function featured_image( $post_id = false, $size = 'full', $fallback = false ) {
+function get_theme_uri() {
+	return get_template_directory_uri();
+}
+
+// Print the current theme directory url
+
+function theme_uri() {
+	echo get_theme_uri();
+}
+
+// Return the excerpt for a post (automatic or manually entered)
+
+function get_excerpt( $post_id = false, $words = 55, $more = '...' ) {
+	if ( !!$post_id ) {
+		$post = get_post( $post_id );
+	} else {
+		global $post;
+	}
+
+	if ( !empty($post->post_excerpt) ) return $post->post_excerpt;
+
+	$filtered = apply_filters( 'the_content', $post->post_content );
+	return wp_trim_words( strip_tags($filtered), $words, $more );
+}
+
+// Print the excerpt for a post (automatic or manually entered)
+
+function excerpt( $post_id = false, $words = 55, $more = '...' ) {
+	echo get_excerpt( $post_id, $words, $more );
+}
+
+// Return the url for the featued image of a post in selected size, with an optional fallback
+
+function get_featured( $post_id = false, $size = 'full', $fallback = false ) {
 	if ( !$post_id ) {
 		global $post;
 		if ( !$post ) return $fallback;
@@ -44,88 +75,129 @@ function featured_image( $post_id = false, $size = 'full', $fallback = false ) {
 	return $fallback;
 }
 
+// Print the url for the featued image of a post in selected size, with an optional fallback
+
+function featured( $post_id = false, $size = 'full', $fallback = false ) {
+	return get_featured( $post_id, $size, $fallback );
+}
+
+// Return the path to a theme asset file
+
+function get_asset( $asset, $fallback = false ) {
+	$path = get_template_directory_uri() . '/public/' . $asset;
+	if ( file_exists( $path ) ) return $path;
+	return $fallback;
+}
+
+// Print the path to a theme asset file
+
+function asset( $asset, $fallback = false ) {
+	echo get_asset( $asset, $fallback );
+}
+
+// Return the path to an attachment in the media library
+
+function get_media( $attachment_id, $size = 'full', $fallback = false ) {
+	$image = wp_get_attachment_image_src( $attachment_id, $size );
+	if ( !!$image ) return $image[0];
+	return $fallback;
+}
+
+// Print the path to an attachment in the media library
+
+function media( $attachment_id, $size = 'full', $fallback = false ) {
+	echo get_media( $attachment_id, $size, $fallback );
+}
+
+// Include a template part from the components subfolder, with optional arguments
+
+function component( $file, $args = false ) {
+
+	// Set component path
+	$path = get_template_directory() . '/components/' . $file . '.php';
+
+	// Parse component file
+	$template = file_get_contents( $path );
+
+	// Make all WordPress variables available
+	global $posts, $post, $wp_did_header, $wp_query, $wp_rewrite, 
+	       $wpdb, $wp_version, $wp, $id, $comment, $user_ID;
+
+	// Define all arguments as variables
+	if ( is_array($args) ) extract( $args );
+
+	// Find all variables in the component
+	preg_match_all(
+		'/\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/',
+		$template, $tags
+	);
+
+	// Default all undefined template tags to false
+	if ( count( $tags[0] ) ) {
+		for ( $i = 0; $i < count( $tags[0] ); $i++ ) {
+			if ( !isset( $args[ $tags[1][$i] ] ) ) {
+				$args[ $tags[1][$i] ] = false;
+			}
+		}
+	}
+
+	// Define all WP query vars as variables
+	if ( is_array( $wp_query->query_vars ) ) {
+		extract( $wp_query->query_vars, EXTR_SKIP );
+	}
+	if ( isset( $s ) ) $s = esc_attr( $s );
+
+	// Include the component
+	require $path;
+
+}
+
 /**
-* Custom hooks
-**/
+ * Custom hooks
+ */
+
+// Set default image sizes
+function remove_image_sizes( $sizes ) {
+	return [
+		'small'  => [
+			'width'  => 640,
+			'height' => 640,
+			'crop'   => false
+		],
+		'medium' => [
+			'width'  => 1280,
+			'height' => 1280,
+			'crop'   => false
+		],
+		'large'  => [
+			'width'  => 1920,
+			'height' => 1920,
+			'crop'   => false
+		],
+		'xlarge' => [
+			'width'  => 2560,
+			'height' => 2560,
+			'crop'   => false
+		]
+	];
+}
+add_filter('intermediate_image_sizes_advanced', 'remove_image_sizes');
+
+// End excerpts with an ellipsis
+function custom_excerpt_more($more) {
+	return '...';
+}
+add_filter('excerpt_more', 'custom_excerpt_more');
 
 // Enqueue styles
 function enqueue_styles() {
-	wp_enqueue_style('style', get_template_directory_uri() . '/public/css/style.css');
+	wp_enqueue_style('style', get_template_directory_uri() . '/css/style.css');
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_styles' );
 
 // Enqueue scripts
 function enqueue_scripts() {
 	wp_enqueue_script( 'jquery');
-	wp_enqueue_script( 'app', get_template_directory_uri() . '/public/js/main.js' );
+	wp_enqueue_script( 'app', get_template_directory_uri() . '/js/app.min.js' );
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
-
-function is_post_type( $post_type, $post = false ) {
-	if ( !$post ) {
-		global $post;
-	} else if ( is_int( $post ) ) {
-		$post = get_post( $post );
-	}
-	return $post->post_type == $post_type;
-}
-
-function hidden_comment_form_fields() {
-	echo get_comment_id_fields($post->ID);
-	wp_comment_form_unfiltered_html_nonce();
-}
-
-function has_more_posts() {
-	global $wp_query;
-	return $wp_query->found_posts > get_option('posts_per_page');
-}
-
-function bolts_load_more_posts( $query = false ) {
-	if ( !$query ) {
-		global $wp_query;
-		$query = array();
-
-		foreach ( $wp_query->query_vars as $var => $val ) {
-			if ( !empty($val) ) $query[ $var ] = $val;
-		}
-	}
-
-	$posts_per_page = $query['posts_per_page'] ? $query['posts_per_page'] : get_option('posts_per_page');
-	
-	$query['posts_per_page'] = 999999;
-	if ( !$query['offset'] ) $query['offset'] = $posts_per_page;
-
-	$posts = get_posts( $query );
-
-	foreach ( $posts as $k => $post ) {
-		$posts[$k]->title     = $post->post_title;
-		$posts[$k]->content   = $post->post_content;
-		$posts[$k]->excerpt   = wpautop(wp_trim_words(strip_shortcodes( $post->post_content )));
-		$posts[$k]->permalink = get_the_permalink( $post->ID );
-		$posts[$k]->date      = get_the_time(get_option('date_format'), $post->ID);
-		$posts[$k]->author    = get_the_author_meta('user_nicename', $post->post_author);
-	}
-
-	return $posts;
-}
-
-function bolts_load_more( $selector = '.posts', $args = array() ) {
-	$defaults = array(
-		'postsPerPage' => (int)get_option('posts_per_page'),
-		'selector'     => '> *',
-		'loadOnScroll' => false,
-		'scrollOffset' => 0,
-		'posts'        => false,
-		'onRender'     => false,
-		'onComplete'   => false,
-		'template'     => false
-	);
-
-	$args = array_merge( $defaults, $args );
-
-	if ( !$args['posts'] ) {
-		$args['posts'] = bolts_load_more_posts();
-	}
-
-	echo '<script>jQuery("' . $selector . '").loadMore(' . json_encode($args) . ');</script>';
-}
