@@ -1,0 +1,28 @@
+$bolts-img-display:                 block;
+$bolts-img-max-width:               100%;
+$bolts-default-container-width:     90%;
+$bolts-default-container-max-width: 1080px;
+$bolts-default-container-align:     center;
+$bolts-default-background-size:     cover;
+$bolts-default-background-position: 50% 50%;
+$bolts-fonts-path:                  '../fonts';
+
+$bolts-selectors: (
+	headings:      'h1, h2, h3, h4, h5, h5',
+	inputs:        'input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea',
+	text-elements: 'h1, h2, h3, h4, h5, h6, p, ol li, ul li, dl dt, dl dd, address',
+	text-inputs:   'input[type="text"], input[type="email"]',
+	buttons:       'button, input[type="reset"], input[type="submit"], input[type="button"]'
+);
+
+$bolts-breakpoints: (
+	xsmall: 480px,
+	small:  568px,
+	medium: 768px,
+	large:  1024px,
+	xlarge: 1280px
+);
+
+@import '~bolts/scss/bolts';
+
+@include boilerplate;
