@@ -46,7 +46,7 @@
 
 			<input name="submit" type="submit" id="submit" class="submit" value="Post Comment" />
 
-			<?php hidden_comment_form_fields(); ?>
+			<?php bolts_hidden_comment_form_fields(); ?>
 
 		</form>
 
