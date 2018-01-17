@@ -12,7 +12,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const ImageminMozjpeg = require('imagemin-mozjpeg')
 
-const moduleRules = require('./modue.rules')
+const moduleRules = require('./module.rules')
 const config = require('./editable.config')
 
 const isDev = !!(process.env.NODE_ENV === 'dev')
