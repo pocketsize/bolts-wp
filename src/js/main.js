@@ -1,24 +1,10 @@
-import BabelPolyfill from 'babel-polyfill'
-import FastClick from 'fastclick'
-//import 'bolts/js/bolts'
+// import 'babel-polyfill'
+import initBoltsWP from './initBoltsWP'
 
-console.log('uftn', Date.now());
+(() => {
 
+	initBoltsWP();
 
-(function () {
-	if (!window.jQuery) return false;
-
-	jQuery(function ($) {
-
-		// Tell styles that JS is enabled
-		$('html').removeClass('no-js');
-
-		// Remove 300ms touch event delay (depends on FastClick)
-		if (!!window.FastClick) {
-			$('input, textarea, select, button').addClass('needsclick');
-			FastClick.attach(document.body);
-		}
-
-	});
+	// The world is your oyster...
 
 })();
