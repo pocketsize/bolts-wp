@@ -62,7 +62,7 @@ function excerpt( $post_id = false, $words = 55, $more = '...' ) {
 
 // Return the url for the featued image of a post
 
-function get_featured( $post_id = false, $size = 'full', $fallback = false ) {
+function get_featured_image( $post_id = false, $size = 'full', $fallback = false ) {
 	if ( !$post_id ) {
 		global $post;
 		if ( !$post ) return $fallback;
@@ -79,8 +79,8 @@ function get_featured( $post_id = false, $size = 'full', $fallback = false ) {
 
 // Print the url for the featued image of a post
 
-function featured( $post_id = false, $size = 'full', $fallback = false ) {
-	return get_featured( $post_id, $size, $fallback );
+function featured_image( $post_id = false, $size = 'full', $fallback = false ) {
+	echo get_featured_image( $post_id, $size, $fallback );
 }
 
 // Return the path to a theme asset file
