@@ -1,5 +1,7 @@
 <?php
 
+/* TODO: Should we really ship with these options? */
+
 // Override default options
 define( 'BOLTS_DISABLE_ADMIN_BAR', true );
 define( 'BOLTS_DISABLE_EMOJIS',    true );
@@ -37,7 +39,7 @@ function theme_uri() {
 	echo get_theme_uri();
 }
 
-// Return the excerpt for a post (automatic or manually entered)
+// Return the excerpt for a post (automatic or manual)
 
 function get_excerpt( $post_id = false, $words = 55, $more = '...' ) {
 	if ( !!$post_id ) {
@@ -52,13 +54,13 @@ function get_excerpt( $post_id = false, $words = 55, $more = '...' ) {
 	return wp_trim_words( strip_tags($filtered), $words, $more );
 }
 
-// Print the excerpt for a post (automatic or manually entered)
+// Print the excerpt for a post (automatic or manuall)
 
 function excerpt( $post_id = false, $words = 55, $more = '...' ) {
 	echo get_excerpt( $post_id, $words, $more );
 }
 
-// Return the url for the featued image of a post in selected size, with an optional fallback
+// Return the url for the featued image of a post
 
 function get_featured( $post_id = false, $size = 'full', $fallback = false ) {
 	if ( !$post_id ) {
@@ -75,7 +77,7 @@ function get_featured( $post_id = false, $size = 'full', $fallback = false ) {
 	return $fallback;
 }
 
-// Print the url for the featued image of a post in selected size, with an optional fallback
+// Print the url for the featued image of a post
 
 function featured( $post_id = false, $size = 'full', $fallback = false ) {
 	return get_featured( $post_id, $size, $fallback );
@@ -123,9 +125,6 @@ function component( $file, $args = false ) {
 	global $posts, $post, $wp_did_header, $wp_query, $wp_rewrite, 
 	       $wpdb, $wp_version, $wp, $id, $comment, $user_ID;
 
-	// Define all arguments as variables
-	if ( is_array($args) ) extract( $args );
-
 	// Find all variables in the component
 	preg_match_all(
 		'/\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/',
@@ -146,6 +145,9 @@ function component( $file, $args = false ) {
 		extract( $wp_query->query_vars, EXTR_SKIP );
 	}
 	if ( isset( $s ) ) $s = esc_attr( $s );
+
+	// Define all arguments as variables
+	if ( is_array($args) ) extract( $args );
 
 	// Include the component
 	require $path;
