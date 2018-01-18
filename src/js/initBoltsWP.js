@@ -14,7 +14,7 @@ const initBoltsWP = () => {
 	}
 	
 	// Init Bolts
-	Bots.init();
+	Bolts.init();
 
 };
 
