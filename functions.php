@@ -60,7 +60,7 @@ function excerpt( $post_id = false, $words = 55, $more = '...' ) {
 	echo get_excerpt( $post_id, $words, $more );
 }
 
-// Return the url for the featued image of a post
+// Return the url for the featured image of a post
 
 function get_featured_image( $post_id = false, $size = 'full', $fallback = false ) {
 	if ( !$post_id ) {
@@ -77,7 +77,7 @@ function get_featured_image( $post_id = false, $size = 'full', $fallback = false
 	return $fallback;
 }
 
-// Print the url for the featued image of a post
+// Print the url for the featured image of a post
 
 function featured_image( $post_id = false, $size = 'full', $fallback = false ) {
 	echo get_featured_image( $post_id, $size, $fallback );
@@ -159,7 +159,7 @@ function component( $file, $args = false ) {
  */
 
 // Set default image sizes
-function remove_image_sizes( $sizes ) {
+function set_image_sizes( $sizes ) {
 	return [
 		'small'  => [
 			'width'  => 640,
@@ -183,7 +183,7 @@ function remove_image_sizes( $sizes ) {
 		]
 	];
 }
-add_filter('intermediate_image_sizes_advanced', 'remove_image_sizes');
+add_filter('intermediate_image_sizes_advanced', 'set_image_sizes');
 
 // End excerpts with an ellipsis
 function custom_excerpt_more($more) {
@@ -193,13 +193,13 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 
 // Enqueue styles
 function enqueue_styles() {
-	wp_enqueue_style('style', get_template_directory_uri() . '/css/style.css');
+	wp_enqueue_style('style', get_theme_uri() . '/public/css/style.css');
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_styles' );
 
 // Enqueue scripts
 function enqueue_scripts() {
 	wp_enqueue_script( 'jquery');
-	wp_enqueue_script( 'app', get_template_directory_uri() . '/js/app.min.js' );
+	wp_enqueue_script( 'app', get_theme_uri() . '/public/js/app.js' );
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );

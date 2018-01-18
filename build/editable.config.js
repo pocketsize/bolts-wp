@@ -26,7 +26,7 @@ module.exports = {
 	// These are the entry points for scripts and styles.
 	// Remember to enqueue the outputs of any added files in [../functions.php].
 	entrypoints: [
-		'./src/js/main.js',
+		'./src/js/app.js',
 		'./src/sass/style.scss'
 	],
 
