@@ -35,9 +35,9 @@ Bolts WP uses Yarn and provides 5 build scripts for dev:
 Only one. `yarn prod` bundles a prod-ready theme. 
 
 ## Configuring Webpack
-If you are okay with the default structure this is probably not of interest to you, bu we have made the most common Webpack settings available to you in `build/editable.config.js`. 
+If you are one of those people that loves to customize stuff the most common Webpack settings are available to you in `build/editable.config.js`. 
 
-The one we suspect will be the most changed setting is BrowserSyncs `proxy` setting. This allows you to use BrowserSync in any environment. If you run `my-local-site.local` in MAMP it might look like this:
+We suspect that the most changed setting will be BrowserSyncs `proxy`. This allows you to pipe your dev server through BrowserSync. If you run `my-local-site.local` in MAMP it might look like this:
 
 
     browserSync: {
@@ -47,4 +47,6 @@ The one we suspect will be the most changed setting is BrowserSyncs `proxy` sett
     }
 
 Easy peasy, lemon squeazy
+
+
 # TODO : Finish this readme
