@@ -4,7 +4,7 @@ Bolts WP is your new favourite starter theme (at least for WordPress) - tough en
 Bolts WP has a modern workflow and many of the build tools you´ve come to love and expect, out of the box:
 
 - **Webpack** for bundling and task running
-- **Babel** for transpiling and polyfilling ES6
+- **Babel** for transpiling and polyfilling ES6+
 - **Sass** with **Autoprefixer** for styles
 - **BrowserSync** for browser testing and autoreloading CSS, JS and PHP
 - **Mocha** and **Chai** for unit testing
