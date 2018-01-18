@@ -39,12 +39,13 @@ If you are one of those people that loves to customize stuff the most common Web
 
 We suspect that the most changed setting will be BrowserSyncs `proxy`. This allows you to pipe your dev server through BrowserSync. If you run `my-local-site.local` in MAMP it might look like this:
 
-
-    browserSync: {
-    	host: 'localhost',
-    	port: 3000,
-    	proxy: 'http://my-local-site.local:8888'
-    }
+```javascript
+browserSync: {
+    host: 'localhost',
+    port: 3000,
+    proxy: 'http://my-local-site.local:8888'
+}
+```
 
 Easy peasy, lemon squeazy
 
