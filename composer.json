@@ -1,0 +1,16 @@
+{
+  "name": "pocketsize/bolts-wp-dev",
+  "description": "A starter theme based on Bolts",
+  "type": "wordpress-theme",
+  "keywords": [
+    "bolts",
+    "theme",
+    "wordpress",
+    "wordpress-starter-theme",
+    "wordpress-theme"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=5.6   "
+  }
+}

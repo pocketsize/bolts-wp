@@ -1,4 +1,4 @@
-// import Bolts from 'bolts'
+import Bolts from 'bolts'
 
 const initBoltsWP = () => {
 	const htmlTag = document.querySelector('html')
@@ -14,7 +14,7 @@ const initBoltsWP = () => {
 	}
 	
 	// Init Bolts
-	// Bots.init();
+	Bolts.init();
 
 };
 

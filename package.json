@@ -50,6 +50,6 @@
 	},
 	"dependencies": {
 		"babel-polyfill": "^6.26.0",
-		"bolts": "git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts.git"
+		"bolts": "git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts-es6-dev.git"
 	}
 }

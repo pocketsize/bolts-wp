@@ -1007,9 +1007,11 @@ body-parser@1.18.2:
     raw-body "2.3.2"
     type-is "~1.6.15"
 
-"bolts@git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts.git":
+"bolts@git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts-es6-dev.git":
   version "1.0.0"
-  resolved "git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts.git#e53f8cb8cc2c93f53fddd04ce097436a8d61d0db"
+  resolved "git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts-es6-dev.git#6642c201a54851539bfef69ceab3cd40bd5cfb99"
+  dependencies:
+    babel-polyfill "^6.26.0"
 
 bonjour@^3.5.0:
   version "3.5.0"
