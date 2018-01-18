@@ -122,7 +122,7 @@ if (isProd) {
 			pngquant: { quality: '65-90', speed: 4 },
 			svgo: { removeUnknownsAndDefaults: false, cleanupIDs: false },
 			plugins: [
-				imageminMozjpeg({
+				ImageminMozjpeg({
 					quality: 90,
 					progressive: true
 				})
