@@ -16,7 +16,12 @@ Bolts WP has a modern workflow and many of the build tools you´ve come to love 
 (Ok, you might not have expected that last one, but trust us, [you will after you´ve tried it](http:s//github.com/pocketsize/bolts "you will after you´ve tried it"))
 
 
-
+## Table of contents
+- [Installation](#installation "Installation")
+- [Build scripts](#build-scripts "Build scripts")
+  - [For development](#for-development "For development")
+  - [For production](#for-production "For production")
+- [Configuring Webpack](#configuring-webpack "Configuring Webpack")
 
 ## Installation
 1. `git clone` the repo in your themes directory
@@ -35,7 +40,7 @@ Bolts WP uses Yarn and provides 5 build scripts for dev:
 Only one. `yarn prod` bundles a prod-ready theme. 
 
 ## Configuring Webpack
-If you are one of those people that loves to customize stuff the most common Webpack settings are available to you in `build/editable.config.js`. 
+If you are one of those people that loves to customize stuff the most common Webpack settings are available to you (and documented) in `build/editable.config.js`. 
 
 We suspect that the most changed setting will be BrowserSyncs `proxy`. This allows you to pipe your dev server through BrowserSync. If you run `my-local-site.local` in MAMP it might look like this:
 
