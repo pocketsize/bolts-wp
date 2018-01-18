@@ -1,4 +1,4 @@
-#Bolts WP
+# Bolts WP
 Bolts WP is your new favourite starter theme (at least for WordPress) - tough enough to power (and easily maintain) websites of any shape and size, yet so simple that you can become a power user a day. It focuses on removing complexity and streamlining development without creating a whole new workflow. Its not trying to recreate the wheel, just make it rounder.
 
 Bolts WP has a modern workflow and many of the build tools you´ve come to love and expect, out of the box:
@@ -18,11 +18,12 @@ Bolts WP has a modern workflow and many of the build tools you´ve come to love 
 
 
 
-##Installation
+## Installation
 1. `git clone` the repo in your themes directory
 2. Run `yarn install`
 
-##Build scripts in dev
+## Build scripts
+### For development
 Bolts WP uses Yarn and provides 5 build scripts for dev:
 - `yarn dev` bundles a dev-version of the theme once
 - `yarn watch` bundles a dev-version every time a SCSS, JS or PHP file changes
@@ -30,10 +31,10 @@ Bolts WP uses Yarn and provides 5 build scripts for dev:
 - `yarn test` runs the Mocha tests
 - `yarn coverage` runs the Mocha tests and generates a Nyc report
 
-##Build scripts in prod
+### For production
 Only one. `yarn prod` bundles a prod-ready theme. 
 
-##Configuring Webpack
+## Configuring Webpack
 If you are okay with the default structure this is probably not of interest to you, bu we have made the most common Webpack settings available to you in `build/editable.config.js`. 
 
 The one we suspect will be the most changed setting is BrowserSyncs `proxy` setting. This allows you to use BrowserSync in any environment. If you run `my-local-site.local` in MAMP it might look like this:
@@ -46,4 +47,4 @@ The one we suspect will be the most changed setting is BrowserSyncs `proxy` sett
     }
 
 Easy peasy, lemon squeazy
-#TODO : Finish this readme
+# TODO : Finish this readme
