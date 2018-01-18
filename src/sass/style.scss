@@ -23,6 +23,6 @@ $bolts-breakpoints: (
 	xlarge: 1280px
 );
 
-@import '~bolts/scss/bolts';
+@import '~bolts/src/sass/bolts';
 
 @include boilerplate;
