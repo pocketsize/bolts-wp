@@ -49,7 +49,6 @@
 		"webpack-dev-server": "^2.4.4"
 	},
 	"dependencies": {
-		"Bolts": "git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts-es6-dev.git",
 		"babel-polyfill": "^6.26.0",
 		"bolts": "git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts-es6-dev.git"
 	}

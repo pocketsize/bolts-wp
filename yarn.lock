@@ -6,12 +6,6 @@
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.3.0.tgz#3a129cda7c4e5df2409702626892cb4b96546dd5"
 
-"Bolts@git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts-es6-dev.git":
-  version "1.0.0"
-  resolved "git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts-es6-dev.git#5115b39d7dea18192bcf569b10d5e7059c08e406"
-  dependencies:
-    babel-polyfill "^6.26.0"
-
 abab@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -1015,7 +1009,7 @@ body-parser@1.18.2:
 
 "bolts@git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts-es6-dev.git":
   version "1.0.0"
-  resolved "git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts-es6-dev.git#6dd47e9e572fe5fccc51ef10b1c9c161aaf8f492"
+  resolved "git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts-es6-dev.git#6642c201a54851539bfef69ceab3cd40bd5cfb99"
   dependencies:
     babel-polyfill "^6.26.0"
 
