@@ -25,7 +25,7 @@ Bolts WP has a modern workflow and many of the build tools you´ve come to love 
 ## Build scripts
 ### For development
 Bolts WP uses Yarn and provides 5 build scripts for dev:
-- `yarn dev` bundles a dev-version of the theme once
+- `yarn dev` bundles a dev-version of the theme
 - `yarn watch` bundles a dev-version every time a SCSS, JS or PHP file changes
 - `yarn watch-serve` does the same as above but also starts BrowserSync in your preferred browser
 - `yarn test` runs the Mocha tests
