@@ -1,7 +1,5 @@
-import Bolts from 'bolts'
-
-const BoltsWP = () => {
-	init() = function() {
+const BoltsWP = {
+	init() {
 		const htmlTag = document.querySelector('html');
 
 		// Tell styles that JS is enabled
