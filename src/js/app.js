@@ -8,6 +8,5 @@ import BoltsWP from './bolts-wp'
 	BoltsWP.init();
 
 	// The world is your oyster...
-	console.log('This is my WP project!');
 
 })();
