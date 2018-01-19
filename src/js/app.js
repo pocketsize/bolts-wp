@@ -1,5 +1,5 @@
-// import 'babel-polyfill'
-import Bolts from 'bolts'
+//import 'babel-polyfill'
+import Bolts from 'bolts';
 import BoltsWP from './bolts-wp'
 
 (() => {
@@ -7,6 +7,12 @@ import BoltsWP from './bolts-wp'
 	Bolts.init();
 	BoltsWP.init();
 
-	// The world is your oyster...
+	document.addEventListener('DOMContentLoaded', function() {
+
+		document.getElementsByClassName('toggle')[0].addEventListener('click', function() {
+			Bolts.toggle('menu');
+		});
+
+	});
 
 })();
