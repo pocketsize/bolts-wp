@@ -25,10 +25,10 @@ module.exports = {
 
 	// These are the entry points for scripts and styles.
 	// Remember to enqueue the outputs of any added files in [../functions.php].
-	entrypoints: [
-		'./src/js/app.js',
-		'./src/sass/style.scss'
-	],
+	// The output name will be the one of the chunk. If the chunk is named "main" the output will be "main.js"
+	entrypoints: {
+		main: ['./src/js/app.js', './src/sass/style.scss']
+	},
 
 	// Names and paths for all output files, relative to [../public/].
 	// Check out [./webpack.config.js] if you want naming based on dev/prod.

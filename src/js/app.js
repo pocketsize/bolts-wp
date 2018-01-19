@@ -1,5 +1,5 @@
 // import 'babel-polyfill'
-import Bolts from './bolts'
+import Bolts from 'bolts'
 import BoltsWP from './bolts-wp'
 
 (() => {

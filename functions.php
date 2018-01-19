@@ -193,13 +193,13 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 
 // Enqueue styles
 function enqueue_styles() {
-	wp_enqueue_style('style', get_theme_uri() . '/public/css/style.css');
+	wp_enqueue_style('style', get_theme_uri() . '/public/css/main.css');
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_styles' );
 
 // Enqueue scripts
 function enqueue_scripts() {
 	wp_enqueue_script( 'jquery');
-	wp_enqueue_script( 'app', get_theme_uri() . '/public/js/app.js' );
+	wp_enqueue_script( 'app', get_theme_uri() . '/public/js/main.js' );
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
