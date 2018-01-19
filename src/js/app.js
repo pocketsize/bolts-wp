@@ -1,16 +1,18 @@
-//import 'babel-polyfill'
+import 'babel-polyfill'
 import Bolts from 'bolts';
 
 (() => {
 
-	Bolts.init();
-
 	document.addEventListener('DOMContentLoaded', function() {
+
+		Bolts.init();
 
 		document.getElementsByClassName('toggle')[0].addEventListener('click', function() {
 			Bolts.toggle('menu');
 		});
 
 	});
+
+	// The world is your oyster!
 
 })();
