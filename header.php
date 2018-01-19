@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="<?php echo get_bloginfo( 'language' ); ?>">
+<html lang="<?php echo get_bloginfo( 'language' ); ?>">
 <head>
 
 	<meta http-equiv="content-type" content="text/html;charset=<?php echo get_option( 'blog_charset' ); ?>">
@@ -19,7 +19,7 @@
 		<div class="container">
 			<h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
 
-			<button data-action="toggle" data-name="menu"><span>Menu</span></button>
+			<button class="toggle"><span>Menu</span></button>
 
 			<nav role="navigation">
 				<?php bolts_nav_menu(); ?>
