@@ -8,7 +8,7 @@ $bolts-default-background-position: 50% 50%;
 $bolts-fonts-path:                  '../fonts';
 
 $bolts-selectors: (
-	headings:      'h1, h2, h3, h4, h5, h5',
+	headings:      'h1, h2, h3, h4, h5, h6',
 	inputs:        'input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea',
 	text-elements: 'h1, h2, h3, h4, h5, h6, p, ol li, ul li, dl dt, dl dd, address',
 	text-inputs:   'input[type="text"], input[type="email"]',
