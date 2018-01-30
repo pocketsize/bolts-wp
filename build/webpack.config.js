@@ -67,6 +67,15 @@ module.exports = {
 			},
 			to: config.outputs.image.filename,
 		}]),
+		new CopyWebpackPlugin([{
+			context: config.paths.fonts,
+			from: {
+				glob: `${config.paths.fonts}/**/*`,
+				flatten: false,
+				dot: false
+			},
+			to: config.outputs.font.filename,
+		}]),
 	]
 }
 

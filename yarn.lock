@@ -1009,7 +1009,7 @@ body-parser@1.18.2:
 
 "bolts@git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts-es6-dev.git":
   version "1.0.0"
-  resolved "git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts-es6-dev.git#6642c201a54851539bfef69ceab3cd40bd5cfb99"
+  resolved "git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts-es6-dev.git#3cfcc35757360e7a42b283461963e803d9f8151a"
   dependencies:
     babel-polyfill "^6.26.0"
 
