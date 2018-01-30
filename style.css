@@ -4,12 +4,3 @@ Author: Pocketsize
 Author URI: http://www.pocketsize.se/
 Version: 1.0
 */
-
-.size-auto, 
-.size-full,
-.size-large,
-.size-medium,
-.size-thumbnail {
-	max-width: 100%;
-	height: auto;
-}
