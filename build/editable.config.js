@@ -44,6 +44,7 @@ module.exports = {
 	// These are our external dependencies that should be available to our modules, but not compiled.
 	// Enqueue them via CDN in [../functions.php] instead.
 	externals: {
+		'jquery': 'jQuery'
 	},
 
 	// If you have any custom module resolutions you prefer, this is the place to be.
