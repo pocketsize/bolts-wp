@@ -27,6 +27,18 @@ function is_post_type( $post_type, $post = false ) {
 	return $post->post_type == $post_type;
 }
 
+// Return the current theme directory
+
+function get_theme_dir() {
+	return get_template_directory();
+}
+
+// Print the current theme directory
+
+function theme_dir() {
+	echo get_theme_dir();
+}
+
 // Return the current theme directory url
 
 function get_theme_uri() {
@@ -86,8 +98,12 @@ function featured_image( $post_id = false, $size = 'full', $fallback = false ) {
 // Return the path to a theme asset file
 
 function get_asset( $asset, $fallback = false ) {
-	$path = get_template_directory_uri() . '/public/' . $asset;
-	if ( file_exists( $path ) ) return $path;
+	$path = get_theme_dir() . '/public/' . $asset;
+
+	if ( file_exists( $path ) ) {
+		return get_theme_uri() . '/public/' . $asset . '?m=' . filemtime( $path );
+	}
+
 	return $fallback;
 }
 
@@ -193,13 +209,13 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 
 // Enqueue styles
 function enqueue_styles() {
-	wp_enqueue_style('style', get_theme_uri() . '/public/css/main.css');
+	wp_enqueue_style( 'main', get_asset('css/main.css'), null, null );
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_styles' );
 
 // Enqueue scripts
 function enqueue_scripts() {
 	wp_enqueue_script( 'jquery');
-	wp_enqueue_script( 'app', get_theme_uri() . '/public/js/main.js' );
+	wp_enqueue_script( 'main', get_asset('js/main.js'), null, null, true );
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
