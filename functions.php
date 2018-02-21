@@ -134,27 +134,9 @@ function component( $file, $args = false ) {
 	// Set component path
 	$path = get_template_directory() . '/components/' . $file . '.php';
 
-	// Parse component file
-	$template = file_get_contents( $path );
-
 	// Make all WordPress variables available
 	global $posts, $post, $wp_did_header, $wp_query, $wp_rewrite, 
 	       $wpdb, $wp_version, $wp, $id, $comment, $user_ID;
-
-	// Find all variables in the component
-	preg_match_all(
-		'/\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/',
-		$template, $tags
-	);
-
-	// Default all undefined template tags to false
-	if ( count( $tags[0] ) ) {
-		for ( $i = 0; $i < count( $tags[0] ); $i++ ) {
-			if ( !isset( $args[ $tags[1][$i] ] ) ) {
-				$args[ $tags[1][$i] ] = false;
-			}
-		}
-	}
 
 	// Define all WP query vars as variables
 	if ( is_array( $wp_query->query_vars ) ) {
