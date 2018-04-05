@@ -201,3 +201,10 @@ function enqueue_scripts() {
 	wp_enqueue_script( 'main', get_asset('js/main.js'), null, null, true );
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
+
+// Wrap video elements in a div
+function wrap_video_elements( $html ) {
+	return '<div class="video-container">' . $html . '</div>';
+}
+add_filter( 'embed_oembed_html', 'wrap_video_elements', 10, 3 );
+add_filter( 'video_embed_html', 'wrap_video_elements' );

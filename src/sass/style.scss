@@ -8,11 +8,12 @@ $bolts-default-background-position: 50% 50%;
 $bolts-fonts-path:                  '../fonts';
 
 $bolts-selectors: (
-	headings:      'h1, h2, h3, h4, h5, h6',
-	inputs:        'input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea',
-	text-elements: 'h1, h2, h3, h4, h5, h6, p, ol li, ul li, dl dt, dl dd, address',
-	text-inputs:   'input[type="text"], input[type="email"]',
-	buttons:       'button, input[type="reset"], input[type="submit"], input[type="button"]'
+	headings:       'h1, h2, h3, h4, h5, h6',
+	inputs:         'input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea',
+	text-elements:  'h1, h2, h3, h4, h5, h6, p, ol li, ul li, dl dt, dl dd, address',
+	text-inputs:    'input[type="text"], input[type="email"]',
+	buttons:        'button, input[type="reset"], input[type="submit"], input[type="button"]',
+	embed-elements: 'iframe, object, embed, video'
 );
 
 $bolts-breakpoints: (
@@ -26,3 +27,30 @@ $bolts-breakpoints: (
 @import '~bolts/src/sass/bolts';
 
 @include boilerplate;
+
+p, ul, ol {
+	%wysiwyg & + & { margin-top: 1em; }
+}
+
+%wysiwyg {
+	@include select(headings) {
+		font-weight: 700;
+		line-height: 1.2;
+	}
+
+	ul, ol { padding-left: 1em; }
+
+	p, li { line-height: 1.6; }
+
+	.video-container {
+		position: relative;
+		@include aspect-ratio(16, 9);
+		overflow: hidden;
+
+		@include select(embed-elements) {
+			@include overlay;
+			height: 100%;
+			width: 100%;
+		}
+	}
+}
