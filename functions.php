@@ -3,8 +3,9 @@
 /* TODO: Should we really ship with these options? */
 
 // Override default options
-define( 'BOLTS_DISABLE_ADMIN_BAR', true );
-define( 'BOLTS_DISABLE_EMOJIS',    true );
+define( 'BOLTS_DISABLE_ADMIN_BAR',       true );
+define( 'BOLTS_DISABLE_EMOJIS',          true );
+define( 'BOLTS_ACF_FOOTER_OPTIONS_PAGE', true );
 
 // Include the Bolts WP library
 require_once get_template_directory() . '/lib/bolts.php';
@@ -209,7 +210,7 @@ function wrap_video_elements( $html ) {
 add_filter( 'embed_oembed_html', 'wrap_video_elements', 10, 3 );
 add_filter( 'video_embed_html', 'wrap_video_elements' );
 
-if ( function_exists('acf_add_options_page') ) {
+if ( function_exists('acf_add_options_page') && BOLTS_ACF_FOOTER_OPTIONS_PAGE ) {
  
 	$option_page = acf_add_options_page(array(
 		'page_title' => 'Footer options',
