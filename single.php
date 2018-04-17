@@ -2,19 +2,18 @@
 
 <?php while (have_posts()) { the_post(); ?>
 	
-	<section id="single">
+	<section class="post">
+		<div class="post-container">
 
-		<article>
-			<div class="container">
+			<h1 class="post-title"><?php the_title(); ?></h1>
 
-				<h2><?php the_title(); ?></h2>
+			<div class="post-content">
 				<?php the_content(); ?>
-
-				<p>Posted on <?php the_date(); ?> by <?php the_author(); ?></p>
-
 			</div>
-		</article>
 
+			<p class="post-meta">Posted on <span class="post-meta-date"><?php the_date(); ?></span> by <span class="post-meta-author"><?php the_author(); ?></span></p>
+
+		</div>
 	</section>
 	
 	<?php if (comments_open() || get_comments_number()) { comments_template('', true); } ?>

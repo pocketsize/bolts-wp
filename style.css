@@ -4,6 +4,3 @@ Author: Pocketsize
 Author URI: http://www.pocketsize.se/
 Version: 1.0
 */
-
-/* needing to hide BrowserSync script is pretty bs tbh */
-#__bs_script__ { display: none }

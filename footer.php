@@ -2,10 +2,12 @@
 	</main>
 </div>
 
-<footer>
-	<section id="footer">
-		<div class="container">
-			<p>Copyright &copy; <?php bloginfo('name'); ?></p>
+<footer class="page-footer">
+	<section class="footer">
+		<div class="footer-container">
+			<div class="footer-content">
+				<p>Copyright &copy; <?php bloginfo('name'); ?></p>
+			</div>
 		</div>
 	</section>
 </footer>

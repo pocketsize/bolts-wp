@@ -11,20 +11,24 @@
 	<?php wp_head(); ?>
 
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class('page'); ?>>
 
-<div class="wrapper">
+<div class="page-wrapper">
 
-	<header id="header">
-		<div class="container">
-			<h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
+	<header class="header">
+		<div class="header-container">
+			<div class="header-logo">
+				<a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
+			</div>
 
-			<button class="toggle"><span>Menu</span></button>
+			<button class="header-menu-toggle">
+				<span class="header-menu-text">Menu</span>
+			</button>
 
-			<nav role="navigation">
+			<nav class="header-menu" role="navigation">
 				<?php bolts_nav_menu(); ?>
 			</nav>
 		</div>
 	</header>
 
-	<main>
+	<main class="main">

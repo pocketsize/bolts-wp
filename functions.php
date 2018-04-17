@@ -208,3 +208,14 @@ function wrap_video_elements( $html ) {
 }
 add_filter( 'embed_oembed_html', 'wrap_video_elements', 10, 3 );
 add_filter( 'video_embed_html', 'wrap_video_elements' );
+
+if ( function_exists('acf_add_options_page') ) {
+ 
+	$option_page = acf_add_options_page(array(
+		'page_title' => 'Footer options',
+		'menu_title' => 'Footer',
+		'menu_slug'  => 'footer',
+		'icon_url'   => 'dashicons-welcome-widgets-menus'
+	));
+ 
+}

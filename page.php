@@ -2,11 +2,11 @@
 
 <?php while (have_posts()) { the_post(); ?>
 
-	<section id="page">
-		<div class="container">
+	<section class="page">
+		<div class="page-container">
 			<h2><?php the_title(); ?></h2>
 
-			<div class="user-content"><?php the_content(); ?></div>
+			<div class="page-content"><?php the_content(); ?></div>
 		</div>
 	</section>
 

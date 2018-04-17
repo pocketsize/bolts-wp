@@ -1,3 +1,9 @@
+$bolts-page-selector:               'body.page';
+$bolts-wrapper-selector:            '> .page-wrapper';
+$bolts-footer-selector:             '> .page-footer';
+$bolts-reset-focus-styles:          false;
+$bolts-reset-anchor-styles:         true;
+$bolts-reset-list-styles:           false;
 $bolts-img-display:                 block;
 $bolts-img-max-width:               100%;
 $bolts-default-container-width:     90%;
@@ -8,6 +14,7 @@ $bolts-default-background-position: 50% 50%;
 $bolts-default-transition-duration: 0.4s;
 $bolts-default-transition-easing:   ease-in-out;
 $bolts-fonts-path:                  '../fonts';
+$bolts-default-pseudo:              after;
 
 $bolts-selectors: (
 	headings:       'h1, h2, h3, h4, h5, h6',
@@ -30,29 +37,39 @@ $bolts-breakpoints: (
 
 @include boilerplate;
 
+%title {
+	font-weight: 700;
+	line-height: 1.2;
+}
+
 p, ul, ol {
 	%wysiwyg & + & { margin-top: 1em; }
 }
 
-%wysiwyg {
-	@include select(headings) {
-		font-weight: 700;
-		line-height: 1.2;
+%video-container {
+	position: relative;
+	@include aspect-ratio(16, 9);
+	overflow: hidden;
+
+	@include select(embed-elements) {
+		@include overlay;
+		height: 100%;
+		width: 100%;
 	}
+}
+
+%wysiwyg {
+	@include select(headings) { @extend %title; }
 
 	ul, ol { padding-left: 1em; }
 
 	p, li { line-height: 1.6; }
 
-	.video-container {
-		position: relative;
-		@include aspect-ratio(16, 9);
-		overflow: hidden;
+	a:hover { text-decoration: underline; }
 
-		@include select(embed-elements) {
-			@include overlay;
-			height: 100%;
-			width: 100%;
-		}
-	}
+	.video-container { @extend %video-container; }
 }
+
+html { font-size: 16px; }
+
+body { font-family: sans-serif; }
