@@ -11,9 +11,9 @@
 	<?php wp_head(); ?>
 
 </head>
-<body <?php body_class('page'); ?>>
+<body <?php body_class('bolts-page'); ?>>
 
-<div class="page-wrapper">
+<div class="bolts-wrapper">
 
 	<header class="header">
 		<div class="header-container">
@@ -22,7 +22,7 @@
 			</div>
 
 			<button class="header-menu-toggle">
-				<span class="header-menu-text">Menu</span>
+				<span class="header-menu-toggle-text">Menu</span>
 			</button>
 
 			<nav class="header-menu" role="navigation">

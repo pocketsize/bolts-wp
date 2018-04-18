@@ -1,6 +1,6 @@
-$bolts-page-selector:               'body.page';
-$bolts-wrapper-selector:            '> .page-wrapper';
-$bolts-footer-selector:             '> .page-footer';
+$bolts-page-selector:               'body.bolts-page';
+$bolts-wrapper-selector:            '> div.bolts-wrapper';
+$bolts-footer-selector:             '> div.bolts-footer';
 $bolts-reset-focus-styles:          false;
 $bolts-reset-anchor-styles:         true;
 $bolts-reset-list-styles:           false;
