@@ -1,3 +1,10 @@
+/**
+ * Bolts WP v1.0 | MIT License
+ *
+ * Developed by Pocketsize
+ * http://www.pocketsize.se/
+ */
+
 import 'babel-polyfill'
 import Bolts from 'bolts';
 

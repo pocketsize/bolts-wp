@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Bolts v1.0 | MIT License
+ * Bolts WP v1.0 | MIT License
  *
  * Developed by Pocketsize
  * http://www.pocketsize.se/
@@ -12,14 +12,14 @@
  */
 
 $bolts_wp_options = array(
-	'BOLTS_WP_DISABLE_ADMIN_BAR'    => false,
-	'BOLTS_WP_DISABLE_EMOJIS'       => false,
-	'BOLTS_WP_DISABLE_AUTO_UPDATES' => false,
-	'BOLTS_WP_DISABLE_EDITOR'       => false,
-	'BOLTS_WP_EXCERPT_WORDS'        => 55,
-	'BOLTS_WP_EXCERPT_MORE'         => '[...]',
-	'BOLTS_WP_ENQUEUE_JQUERY'       => false,
-	'BOLTS_WP_MENU_LOCATION'        => false
+	'BOLTS_WP_DISABLE_ADMIN_BAR'     => false,
+	'BOLTS_WP_DISABLE_EMOJIS'        => false,
+	'BOLTS_WP_DISABLE_AUTO_UPDATES'  => false,
+	'BOLTS_WP_DISABLE_EDITOR'        => false,
+	'BOLTS_WP_EXCERPT_WORDS'         => 55,
+	'BOLTS_WP_EXCERPT_MORE'          => '[...]',
+	'BOLTS_WP_ENQUEUE_JQUERY'        => false,
+	'BOLTS_WP_DEFAULT_MENU_LOCATION' => false
 );
 
 foreach ( $bolts_wp_options as $option => $value ) {
@@ -44,9 +44,5 @@ function bolts_wp_loader( $files = array() ) {
 		}
 	}
 }
-
-// TODO: Wrappa ALLA funktioner i !function_exists
-
-// TODO: Fixa alla tabs från spaces till tabs
 
 // TODO: Maybe add get_date (and how would we do with date() ?)

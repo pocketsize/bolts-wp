@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Bolts v1.0 | MIT License
+ * Bolts WP v1.0 | MIT License
  *
  * Developed by Pocketsize
  * http://www.pocketsize.se/
@@ -26,7 +26,7 @@ function bolts_wp_cleanup() {
 		remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
 	}
 
-    function bolts_wp_remove_recent_comments_style() {
+	function bolts_wp_remove_recent_comments_style() {
 		global $wp_widget_factory;
 
 		if ( isset( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'] ) ) {
@@ -37,26 +37,26 @@ function bolts_wp_cleanup() {
 		}
 	}
 
-    function bolts_wp_rss_version() {
-    	return '';
-    }
+	function bolts_wp_rss_version() {
+		return '';
+	}
 
-    function bolts_wp_remove_wp_widget_recent_comments_style() {
+	function bolts_wp_remove_wp_widget_recent_comments_style() {
 		if ( has_filter( 'wp_head', 'wp_widget_recent_comments_style' ) ) {
 			remove_filter( 'wp_head', 'wp_widget_recent_comments_style' );
 		}
 	}
 
-    function bolts_wp_gallery_style( $css ) {
+	function bolts_wp_gallery_style( $css ) {
 		return preg_replace( "!<style type='text/css'>(.*?)</style>!s", '', $css );
 	}
 
-    add_action( 'init', 'bolts_wp_head_cleanup');
-    add_action( 'wp_head','bolts_wp_remove_recent_comments_style', 1 );
-    
-    add_filter( 'the_generator', 'bolts_wp_rss_version' );
-    add_filter( 'wp_head', 'bolts_wp_remove_wp_widget_recent_comments_style', 1 );
-    add_filter( 'gallery_style', 'bolts_wp_gallery_style' );
+	add_action( 'init', 'bolts_wp_head_cleanup');
+	add_action( 'wp_head','bolts_wp_remove_recent_comments_style', 1 );
+	
+	add_filter( 'the_generator', 'bolts_wp_rss_version' );
+	add_filter( 'wp_head', 'bolts_wp_remove_wp_widget_recent_comments_style', 1 );
+	add_filter( 'gallery_style', 'bolts_wp_gallery_style' );
 
 }
 add_action( 'after_setup_theme', 'bolts_wp_cleanup', 15 );
@@ -80,6 +80,8 @@ add_action( 'edit_form_after_title', 'bolts_wp_force_posts_page_editor', 0 );
 /**
  * Disable emojis (define in functions.php to override)
  */
+
+// TODO: Denna verkar inte göra någon skillnad
 
 if ( BOLTS_DISABLE_EMOJIS ) {
 	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );

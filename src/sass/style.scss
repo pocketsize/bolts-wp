@@ -1,5 +1,5 @@
 /**
- * Bolts v1.0 | MIT License
+ * Bolts WP v1.0 | MIT License
  *
  * Developed by Pocketsize
  * http://www.pocketsize.se/
@@ -55,7 +55,7 @@ p, ul, ol {
 
 %embed-wrapper {
 	position: relative;
-	@include aspect-ratio(16, 9);
+	@include aspect-ratio(427, 240);
 	overflow: hidden;
 
 	@include select(embed-elements) {

@@ -1,3 +1,20 @@
+<?php
+
+/**
+ * Single post component
+ *
+ * @param string $id
+ * @param string $type
+ * @param string $title
+ * @param string $content
+ * @param string $date
+ * @param string $author
+ * @param string $permalink
+ * @param string $class
+ */
+
+?>
+
 <?php $class = isset($class) ? $class : 'post'; ?>
 
 <article class="<?php echo $class; ?> is-type-<?php echo $type; ?>">

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Bolts v1.0 | MIT License
+ * Bolts WP v1.0 | MIT License
  *
  * Developed by Pocketsize
  * http://www.pocketsize.se/
@@ -11,11 +11,11 @@
  * Override default Bolts WP options
  */
 
-define( 'BOLTS_WP_DISABLE_ADMIN_BAR',       true );
-define( 'BOLTS_WP_DISABLE_EMOJIS',          true );
-define( 'BOLTS_WP_ACF_FOOTER_OPTIONS_PAGE', true );
-define( 'BOLTS_WP_EXCERPT_MORE',            '...' );
-define( 'BOLTS_WP_MENU_LOCATION',           'main' );
+define( 'BOLTS_WP_DISABLE_ADMIN_BAR',     true );
+define( 'BOLTS_WP_DISABLE_EMOJIS',        true );
+define( 'BOLTS_WP_EXCERPT_MORE',          '...' );
+define( 'BOLTS_WP_ENQUEUE_JQUERY',        true );
+define( 'BOLTS_WP_DEFAULT_MENU_LOCATION', 'main' );
 
 /**
  * Require Bolts WP files
@@ -38,7 +38,7 @@ bolts_wp_loader(array(
  * Register default menu location
  */
 
-register_nav_menu( BOLTS_WP_MENU_LOCATION, 'Menu' );
+register_nav_menu( BOLTS_WP_DEFAULT_MENU_LOCATION, 'Menu' );
 
 
 // The world is your oyster

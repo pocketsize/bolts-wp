@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Bolts v1.0 | MIT License
+ * Bolts WP v1.0 | MIT License
  *
  * Developed by Pocketsize
  * http://www.pocketsize.se/
