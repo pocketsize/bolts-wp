@@ -17,8 +17,8 @@
 <?php if ( have_posts() ) { ?>
 
 	<section class="posts">
-		<div class="posts-wrapper">
-			<?php 
+		<div class="posts-container">
+			<?php
 
 			while ( have_posts() ) {
 
