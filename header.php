@@ -17,16 +17,12 @@
 
 	<header class="header">
 		<div class="header-container">
-			<div class="header-logo">
-				<a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
-			</div>
+			<a href="<?php echo home_url(); ?>" class="header-logo"><?php bloginfo('name'); ?></a>
 
-			<button class="header-menu-toggle">
-				<span class="header-menu-toggle-text">Menu</span>
-			</button>
+			<button class="header-menu-toggle">Menu</button>
 
 			<nav class="header-menu" role="navigation">
-				<?php bolts_nav_menu(); ?>
+				<?php nav_menu(); ?>
 			</nav>
 		</div>
 	</header>

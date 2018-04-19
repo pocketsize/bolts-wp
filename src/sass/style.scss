@@ -1,6 +1,13 @@
-$bolts-page-selector:               'body.bolts-page';
-$bolts-wrapper-selector:            '> div.bolts-wrapper';
-$bolts-footer-selector:             '> div.bolts-footer';
+/**
+ * Bolts v1.0 | MIT License
+ *
+ * Developed by Pocketsize
+ * http://www.pocketsize.se/
+ */
+
+$bolts-page-selector:               '.bolts-page';
+$bolts-wrapper-selector:            '.bolts-wrapper';
+$bolts-footer-selector:             '.bolts-footer';
 $bolts-reset-focus-styles:          false;
 $bolts-reset-anchor-styles:         true;
 $bolts-reset-list-styles:           false;
@@ -46,7 +53,7 @@ p, ul, ol {
 	%wysiwyg & + & { margin-top: 1em; }
 }
 
-%video-container {
+%embed-wrapper {
 	position: relative;
 	@include aspect-ratio(16, 9);
 	overflow: hidden;
@@ -58,6 +65,8 @@ p, ul, ol {
 	}
 }
 
+// TODO: Add gallery style from barnfonden
+
 %wysiwyg {
 	@include select(headings) { @extend %title; }
 
@@ -67,7 +76,7 @@ p, ul, ol {
 
 	a:hover { text-decoration: underline; }
 
-	.video-container { @extend %video-container; }
+	.embed-wrapper { @extend %embed-wrapper; }
 }
 
 html { font-size: 16px; }
