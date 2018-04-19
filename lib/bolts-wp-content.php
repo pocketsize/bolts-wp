@@ -112,8 +112,6 @@ function excerpt( $post_id = false, $words = false, $more = false ) {
 }
 
 
-
-
 /**
  * Return author information from a post (defaults to display name)
  * @param int $post_id
@@ -128,7 +126,7 @@ function get_author( $post_id = false, $field = 'display_name' ) {
 		global $post;
 	}
 
-	return get_author_meta( $field, $post->post_author );
+	return get_the_author_meta( $field, $post->post_author );
 }
 
 

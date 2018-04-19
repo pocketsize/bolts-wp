@@ -1,6 +1,6 @@
 <?php $class = isset($class) ? $class : 'post'; ?>
 
-<article class="<?php echo $class; ?> type-<?php echo $type; ?>">
+<article class="<?php echo $class; ?> is-type-<?php echo $type; ?>">
 	<div class="<?php echo $class; ?>-container">
 		<h2 class="<?php echo $class; ?>-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h2>
 

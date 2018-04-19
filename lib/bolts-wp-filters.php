@@ -72,8 +72,18 @@ add_filter( 'the_content_more_link', 'bolts_wp_read_more_link' );
  * Wrap embed elements in a div
  */
 
-function wrap_embed_elements( $html ) {
+function bolts_wp_wrap_embed_elements( $html ) {
 	return '<div class="embed-wrapper">' . $html . '</div>';
 }
-add_filter( 'embed_oembed_html', 'wrap_embed_elements', 10, 3 );
-add_filter( 'video_embed_html', 'wrap_embed_elements' );
+add_filter( 'embed_oembed_html', 'bolts_wp_wrap_embed_elements', 10, 3 );
+add_filter( 'video_embed_html', 'bolts_wp_wrap_embed_elements' );
+
+
+/**
+ * Add a class to all paragraphs containing images
+ */
+
+function bolts_wp_add_image_wrapper_class( $content ) {
+	return preg_replace( '/(<p[^>]*)(\>.*)(\s*)(\<img.*)(\s*)(<\/p>)/im', '$1 class="image-wrapper"$2$3$4', $content);
+}
+add_filter( 'the_content', 'bolts_wp_add_image_wrapper_class', 20 );

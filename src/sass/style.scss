@@ -59,13 +59,13 @@ p, ul, ol {
 	overflow: hidden;
 
 	@include select(embed-elements) {
-		@include overlay;
-		height: 100%;
-		width: 100%;
+		@include overlay( $force-size: true );
 	}
 }
 
-// TODO: Add gallery style from barnfonden
+%image-wrapper { display: inline; }
+
+// TODO: Add gallery style from Moomsteatern
 
 %wysiwyg {
 	@include select(headings) { @extend %title; }
@@ -77,6 +77,8 @@ p, ul, ol {
 	a:hover { text-decoration: underline; }
 
 	.embed-wrapper { @extend %embed-wrapper; }
+
+	.image-wrapper { @extend %image-wrapper; }
 }
 
 html { font-size: 16px; }

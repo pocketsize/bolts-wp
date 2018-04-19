@@ -45,4 +45,8 @@ function bolts_wp_loader( $files = array() ) {
 	}
 }
 
-// TOOD: Wrappa ALLA funktioner i !function_Exists
+// TODO: Wrappa ALLA funktioner i !function_exists
+
+// TODO: Fixa alla tabs från spaces till tabs
+
+// TODO: Maybe add get_date (and how would we do with date() ?)
