@@ -55,7 +55,7 @@ p, ul, ol {
 
 %embed-wrapper {
 	position: relative;
-	@include aspect-ratio(427, 240);
+	@include aspect-ratio(16, 9);
 	overflow: hidden;
 
 	@include select(embed-elements) {
