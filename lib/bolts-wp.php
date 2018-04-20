@@ -14,8 +14,6 @@
 $bolts_wp_options = array(
 	'BOLTS_WP_DISABLE_ADMIN_BAR'     => false,
 	'BOLTS_WP_DISABLE_EMOJIS'        => false,
-	'BOLTS_WP_DISABLE_AUTO_UPDATES'  => false,
-	'BOLTS_WP_DISABLE_EDITOR'        => false,
 	'BOLTS_WP_EXCERPT_WORDS'         => 55,
 	'BOLTS_WP_EXCERPT_MORE'          => '[...]',
 	'BOLTS_WP_ENQUEUE_JQUERY'        => false,

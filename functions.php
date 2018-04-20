@@ -41,4 +41,4 @@ bolts_wp_loader(array(
 register_nav_menu( BOLTS_WP_DEFAULT_MENU_LOCATION, 'Menu' );
 
 
-// The world is your oyster
+// The world is your oyster!
