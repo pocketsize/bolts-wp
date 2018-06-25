@@ -19,7 +19,7 @@
 		<div class="header-container">
 			<a href="<?php echo home_url(); ?>" class="header-logo"><?php bloginfo('name'); ?></a>
 
-			<button class="header-menu-toggle">Menu</button>
+			<button class="header-menu-toggle" data-toggle="off-canvas">Menu</button>
 
 			<nav class="header-menu" role="navigation">
 				<?php nav_menu(); ?>

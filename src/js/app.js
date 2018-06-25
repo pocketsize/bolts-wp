@@ -5,7 +5,7 @@
  * http://www.pocketsize.se/
  */
 
-import 'babel-polyfill'
+import 'babel-polyfill';
 import Bolts from 'bolts';
 
 (() => {
@@ -14,12 +14,18 @@ import Bolts from 'bolts';
 
 		Bolts.init();
 
-		document.getElementsByClassName('toggle')[0].addEventListener('click', function() {
-			Bolts.toggle('menu');
-		});
+		const toggles = document.querySelectorAll('[data-toggle]');
+
+		if ( toggles.length ) {
+			Array.prototype.forEach.call(toggles, function(toggle) {
+				toggle.addEventListener('click', function() {
+					Bolts.toggleState( this.getAttribute('data-toggle') );
+				});
+			});
+		}
+
+		// The world is your oyster!
 
 	});
-
-	// The world is your oyster!
 
 })();

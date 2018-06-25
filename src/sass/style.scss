@@ -68,6 +68,8 @@ p, ul, ol {
 // TODO: Add gallery style from Moomsteatern
 
 %wysiwyg {
+	@include clear;
+	
 	@include select(headings) { @extend %title; }
 
 	ul, ol { padding-left: 1em; }
@@ -79,6 +81,21 @@ p, ul, ol {
 	.embed-wrapper { @extend %embed-wrapper; }
 
 	.image-wrapper { @extend %image-wrapper; }
+
+	.alignleft,
+	.alignright {
+		margin-bottom: 0.25em;
+	}
+
+	.alignleft {
+		float: left;
+		margin-right: 1em;
+	}
+
+	.alignright {
+		float: right;
+		margin-left: 1em;
+	}
 }
 
 html { font-size: 16px; }
