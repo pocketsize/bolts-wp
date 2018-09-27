@@ -19,7 +19,7 @@ import Bolts from 'bolts';
 		if ( toggles.length ) {
 			Array.prototype.forEach.call(toggles, function(toggle) {
 				toggle.addEventListener('click', function() {
-					Bolts.toggleState( this.getAttribute('data-toggle') );
+					Bolts.state.toggle( this.getAttribute('data-toggle'), [true, false] );
 				});
 			});
 		}
