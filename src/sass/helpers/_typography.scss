@@ -1,0 +1,109 @@
+$font-weight--normal: 400;
+$font-weight--bold:   700;
+
+
+/* Uncomment for instant font imports!*/
+
+/*
+@include font(
+	$family: 'Monstro Solid',
+	$filename: 'MonstroSolid',
+	$formats: woff
+);
+
+@include font(
+	$family: 'Usual',
+	$formats: woff woff2,
+	$variations: (
+		(filename: 'Usual-Light'),
+		(filename: 'Usual-Medium', weight: $font-weight--medium),
+		(filename: 'Usual-Bold', weight: $font-weight--bold)
+	)
+);
+*/
+
+%title--base {
+	font-family: sans-serif;
+	font-weight: $font-weight--bold;
+	line-height: 1.2;
+}
+
+%title--h1 {
+	@extend %title--base;
+
+	@media (width-to(medium)) { font-size: 25px; }
+
+	@media (width-from(medium)) { font-size: 40px; }
+}
+
+%title--h1-spacing {
+	
+	@media (width-to(medium)) {
+		&:not(:last-child) { margin-bottom: $base--small; }
+	}
+
+	@media (width-from(medium)) {
+		&:not(:last-child) { margin-bottom: $base--medium; }
+	}
+}
+
+%text--base {
+	font-family: sans-serif;
+	font-weight: $font-weight--normal;
+}
+
+%text--link {
+	font-weight: $font-weight--bold;
+}
+
+%text--button {
+	@extend %text--base;
+
+	@media (width-to(medium)) { font-size: 14px; }
+
+	@media (width-from(medium)) { font-size: 16px;}
+}
+
+%content--wysiwyg {
+	@include clear;
+	
+	@include select(headings) { @extend %title--base; }
+
+	p, ul, ol {
+		&:not(:last-child) {
+			padding-bottom: $base--small;
+		}
+	}
+
+	ul, ol { padding-left: $base--small; }
+
+	p, li { @extend %text--base; }
+
+	a:hover { text-decoration: underline; }
+
+	.embed-wrapper { @extend %embed-wrapper; }
+
+	.image-wrapper { @extend %image-wrapper; }
+
+	.alignleft,
+	.alignright {
+		margin-bottom: $base--x-small;
+	}
+
+	.alignleft {
+		float: left;
+		margin-right: $base--small;
+	}
+
+	.alignright {
+		float: right;
+		margin-left: $base--small;
+	}
+}
+
+%content--wysiwyg-spacing {
+	&:not(:last-child) { margin-bottom: $base--medium; }
+}
+
+html { font-size: 16px; }
+body { @extend %text--base; }

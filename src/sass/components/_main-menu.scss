@@ -1,0 +1,11 @@
+.main-menu {
+	.main-menu-submenu-toggle {
+		@media (width-from(main-menu)) { display: none; }
+	}
+
+	.main-menu-submenu-outer {
+		@media (width-to(main-menu)) {
+			@include transition-height('.main-menu-item:not(.is-open) > &', $speed--base, $easing);
+		}
+	}
+}

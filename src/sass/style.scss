@@ -5,6 +5,9 @@
  * http://www.pocketsize.se/
  */
 
+// Importing variables to pass them on to Bolts Scss
+@import 'helpers/variables';
+
 $bolts-page-selector:               '.bolts-page';
 $bolts-wrapper-selector:            '.bolts-wrapper';
 $bolts-footer-selector:             '.bolts-footer';
@@ -14,12 +17,12 @@ $bolts-reset-list-styles:           false;
 $bolts-img-display:                 block;
 $bolts-img-max-width:               100%;
 $bolts-default-container-width:     90%;
-$bolts-default-container-max-width: 1080px;
+$bolts-default-container-max-width: $max-width--page;
 $bolts-default-container-align:     center;
 $bolts-default-background-size:     cover;
 $bolts-default-background-position: 50% 50%;
-$bolts-default-transition-duration: 0.4s;
-$bolts-default-transition-easing:   ease-in-out;
+$bolts-default-transition-duration: $speed--base;
+$bolts-default-transition-easing:   $easing;
 $bolts-fonts-path:                  '../fonts';
 $bolts-default-pseudo:              after;
 
@@ -33,71 +36,33 @@ $bolts-selectors: (
 );
 
 $bolts-breakpoints: (
-	xsmall: 480px,
-	small:  568px,
-	medium: 768px,
-	large:  1024px,
-	xlarge: 1280px
+	xsmall:    350px,
+	small:     500px,
+	medium:    900px,
+	large:     1200px,
+	xlarge:    1600px,
+	main-menu: 800px
 );
 
 @import '~bolts/src/sass/bolts';
 
 @include boilerplate;
 
-%title {
-	font-weight: 700;
-	line-height: 1.2;
-}
+// Helpers
+@import 'helpers/typography';
+@import 'helpers/placeholders';
+@import 'helpers/mixins';
 
-p, ul, ol {
-	%wysiwyg & + & { margin-top: 1em; }
-}
+// Common components
+@import 'components/common/button';
+@import 'components/common/image';
+@import 'components/common/link';
+@import 'components/common/slider';
 
-%embed-wrapper {
-	position: relative;
-	@include aspect-ratio(16, 9);
-	overflow: hidden;
+// Layout components
+@import 'components/layouts/full';
+@import 'components/layouts/split';
 
-	@include select(embed-elements) {
-		@include overlay( $force-size: true );
-	}
-}
-
-%image-wrapper { display: inline; }
-
-// TODO: Add gallery style from Moomsteatern
-
-%wysiwyg {
-	@include clear;
-	
-	@include select(headings) { @extend %title; }
-
-	ul, ol { padding-left: 1em; }
-
-	p, li { line-height: 1.6; }
-
-	a:hover { text-decoration: underline; }
-
-	.embed-wrapper { @extend %embed-wrapper; }
-
-	.image-wrapper { @extend %image-wrapper; }
-
-	.alignleft,
-	.alignright {
-		margin-bottom: 0.25em;
-	}
-
-	.alignleft {
-		float: left;
-		margin-right: 1em;
-	}
-
-	.alignright {
-		float: right;
-		margin-left: 1em;
-	}
-}
-
-html { font-size: 16px; }
-
-body { font-family: sans-serif; }
+// Components
+@import 'components/content';
+@import 'components/post-preview';

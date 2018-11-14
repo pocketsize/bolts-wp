@@ -40,5 +40,10 @@ bolts_wp_loader(array(
 
 register_nav_menu( BOLTS_WP_DEFAULT_MENU_LOCATION, 'Menu' );
 
+/**
+ * Require file for data fetching
+ */
+
+ require_once get_template_directory() . '/data-fetching.php';
 
 // The world is your oyster!

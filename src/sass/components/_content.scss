@@ -1,0 +1,13 @@
+// TODO - ??? Maybe move margins to typography.scss
+
+.content {
+	&-title {
+		@extend %title--h1;		
+		@extend %title--h1-spacing;
+	}
+
+	&-content {
+		@extend %content--wysiwyg;
+		@extend %content--wysiwyg-spacing;
+	}
+}

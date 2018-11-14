@@ -1,0 +1,16 @@
+.button {
+	display: inline-block;
+	position: relative;
+	padding: $base--small $base--medium;
+	border-radius: $radius--base;
+	border: 1px solid $color--black;
+	@extend %text--button;
+
+	&.is-theme-default {
+		background-color: rgba($color--black, 0.1);
+	}
+
+	&-link {
+		@include overlay;
+	}
+}

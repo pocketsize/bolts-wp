@@ -19,11 +19,16 @@
 		<div class="header-container">
 			<a href="<?php echo home_url(); ?>" class="header-logo"><?php bloginfo('name'); ?></a>
 
-			<button class="header-menu-toggle" data-toggle="off-canvas">Menu</button>
+			<button class="header-menu-toggle" data-menu-toggle>Menu</button>
 
-			<nav class="header-menu" role="navigation">
-				<?php nav_menu(); ?>
-			</nav>
+			<div class="header-menu" role="navigation">
+				<nav class="main-menu">
+					<?php component('common/menu', [
+						'menu' => get_menu_array('main'),
+						'block_name' => 'main-menu'
+					]); ?>
+				</nav>
+			</div>
 		</div>
 	</header>
 

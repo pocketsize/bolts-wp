@@ -1,0 +1,31 @@
+// Colors
+$color--black:      #333334;
+$color--white:      #ffffff;
+$color--light-gray: #F8F8F8;
+$color--gray:       #E5E5E5;
+$color--dark-gray:  #BCBEC0;
+
+// Metrics
+$base--x-small: 5px;
+$base--small:   20px;
+$base--medium:  50px;
+$base--large:	100px;
+
+$gutter--base: $base--medium;
+
+$padding--page: 5vw;
+
+$max-width--page:   1240px;
+$max-width--layout: calc(#{$max-width--page} + #{$padding--page * 2});
+
+$radius--base: 10px;
+
+
+// Animation related
+$speed--quick: 200ms;
+$speed--base: 500ms;
+$speed--slow: 1000ms;
+$easing: ease('bSwing');
+
+// Z-index
+$z-index--top: 100;

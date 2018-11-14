@@ -1,0 +1,12 @@
+%embed-wrapper {
+	position: relative;
+	@include aspect-ratio(16, 9);
+	overflow: hidden;
+
+	@include select(embed-elements) {
+		@include overlay( $force-size: true );
+	}
+}
+
+%image-wrapper { display: inline; }
+
