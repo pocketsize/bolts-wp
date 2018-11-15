@@ -10,14 +10,14 @@
 	 * @param string $link_url
 	 */
 
+	$image_url = !empty($image_url) ? $image_url : 'http://placehold.it/500';
 ?>
 
-<?php if(!empty($image_url) && !empty($title) && !empty($content)): ?>
+<?php if(!empty($title) && !empty($content)): ?>
 	<article class="post-preview">
 		<div class="post-preview-image">
 			<?php component('common/image', [
-				'url'          => $image_url,
-				'overlay_text' => $image_text
+				'url'          => $image_url
 			]); ?>
 		</div>
 
