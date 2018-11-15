@@ -1,0 +1,18 @@
+.accordion {
+	&-item {
+		border: 1px solid $color--black;
+	}
+
+	&-tab {
+		cursor: pointer;
+		padding: $base--small;
+	}
+
+	&-content {
+		@include transition-height('.accordion-item:not(.is-open) > &', $speed--base, $easing);
+	}
+
+	&-content-inner {
+		padding: 0 $base--small $base--small;
+	}
+}

@@ -57,7 +57,7 @@ $bolts-breakpoints: (
 @import 'components/common/button';
 @import 'components/common/image';
 @import 'components/common/link';
-@import 'components/common/slider';
+//@import 'components/common/slider';
 
 // Layout components
 @import 'components/layouts/full';
@@ -67,3 +67,4 @@ $bolts-breakpoints: (
 @import 'components/content';
 @import 'components/main-menu';
 @import 'components/post-preview';
+//@import 'components/accordion';
