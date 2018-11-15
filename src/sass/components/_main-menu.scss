@@ -1,9 +1,14 @@
 .main-menu {
-	.main-menu-submenu-toggle {
+	&-submenu-toggle {
 		@media (width-from(main-menu)) { display: none; }
+
+		&:after {
+			content: '▼';
+			display: inline-block;
+		}
 	}
 
-	.main-menu-submenu-outer {
+	&-submenu-outer {
 		@media (width-to(main-menu)) {
 			@include transition-height('.main-menu-item:not(.is-open) > &', $speed--base, $easing);
 		}

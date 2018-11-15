@@ -24,7 +24,7 @@
 	$a_class             = $block . '-link';
 	$label_class         = $block . '-label';
 	$submenu_outer_class = $block . '-submenu-outer';
-	$toggles_class       = $block . '-submenu-toggle';
+	$toggle_class       = $block . '-submenu-toggle';
 ?>
 
 <?php if(isset($menu) && is_array($menu)): ?>
@@ -44,7 +44,7 @@
 					</a>
 
 					<?php if(!empty($has_submenu_toggles)): ?>
-						<button class="<?php $toggles_class; ?>" data-submenu-toggle></button>
+						<button class="<?php echo $toggle_class; ?>" data-submenu-toggle></button>
 					<?php endif; ?>
 				</div>
 

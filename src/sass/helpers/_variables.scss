@@ -25,7 +25,7 @@ $radius--base: 10px;
 $speed--quick: 200ms;
 $speed--base: 500ms;
 $speed--slow: 1000ms;
-$easing: ease('bSwing');
+$easing: cubic-bezier(0.56, 0.05, 0.12, 1);
 
 // Z-index
 $z-index--top: 100;
