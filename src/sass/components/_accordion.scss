@@ -1,11 +1,22 @@
 .accordion {
+
 	&-item {
-		border: 1px solid $color--black;
+		transition: opacity $speed--base $easing;
 	}
 
 	&-tab {
 		cursor: pointer;
-		padding: $base--small;
+		padding: $base--small 0;
+		border-bottom: 1px solid $color--dark-gray;
+		@include transition(border-bottom);
+	}
+
+	&.has-open-item > &-item:not(.is-open) {
+		opacity: 0.5;
+	}
+
+	&-item.is-open &-tab {
+		border-bottom-color: $color--black;
 	}
 
 	&-content {
@@ -13,6 +24,6 @@
 	}
 
 	&-content-inner {
-		padding: 0 $base--small $base--small;
+		padding: $base--small 0 $base--medium;
 	}
 }

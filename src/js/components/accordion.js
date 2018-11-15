@@ -1,8 +1,9 @@
 /**
  * Accordion
  * 
- * Does the stuff. Uses Elemen.closest() so make sure
- * to polyfill that if you want to support <Edge
+ * Does the stuff. Uses Elemen.closest() so make
+ * sure to polyfill that stuff if you want to 
+ * support <Edge
  */
 
 const accordion = {
@@ -21,19 +22,30 @@ const accordion = {
 		elems.forEach(elem => elem.classList.remove('is-open'));
 	},
 
+	handleWrapperOpenClass(accordionsWrapper) {
+		const openItem = accordionsWrapper.querySelector('.is-open');
+
+		if (openItem) {
+			accordionsWrapper.classList.add('has-open-item');
+		} else {
+			accordionsWrapper.classList.remove('has-open-item');
+		}
+	},
+
 	init() {
 		this.cache();
 
 		this.accordions.forEach(accordion => {
 			accordion.addEventListener('click', (e) => {
-				if(e.target.closest('[data-accordion-toggle]')) {
+				if (e.target.closest('[data-accordion-toggle]')) {
 					const accordionItem = e.target.closest('[data-accordion-item]');
 
-					if(!accordionItem.classList.contains('is-open')) {
+					if (!accordionItem.classList.contains('is-open')) {
 						this.closeAllAccordions(accordion);
 					}
 
 					this.toggleAccordion(accordionItem);
+					this.handleWrapperOpenClass(accordion);
 				}
 			});
 		});
