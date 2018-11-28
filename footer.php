@@ -4,10 +4,8 @@
 
 <div class="bolts-footer">
 	<footer class="footer">
-		<div class="footer-container">
-			<div class="footer-content">
-				<p>Copyright &copy; <?php bloginfo('name'); ?></p>
-			</div>
+		<div class="footer-inner">
+			<p>Copyright &copy; <?php bloginfo('name'); ?></p>
 		</div>
 	</footer>
 </div>
