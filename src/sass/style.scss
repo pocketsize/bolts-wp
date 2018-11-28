@@ -53,6 +53,11 @@ $bolts-breakpoints: (
 @import 'helpers/placeholders';
 @import 'helpers/mixins';
 
+// Templates
+@import 'templates/archive';
+@import 'templates/footer';
+@import 'templates/header';
+
 // Common components
 @import 'components/common/button';
 @import 'components/common/image';
