@@ -198,6 +198,12 @@ function get_svg( $asset, $fallback = false ) {
 	if ( !file_exists( $path ) ) {
 		$path = $fallback;
 	}
+
+	if ( !file_exists($path) ) {
+		echo 'asset_not_found: ' . $asset;
+		return '';
+	}
+	
 	$inline = preg_replace( '/\s*<\?xml.*?\?>\s*/si', '', file_get_contents($path) );
 	$inline = preg_replace( '/\s*<!--.*?-->\s*/si', '', $inline );
 	$inline = preg_replace( '/\s*<title>.*?<\/title>\s*/si', '', $inline );
