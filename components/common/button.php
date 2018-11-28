@@ -18,11 +18,11 @@
 ?>
 
 <?php if(!empty($title)): ?>
-	<button class="button <?php echo $modifier; ?>" <?php echo $identifier; ?>>
-		<span class="button-inner"><?php echo $title; ?></span>
+	<div class="button <?php echo $modifier; ?>" <?php echo $identifier; ?>>
+		<button class="button-inner"><?php echo $title; ?></button>
 
 		<?php if(!empty($url)): ?>
 			<a class="button-link" href="<?php echo $url; ?>" target="<?php echo $target; ?>" <?php echo $rel; ?>></a>
 		<?php endif; ?>
-	</button>
+	</div>
 <?php endif; ?>
