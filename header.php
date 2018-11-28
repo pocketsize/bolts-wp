@@ -16,7 +16,7 @@
 <div class="bolts-wrapper">
 
 	<header class="header">
-		<div class="header-container">
+		<div class="header-inner">
 			<a href="<?php echo home_url(); ?>" class="header-logo"><?php bloginfo('name'); ?></a>
 
 			<button class="header-menu-toggle" data-menu-toggle>Menu</button>
