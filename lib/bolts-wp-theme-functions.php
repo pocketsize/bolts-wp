@@ -194,7 +194,7 @@ if ( !function_exists('asset') ) {
  * @return string
  */
 function get_svg( $asset, $fallback = false ) {
-	$path = get_theme_dir() . '/public/' . $asset;
+	$path = get_theme_dir() . '/public/' . $asset . '.svg';
 	if ( !file_exists( $path ) ) {
 		$path = $fallback;
 	}
