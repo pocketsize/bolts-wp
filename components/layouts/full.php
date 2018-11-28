@@ -28,6 +28,6 @@
 
 <div class="layout-full <?php echo $theme_class; ?>">
 	<div class="layout-full-inner">
-		<?php layout_items($content, 'layout-full'); ?>
+		<?php layout_items($content, 'layout-full-item'); ?>
 	</div>
 </div>

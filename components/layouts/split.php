@@ -39,13 +39,13 @@
 <div class="layout-split <?php echo $theme_class; ?>">
 	<div class="layout-split-primary">
 		<div class="layout-split-primary-inner">
-			<?php layout_items($primary, 'layout-split'); ?>
+			<?php layout_items($primary, 'layout-split-item'); ?>
 		</div>
 	</div>
 
 	<div class="layout-split-secondary">
 		<div class="layout-split-secondary-inner">
-			<?php layout_items($secondary, 'layout-split'); ?>
+			<?php layout_items($secondary, 'layout-split-item'); ?>
 		</div>
 	</div>
 </div>
