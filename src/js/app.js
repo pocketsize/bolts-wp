@@ -8,6 +8,7 @@
 import Bolts from 'bolts';
 import { autoHeight } from 'bolts';
 import mainMenu from './components/main-menu';
+import toggleState from './misc/toggle-state';
 
 (() => {
 
@@ -16,6 +17,7 @@ import mainMenu from './components/main-menu';
 		Bolts.init();
 		autoHeight('[data-auto-height]');
 		mainMenu.init();
+		toggleState.init();
 		
 		// The world is your oyster!
 
