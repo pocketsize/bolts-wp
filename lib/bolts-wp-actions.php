@@ -108,6 +108,10 @@ function bolts_wp_enqueue_scripts() {
 		wp_enqueue_script( 'jquery' );
 	}
 
+	if ( BOLTS_WP_ENQUEUE_POLYFILL_IO ) {
+		wp_enqueue_script( 'polyfill-io', 'https://cdn.polyfill.io/v2/polyfill.min.js', null, null, true );
+	}
+
 	wp_enqueue_script( 'main', get_asset('js/main.js'), null, null, true );
 }
 add_action( 'wp_enqueue_scripts', 'bolts_wp_enqueue_scripts' );

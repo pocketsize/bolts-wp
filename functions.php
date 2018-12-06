@@ -15,6 +15,7 @@ define( 'BOLTS_WP_DISABLE_ADMIN_BAR',     true );
 define( 'BOLTS_WP_DISABLE_EMOJIS',        true );
 define( 'BOLTS_WP_EXCERPT_MORE',          '...' );
 define( 'BOLTS_WP_ENQUEUE_JQUERY',        true );
+define( 'BOLTS_WP_ENQUEUE_POLYFILL_IO',   true );
 define( 'BOLTS_WP_DEFAULT_MENU_LOCATION', 'main' );
 
 /**
