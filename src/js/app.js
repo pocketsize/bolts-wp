@@ -5,8 +5,7 @@
  * http://www.pocketsize.se/
  */
 
-import Bolts from 'bolts';
-import { autoHeight } from 'bolts';
+import { Bolts, misc } from 'bolts';
 import mainMenu from './components/main-menu';
 import toggleState from './misc/toggle-state';
 
@@ -15,7 +14,7 @@ import toggleState from './misc/toggle-state';
 	document.addEventListener('DOMContentLoaded', function() {
 
 		Bolts.init();
-		autoHeight('[data-auto-height]');
+		misc.autoHeight('[data-auto-height]');
 		mainMenu.init();
 		toggleState.init();
 		

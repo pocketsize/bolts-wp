@@ -4,55 +4,46 @@
 
 const config = require('./editable.config')
 const autoprefixer = require('autoprefixer')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const MQPacker = require('css-mqpacker')
-const CSSNano = require('cssnano')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const isDev = !!(process.env.NODE_ENV === 'dev')
-const isProd = !!(process.env.NODE_ENV === 'prod')
 
 module.exports = {
 	javascript: {
-		test: /\.(js|jsx)$/,
-		exclude: config.paths.external,
+		test: /\.js$/,
 		loader: ['babel-loader', 'eslint-loader']
 	},
 
 	sass: {
 		test: /\.s[ac]ss$/,
 		include: config.paths.sass,
-		use: [
-			{
-				loader: MiniCssExtractPlugin.loader
-			},
-			{
-				loader: 'css-loader',
-				options: {
-					sourceMap: isDev ? config.settings.sourceMaps : false,
-					url: false
-				}
-			},
+		loader: ExtractTextPlugin.extract({
+			use: [
+				{
+					loader: 'css-loader',
+					options: {
+						sourceMap: isDev,
+						url: false
+					}
+				},
 
-			{
-				loader: 'postcss-loader',
-				options: {
-					sourceMap: true,
-					plugins: () => [
-						autoprefixer(config.settings.autoprefixer),
-						MQPacker(),
-						isProd ? CSSNano() : () => {console.log('\nSkipping CSSNano\n');
-						}
-					]
-				}
-			},
+				{
+					loader: 'postcss-loader',
+					options: {
+						sourceMap: true,
+						plugins: () => [autoprefixer(config.settings.autoprefixer)]
+					}
+				},
 
-			{
-				loader: 'sass-loader',
-				options: {
-					sourceMap: true
+				{
+					loader: 'sass-loader',
+					options: {
+						sourceMap: true
+					}
 				}
-			}
-		]
+			],
+			fallback: 'style-loader'
+		})
 	},
 
 	fonts: {
