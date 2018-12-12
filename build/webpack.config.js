@@ -57,7 +57,7 @@ module.exports = {
 			context: config.paths.images,
 			from: {
 				glob: `${config.paths.images}/**/*`,
-				flatten: true,
+				flatten: false,
 				dot: false
 			},
 			to: config.outputs.image.filename,
@@ -75,7 +75,9 @@ module.exports = {
 
 	node: {
 		fs: 'empty'
-	}
+	},
+
+	devtool: isDev ? config.settings.sourceMaps : false
 }
 
 

@@ -22,13 +22,10 @@ module.exports = {
 		test: /\.s[ac]ss$/,
 		include: config.paths.sass,
 		use: [
-			{
-				loader: MiniCssExtractPlugin.loader
-			},
+			MiniCssExtractPlugin.loader,
 			{
 				loader: 'css-loader',
 				options: {
-					sourceMap: isDev ? config.settings.sourceMaps : false,
 					url: false
 				}
 			},
@@ -36,7 +33,6 @@ module.exports = {
 			{
 				loader: 'postcss-loader',
 				options: {
-					sourceMap: true,
 					plugins: () => [
 						autoprefixer(config.settings.autoprefixer),
 						MQPacker(),
@@ -47,10 +43,7 @@ module.exports = {
 			},
 
 			{
-				loader: 'sass-loader',
-				options: {
-					sourceMap: true
-				}
+				loader: 'sass-loader'
 			}
 		]
 	},

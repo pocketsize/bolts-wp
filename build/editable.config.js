@@ -53,11 +53,13 @@ module.exports = {
 
 	// All other settings reside here. 
 	// 
+	// Check https://webpack.js.org/configuration/devtool/ for sourcemap configs
+	//
 	// BrowserSync settings have defaults defined in [./webpack.config.js], most notably
 	// a "file"-setting that triggers a reload on changes in all PHP-files.
 	// Thake that in account if you want to change that setting.
 	settings: {
-		sourceMaps: true,
+		sourceMaps: 'cheap-module-source-map',
 		autoprefixer: {
 			browsers: ['last 3 versions', '> 1%', 'ie >= 9'],
 		},
