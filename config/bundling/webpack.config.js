@@ -3,8 +3,6 @@
 // Only edit this file if you REEEEALY want to get freaky with the config.
 
 require('dotenv').config()
-const webpack = require('webpack')
-const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -16,98 +14,142 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const moduleRules = require('./module.rules')
 const config = require('./editable.config')
 
-const isDev = !!(process.env.NODE_ENV === 'dev')
-const isProd = !!(process.env.NODE_ENV === 'prod')
-const doServe = !!(process.env.SERVE === 'true')
+module.exports = function() {
 
-module.exports = {
-	// Check if sourcemaps are needed.
-	//devtool: (isDev && config.settings.sourceMaps) ? 'source-map' : undefined,
+	const isDev = !!(process.env.ENV === 'dev')
+	const isProd = !!(process.env.ENV === 'prod')
+	const doServe = !!(process.env.SERVE === 'true')
+	const doWatch = !!(process.env.WATCH === 'true')
 
-	// Entry points.
-	entry: config.entrypoints,
+	const webpackConfig = {
 
-	// JS output name and destination.
-	output: {
-		path: config.paths.public,
-		filename: config.outputs.javascript.filename
-	},
+		// Set mode
+		mode: isProd ? 'production' : 'development',
+	
+		// Entry points.
+		entry: config.entrypoints,
+	
+		// JS output name and destination.
+		output: {
+			path: config.paths.public,
+			filename: config.outputs.javascript.filename
+		},
+	
+		// External dependencies.
+		externals: config.externals,
+	
+		// Custom resolutions.
+		resolve: config.resolve,
+	
+		// Rules for handling filetypes.
+		module: {
+			rules: [
+				moduleRules.javascript,
+				moduleRules.sass,
+				moduleRules.fonts,
+				moduleRules.images,
+			]
+		},
+	
+		// Plugins running in every build.
+		plugins: [
+			new FriendlyErrorsWebpackPlugin(),
+			new MiniCssExtractPlugin(config.outputs.css),
+			new CleanWebpackPlugin(config.paths.public, { root: config.paths.root }),
+			new CopyWebpackPlugin([{
+				context: config.paths.images,
+				from: {
+					glob: `${config.paths.images}/**/*`,
+					flatten: false,
+					dot: false
+				},
+				to: config.outputs.image.filename,
+			}]),
+			new CopyWebpackPlugin([{
+				context: config.paths.fonts,
+				from: {
+					glob: `${config.paths.fonts}/**/*`,
+					flatten: false,
+					dot: false
+				},
+				to: config.outputs.font.filename,
+			}]),
+			function() {
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
+				console.log(webpackConfig.mode);
 
-	// External dependencies.
-	externals: config.externals,
-
-	// Custom resolutions.
-	resolve: config.resolve,
-
-	// Rules for handling filetypes.
-	module: {
-		rules: [
-			moduleRules.javascript,
-			moduleRules.sass,
-			moduleRules.fonts,
-			moduleRules.images,
-		]
-	},
-
-	// Plugins running in every build.
-	plugins: [
-		new FriendlyErrorsWebpackPlugin(),
-		new MiniCssExtractPlugin(config.outputs.css),
-		new CleanWebpackPlugin(config.paths.public, { root: config.paths.root }),
-		new CopyWebpackPlugin([{
-			context: config.paths.images,
-			from: {
-				glob: `${config.paths.images}/**/*`,
-				flatten: false,
-				dot: false
-			},
-			to: config.outputs.image.filename,
-		}]),
-		new CopyWebpackPlugin([{
-			context: config.paths.fonts,
-			from: {
-				glob: `${config.paths.fonts}/**/*`,
-				flatten: false,
-				dot: false
-			},
-			to: config.outputs.font.filename,
-		}]),
-	],
-
-	node: {
-		fs: 'empty'
-	},
-
-	devtool: isDev ? config.settings.sourceMaps : false
-}
-
-
-// Set BrowserSync settings if serving
-if (doServe) {
-	// setting our default settings...
-	const browserSyncSettings = {
-		host: 'localhost',
-		port: 3000,
-		proxy: process.env.WP_HOME,
-		files: [
-			{
-				match: ['../../**/*.php'],
-				fn: function (event, file) {
-					if (event === 'change') {
-						this.reload()
-					}
-				}
 			}
-		]
+		],
+	
+		devtool: isDev ? config.settings.sourceMaps : false,
+	
+		watch: doWatch,
+
+		devServer: {
+			after: function() {
+				console.log('hello');
+				console.log('hello');
+				console.log('hello');
+				console.log('hello');
+				console.log('hello');
+				console.log('hello');
+				console.log('hello');
+				console.log('hello');
+				console.log('hello');
+				console.log('hello');
+				console.log('hello');
+				console.log('hello');
+				
+			}
+		}
 	}
 
-	// ...and overwriting them with user settings
-	Object.assign(browserSyncSettings, config.settings.browserSync)
+	// Set BrowserSync settings if serving
+	if (doServe) {
+		// setting our default settings...
+		const browserSyncSettings = {
+			host: 'localhost',
+			port: 3000,
+			proxy: process.env.WP_HOME,
+			files: [
+				{
+					match: ['../../**/*.php'],
+					fn: function (event, file) {
+						if (event === 'change') {
+							this.reload()
+						}
+					}
+				}
+			]
+		}
 
-	module.exports.plugins.push(
-		new BrowserSyncPlugin(browserSyncSettings)
-	)
+		// ...and overwriting them with user settings
+		Object.assign(browserSyncSettings, config.settings.browserSync)
+		
+		webpackConfig.plugins.push(new BrowserSyncPlugin(browserSyncSettings))
+	}
+	
+
+	return webpackConfig;
 }
+
+
 
 // Optimize if prod
 // if (isProd) {

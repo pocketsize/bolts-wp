@@ -10,8 +10,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const MQPacker = require('css-mqpacker')
 const CSSNano = require('cssnano')
 
-const isDev = !!(process.env.NODE_ENV === 'dev')
-const isProd = !!(process.env.NODE_ENV === 'prod')
+const isDev = !!(process.env.ENV === 'dev')
+const isProd = !!(process.env.ENV === 'prod')
 
 module.exports = {
 	javascript: {

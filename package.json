@@ -4,9 +4,10 @@
 	"description": "",
 	"main": "index.php",
 	"scripts": {
-		"dev": "cross-env NODE_ENV=dev webpack --mode development --config config/bundling/webpack.config.js",
-		"prod": "cross-env NODE_ENV=prod webpack --mode production --config config/bundling/webpack.config.js",
-		"watch": "yarn run dev --watch",
+		"lol": "webpack --watch --config config/bundling/webpack.config.js --mode development",
+		"dev": "cross-env ENV=dev webpack --config config/bundling/webpack.config.js --mode development",
+		"prod": "cross-env ENV=prod webpack --config config/bundling/webpack.config.js --mode production",
+		"watch": "cross-env WATCH=true yarn run dev",
 		"serve": "cross-env SERVE=true yarn run watch && webpack-dev-server --progress --colors",
 		"test": "jest --config config/testing/jest.config.js",
 		"test:watch": "jest --watchAll --config config/testing/jest.config.js",
@@ -49,7 +50,7 @@
 		"sass-loader": "^7.1.0",
 		"webpack": "^4.27.1",
 		"webpack-cli": "^3.1.2",
-		"webpack-dashboard": "^2.0.0"
+		"webpack-dev-server": "^3.1.10"
 	},
 	"dependencies": {
 		"bolts": "git+https://7d0d13d3a75878b9b6ca1185ed2d388221ce8ea4:x-oauth-basic@github.com/pocketsize/bolts-es6-dev.git"

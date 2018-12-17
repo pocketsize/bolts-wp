@@ -17,6 +17,7 @@ module.exports = {
 	paths: {
 		root: path.resolve(__dirname, '../../'),
 		public: path.resolve(__dirname, '../../public'),
+		src: path.resolve(__dirname, '../../src'),
 		javascript: path.resolve(__dirname, '../../src/js'),
 		sass: path.resolve(__dirname, '../../src/sass'),
 		fonts: path.resolve(__dirname, '../../src/fonts'),
