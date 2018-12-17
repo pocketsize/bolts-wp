@@ -13,13 +13,13 @@ module.exports = {
 	// These are all paths used in the build process.
 	// Change them if you prefer a different project structure.
 	paths: {
-		root: path.resolve(__dirname, '../'),
-		public: path.resolve(__dirname, '../public'),
-		javascript: path.resolve(__dirname, '../src/js'),
-		sass: path.resolve(__dirname, '../src/sass'),
-		fonts: path.resolve(__dirname, '../src/fonts'),
-		images: path.resolve(__dirname, '../src/images'),
-		relative: '../',
+		root: path.resolve(__dirname, '../../'),
+		public: path.resolve(__dirname, '../../public'),
+		javascript: path.resolve(__dirname, '../../src/js'),
+		sass: path.resolve(__dirname, '../../src/sass'),
+		fonts: path.resolve(__dirname, '../../src/fonts'),
+		images: path.resolve(__dirname, '../../src/images'),
+		relative: '../../',
 		external: /node_modules/
 	},
 
@@ -44,7 +44,7 @@ module.exports = {
 	// These are our external dependencies that should be available to our modules, but not compiled.
 	// Enqueue them via CDN in [../functions.php] instead.
 	externals: {
-		'jquery': 'jQuery'
+		//'jquery': 'jQuery'
 	},
 
 	// If you have any custom module resolutions you prefer, this is the place to be.
@@ -53,18 +53,19 @@ module.exports = {
 
 	// All other settings reside here. 
 	// 
+	// Check https://webpack.js.org/configuration/devtool/ for sourcemap configs
+	//
 	// BrowserSync settings have defaults defined in [./webpack.config.js], most notably
 	// a "file"-setting that triggers a reload on changes in all PHP-files.
 	// Thake that in account if you want to change that setting.
 	settings: {
-		sourceMaps: true,
+		sourceMaps: 'cheap-module-source-map',
 		autoprefixer: {
-			browsers: ['last 3 versions', '> 1%', 'ie >= 9'],
+			browsers: ['last 3 versions', '> 1%', 'ie >= 10'],
 		},
 		browserSync: {
 			host: 'localhost',
-			port: 3000,
-			proxy: 'http://localhost:8080'
+			port: 3000
 		}
 	}
 }

@@ -64,7 +64,10 @@ typings/
 # IDE files
 .idea
 
+
 .DS_Store
 Thumbs.db
 
 public
+testfile.html
+testfile.js

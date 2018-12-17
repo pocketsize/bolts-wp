@@ -36,8 +36,7 @@ module.exports = {
 					plugins: () => [
 						autoprefixer(config.settings.autoprefixer),
 						MQPacker(),
-						isProd ? CSSNano() : () => {console.log('\nSkipping CSSNano\n');
-						}
+						isProd ? CSSNano() : () => {console.log('\nSkipping CSSNano\n');}
 					]
 				}
 			},

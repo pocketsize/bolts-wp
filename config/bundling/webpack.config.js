@@ -2,15 +2,16 @@
 // Changes to the Webpack settings are better done in [./editable.config.js].
 // Only edit this file if you REEEEALY want to get freaky with the config.
 
+require('dotenv').config()
 const webpack = require('webpack')
 const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const StyleLintPlugin = require('stylelint-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const ImageminMozjpeg = require('imagemin-mozjpeg')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const moduleRules = require('./module.rules')
 const config = require('./editable.config')
@@ -21,7 +22,7 @@ const doServe = !!(process.env.SERVE === 'true')
 
 module.exports = {
 	// Check if sourcemaps are needed.
-	devtool: (isDev && config.settings.sourceMaps) ? 'source-map' : undefined,
+	//devtool: (isDev && config.settings.sourceMaps) ? 'source-map' : undefined,
 
 	// Entry points.
 	entry: config.entrypoints,
@@ -38,11 +39,6 @@ module.exports = {
 	// Custom resolutions.
 	resolve: config.resolve,
 
-	// Make build faster.
-	performance: {
-		hints: false
-	},
-
 	// Rules for handling filetypes.
 	module: {
 		rules: [
@@ -53,16 +49,16 @@ module.exports = {
 		]
 	},
 
-	// Plugins runnung in every build in every build.
+	// Plugins running in every build.
 	plugins: [
-		new webpack.LoaderOptionsPlugin({ minimize: isProd }),
-		new ExtractTextPlugin(config.outputs.css),
+		new FriendlyErrorsWebpackPlugin(),
+		new MiniCssExtractPlugin(config.outputs.css),
 		new CleanWebpackPlugin(config.paths.public, { root: config.paths.root }),
 		new CopyWebpackPlugin([{
 			context: config.paths.images,
 			from: {
 				glob: `${config.paths.images}/**/*`,
-				flatten: true,
+				flatten: false,
 				dot: false
 			},
 			to: config.outputs.image.filename,
@@ -76,15 +72,15 @@ module.exports = {
 			},
 			to: config.outputs.font.filename,
 		}]),
-	]
+	],
+
+	node: {
+		fs: 'empty'
+	},
+
+	devtool: isDev ? config.settings.sourceMaps : false
 }
 
-// StyleLint if settings are specified.
-if (config.settings.styleLint) {
-	module.exports.plugins.push(
-		new StyleLintPlugin(config.settings.styleLint)
-	)
-}
 
 // Set BrowserSync settings if serving
 if (doServe) {
@@ -92,10 +88,10 @@ if (doServe) {
 	const browserSyncSettings = {
 		host: 'localhost',
 		port: 3000,
-		proxy: 'http://localhost:8080',
+		proxy: process.env.WP_HOME,
 		files: [
 			{
-				match: ['../**/*.php'],
+				match: ['../../**/*.php'],
 				fn: function (event, file) {
 					if (event === 'change') {
 						this.reload()
@@ -114,28 +110,20 @@ if (doServe) {
 }
 
 // Optimize if prod
-if (isProd) {
-	module.exports.plugins.push(
-		new webpack.optimize.UglifyJsPlugin({
-			comments: false,
-			compress: { warnings: false },
-			sourceMap: false
-		})
-	)
-
-	module.exports.plugins.push(
-		new ImageminPlugin({
-			test: /\.(jpe?g|png|gif|svg)$/i,
-			optipng: { optimizationLevel: 7 },
-			gifsicle: { optimizationLevel: 3 },
-			pngquant: { quality: '65-90', speed: 4 },
-			svgo: { removeUnknownsAndDefaults: false, cleanupIDs: false },
-			plugins: [
-				ImageminMozjpeg({
-					quality: 90,
-					progressive: true
-				})
-			]
-		})
-	)
-}
+// if (isProd) {
+// 	module.exports.plugins.push(
+// 		new ImageminPlugin({
+// 			test: /\.(jpe?g|png|gif|svg)$/i,
+// 			optipng: { optimizationLevel: 7 },
+// 			gifsicle: { optimizationLevel: 3 },
+// 			pngquant: { quality: '65-90', speed: 4 },
+// 			svgo: { removeUnknownsAndDefaults: false, cleanupIDs: false },
+// 			plugins: [
+// 				ImageminMozjpeg({
+// 					quality: 90,
+// 					progressive: true
+// 				})
+// 			]
+// 		})
+// 	)
+// }

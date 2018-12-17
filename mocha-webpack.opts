@@ -1,3 +1,0 @@
---require build/testing/testing.setup.js 
---webpack-config build/testing/testing.conf.js 
-src/tests/**/*.test.js

@@ -37,4 +37,4 @@ const mainMenu = {
 	}
 }
 
-export default menuToggle;
+export default mainMenu;

@@ -10,7 +10,6 @@ import mainMenu from './components/main-menu';
 import toggleState from './misc/toggle-state';
 
 (() => {
-
 	document.addEventListener('DOMContentLoaded', function() {
 
 		Bolts.init();
