@@ -1,6 +1,8 @@
-// Here we define how all filetypes are to be handled
-// If you want to add a filetype , make sure to define it here 
-// and reference it in [./webpack.config.js].
+/**
+ * Here we define how all filetypes are to be handled
+ * If you want to add a filetype , make sure to define it here
+ * and reference it in [./webpack.config.js].
+ */
 
 const config = require('./editable.config')
 const autoprefixer = require('autoprefixer')

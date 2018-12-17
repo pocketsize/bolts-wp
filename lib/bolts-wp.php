@@ -17,7 +17,6 @@ $bolts_wp_options = array(
 	'BOLTS_WP_EXCERPT_WORDS'         => 55,
 	'BOLTS_WP_EXCERPT_MORE'          => '[...]',
 	'BOLTS_WP_ENQUEUE_JQUERY'        => false,
-	'BOLTS_WP_ENQUEUE_POLYFILL_IO'   => false,
 	'BOLTS_WP_DEFAULT_MENU_LOCATION' => false
 );
 

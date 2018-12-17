@@ -1,10 +1,12 @@
-// This is your very own config file for the Webpack bundling, where
-// you can customize the most common parts of the build process. 
-// We believe this is all you might be interested in, but dont be afraid to 
-// submit an issue or a pull request if you disagree. We would love to hear from you.
-//
-// Check the Webpack documentation for more info on all the different properties.
-// https://webpack.js.org/configuration/
+/** 
+ * This is your very own config file for the Webpack bundling, where
+ * you can customize the most common parts of the build process.
+ * We believe this is all you might be interested in, but dont be afraid to
+ * submit an issue or a pull request if you disagree. We would love to hear from you.
+ * 
+ * Check the Webpack documentation for more in-depth info on all the different settings.
+ * https://webpack.js.org/configuration/
+ */ 
 
 
 const path = require('path')
