@@ -76,98 +76,126 @@ Bolts WP features a couple of defaults used both during the init, but also by so
 Include a template part from the components folder, with optional arguments
 
 <br>
+
 ------------
+
 <br>
 
 #### get_component($file, $args = false)
 Return a component, mostly used for AJAX
 
 <br>
+
 ------------
+
 <br>
 
 #### layout_items($items, $item_class = false)
 Used in layout components. Loop through the layout items and output components from their data, if a class and a class suffix is present wrap the component in a div.
 
 <br>
+
 ------------
+
 <br>
 
 #### get_menu_array( $location = false )
 Return a nested nav menu array by menu location
 
 <br>
+
 ------------
+
 <br>
 
 #### get_theme_dir()
 Return the current theme directory
 
 <br>
+
 ------------
+
 <br>
 
 #### theme_dir()
 Print the current theme directory
 
 <br>
+
 ------------
+
 <br>
 
 #### get_theme_uri()
 Return the current theme directory URI
 
 <br>
+
 ------------
+
 <br>
 
 #### theme_uri()
 Print the current theme directory URI
 
 <br>
+
 ------------
+
 <br>
 
 #### get_asset( $asset, $fallback = false )
 Return the path to a theme asset file
 
 <br>
+
 ------------
+
 <br>
 
 #### asset( $asset, $fallback = false )
 Print the path to a theme asset file
 
 <br>
+
 ------------
+
 <br>
 
 #### get_svg( $asset, $fallback = false )
 Return .svg file parsed for inline use
 
 <br>
+
 ------------
+
 <br>
 
 #### svg( $asset, $fallback = false )
 Echo .svg file parsed for inline use
 
 <br>
+
 ------------
+
 <br>
 
 #### create_post_type( $slug, $singular, $plural, $icon = null, $custom_args = false ) 
 Register a custom post type
 
 <br>
+
 ------------
+
 <br>
 
 #### create_taxonomy( $slug, $singular, $plural, $post_type = 'post', $custom_args = false )
 Register a custom taxonomy
 
 <br>
+
 ------------
+
 <br>
 
 
@@ -177,91 +205,117 @@ Register a custom taxonomy
 Determine if a post has a specific post type
 
 <br>
+
 ------------
+
 <br>
 
 #### get_title( $post_id = false, $filtered = false )
 Return the title of a post
 
 <br>
+
 ------------
+
 <br>
 
 #### title( $post_id = false )
 Print the title of a post
 
 <br>
+
 ------------
+
 <br>
 
 #### get_content( $post_id = false, $filtered = false )
 Return the content of a post
 
 <br>
+
 ------------
+
 <br>
 
 #### content( $post_id = false )
 Print the content of a post
 
 <br>
+
 ------------
+
 <br>
 
 #### get_excerpt( $post_id = false, $words = false, $more = false )
 Return the excerpt for a post (manual or automatically generated)
 
 <br>
+
 ------------
+
 <br>
 
 #### excerpt( $post_id = false, $words = false, $more = false )
 Print the excerpt for a post (manual or automatically generated)
 
 <br>
+
 ------------
+
 <br>
 
 #### get_author( $post_id = false, $field = 'display_name' )
 Return author information from a post (defaults to display name)
 
 <br>
+
 ------------
+
 <br>
 
 #### author( $post_id = false, $field = false )
 Print author information from a post (defaults to display name)
 
 <br>
+
 ------------
+
 <br>
 
 #### get_featured_image( $post_id = false, $size = 'full', $fallback = false )
 Return the URI for the featured image of a post
 
 <br>
+
 ------------
+
 <br>
 
 #### featured_image( $post_id = false, $size = 'full', $fallback = false )
 Print the URI for the featured image of a post
 
 <br>
+
 ------------
+
 <br>
 
 #### get_media( $attachment_id, $size = 'full', $fallback = false )
 Return the path to an attachment in the media library
 
 <br>
+
 ------------
+
 <br>
 
 #### media( $attachment_id, $size = 'full', $fallback = false )
 Print the path to an attachment in the media library
 
 <br>
+
 ------------
+
 <br>
 
 
