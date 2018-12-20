@@ -75,7 +75,6 @@ Bolts WP features a couple of defaults used both during the init, but also by so
 #### component( $file, $args = false )
 Include a template part from the components folder, with optional arguments
 
-<br>
 
 ------------
 
@@ -84,7 +83,6 @@ Include a template part from the components folder, with optional arguments
 #### get_component($file, $args = false)
 Return a component, mostly used for AJAX
 
-<br>
 
 ------------
 
@@ -93,7 +91,6 @@ Return a component, mostly used for AJAX
 #### layout_items($items, $item_class = false)
 Used in layout components. Loop through the layout items and output components from their data, if a class and a class suffix is present wrap the component in a div.
 
-<br>
 
 ------------
 
@@ -102,7 +99,6 @@ Used in layout components. Loop through the layout items and output components f
 #### get_menu_array( $location = false )
 Return a nested nav menu array by menu location
 
-<br>
 
 ------------
 
@@ -111,7 +107,6 @@ Return a nested nav menu array by menu location
 #### get_theme_dir()
 Return the current theme directory
 
-<br>
 
 ------------
 
@@ -120,7 +115,6 @@ Return the current theme directory
 #### theme_dir()
 Print the current theme directory
 
-<br>
 
 ------------
 
@@ -129,7 +123,6 @@ Print the current theme directory
 #### get_theme_uri()
 Return the current theme directory URI
 
-<br>
 
 ------------
 
@@ -138,7 +131,6 @@ Return the current theme directory URI
 #### theme_uri()
 Print the current theme directory URI
 
-<br>
 
 ------------
 
@@ -147,7 +139,6 @@ Print the current theme directory URI
 #### get_asset( $asset, $fallback = false )
 Return the path to a theme asset file
 
-<br>
 
 ------------
 
@@ -156,7 +147,6 @@ Return the path to a theme asset file
 #### asset( $asset, $fallback = false )
 Print the path to a theme asset file
 
-<br>
 
 ------------
 
@@ -165,7 +155,6 @@ Print the path to a theme asset file
 #### get_svg( $asset, $fallback = false )
 Return .svg file parsed for inline use
 
-<br>
 
 ------------
 
@@ -174,7 +163,6 @@ Return .svg file parsed for inline use
 #### svg( $asset, $fallback = false )
 Echo .svg file parsed for inline use
 
-<br>
 
 ------------
 
@@ -183,7 +171,6 @@ Echo .svg file parsed for inline use
 #### create_post_type( $slug, $singular, $plural, $icon = null, $custom_args = false ) 
 Register a custom post type
 
-<br>
 
 ------------
 
@@ -192,7 +179,6 @@ Register a custom post type
 #### create_taxonomy( $slug, $singular, $plural, $post_type = 'post', $custom_args = false )
 Register a custom taxonomy
 
-<br>
 
 ------------
 
@@ -204,7 +190,6 @@ Register a custom taxonomy
 #### is_post_type( $post_type, $post = false )
 Determine if a post has a specific post type
 
-<br>
 
 ------------
 
@@ -213,7 +198,6 @@ Determine if a post has a specific post type
 #### get_title( $post_id = false, $filtered = false )
 Return the title of a post
 
-<br>
 
 ------------
 
@@ -222,7 +206,6 @@ Return the title of a post
 #### title( $post_id = false )
 Print the title of a post
 
-<br>
 
 ------------
 
@@ -231,7 +214,6 @@ Print the title of a post
 #### get_content( $post_id = false, $filtered = false )
 Return the content of a post
 
-<br>
 
 ------------
 
@@ -240,7 +222,6 @@ Return the content of a post
 #### content( $post_id = false )
 Print the content of a post
 
-<br>
 
 ------------
 
@@ -249,7 +230,6 @@ Print the content of a post
 #### get_excerpt( $post_id = false, $words = false, $more = false )
 Return the excerpt for a post (manual or automatically generated)
 
-<br>
 
 ------------
 
@@ -258,7 +238,6 @@ Return the excerpt for a post (manual or automatically generated)
 #### excerpt( $post_id = false, $words = false, $more = false )
 Print the excerpt for a post (manual or automatically generated)
 
-<br>
 
 ------------
 
@@ -267,7 +246,6 @@ Print the excerpt for a post (manual or automatically generated)
 #### get_author( $post_id = false, $field = 'display_name' )
 Return author information from a post (defaults to display name)
 
-<br>
 
 ------------
 
@@ -276,7 +254,6 @@ Return author information from a post (defaults to display name)
 #### author( $post_id = false, $field = false )
 Print author information from a post (defaults to display name)
 
-<br>
 
 ------------
 
@@ -285,7 +262,6 @@ Print author information from a post (defaults to display name)
 #### get_featured_image( $post_id = false, $size = 'full', $fallback = false )
 Return the URI for the featured image of a post
 
-<br>
 
 ------------
 
@@ -294,7 +270,6 @@ Return the URI for the featured image of a post
 #### featured_image( $post_id = false, $size = 'full', $fallback = false )
 Print the URI for the featured image of a post
 
-<br>
 
 ------------
 
@@ -303,7 +278,6 @@ Print the URI for the featured image of a post
 #### get_media( $attachment_id, $size = 'full', $fallback = false )
 Return the path to an attachment in the media library
 
-<br>
 
 ------------
 
@@ -312,7 +286,6 @@ Return the path to an attachment in the media library
 #### media( $attachment_id, $size = 'full', $fallback = false )
 Print the path to an attachment in the media library
 
-<br>
 
 ------------
 
