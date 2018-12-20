@@ -243,6 +243,21 @@ if ( !function_exists('component') ) {
 	}
 }
 
+/**
+ * Return a component, mostly used for AJAX
+ */
+
+if ( !function_exists('get_component') ) {
+	function get_component($file, $args = false) {
+		ob_start();
+
+		component($file, $args);
+		$component = ob_get_clean();
+
+		return $component;
+	}
+}
+
 
 /**
  * Loop through the layout items and output components from their data,
