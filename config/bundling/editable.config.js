@@ -46,26 +46,24 @@ module.exports = {
     // These are our external dependencies that should be available to our modules, but not compiled.
     // Enqueue them via CDN in [../functions.php] instead.
     externals: {
-        //'jquery': 'jQuery'
+        //'jquery': 'jQuery',
     },
 
     // If you have any custom module resolutions you prefer, this is the place to be.
     resolve: {},
 
     // All other settings reside here.
-    //
-
-    //
-
     settings: {
         // Check https://webpack.js.org/configuration/devtool/ for sourcemap configs
         sourceMaps: 'cheap-module-source-map',
 
         // Settings here: https://github.com/postcss/autoprefixer#options
+        // Browser support is managed in [.browserlistrc]-file
         autoprefixer: {},
 
         // BrowserSync settings have defaults defined in [./webpack.config.js], most notably
-        // a "file"-setting that triggers a reload on changes in all PHP-files.
+        // a "file"-setting that triggers a reload on changes in all PHP-files, and a
+        // url to proxy from that is read from the [.env]-file
         // Thake that in account if you want to change that setting.
         browserSync: {
             host: 'localhost',

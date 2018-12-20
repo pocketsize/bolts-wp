@@ -1,15 +1,15 @@
 # Bolts WP
-Bolts WP is your new favourite developer theme (at least for WordPress) - tough enough to power (and easily maintain) websites of any shape and size, yet so simple that you can become a power user a day. It focuses on removing complexity and streamlining development without creating a whole new workflow. Its not trying to recreate the wheel, just make it rounder.
+Bolts WP is your new favourite developer theme (at least for WordPress) - tough enough to power (and easily maintain) websites of any shape and size, yet so simple that you can become a power user within a day. It focuses on removing complexity and streamlining development without creating a whole new workflow. Its not trying to recreate the wheel, just make it rounder.
 
 Bolts WP has a modern workflow and many of the build tools you´ve come to love and expect, out of the box:
 
 - **Webpack** for bundling and task running
 - **Babel** for transpiling and polyfilling ES6+
-- **Sass** with **Autoprefixer** for styles
+- **Sass** with **Autoprefixer**, **CSSNano** and **MQPacker* for styles
 - **BrowserSync** for browser testing and autoreloading CSS, JS and PHP
-- **Mocha** and **Chai** for unit testing
-- **Istanbul** and **Nyc** for coverage reports
-- **ESLint** and **Stylelint** for linting
+- **Jest** for testing, 
+- **ESLint**, **Stylelint** and **Prettier** for linting and code formatting
+- **Husky** (with **Lint Staged**) for git hooks
 - **Imagemin** for image optimization
 - **Bolts** for doing all mundane styling tasks you hate 
 
@@ -32,27 +32,25 @@ Bolts WP has a modern workflow and many of the build tools you´ve come to love 
 Bolts WP uses Yarn and provides 5 build scripts for dev:
 - `yarn dev` bundles a dev-version of the theme
 - `yarn watch` bundles a dev-version every time a SCSS, JS or PHP file changes
-- `yarn watch-serve` does the same as above but also starts BrowserSync in your preferred browser
-- `yarn test` runs the Mocha tests
-- `yarn coverage` runs the Mocha tests and generates a Nyc report
+- `yarn serve` does the same as above but also starts BrowserSync in your preferred browser
+- `yarn test` runs the Jest tests
+- `yarn test:watch` wathes file changes and runs Jest tests
+- `yarn coverage` runs the Jest tests and generates a coverage report
+- `bolts-add:react` adds all packages, config and directories needed for working with React
+- `bolts-remove:react` removes all React-related packages, config and directories
+- `bolts-remove:react:keep-files` removes all React-related packages and config, but keeps the directories
 
 ### For production
 Only one. `yarn prod` bundles a prod-ready theme. 
 
-## Configuring Webpack
-If you are one of those people that loves to customize stuff the most common Webpack settings are available to you (and documented) in `build/editable.config.js`. 
+## Configuring
+### Webpack
+If you are one of those people that loves to customize stuff the most common Webpack settings are available to you (and documented) in `config/bundling/editable.config.js` and `config/bundling/module.rules.js`. 
 
-We suspect that the most changed setting will be BrowserSyncs `proxy`. This allows you to pipe your dev server through BrowserSync. If you run `my-local-site.local` in MAMP it might look like this:
+We suspect that the most changed settings will be the `settings` property in `config/bundling/editable.config.js:56`. The defaults are nice and reasonable, but give it a look if you're feeling adventurous.
 
-```javascript
-browserSync: {
-    host: 'localhost',
-    port: 3000,
-    proxy: 'http://my-local-site.local:8888'
-}
-```
-
-Easy peasy, lemon squeazy
+### Jest and Enzyme
+If you are a casual tester all defaults are good to go, but you hardcore testers out there potentially might find our setup a bit too basic. Check out `config/testing` and get it up to your standards.
 
 
 # TODO : Finish this readme

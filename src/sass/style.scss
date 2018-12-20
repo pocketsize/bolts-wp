@@ -58,8 +58,6 @@ $bolts-breakpoints: (
 
 // Templates
 @import 'templates/archive';
-@import 'templates/footer';
-@import 'templates/header';
 
 // Common components
 @import 'components/common/button';
@@ -73,6 +71,8 @@ $bolts-breakpoints: (
 
 // Components
 @import 'components/content';
+@import 'components/footer';
+@import 'components/header';
 @import 'components/main-menu';
 @import 'components/post-preview';
 //@import 'components/accordion';
