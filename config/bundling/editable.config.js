@@ -72,8 +72,6 @@ module.exports = {
 
         // webpack-dev-server is still a bit unconfigured, so consider it experimental
         // settings here: https://webpack.js.org/configuration/dev-server/
-        devServer: {
-            inline: true,
-        },
+        devServer: {},
     },
 };

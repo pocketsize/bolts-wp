@@ -17,7 +17,7 @@ module.exports = {
     javascript: {
         test: /\.(js|jsx)$/,
         exclude: config.paths.external,
-        loader: ['babel-loader', 'prettier-loader'],
+        loader: ['babel-loader'],
     },
 
     sass: {
