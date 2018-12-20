@@ -5,6 +5,7 @@
  * http://www.pocketsize.se/
  */
 
+import '@babel/polyfill';
 import { Bolts, misc } from 'bolts';
 import mainMenu from './components/main-menu';
 import toggleState from './misc/toggle-state';

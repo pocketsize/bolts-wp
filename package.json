@@ -24,7 +24,7 @@
 		}
 	},
 	"lint-staged": {
-		"*.{js,jsx}": ["yarn run fix-scripts", "yarn run test", "git add"],
+		"*.{js,jsx}": ["yarn run fix-scripts", "yarn run test --findRelatedTests", "git add"],
 		"*.scss": ["yarn run fix-styles", "git add"]
 	},
 	"author": "Pocketsize",
