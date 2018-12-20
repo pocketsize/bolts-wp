@@ -1,8 +1,8 @@
 .link {
-	display: inline-block;
+    display: inline-block;
 
-	&-inner {
-		@extend %text--base;
-		@extend %text--link;
-	}
+    &-inner {
+        @extend %text--base;
+        @extend %text--link;
+    }
 }

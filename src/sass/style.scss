@@ -8,40 +8,43 @@
 // Importing variables to pass them on to Bolts Scss
 @import 'helpers/variables';
 
-$bolts-page-selector:               '.bolts-page';
-$bolts-wrapper-selector:            '.bolts-wrapper';
-$bolts-footer-selector:             '.bolts-footer';
-$bolts-reset-focus-styles:          false;
-$bolts-reset-anchor-styles:         true;
-$bolts-reset-list-styles:           false;
-$bolts-img-display:                 block;
-$bolts-img-max-width:               100%;
-$bolts-default-container-width:     90%;
+$bolts-page-selector: '.bolts-page';
+$bolts-wrapper-selector: '.bolts-wrapper';
+$bolts-footer-selector: '.bolts-footer';
+$bolts-reset-focus-styles: false;
+$bolts-reset-anchor-styles: true;
+$bolts-reset-list-styles: false;
+$bolts-img-display: block;
+$bolts-img-max-width: 100%;
+$bolts-default-container-width: 90%;
 $bolts-default-container-max-width: $max-width--page;
-$bolts-default-container-align:     center;
-$bolts-default-background-size:     cover;
+$bolts-default-container-align: center;
+$bolts-default-background-size: cover;
 $bolts-default-background-position: 50% 50%;
 $bolts-default-transition-duration: $speed--base;
-$bolts-default-transition-easing:   $easing;
-$bolts-fonts-path:                  '../fonts';
-$bolts-default-pseudo:              after;
+$bolts-default-transition-easing: $easing;
+$bolts-fonts-path: '../fonts';
+$bolts-default-pseudo: after;
 
 $bolts-selectors: (
-	headings:       'h1, h2, h3, h4, h5, h6',
-	inputs:         'input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea',
-	text-elements:  'h1, h2, h3, h4, h5, h6, p, ol li, ul li, dl dt, dl dd, address',
-	text-inputs:    'input[type="text"], input[type="email"]',
-	buttons:        'button, input[type="reset"], input[type="submit"], input[type="button"]',
-	embed-elements: 'iframe, object, embed, video'
+    headings: 'h1, h2, h3, h4, h5, h6',
+    inputs:
+    'input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea',
+    text-elements:
+    'h1, h2, h3, h4, h5, h6, p, ol li, ul li, dl dt, dl dd, address',
+    text-inputs: 'input[type="text"], input[type="email"]',
+    buttons:
+    'button, input[type="reset"], input[type="submit"], input[type="button"]',
+    embed-elements: 'iframe, object, embed, video'
 );
 
 $bolts-breakpoints: (
-	xsmall:    350px,
-	small:     500px,
-	medium:    900px,
-	large:     1200px,
-	xlarge:    1600px,
-	main-menu: 800px
+    xsmall: 350px,
+    small: 500px,
+    medium: 900px,
+    large: 1200px,
+    xlarge: 1600px,
+    main-menu: 800px
 );
 
 @import '~bolts/src/sass/bolts';
@@ -73,8 +76,6 @@ $bolts-breakpoints: (
 @import 'components/main-menu';
 @import 'components/post-preview';
 //@import 'components/accordion';
-
-
 
 // 😳 😳 😳
 @import 'shame.scss';

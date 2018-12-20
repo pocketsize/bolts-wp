@@ -1,19 +1,19 @@
 .button {
-	display: inline-block;
-	position: relative;
-	border-radius: $radius--base;
-	border: 1px solid $color--black;
+    display: inline-block;
+    position: relative;
+    border-radius: $radius--base;
+    border: 1px solid $color--black;
 
-	&.is-theme-default {
-		background-color: rgba($color--black, 0.1);
-	}
+    &.is-theme-default {
+        background-color: rgba($color--black, 0.1);
+    }
 
-	&-inner {
-		@extend %text--button;
-		padding: $base--small $base--medium;
-	}
+    &-inner {
+        @extend %text--button;
+        padding: $base--small $base--medium;
+    }
 
-	&-link {
-		@include overlay;
-	}
+    &-link {
+        @include overlay;
+    }
 }

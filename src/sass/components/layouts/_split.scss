@@ -1,26 +1,28 @@
 .layout-split {
-	@include inline-layout($vertical-align: top);
-	@include container(100%, $max-width--layout);
-	padding: 0 $padding--page;
+    @include inline-layout($vertical-align: top);
+    @include container(100%, $max-width--layout);
+    padding: 0 $padding--page;
 
-	&-primary,
-	&-secondary {
-		text-align: left;
+    &-primary,
+    &-secondary {
+        text-align: left;
 
-		@media (width-to(medium)) { width: 100%; }
-	}
+        @media (width-to(medium)) {
+            width: 100%;
+        }
+    }
 
-	&-primary {
-		@media (width-from(medium)) {
-			width: 50%;
-			padding-right: $gutter--base / 2;
-		}
-	}
-	
-	&-secondary {
-		@media (width-from(medium)) {
-			width: 50%;
-			padding-left: $gutter--base / 2;
-		}
-	}
+    &-primary {
+        @media (width-from(medium)) {
+            width: 50%;
+            padding-right: $gutter--base / 2;
+        }
+    }
+
+    &-secondary {
+        @media (width-from(medium)) {
+            width: 50%;
+            padding-left: $gutter--base / 2;
+        }
+    }
 }

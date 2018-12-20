@@ -10,15 +10,12 @@ import mainMenu from './components/main-menu';
 import toggleState from './misc/toggle-state';
 
 (() => {
-	document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
+        Bolts.init();
+        misc.autoHeight('[data-auto-height]');
+        mainMenu.init();
+        toggleState.init();
 
-		Bolts.init();
-		misc.autoHeight('[data-auto-height]');
-		mainMenu.init();
-		toggleState.init();
-		
-		// The world is your oyster!
-
-	});
-
+        // The world is your oyster!
+    });
 })();
