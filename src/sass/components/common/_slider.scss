@@ -1,39 +1,39 @@
 .slider {
-	position: relative;
+    position: relative;
 
-	&-control {
-		@include center(vertical);
+    &-control {
+        @include center(vertical);
 
-		&.is-previous {
-			left: 0;
-		}
+        &.is-previous {
+            left: 0;
+        }
 
-		&.is-next {
-			right: 0;
-		}
-	}
+        &.is-next {
+            right: 0;
+        }
+    }
 
-	&-pagination {
-		text-align: center;
-		cursor: default;
-		@include inline-layout();
-	}
+    &-pagination {
+        text-align: center;
+        cursor: default;
+        @include inline-layout();
+    }
 
-	&-dot {
-		width: ($base--x-small * 2);
-		height: ($base--x-small * 2);
-		border-radius: 50%;
-		background-color: rgba($color--black, 0.5);
-		margin: $base--x-small;
+    &-dot {
+        width: ($base--x-small * 2);
+        height: ($base--x-small * 2);
+        border-radius: 50%;
+        background-color: rgba($color--black, 0.5);
+        margin: $base--x-small;
 
-		&.is-active {
-			background-color: $color--black;
-		}
+        &.is-active {
+            background-color: $color--black;
+        }
 
-		&:hover {
-			@include hover {
-				background-color: rgba($color--black, 0.75);
-			}
-		}
-	}
+        &:hover {
+            @include hover {
+                background-color: rgba($color--black, 0.75);
+            }
+        }
+    }
 }

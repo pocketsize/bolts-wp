@@ -17,21 +17,8 @@
 
 <div class="bolts-wrapper">
 
-	<header class="header">
-		<div class="header-inner">
-			<a href="<?php echo home_url(); ?>" class="header-logo"><?php bloginfo('name'); ?></a>
-
-			<button class="header-menu-toggle" data-menu-toggle>Menu</button>
-
-			<div class="header-menu" role="navigation">
-				<nav class="main-menu">
-					<?php component('common/menu', [
-						'menu' => get_menu_array('main'),
-						'block_name' => 'main-menu'
-					]); ?>
-				</nav>
-			</div>
-		</div>
-	</header>
+	<?php component('header', [
+		'menu' => get_menu_array('main')
+	]); ?>
 
 	<main class="main">

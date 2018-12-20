@@ -1,8 +1,0 @@
-{
-    "include": [
-        "src/tests/**/*.js"
-    ],
-    "report-dir": "./.nyc_output/coverage",
-    "sourceMap": false,
-    "instrument": false
-}

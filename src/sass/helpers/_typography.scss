@@ -1,6 +1,5 @@
 $font-weight--normal: 400;
-$font-weight--bold:   700;
-
+$font-weight--bold: 700;
 
 /* Uncomment for instant font imports!*/
 
@@ -23,87 +22,120 @@ $font-weight--bold:   700;
 */
 
 %title--base {
-	font-family: sans-serif;
-	font-weight: $font-weight--bold;
-	line-height: 1.2;
+    font-family: sans-serif;
+    font-weight: $font-weight--bold;
+    line-height: 1.2;
 }
 
 %title--h1 {
-	@extend %title--base;
+    @extend %title--base;
 
-	@media (width-to(medium)) { font-size: 25px; }
+    @media (width-to(medium)) {
+        font-size: 25px;
+    }
 
-	@media (width-from(medium)) { font-size: 40px; }
+    @media (width-from(medium)) {
+        font-size: 40px;
+    }
 }
 
 %title--h1-spacing {
-	
-	@media (width-to(medium)) {
-		&:not(:last-child) { margin-bottom: $base--small; }
-	}
+    @media (width-to(medium)) {
+        &:not(:last-child) {
+            margin-bottom: $base--small;
+        }
+    }
 
-	@media (width-from(medium)) {
-		&:not(:last-child) { margin-bottom: $base--medium; }
-	}
+    @media (width-from(medium)) {
+        &:not(:last-child) {
+            margin-bottom: $base--medium;
+        }
+    }
 }
 
 %text--base {
-	font-family: sans-serif;
-	font-weight: $font-weight--normal;
+    font-family: sans-serif;
+    font-weight: $font-weight--normal;
 }
 
 %text--link {
-	font-weight: $font-weight--bold;
+    font-weight: $font-weight--bold;
 }
 
 %text--button {
-	@extend %text--base;
+    @extend %text--base;
 
-	@media (width-to(medium)) { font-size: 14px; }
+    @media (width-to(medium)) {
+        font-size: 14px;
+    }
 
-	@media (width-from(medium)) { font-size: 16px;}
+    @media (width-from(medium)) {
+        font-size: 16px;
+    }
 }
 
 %content--wysiwyg {
-	@include clear;
-	
-	@include select(headings) { @extend %title--base; }
+    @include clear;
 
-	p, ul, ol {
-		&:not(:last-child) {
-			padding-bottom: $base--small;
-		}
-	}
+    @include select(headings) {
+        @extend %title--base;
+    }
 
-	ul, ol { padding-left: $base--small; }
+    p,
+    ul,
+    ol {
+        &:not(:last-child) {
+            padding-bottom: $base--small;
+        }
+    }
 
-	p, li { @extend %text--base; }
+    ul,
+    ol {
+        padding-left: $base--small;
+    }
 
-	a:hover { text-decoration: underline; }
+    p,
+    li {
+        @extend %text--base;
+    }
 
-	.embed-wrapper { @extend %embed-wrapper; }
+    a:hover {
+        text-decoration: underline;
+    }
 
-	.image-wrapper { @extend %image-wrapper; }
+    .embed-wrapper {
+        @extend %embed-wrapper;
+    }
 
-	.alignleft,
-	.alignright {
-		margin-bottom: $base--x-small;
-	}
+    .image-wrapper {
+        @extend %image-wrapper;
+    }
 
-	.alignleft {
-		float: left;
-		margin-right: $base--small;
-	}
+    .alignleft,
+    .alignright {
+        margin-bottom: $base--x-small;
+    }
 
-	.alignright {
-		float: right;
-		margin-left: $base--small;
-	}
+    .alignleft {
+        float: left;
+        margin-right: $base--small;
+    }
+
+    .alignright {
+        float: right;
+        margin-left: $base--small;
+    }
 }
 
 %content--wysiwyg-spacing {
-	&:not(:last-child) { margin-bottom: $base--medium; }
+    &:not(:last-child) {
+        margin-bottom: $base--medium;
+    }
 }
 
-html { font-size: 16px; }
-body { @extend %text--base; }
+html {
+    font-size: 16px;
+}
+body {
+    @extend %text--base;
+}

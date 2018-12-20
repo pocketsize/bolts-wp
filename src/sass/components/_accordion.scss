@@ -1,29 +1,32 @@
 .accordion {
+    &-item {
+        transition: opacity $speed--base $easing;
+    }
 
-	&-item {
-		transition: opacity $speed--base $easing;
-	}
+    &-tab {
+        cursor: pointer;
+        padding: $base--small 0;
+        border-bottom: 1px solid $color--dark-gray;
+        @include transition(border-bottom);
+    }
 
-	&-tab {
-		cursor: pointer;
-		padding: $base--small 0;
-		border-bottom: 1px solid $color--dark-gray;
-		@include transition(border-bottom);
-	}
+    &.has-open-item > &-item:not(.is-open) {
+        opacity: 0.5;
+    }
 
-	&.has-open-item > &-item:not(.is-open) {
-		opacity: 0.5;
-	}
+    &-item.is-open &-tab {
+        border-bottom-color: $color--black;
+    }
 
-	&-item.is-open &-tab {
-		border-bottom-color: $color--black;
-	}
+    &-content {
+        @include transition-height(
+            '.accordion-item:not(.is-open) > &',
+            $speed--base,
+            $easing
+        );
+    }
 
-	&-content {
-		@include transition-height('.accordion-item:not(.is-open) > &', $speed--base, $easing);
-	}
-
-	&-content-inner {
-		padding: $base--small 0 $base--medium;
-	}
+    &-content-inner {
+        padding: $base--small 0 $base--medium;
+    }
 }

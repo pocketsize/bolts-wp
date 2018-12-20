@@ -5,22 +5,18 @@
  * http://www.pocketsize.se/
  */
 
-import Bolts from 'bolts';
-import { autoHeight } from 'bolts';
+import '@babel/polyfill';
+import { Bolts, misc } from 'bolts';
 import mainMenu from './components/main-menu';
 import toggleState from './misc/toggle-state';
 
 (() => {
+    document.addEventListener('DOMContentLoaded', function() {
+        Bolts.init();
+        misc.autoHeight('[data-auto-height]');
+        mainMenu.init();
+        toggleState.init();
 
-	document.addEventListener('DOMContentLoaded', function() {
-
-		Bolts.init();
-		autoHeight('[data-auto-height]');
-		mainMenu.init();
-		toggleState.init();
-		
-		// The world is your oyster!
-
-	});
-
+        // The world is your oyster!
+    });
 })();

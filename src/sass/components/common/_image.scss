@@ -1,34 +1,34 @@
 .image {
-	position: relative;
+    position: relative;
 
-	&-object {
-		@include background;
-		position: relative;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: $base--small;
+    &-object {
+        @include background;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: $base--small;
 
-		&.has-overlay {
-			&:before {
-				content: '';
-				@include overlay;
-				background: rgba($color--black, 0.4);
-			}
-		}
-	}
+        &.has-overlay {
+            &:before {
+                content: '';
+                @include overlay;
+                background: rgba($color--black, 0.4);
+            }
+        }
+    }
 
-	&.is-default &-object {
-		@include aspect-ratio(5, 4);
-	}
+    &.is-default &-object {
+        @include aspect-ratio(5, 4);
+    }
 
-	&-overlay-text {
-		position: relative;
-		z-index: 1;
-	}
+    &-overlay-text {
+        position: relative;
+        z-index: 1;
+    }
 
-	&-caption {
-		margin-top: $base--small;
-		padding: 0 $base--medium;
-	}
+    &-caption {
+        margin-top: $base--small;
+        padding: 0 $base--medium;
+    }
 }
