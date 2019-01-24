@@ -3,13 +3,13 @@
 	 * Menu 
 	 * 
 	 * Builds a menu tree recursively from an array.
-	 * For easy WP integration, use get_menu_array() 
+	 * For easy WP integration, use get_menu_object() 
 	 * defined in data-fetching.php to get $menu data. 
 	 * 
 	 * @param string $block_name          - defaults to "menu". becomes block class, (e.g. ".menu-link-outer" when default)
 	 * @param bool   $has_submenu_toggles - will output the div "<$block_name>-submenu-toggle" inside each "<$block_name>-link-outer"
 	 * 
-	 * @param object $menu                - easily gotten with get_menu_array()
+	 * @param object $menu                - easily gotten with get_menu_object()
 	 * @param string $menu.title
 	 * @param string $menu.url
 	 * @param string $menu.target

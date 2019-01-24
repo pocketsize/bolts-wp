@@ -18,7 +18,7 @@
 <div class="bolts-wrapper">
 
 	<?php component('header', [
-		'menu' => get_menu_array('main')
+		'menu' => get_menu_object('main')
 	]); ?>
 
 	<main class="main">
