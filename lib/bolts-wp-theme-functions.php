@@ -97,8 +97,8 @@ if ( !function_exists('bolts_build_nav_menu_tree') ) {
  * @return array|null
  */
 
-if ( !function_exists('get_menu_array') ) {
-	function get_menu_array( $location = false ) {
+if ( !function_exists('get_menu_object') ) {
+	function get_menu_object( $location = false ) {
 		/* TODO: fail more gracefully if menu at specified location is not defined */
 		global $post;
 
