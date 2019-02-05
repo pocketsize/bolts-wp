@@ -51,12 +51,12 @@ Only one. `yarn prod` bundles a prod-ready theme.
 
 ## Configuring
 ### Webpack
-If you are one of those people that loves to customize stuff the most common Webpack settings are available to you (and documented) in `config/bundling/editable.config.js` and `config/bundling/module.rules.js`.
+If you are one of those people that loves to customize stuff, the most common Webpack settings are available to you (and documented) in `config/bundling/editable.config.js` and `config/bundling/module.rules.js`.
 
 We suspect that the most changed settings will be the `settings` property in `config/bundling/editable.config.js:56`. The defaults are nice and reasonable, but give it a look if you're feeling adventurous.
 
 ### Jest and Enzyme
-If you are a casual tester all defaults are good to go, but you hardcore testers out there potentially might find our setup a bit too basic. Check out `config/testing` and get it up to your standards.
+If you are a casual tester all defaults are good to go, but you hardcore testers out there potentially might find our setup a bit too basic. Check out `config/testing` and get it up to your standards (and maybe pull a request while you're at it!).
 
 ### PHP Defaults
 Bolts WP features a couple of defaults used both during the init, but also by some of our functions. They are all configurable with `define()`, that should be done in `functions.php`.
