@@ -95,7 +95,7 @@ In most cases Layout components should be as unstyled as possible, only setting 
 > Check out `./components/layouts/full.php` or `./components/layouts/split.php` for a real-life example.
 
 ## Fetching data
-Clean templates makes a clean mind. Thats why we dont want to pollute our files with data fetching everywhere (been there, done that, got the headeache). All fetching should be done with functions and these functions should be placed in `./data-fetching.php`. When done properly, fetching functions should output correctly formatted data making the above example look super nice and neat like so:
+Clean templates makes a clean mind. Thats why we dont want to pollute our files with data fetching everywhere (been there, done that, got the headeache). All fetching should be done with functions and these functions should be placed in `./functions/data-fetching.php`. When done properly, fetching functions should output correctly formatted data making the above example look super nice and neat like so:
 
 ```php
 component('layouts/content-with-sidebar', [
