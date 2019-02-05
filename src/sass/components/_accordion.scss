@@ -1,6 +1,10 @@
 .accordion {
     &-item {
         transition: opacity $speed--base $easing;
+
+        .accordion.has-open-item > &:not(.is-open) {
+            opacity: 0.5;
+        }
     }
 
     &-tab {
@@ -8,14 +12,10 @@
         padding: $base--small 0;
         border-bottom: 1px solid $color--dark-gray;
         @include transition(border-bottom);
-    }
 
-    &.has-open-item > &-item:not(.is-open) {
-        opacity: 0.5;
-    }
-
-    &-item.is-open &-tab {
-        border-bottom-color: $color--black;
+        .accordion-item.is-open & {
+            border-bottom-color: $color--black;
+        }
     }
 
     &-content {
