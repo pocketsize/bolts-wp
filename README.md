@@ -5,7 +5,7 @@ Bolts WP has a modern workflow and many of the build tools you´ve come to love 
 
 - **Webpack** for bundling and task running
 - **Babel** for transpiling and polyfilling ES6+
-- **Sass** with **Autoprefixer**, **CSSNano** and **MQPacker* for styles
+- **Sass** with **Autoprefixer**, **CSSNano** and **MQPacker** for styles
 - **BrowserSync** for browser testing and autoreloading CSS, JS and PHP
 - **Jest** for testing,
 - **ESLint**, **Stylelint** and **Prettier** for linting and code formatting
@@ -42,9 +42,9 @@ Bolts WP uses Yarn and provides 5 build scripts for dev:
 - `yarn test` runs the Jest tests
 - `yarn test:watch` wathes file changes and runs Jest tests
 - `yarn coverage` runs the Jest tests and generates a coverage report
-- `bolts-add:react` adds all packages, config and directories needed for working with React
-- `bolts-remove:react` removes all React-related packages, config and directories
-- `bolts-remove:react:keep-files` removes all React-related packages and config, but keeps the directories
+- `yarn bolts-add:react` adds all packages, config and directories needed for working with React
+- `yarn bolts-remove:react` removes all React-related packages, config and directories
+- `yarn bolts-remove:react:keep-files` removes all React-related packages and config, but keeps the directories
 
 ### For production
 Only one. `yarn prod` bundles a prod-ready theme.
