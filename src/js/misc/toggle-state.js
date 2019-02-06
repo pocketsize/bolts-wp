@@ -1,3 +1,13 @@
+/**
+ * Toggle State
+ *
+ * Attaches event listeners to all [data-toggle]-attributes
+ * and toggles their values to/from the global Bolts state.
+ *
+ * Useful for menus, modals or anything else you want to style
+ * on a state.
+ */
+
 import { state } from 'bolts';
 
 const toggleState = {

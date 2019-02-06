@@ -5,19 +5,19 @@ Bolts WP has a modern workflow and many of the build tools you´ve come to love 
 
 - **Webpack** for bundling and task running
 - **Babel** for transpiling and polyfilling ES6+
-- **Sass** with **Autoprefixer**, **CSSNano** and **MQPacker* for styles
+- **Sass** with **Autoprefixer**, **CSSNano** and **MQPacker** for styles
 - **BrowserSync** for browser testing and autoreloading CSS, JS and PHP
-- **Jest** for testing, 
+- **Jest** for testing,
 - **ESLint**, **Stylelint** and **Prettier** for linting and code formatting
 - **Husky** (with **Lint Staged**) for git hooks
 - **Imagemin** for image optimization
-- **Bolts** for doing all mundane styling tasks you hate 
+- **Bolts** for doing all mundane styling tasks you hate
 
 (Ok, you might not have expected that last one, but trust us, [you will after you´ve tried it](http:s//github.com/pocketsize/bolts "you will after you´ve tried it"))
 
-As for the PHP, Bolts WP is component oriented and features helpers to keep your code as DRY as possible. Just use the `component()` function, pass in your data and never write any markup in your page templates again. 
+As for the PHP, Bolts WP is component oriented and features helpers to keep your code as DRY as possible. Just use the `component()` function, pass in your data and never write any markup in your page templates again.
 
-The theme also features a lot of handy functions and cleaning defaults, removing bloat and filling WP's blatant gaps, making the workflow more normalized and easy to use. 
+The theme also features a lot of handy functions and cleaning defaults, removing bloat and filling WP's blatant gaps, making the workflow more normalized and easy to use.
 
 
 ## Table of contents
@@ -28,7 +28,7 @@ The theme also features a lot of handy functions and cleaning defaults, removing
 - [Configuring](#configuring "Configuring")
   - [Webpack](#webpack "Webpack")
   - [Jest and Enzyme](#jest-and-enzyme "Jest and Enzyme")
- 
+
 ## Installation
 1. `git clone` the repo in your themes directory
 2. Run `yarn install`
@@ -42,21 +42,21 @@ Bolts WP uses Yarn and provides 5 build scripts for dev:
 - `yarn test` runs the Jest tests
 - `yarn test:watch` wathes file changes and runs Jest tests
 - `yarn coverage` runs the Jest tests and generates a coverage report
-- `bolts-add:react` adds all packages, config and directories needed for working with React
-- `bolts-remove:react` removes all React-related packages, config and directories
-- `bolts-remove:react:keep-files` removes all React-related packages and config, but keeps the directories
+- `yarn bolts-add:react` adds all packages, config and directories needed for working with React
+- `yarn bolts-remove:react` removes all React-related packages, config and directories
+- `yarn bolts-remove:react:keep-files` removes all React-related packages and config, but keeps the directories
 
 ### For production
-Only one. `yarn prod` bundles a prod-ready theme. 
+Only one. `yarn prod` bundles a prod-ready theme.
 
 ## Configuring
 ### Webpack
-If you are one of those people that loves to customize stuff the most common Webpack settings are available to you (and documented) in `config/bundling/editable.config.js` and `config/bundling/module.rules.js`. 
+If you are one of those people that loves to customize stuff, the most common Webpack settings are available to you (and documented) in `config/bundling/editable.config.js` and `config/bundling/module.rules.js`.
 
 We suspect that the most changed settings will be the `settings` property in `config/bundling/editable.config.js:56`. The defaults are nice and reasonable, but give it a look if you're feeling adventurous.
 
 ### Jest and Enzyme
-If you are a casual tester all defaults are good to go, but you hardcore testers out there potentially might find our setup a bit too basic. Check out `config/testing` and get it up to your standards.
+If you are a casual tester all defaults are good to go, but you hardcore testers out there potentially might find our setup a bit too basic. Check out `config/testing` and get it up to your standards (and maybe pull a request while you're at it!).
 
 ### PHP Defaults
 Bolts WP features a couple of defaults used both during the init, but also by some of our functions. They are all configurable with `define()`, that should be done in `functions.php`.
@@ -96,8 +96,8 @@ Used in layout components. Loop through the layout items and output components f
 
 <br>
 
-#### get_menu_array( $location = false )
-Return a nested nav menu array by menu location
+#### get_menu_object( $location = false )
+Return a nested nav menu object by menu location
 
 
 ------------
@@ -168,7 +168,7 @@ Echo .svg file parsed for inline use
 
 <br>
 
-#### create_post_type( $slug, $singular, $plural, $icon = null, $custom_args = false ) 
+#### create_post_type( $slug, $singular, $plural, $icon = null, $custom_args = false )
 Register a custom post type
 
 
