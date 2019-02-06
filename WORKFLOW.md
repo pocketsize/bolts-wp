@@ -8,6 +8,10 @@ This theme is still very much in beta, but the ideas behind the implementation a
   - Layout component
 - Fetching data
 - JS and SCSS
+- Naming conventions
+  - HTML
+  - SASS
+  - Indentation
 
 
 ## Introduction
