@@ -97,15 +97,16 @@ if ( !function_exists('bolts_build_nav_menu_tree') ) {
  * @return array|null
  */
 
-if ( !function_exists('get_menu_object') ) {
-	function get_menu_object( $location = false ) {
+if ( !function_exists('get_menu_array') ) {
+	function get_menu_array( $location = false ) {
 		/* TODO: fail more gracefully if menu at specified location is not defined */
 		global $post;
 
 		if ( !$location ) $location = BOLTS_WP_DEFAULT_MENU_LOCATION;
 
 		$locations = get_nav_menu_locations();
-		if(empty($locations)) { return null; }
+		if(empty($locations) || !isset($locations[ $location ])) { return null; }
+
 		$menu_id = $locations[ $location ];
 
 		$menu_items = wp_get_nav_menu_items( $menu_id );
@@ -203,7 +204,7 @@ function get_svg( $asset, $fallback = false ) {
 		echo 'asset_not_found: ' . $asset;
 		return '';
 	}
-	
+
 	$inline = preg_replace( '/\s*<\?xml.*?\?>\s*/si', '', file_get_contents($path) );
 	$inline = preg_replace( '/\s*<!--.*?-->\s*/si', '', $inline );
 	$inline = preg_replace( '/\s*<title>.*?<\/title>\s*/si', '', $inline );
@@ -229,7 +230,7 @@ if ( !function_exists('component') ) {
 	function component( $file, $args = false ) {
 		$path = get_template_directory() . '/components/' . $file . '.php';
 
-		global $posts, $post, $wp_did_header, $wp_query, $wp_rewrite, 
+		global $posts, $post, $wp_did_header, $wp_query, $wp_rewrite,
 		       $wpdb, $wp_version, $wp, $id, $comment, $user_ID;
 
 		if ( is_array( $wp_query->query_vars ) ) {
@@ -270,7 +271,7 @@ if ( !function_exists('get_component') ) {
 if ( !function_exists('layout_items') ) {
 	function layout_items($items, $item_class = false) {
 		if ( empty($items) ) return false;
-		
+
 		if ( array_keys($items) !== range(0, count($items) - 1) ) {
 
 			layout_item($items);
@@ -379,7 +380,7 @@ if ( !function_exists('create_taxonomy') ) {
 				'parent_item'                => 'Parent ' . $singular,
 				'parent_item_colon'          => 'Parent ' . $singular . ':',
 				'search_items'               => 'Search ' . $plural,
-				'popular_items'	             => 'Popular ' . $plural, 
+				'popular_items'	             => 'Popular ' . $plural,
 				'separate_items_with_commas' => 'Separate ' . lcfirst($plural) . ' with commas',
 				'add_or_remove_items'        => 'Add or remove ' . lcfirst($plural),
 				'choose_from_most_used'      => 'Show from most used',
