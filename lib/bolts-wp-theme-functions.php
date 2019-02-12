@@ -195,20 +195,29 @@ if ( !function_exists('asset') ) {
  * @return string
  */
 function get_svg( $asset, $fallback = false ) {
-	$path = get_theme_dir() . '/public/' . $asset . '.svg';
-	if ( !file_exists( $path ) ) {
+	$path = get_theme_dir() . '/public/images/' . $asset . '.svg';
+
+	if ( !file_exists( $path ) && $fallback ) {
 		$path = $fallback;
 	}
 
 	if ( !file_exists($path) ) {
-		echo 'asset_not_found: ' . $asset;
-		return '';
+		throw new Exception('Asset not found: ' . $path);
 	}
+<<<<<<< HEAD
 
 	$inline = preg_replace( '/\s*<\?xml.*?\?>\s*/si', '', file_get_contents($path) );
 	$inline = preg_replace( '/\s*<!--.*?-->\s*/si', '', $inline );
 	$inline = preg_replace( '/\s*<title>.*?<\/title>\s*/si', '', $inline );
 	$inline = preg_replace( '/\s*<desc>.*?<\/desc>\s*/si', '', $inline );
+=======
+	
+	$inline = preg_replace('/\s*<\?xml.*?\?>\s*/si', '', file_get_contents($path));
+	$inline = preg_replace('/\s*<!--.*?-->\s*/si', '', $inline);
+	$inline = preg_replace('/\s*<title>.*?<\/title>\s*/si', '', $inline);
+	$inline = preg_replace('/\s*<desc>.*?<\/desc>\s*/si', '', $inline);
+
+>>>>>>> 05f4c52a1ce295272593a7df798f55527aac9246
 	return $inline;
 }
 
