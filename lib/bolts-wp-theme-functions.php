@@ -204,20 +204,12 @@ function get_svg( $asset, $fallback = false ) {
 	if ( !file_exists($path) ) {
 		throw new Exception('Asset not found: ' . $path);
 	}
-<<<<<<< HEAD
 
-	$inline = preg_replace( '/\s*<\?xml.*?\?>\s*/si', '', file_get_contents($path) );
-	$inline = preg_replace( '/\s*<!--.*?-->\s*/si', '', $inline );
-	$inline = preg_replace( '/\s*<title>.*?<\/title>\s*/si', '', $inline );
-	$inline = preg_replace( '/\s*<desc>.*?<\/desc>\s*/si', '', $inline );
-=======
-	
 	$inline = preg_replace('/\s*<\?xml.*?\?>\s*/si', '', file_get_contents($path));
 	$inline = preg_replace('/\s*<!--.*?-->\s*/si', '', $inline);
 	$inline = preg_replace('/\s*<title>.*?<\/title>\s*/si', '', $inline);
 	$inline = preg_replace('/\s*<desc>.*?<\/desc>\s*/si', '', $inline);
 
->>>>>>> 05f4c52a1ce295272593a7df798f55527aac9246
 	return $inline;
 }
 
