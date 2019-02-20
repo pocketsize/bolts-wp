@@ -17,7 +17,8 @@ $bolts_wp_options = array(
 	'BOLTS_WP_EXCERPT_WORDS'         => 55,
 	'BOLTS_WP_EXCERPT_MORE'          => '[...]',
 	'BOLTS_WP_ENQUEUE_JQUERY'        => false,
-	'BOLTS_WP_DEFAULT_MENU_LOCATION' => false
+	'BOLTS_WP_DEFAULT_MENU_LOCATION' => false,
+	'BOLTS_WP_DISABLE_JSON_API'      => true
 );
 
 foreach ( $bolts_wp_options as $option => $value ) {

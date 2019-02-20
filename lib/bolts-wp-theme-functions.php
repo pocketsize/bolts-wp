@@ -194,6 +194,7 @@ if ( !function_exists('asset') ) {
  * Return .svg file parsed for inline use
  * @return string
  */
+
 function get_svg( $asset, $fallback = false ) {
 	$path = get_theme_dir() . '/public/images/' . $asset . '.svg';
 
@@ -216,6 +217,7 @@ function get_svg( $asset, $fallback = false ) {
 /**
  * Echo .svg file parsed for inline use
  */
+
 function svg( $asset, $fallback = false ) {
 	echo get_svg( $asset, $fallback );
 }
@@ -297,6 +299,7 @@ if ( !function_exists('layout_items') ) {
 /**
  * Outputs string or component
  */
+
 if ( !function_exists('layout_item') ) {
 	function layout_item($item) {
 		if ( is_string($item) ) {

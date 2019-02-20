@@ -111,3 +111,25 @@ function bolts_wp_enqueue_scripts() {
 	wp_enqueue_script( 'main', get_asset('js/main.js'), null, null, true );
 }
 add_action( 'wp_enqueue_scripts', 'bolts_wp_enqueue_scripts' );
+
+
+/**
+ * Disables WordPress Rest API for external requests
+ */
+
+function restrict_rest_api_to_localhost() {
+    $whitelist = ['127.0.0.1', '::1'];
+
+    if (!in_array($_SERVER['REMOTE_ADDR'], $whitelist)) {
+        wp_send_json_error([
+        	'code'    => 'json_disabled',
+        	'message' => 'The JSON API is disabled on this site.'
+        ]);
+
+        die();
+    }
+}
+
+if ( BOLTS_WP_DISABLE_JSON_API ) {
+	add_action('rest_api_init', 'restrict_rest_api_to_localhost', 1);
+}
