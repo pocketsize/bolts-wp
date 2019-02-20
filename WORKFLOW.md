@@ -124,6 +124,9 @@ component('social-icons', get_field('social_icons'));
 ## JS and SCSS
 The structure in `./src/js/components` and `./src/sass/components` should match the `./components` folder as closely as possible. 1 component per file, nice and clean. Other files (such as helpers etc.) are placed in `./src/js` and `./src/sass`.
 
+## ACF (Advanced Custom Fields)
+When working with image fields, always return attachment ID, and get the desired image size using the `get_media` function.
+
 ## Naming conventions
 This is a pretty controversial topic, and should not be considered as Bolts WP canon if you dont work at Pocketsize. We include it here so you get the thoughts behind our included boilerplate components.
 
