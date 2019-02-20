@@ -7,6 +7,57 @@
  * http://www.pocketsize.se/
  */
 
+
+/**
+ * Get all pages using a custom template 
+ * @param string $template
+ * @return array|bool
+ */
+
+if ( !function_exists('get_page_ids_by_template') ) {
+	function get_page_ids_by_template($template) {
+		return get_posts([
+			'post_type'  => 'page',
+			'fields'     => 'ids',
+			'nopaging'   => true,
+			'meta_key'   => '_wp_page_template',
+			'meta_value' => $template . '.php'
+		]);
+	}
+}
+
+
+/**
+ * Get first page using a custom template 
+ * @param string $template
+ * @return int|bool
+ */
+
+if (!function_exists('get_page_id_by_template')) {
+	function get_page_id_by_template($template) {
+		return reset(get_page_ids_by_template($template));
+	}
+}
+
+
+/**
+ * Determine if a page has a specific page template
+ * @return bool
+ */
+
+if (!function_exists('is_template')) {
+	function is_template($template) {
+		global $post;
+
+		if ( !$post ) {
+			return false;
+		}
+
+		return is_page_template( $template . '.php' );
+	}
+}
+
+
 /**
  * Determine if a post has a specific post type
  * @return bool
@@ -48,18 +99,6 @@ if ( !function_exists('get_title') ) {
 
 
 /**
- * Print the title of a post
- * @param int $post_id
- */
-
-if ( !function_exists('title') ) {
-	function title( $post_id = false ) {
-		echo get_title( $post_id );
-	}
-}
-
-
-/**
  * Return the content of a post
  * @param int $post_id
  * @return string
@@ -81,29 +120,21 @@ if ( !function_exists('get_content') ) {
 	}
 }
 
-/**
- * Print the content of a post
- * @param int $post_id
- */
-
-if ( !function_exists('content') ) {
-	function content( $post_id = false ) {
-		echo get_content( $post_id, true );
-	}
-}
-
 
 /**
  * Return the excerpt for a post (manual or automatically generated)
  * @return string
  */
 
-// TODO: Test this function, check how the content is filtered
-
 if ( !function_exists('get_excerpt') ) {
 	function get_excerpt( $post_id = false, $words = false, $more = false ) {
-		if ( !$words ) $words = BOLTS_WP_EXCERPT_WORDS;
-		if ( !$more )  $more  = BOLTS_WP_EXCERPT_MORE;
+		if ( !$words ) {
+			$words = apply_filters('excerpt_length', 55);
+		}
+
+		if ( !$more ) {
+			$more = apply_filters('excerpt_more', '...');
+		}
 
 		if ( !!$post_id ) {
 			$post = get_post( $post_id );
@@ -111,21 +142,13 @@ if ( !function_exists('get_excerpt') ) {
 			global $post;
 		}
 
-		if ( !empty($post->post_excerpt) ) return $post->post_excerpt;
+		if ( !empty($post->post_excerpt) ) {
+			return $post->post_excerpt;
+		}
 
 		$filtered = apply_filters( 'the_content', $post->post_content );
+
 		return wp_trim_words( strip_tags($filtered), $words, $more );
-	}
-}
-
-
-/**
- * Print the excerpt for a post (manual or automatically generated)
- */
-
-if ( !function_exists('excerpt') ) {
-	function excerpt( $post_id = false, $words = false, $more = false ) {
-		echo get_excerpt( $post_id, $words, $more );
 	}
 }
 
@@ -151,19 +174,6 @@ if ( !function_exists('get_author') ) {
 
 
 /**
- * Print author information from a post (defaults to display name)
- * @param int $post_id
- * @param string $field
- */
-
-if ( !function_exists('author') ) {
-	function author( $post_id = false, $field = false ) {
-		echo get_author( $post_id, $field );
-	}
-}
-
-
-/**
  * Return the URI for the featured image of a post
  * @return string
  */
@@ -182,21 +192,12 @@ if ( !function_exists('get_featured_image') ) {
 				$size
 			);
 			
-			if ( !empty($image[0]) ) return $image[0];
+			if ( !empty($image[0]) ) {
+				return $image[0];
+			}
 		}
 
 		return $fallback;
-	}
-}
-
-
-/**
- * Print the URI for the featured image of a post
- */
-
-if ( !function_exists('featured_image') ) {
-	function featured_image( $post_id = false, $size = 'full', $fallback = false ) {
-		echo get_featured_image( $post_id, $size, $fallback );
 	}
 }
 
@@ -209,18 +210,28 @@ if ( !function_exists('featured_image') ) {
 if ( !function_exists('get_media') ) {
 	function get_media( $attachment_id, $size = 'full', $fallback = false ) {
 		$image = wp_get_attachment_image_src( $attachment_id, $size );
-		if ( !!$image ) return $image[0];
+
+		if ( !!$image ) {
+			return $image[0];
+		}
+
 		return $fallback;
 	}
 }
 
 
 /**
- * Print the path to an attachment in the media library
+ * Get post date
+ * @return string
  */
 
-if ( !function_exists('media') ) {
-	function media( $attachment_id, $size = 'full', $fallback = false ) {
-		echo get_media( $attachment_id, $size, $fallback );
+if ( !function_exists('get_date') ) {
+	function get_date( $post_id = false, $format = false ) {
+		if ( !$post_id ) {
+			global $post;
+			$post_id = $post->ID;
+		}
+
+		return get_the_date( $format, $post_id );
 	}
 }

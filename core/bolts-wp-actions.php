@@ -12,7 +12,6 @@
  */
 
 function bolts_wp_cleanup() {
-
 	function bolts_wp_head_cleanup() {
 		remove_action( 'wp_head', 'index_rel_link' );
 		remove_action( 'wp_head', 'feed_links_extra', 3 );
@@ -57,79 +56,20 @@ function bolts_wp_cleanup() {
 	add_filter( 'the_generator', 'bolts_wp_rss_version' );
 	add_filter( 'wp_head', 'bolts_wp_remove_wp_widget_recent_comments_style', 1 );
 	add_filter( 'gallery_style', 'bolts_wp_gallery_style' );
-
 }
 add_action( 'after_setup_theme', 'bolts_wp_cleanup', 15 );
 
 
 /**
  * Force the content editor to show on posts page
- *
- * @param $post
  */
 
 function bolts_wp_force_posts_page_editor( $post ) {
-	if ( $post->ID != get_option( 'page_for_posts' ) ) return;
+	if ($post->ID != get_option('page_for_posts')) {
+		return;
+	}
 
-	remove_action( 'edit_form_after_title', '_wp_posts_page_notice' );
+	remove_action('edit_form_after_title', '_wp_posts_page_notice');
 	add_post_type_support( 'page', 'editor' );
 }
 add_action( 'edit_form_after_title', 'bolts_wp_force_posts_page_editor', 0 );
-
-
-/**
- * Disable emojis (define in functions.php to override)
- */
-
-// TODO: Denna verkar inte göra någon skillnad
-
-if ( BOLTS_WP_DISABLE_EMOJIS ) {
-	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-	remove_action( 'wp_print_styles', 'print_emoji_styles' );
-}
-
-
-/**
- * Enqueue styles
- */
-
-function bolts_wp_enqueue_styles() {
-	wp_enqueue_style( 'main', get_asset('css/main.css'), null, null );
-}
-add_action( 'wp_enqueue_scripts', 'bolts_wp_enqueue_styles' );
-
-
-/**
- * Enqueue scripts
- */
-
-function bolts_wp_enqueue_scripts() {
-	if ( BOLTS_WP_ENQUEUE_JQUERY ) {
-		wp_enqueue_script( 'jquery' );
-	}
-
-	wp_enqueue_script( 'main', get_asset('js/main.js'), null, null, true );
-}
-add_action( 'wp_enqueue_scripts', 'bolts_wp_enqueue_scripts' );
-
-
-/**
- * Disables WordPress Rest API for external requests
- */
-
-function restrict_rest_api_to_localhost() {
-    $whitelist = ['127.0.0.1', '::1'];
-
-    if (!in_array($_SERVER['REMOTE_ADDR'], $whitelist)) {
-        wp_send_json_error([
-        	'code'    => 'json_disabled',
-        	'message' => 'The JSON API is disabled on this site.'
-        ]);
-
-        die();
-    }
-}
-
-if ( BOLTS_WP_DISABLE_JSON_API ) {
-	add_action('rest_api_init', 'restrict_rest_api_to_localhost', 1);
-}

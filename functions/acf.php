@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Bolts WP v1.0 | MIT License
- *
- * Developed by Pocketsize
- * http://www.pocketsize.se/
- */
-
 if ( function_exists('acf_add_options_page') ) {
 	$options_page = acf_add_options_page(array(
 		'page_title' => 'Options',
