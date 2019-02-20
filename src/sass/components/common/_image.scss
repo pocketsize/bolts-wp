@@ -1,13 +1,36 @@
 .image {
-    position: relative;
+    &.is-overlay {
+        @include overlay;
+    }
+
+    &-inner {
+        position: relative;
+        overflow: hidden;
+
+        .image.is-overlay & {
+            @include overlay;
+        }
+    }
 
     &-object {
         @include background;
-        position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: $base--small;
+        overflow: hidden;
+
+        .image.is-lazyload-default & {
+            opacity: 0;
+            @include transition(opacity);
+        }
+
+        .image.is-lazyload-default.is-loaded & {
+            opacity: 1;
+        }
+
+        .image.is-overlay & {
+            @include overlay;
+        }
 
         &.has-overlay {
             &:before {
@@ -16,9 +39,14 @@
                 background: rgba($color--black, 0.4);
             }
         }
+    }
 
-        .image-object.is-default & {
-            @include aspect-ratio(5, 4);
+    &-element {
+        opacity: 0;
+
+        .image.is-default & {
+            width: 100%;
+            height: auto;
         }
     }
 
@@ -28,7 +56,5 @@
     }
 
     &-caption {
-        margin-top: $base--small;
-        padding: 0 $base--medium;
     }
 }

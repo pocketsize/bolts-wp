@@ -9,6 +9,8 @@ import '@babel/polyfill';
 import { Bolts, misc } from 'bolts';
 import mainMenu from './components/main-menu';
 import toggleState from './misc/toggle-state';
+//import slider from './components/common/slider';
+//import image from './components/common/image';
 
 (() => {
     document.addEventListener('DOMContentLoaded', function() {
@@ -16,6 +18,8 @@ import toggleState from './misc/toggle-state';
         misc.autoHeight('[data-auto-height]');
         mainMenu.init();
         toggleState.init();
+        //slider.init();
+        //images.init();
 
         // The world is your oyster!
     });
