@@ -45,6 +45,8 @@ Bolts WP uses Yarn and provides 5 build scripts for dev:
 - `yarn bolts-add:react` adds all packages, config and directories needed for working with React
 - `yarn bolts-remove:react` removes all React-related packages, config and directories
 - `yarn bolts-remove:react:keep-files` removes all React-related packages and config, but keeps the directories
+- `yarn php-lint` runs phpcs on all .php files which reports all style errors and warnings
+- `yarn php-fix` runs phpcbf on all .php files which tries to fix all style errors and warnings
 
 ### For production
 Only one. `yarn prod` bundles a prod-ready theme.
