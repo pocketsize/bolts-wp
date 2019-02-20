@@ -66,3 +66,27 @@ function prepare_posts_for_archive($post_type = 'post') {
 
 	return $items;
 }
+
+/**
+ * Get and format search results from the loop
+ */
+
+function prepare_loop_for_search_results() {
+	$items = [];
+
+	if ( have_posts() ) {
+		while ( have_posts() ) {
+			the_post();
+			
+			$items[] = [
+				'id'        => $post->ID,
+				'type'      => $post->post_type,
+				'title'     => get_title($post->ID),
+				'content'   => get_content($post->ID),
+				'date'      => get_the_date(null, $post->ID),
+				'permalink' => get_permalink($post->ID),
+				'author'    => get_author($post->ID)
+			];
+		}
+	}
+}
