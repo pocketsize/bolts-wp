@@ -1,13 +1,13 @@
 <?php 
-	/**
-	 * Accordion
-	 * 
-	 * Make sure to include the JS file as well!
-	 * 
-	 * @param array  $items
-	 * @param string $items.title
-	 * @param string $items.content
-	 */
+/**
+ * Accordion
+ * 
+ * Make sure to include the JS file as well!
+ * 
+ * @param array  $items
+ * @param string $items.title
+ * @param string $items.content
+ */
 ?>
 
 <ul class="accordion" data-accordion>

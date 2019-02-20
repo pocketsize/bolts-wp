@@ -1,20 +1,20 @@
 <?php 
-	/**
-	 * Slider
-	 * 
-	 * @param array   $slides
-	 * @param string  $slides.component
-	 * @param string  $slides.data
-	 * 
-	 * @param string  $theme
-	 * @param string  $type
-	 * @param boolean $has_controls
-	 * @param boolean $has_pagination
-	 */
+/**
+ * Slider
+ * 
+ * @param array   $slides
+ * @param string  $slides.component
+ * @param string  $slides.data
+ * 
+ * @param string  $theme
+ * @param string  $type
+ * @param boolean $has_controls
+ * @param boolean $has_pagination
+ */
 
-	$type      = !empty($type) ? $type : 'default';
-	$type_attr = 'data-slider="' . $type . '"';
-	$theme     = !empty($theme) ? 'is-theme-' . $theme : 'is-theme-default';
+$type      = !empty($type) ? $type : 'default';
+$type_attr = 'data-slider="' . $type . '"';
+$theme     = !empty($theme) ? 'is-theme-' . $theme : 'is-theme-default';
 ?>
 
 <?php if(!empty($slides)): ?>

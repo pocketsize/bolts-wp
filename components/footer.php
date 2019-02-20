@@ -1,9 +1,9 @@
 <?php 
-	/**
-	 * Footer
-	 * 
-	 * The main footer of the website
-	 */
+/**
+ * Footer
+ * 
+ * The main footer of the website
+ */
 ?>
 
 <footer class="footer">
