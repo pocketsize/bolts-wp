@@ -31,14 +31,16 @@ if ( !function_exists('is_post_type') ) {
  */
 
 if ( !function_exists('get_title') ) {
-	function get_title( $post_id = false, $filtered = false ) {
+	function get_title( $post_id = false, $filtered = true ) {
 		if ( !!$post_id ) {
 			$post = get_post( $post_id );
 		} else {
 			global $post;
 		}
 
-		if ( $filtered ) return apply_filters( 'the_title', $post->post_title );
+		if ($filtered) {
+			return apply_filters( 'the_title', $post->post_title );
+		}
 
 		return $post->post_title;
 	}
@@ -52,7 +54,7 @@ if ( !function_exists('get_title') ) {
 
 if ( !function_exists('title') ) {
 	function title( $post_id = false ) {
-		echo get_title( $post_id, true );
+		echo get_title( $post_id );
 	}
 }
 
@@ -64,14 +66,16 @@ if ( !function_exists('title') ) {
  */
 
 if ( !function_exists('get_content') ) {
-	function get_content( $post_id = false, $filtered = false ) {
+	function get_content( $post_id = false, $filtered = true ) {
 		if ( !!$post_id ) {
 			$post = get_post( $post_id );
 		} else {
 			global $post;
 		}
 
-		if ( $filtered ) return apply_filters( 'the_content', $post->post_content );
+		if ($filtered) {
+			return apply_filters('the_content', $post->post_content);
+		}
 
 		return $post->post_content;
 	}
