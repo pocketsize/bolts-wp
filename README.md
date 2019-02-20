@@ -63,11 +63,6 @@ Bolts WP features a couple of defaults used both during the init, but also by so
 
 | Name                             | Type   | Default Value |
 |----------------------------------|--------|---------------|
-| `BOLTS_WP_DISABLE_ADMIN_BAR`     | Bool   | `false`       |
-| `BOLTS_WP_DISABLE_EMOJIS`        | Bool   | `false`       |
-| `BOLTS_WP_EXCERPT_WORDS`         | Int    | `55`          |
-| `BOLTS_WP_EXCERPT_MORE`          | String | `'[...]'`     |
-| `BOLTS_WP_ENQUEUE_JQUERY`        | Bool   | `false`       |
 | `BOLTS_WP_DEFAULT_MENU_LOCATION` | Bool   | `false`       |
 
 ## Component workflow and theme functions
