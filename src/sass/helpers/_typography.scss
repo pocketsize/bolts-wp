@@ -107,10 +107,6 @@ $font-weight--bold: 700;
         @extend %embed-wrapper;
     }
 
-    .image-wrapper {
-        @extend %image-wrapper;
-    }
-
     .alignleft,
     .alignright {
         margin-bottom: $base--x-small;
