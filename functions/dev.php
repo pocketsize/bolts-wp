@@ -235,56 +235,56 @@ function get_dummy_content() {
 	<h2>Form elements</h2>
 
 	<form>
-		<fieldset id="forms__input">
+		<fieldset>
 			<legend>Input fields</legend>
 
 			<p>
-				<label for="input__text">Text Input</label>
-				<input id="input__text" type="text" placeholder="Text Input">
+				<label for="input-text">Text Input</label>
+				<input id="input-text" type="text" placeholder="Text Input">
 			</p>
 
 			<p>
-				<label for="input__password">Password</label>
-				<input id="input__password" type="password" placeholder="Type your Password">
+				<label for="input-password">Password</label>
+				<input id="input-password" type="password" placeholder="Type your Password">
 			</p>
 
 			<p>
-				<label for="input__webaddress">Web Address</label>
-				<input id="input__webaddress" type="url" placeholder="http://yoursite.com">
+				<label for="input-webaddress">Web Address</label>
+				<input id="input-webaddress" type="url" placeholder="http://yoursite.com">
 			</p>
 
 			<p>
-				<label for="input__emailaddress">Email Address</label>
-				<input id="input__emailaddress" type="email" placeholder="name@email.com">
+				<label for="input-emailaddress">Email Address</label>
+				<input id="input-emailaddress" type="email" placeholder="name@email.com">
 			</p>
 
 			<p>
-				<label for="input__phone">Phone Number</label>
-				<input id="input__phone" type="tel" placeholder="(999) 999-9999">
+				<label for="input-phone">Phone Number</label>
+				<input id="input-phone" type="tel" placeholder="(999) 999-9999">
 			</p>
 
 			<p>
-				<label for="input__search">Search</label>
-				<input id="input__search" type="search" placeholder="Enter Search Term">
+				<label for="input-search">Search</label>
+				<input id="input-search" type="search" placeholder="Enter Search Term">
 			</p>
 
 			<p>
-				<label for="input__text2">Number Input</label>
-				<input id="input__text2" type="number" placeholder="Enter a Number">
+				<label for="input-text2">Number Input</label>
+				<input id="input-text2" type="number" placeholder="Enter a Number">
 			</p>
 
 			<p>
-				<label for="input__text3" class="error">Error</label>
-				<input id="input__text3" class="is-error" type="text" placeholder="Text Input">
+				<label for="input-text3">Error</label>
+				<input id="input-text3" type="text" placeholder="Text Input">
 			</p>
 
 			<p>
-				<label for="input__text4" class="valid">Valid</label>
-				<input id="input__text4" class="is-valid" type="text" placeholder="Text Input">
+				<label for="input-text4">Valid</label>
+				<input id="input-text4" type="text" placeholder="Text Input">
 			</p>
 		</fieldset>
 
-		<fieldset id="forms__select">
+		<fieldset>
 			<legend>Select menus</legend>
 
 			<p>
@@ -300,27 +300,27 @@ function get_dummy_content() {
 			</p>
 		</fieldset>
 
-		<fieldset id="forms__checkbox">
+		<fieldset>
 			<legend>Checkboxes</legend>
 
-			<ul class="list list--bare">
+			<ul>
 				<li><label for="checkbox1"><input id="checkbox1" name="checkbox" type="checkbox" checked="checked"> Choice A</label></li>
 				<li><label for="checkbox2"><input id="checkbox2" name="checkbox" type="checkbox"> Choice B</label></li>
 				<li><label for="checkbox3"><input id="checkbox3" name="checkbox" type="checkbox"> Choice C</label></li>
 			</ul>
 		</fieldset>
 
-		<fieldset id="forms__radio">
+		<fieldset>
 			<legend>Radio buttons</legend>
 
-			<ul class="list list--bare">
-				<li><label for="radio1"><input id="radio1" name="radio" type="radio" class="radio" checked="checked"> Option 1</label></li>
-				<li><label for="radio2"><input id="radio2" name="radio" type="radio" class="radio"> Option 2</label></li>
-				<li><label for="radio3"><input id="radio3" name="radio" type="radio" class="radio"> Option 3</label></li>
+			<ul>
+				<li><label for="radio1"><input id="radio1" name="radio" type="radio" checked="checked"> Option 1</label></li>
+				<li><label for="radio2"><input id="radio2" name="radio" type="radio"> Option 2</label></li>
+				<li><label for="radio3"><input id="radio3" name="radio" type="radio"> Option 3</label></li>
 			</ul>
 		</fieldset>
 
-		<fieldset id="forms__textareas">
+		<fieldset>
 			<legend>Textareas</legend>
 
 			<p>
@@ -329,7 +329,7 @@ function get_dummy_content() {
 			</p>
 		</fieldset>
 
-		<fieldset id="forms__html5">
+		<fieldset>
 			<legend>HTML5 inputs</legend>
 
 			<p>
@@ -373,7 +373,7 @@ function get_dummy_content() {
 			</p>
 		</fieldset>
 
-		<fieldset id="forms__action">
+		<fieldset>
 			<legend>Action buttons</legend>
 
 			<p>
