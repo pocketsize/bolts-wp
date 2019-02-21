@@ -54,7 +54,6 @@ function dad($val)
     die;
 }
 
-
 /**
  * Register default menu location
  */
