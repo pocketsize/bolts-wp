@@ -49,7 +49,7 @@ Bolts WP uses Yarn and provides 5 build scripts for dev:
 - `yarn php-fix` runs phpcbf on all .php files
 
 ### For production
-Only one. `yarn prod` bundles a prod-ready theme.
+Only one. `yarn prod` bundles a prod-ready theme :)
 
 ## Configuring
 ### Webpack
