@@ -10,7 +10,6 @@ function bolts_wp_enqueue_styles()
 }
 add_action('wp_enqueue_scripts', 'bolts_wp_enqueue_styles');
 
-
 /**
  * Enqueue scripts
  */
@@ -22,14 +21,12 @@ function bolts_wp_enqueue_scripts()
 }
 add_action('wp_enqueue_scripts', 'bolts_wp_enqueue_scripts');
 
-
 /**
  * Disable emojis (define in functions.php to override)
  */
 
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
-
 
 /**
  * Disables WordPress Rest API for external requests

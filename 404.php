@@ -17,6 +17,7 @@ if (false != $post_id = get_field('404_page', 'option')) {
 
     // Include 404 page post template
     include(get_theme_dir() . '/' . $template);
+
     die();
 } else {
     get_header();
