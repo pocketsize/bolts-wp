@@ -41,13 +41,19 @@ if (!function_exists('get_page_id_by_template')) {
 
 /**
  * Determine if a page has a specific page template
+ * @param string $template
+ * @param int $post_id
  * @return bool
  */
 
 if (!function_exists('is_template')) {
-    function is_template($template)
+    function is_template($template, $post_id = false)
     {
-        global $post;
+        if (!!$post_id) {
+            $post = get_post($post_id);
+        } else {
+            global $post;
+        }
 
         if (!$post) {
             return false;
@@ -59,17 +65,24 @@ if (!function_exists('is_template')) {
 
 /**
  * Determine if a post has a specific post type
+ * @param string $post_type
+ * @param object $post_id
  * @return bool
  */
 
 if (!function_exists('is_post_type')) {
-    function is_post_type($post_type, $post = false)
+    function is_post_type($post_type, $post_id = false)
     {
         if (!$post) {
             global $post;
-        } elseif (is_int($post)) {
-            $post = get_post($post);
+        } elseif (is_int($post_id)) {
+            $post = get_post($post_id);
         }
+
+        if (!$post) {
+            return false;
+        }
+
         return $post->post_type == $post_type;
     }
 }
@@ -77,6 +90,7 @@ if (!function_exists('is_post_type')) {
 /**
  * Return the title of a post
  * @param int $post_id
+ * @param bool $filtered
  * @return string
  */
 
@@ -100,6 +114,7 @@ if (!function_exists('get_title')) {
 /**
  * Return the content of a post
  * @param int $post_id
+ * @param bool $filtered
  * @return string
  */
 
@@ -122,6 +137,9 @@ if (!function_exists('get_content')) {
 
 /**
  * Return the excerpt for a post (manual or automatically generated)
+ * @param int $post_id
+ * @param int $words
+ * @param string $more
  * @return string
  */
 
@@ -173,7 +191,29 @@ if (!function_exists('get_author')) {
 }
 
 /**
+ * Get post date
+ * @param int $post_id
+ * @param string $format
+ * @return string
+ */
+
+if (!function_exists('get_date')) {
+    function get_date($post_id = false, $format = false)
+    {
+        if (!$post_id) {
+            global $post;
+            $post_id = $post->ID;
+        }
+
+        return get_the_date($format, $post_id);
+    }
+}
+
+/**
  * Return the URI for the featured image of a post
+ * @param int $post_id
+ * @param string $size
+ * @param string $fallback
  * @return string
  */
 
@@ -205,6 +245,9 @@ if (!function_exists('get_featured_image')) {
 
 /**
  * Return the path to an attachment in the media library
+ * @param int $attachment_id
+ * @param string $size
+ * @param string $fallback
  * @return string
  */
 
@@ -218,22 +261,5 @@ if (!function_exists('get_media')) {
         }
 
         return $fallback;
-    }
-}
-
-/**
- * Get post date
- * @return string
- */
-
-if (!function_exists('get_date')) {
-    function get_date($post_id = false, $format = false)
-    {
-        if (!$post_id) {
-            global $post;
-            $post_id = $post->ID;
-        }
-
-        return get_the_date($format, $post_id);
     }
 }
