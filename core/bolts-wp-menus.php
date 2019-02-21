@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * Bolts WP v1.0 | MIT License
+ *
+ * Developed by Pocketsize
+ * http://www.pocketsize.se/
+ */
+
+/**
  * Construct a nav menu as a nested array of menu objects
  * @param array $elements
  * @param int $parent_id
