@@ -11,14 +11,14 @@
  * Default configuration constants, define these in bolts-wp-config.php to override
  */
 
-$bolts_wp_options = array(
-	'BOLTS_WP_DEFAULT_MENU_LOCATION' => false
-);
+$bolts_wp_options = [
+    'BOLTS_WP_DEFAULT_MENU_LOCATION' => false
+];
 
-foreach ( $bolts_wp_options as $option => $value ) {
-	if ( !defined($option) ) {
-		define( $option, $value );
-	}
+foreach ($bolts_wp_options as $option => $value) {
+    if (!defined($option)) {
+        define($option, $value);
+    }
 }
 
 require_once get_template_directory() . '/core/bolts-wp-actions.php';

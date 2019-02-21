@@ -33,8 +33,8 @@ if (!function_exists('create_post_type')) {
         $icon = null,
         $custom_args = false
     ) {
-        $args = array(
-            'labels' => array(
+        $args = [
+            'labels' => [
                 'name'               => $plural,
                 'singular_name'      => $singular,
                 'menu_name'          => $plural,
@@ -49,18 +49,18 @@ if (!function_exists('create_post_type')) {
                 'parent_item_colon'  => 'Parent' . $plural . ':',
                 'not_found'          => 'No ' . lcfirst($plural) . ' found.',
                 'not_found_in_trash' => 'No ' . lcfirst($plural) . ' found in trash.'
-            ),
+            ],
             'public'             => true,
             'publicly_queryable' => true,
             'show_ui'            => true,
             'show_in_menu'       => true,
             'query_var'          => true,
-            'rewrite'            => array( 'slug' => $slug ),
+            'rewrite'            => [ 'slug' => $slug ],
             'capability_type'    => 'post',
             'has_archive'        => false,
-            'supports'           => array( 'title', 'editor', 'thumbnail' ),
+            'supports'           => [ 'title', 'editor', 'thumbnail' ],
             'menu_icon'          => $icon
-        );
+        ];
 
         if (!!$custom_args) {
             $args = array_replace_recursive($args, $custom_args);
@@ -83,8 +83,8 @@ if (!function_exists('create_taxonomy')) {
         $post_type = 'post',
         $custom_args = false
     ) {
-        $args = array(
-            'labels' => array(
+        $args = [
+            'labels' => [
                 'name'                       => $plural,
                 'singular_name'              => $singular,
                 'menu_name'                  => $plural,
@@ -102,13 +102,13 @@ if (!function_exists('create_taxonomy')) {
                 'add_or_remove_items'        => 'Add or remove ' . lcfirst($plural),
                 'choose_from_most_used'      => 'Show from most used',
                 'not_found'                  => 'No ' . lcfirst($plural) . ' found.',
-            ),
+            ],
             'hierarchical'      => true,
             'show_ui'           => true,
             'show_admin_column' => true,
             'query_var'         => true,
-            'rewrite'           => array( 'slug' => $slug )
-        );
+            'rewrite'           => [ 'slug' => $slug ]
+        ];
 
         if (!!$custom_args) {
             $args = array_replace_recursive($args, $custom_args);

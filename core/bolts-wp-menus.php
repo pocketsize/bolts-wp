@@ -7,32 +7,35 @@
  * @return array
  */
 
-if ( !function_exists('bolts_build_nav_menu_tree') ) {
-	function bolts_build_nav_menu_tree( &$elements, $parent_id = 0 ) {
-		global $post;
+if (!function_exists('bolts_build_nav_menu_tree')) {
+    function bolts_build_nav_menu_tree(&$elements, $parent_id = 0)
+    {
+        global $post;
 
-		$branch = [];
+        $branch = [];
 
-		foreach ( $elements as &$element ) {
-			$element->current_menu_item = false;
+        foreach ($elements as &$element) {
+            $element->current_menu_item = false;
 
-			if ( isset($post) && $element->object_id == $post->ID ) {
-				$element->current_menu_item = true;
-			}
+            if (isset($post) && $element->object_id == $post->ID) {
+                $element->current_menu_item = true;
+            }
 
-			if ( $element->menu_item_parent == $parent_id ) {
-				$children = bolts_build_nav_menu_tree( $elements, $element->ID );
+            if ($element->menu_item_parent == $parent_id) {
+                $children = bolts_build_nav_menu_tree($elements, $element->ID);
 
-				$element->children = false;
-				if ( $children ) $element->children = $children;
+                $element->children = false;
+                if ($children) {
+                    $element->children = $children;
+                }
 
-				$branch[$element->ID] = $element;
-				unset( $element );
-			}
-		}
+                $branch[$element->ID] = $element;
+                unset($element);
+            }
+        }
 
-		return $branch;
-	}
+        return $branch;
+    }
 }
 
 
@@ -42,23 +45,26 @@ if ( !function_exists('bolts_build_nav_menu_tree') ) {
  * @return array|null
  */
 
-if ( !function_exists('get_menu_object') ) {
-	function get_menu_object( $location = false ) {
-		/* TODO: fail more gracefully if menu at specified location is not defined */
-		global $post;
+if (!function_exists('get_menu_object')) {
+    function get_menu_object($location = false)
+    {
+        /* TODO: fail more gracefully if menu at specified location is not defined */
+        global $post;
 
-		if ( !$location ) $location = BOLTS_WP_DEFAULT_MENU_LOCATION;
+        if (!$location) {
+            $location = BOLTS_WP_DEFAULT_MENU_LOCATION;
+        }
 
-		$locations = get_nav_menu_locations();
-		
-		if (empty($locations) || !isset($locations[ $location ])) {
-			return null;
-		}
+        $locations = get_nav_menu_locations();
+        
+        if (empty($locations) || !isset($locations[ $location ])) {
+            return null;
+        }
 
-		$menu_id = $locations[ $location ];
+        $menu_id = $locations[ $location ];
 
-		$menu_items = wp_get_nav_menu_items( $menu_id );
+        $menu_items = wp_get_nav_menu_items($menu_id);
 
-		return $menu_items ? bolts_build_nav_menu_tree( $menu_items, 0 ) : null;
-	}
+        return $menu_items ? bolts_build_nav_menu_tree($menu_items, 0) : null;
+    }
 }

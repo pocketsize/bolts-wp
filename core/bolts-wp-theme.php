@@ -13,10 +13,11 @@
  * @return string
  */
 
-if ( !function_exists('get_theme_dir') ) {
-	function get_theme_dir() {
-		return get_template_directory();
-	}
+if (!function_exists('get_theme_dir')) {
+    function get_theme_dir()
+    {
+        return get_template_directory();
+    }
 }
 
 
@@ -26,10 +27,11 @@ if ( !function_exists('get_theme_dir') ) {
  * @return string
  */
 
-if ( !function_exists('get_theme_uri') ) {
-	function get_theme_uri() {
-		return get_template_directory_uri();
-	}
+if (!function_exists('get_theme_uri')) {
+    function get_theme_uri()
+    {
+        return get_template_directory_uri();
+    }
 }
 
 
@@ -38,16 +40,17 @@ if ( !function_exists('get_theme_uri') ) {
  * @return string
  */
 
-if ( !function_exists('get_asset') ) {
-	function get_asset( $asset, $fallback = false ) {
-		$path = get_theme_dir() . '/public/' . $asset;
+if (!function_exists('get_asset')) {
+    function get_asset($asset, $fallback = false)
+    {
+        $path = get_theme_dir() . '/public/' . $asset;
 
-		if ( file_exists( $path ) ) {
-			return get_theme_uri() . '/public/' . $asset . '?m=' . filemtime( $path );
-		}
+        if (file_exists($path)) {
+            return get_theme_uri() . '/public/' . $asset . '?m=' . filemtime($path);
+        }
 
-		return $fallback;
-	}
+        return $fallback;
+    }
 }
 
 
@@ -56,23 +59,24 @@ if ( !function_exists('get_asset') ) {
  * @return string
  */
 
-function get_svg( $asset, $fallback = false ) {
-	$path = get_theme_dir() . '/public/images/' . $asset . '.svg';
+function get_svg($asset, $fallback = false)
+{
+    $path = get_theme_dir() . '/public/images/' . $asset . '.svg';
 
-	if ( !file_exists( $path ) && $fallback ) {
-		$path = $fallback;
-	}
+    if (!file_exists($path) && $fallback) {
+        $path = $fallback;
+    }
 
-	if ( !file_exists($path) ) {
-		throw new Exception('Asset not found: ' . $path);
-	}
+    if (!file_exists($path)) {
+        throw new Exception('Asset not found: ' . $path);
+    }
 
-	$inline = preg_replace('/\s*<\?xml.*?\?>\s*/si', '', file_get_contents($path));
-	$inline = preg_replace('/\s*<!--.*?-->\s*/si', '', $inline);
-	$inline = preg_replace('/\s*<title>.*?<\/title>\s*/si', '', $inline);
-	$inline = preg_replace('/\s*<desc>.*?<\/desc>\s*/si', '', $inline);
+    $inline = preg_replace('/\s*<\?xml.*?\?>\s*/si', '', file_get_contents($path));
+    $inline = preg_replace('/\s*<!--.*?-->\s*/si', '', $inline);
+    $inline = preg_replace('/\s*<title>.*?<\/title>\s*/si', '', $inline);
+    $inline = preg_replace('/\s*<desc>.*?<\/desc>\s*/si', '', $inline);
 
-	return $inline;
+    return $inline;
 }
 
 
@@ -80,22 +84,27 @@ function get_svg( $asset, $fallback = false ) {
  * Include a template part from the components folder, with optional arguments
  */
 
-if ( !function_exists('component') ) {
-	function component( $file, $args = false ) {
-		$path = get_theme_dir() . '/components/' . $file . '.php';
+if (!function_exists('component')) {
+    function component($file, $args = false)
+    {
+        $path = get_theme_dir() . '/components/' . $file . '.php';
 
-		global $posts, $post, $wp_did_header, $wp_query, $wp_rewrite,
-		       $wpdb, $wp_version, $wp, $id, $comment, $user_ID;
+        global $posts, $post, $wp_did_header, $wp_query, $wp_rewrite,
+               $wpdb, $wp_version, $wp, $id, $comment, $user_ID;
 
-		if ( is_array( $wp_query->query_vars ) ) {
-			extract( $wp_query->query_vars, EXTR_SKIP );
-		}
-		if ( isset( $s ) ) $s = esc_attr( $s );
+        if (is_array($wp_query->query_vars)) {
+            extract($wp_query->query_vars, EXTR_SKIP);
+        }
+        if (isset($s)) {
+            $s = esc_attr($s);
+        }
 
-		if ( is_array($args) ) extract( $args );
+        if (is_array($args)) {
+            extract($args);
+        }
 
-		require $path;
-	}
+        require $path;
+    }
 }
 
 
@@ -107,41 +116,40 @@ if ( !function_exists('component') ) {
  * @param string $item_class
  */
 
-if ( !function_exists('layout_items') ) {
-	function layout_items($items, $item_class = false) {
-		if ( empty($items) ) return false;
+if (!function_exists('layout_items')) {
+    function layout_items($items, $item_class = false)
+    {
+        if (empty($items)) {
+            return false;
+        }
 
-		if ( array_keys($items) !== range(0, count($items) - 1) ) {
+        if (array_keys($items) !== range(0, count($items) - 1)) {
+            layout_item($items);
+        } else {
+            foreach ($items as $item) {
+                $modifier = !empty($item['modifier']) ? $item['modifier'] : '';
 
-			layout_item($items);
+                echo !empty($item_class) ? '<div class="' . $item_class . ' ' . $modifier . '">' : '';
 
-		} else {
+                layout_item($item);
 
-			foreach ( $items as $item ) {
-
-				$modifier = !empty($item['modifier']) ? $item['modifier'] : '';
-
-				echo !empty($item_class) ? '<div class="' . $item_class . ' ' . $modifier . '">' : '';
-
-				layout_item($item);
-
-				echo !empty($item_class) ? '</div>' : '';
-
-			}
-		}
-	}
+                echo !empty($item_class) ? '</div>' : '';
+            }
+        }
+    }
 }
 
 /**
  * Outputs string or component
  */
 
-if ( !function_exists('layout_item') ) {
-	function layout_item($item) {
-		if ( is_string($item) ) {
-			echo $item;
-		} else {
-			component($item['component'], $item['data']);
-		}
-	}
+if (!function_exists('layout_item')) {
+    function layout_item($item)
+    {
+        if (is_string($item)) {
+            echo $item;
+        } else {
+            component($item['component'], $item['data']);
+        }
+    }
 }

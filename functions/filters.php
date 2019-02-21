@@ -6,28 +6,28 @@
 
 function bolts_wp_set_image_sizes($sizes)
 {
-    return array(
-        'small'  => array(
+    return [
+        'small'  => [
             'width'  => 640,
             'height' => 640,
             'crop'   => false
-        ),
-        'medium' => array(
+        ],
+        'medium' => [
             'width'  => 1280,
             'height' => 1280,
             'crop'   => false
-        ),
-        'large'  => array(
+        ],
+        'large'  => [
             'width'  => 1920,
             'height' => 1920,
             'crop'   => false
-        ),
-        'xlarge' => array(
+        ],
+        'xlarge' => [
             'width'  => 2560,
             'height' => 2560,
             'crop'   => false
-        )
-    );
+        ]
+    ];
 }
 add_filter('intermediate_image_sizes_advanced', 'bolts_wp_set_image_sizes');
 

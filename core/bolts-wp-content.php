@@ -9,34 +9,36 @@
 
 
 /**
- * Get all pages using a custom template 
+ * Get all pages using a custom template
  * @param string $template
  * @return array|bool
  */
 
-if ( !function_exists('get_page_ids_by_template') ) {
-	function get_page_ids_by_template($template) {
-		return get_posts([
-			'post_type'  => 'page',
-			'fields'     => 'ids',
-			'nopaging'   => true,
-			'meta_key'   => '_wp_page_template',
-			'meta_value' => $template . '.php'
-		]);
-	}
+if (!function_exists('get_page_ids_by_template')) {
+    function get_page_ids_by_template($template)
+    {
+        return get_posts([
+            'post_type'  => 'page',
+            'fields'     => 'ids',
+            'nopaging'   => true,
+            'meta_key'   => '_wp_page_template',
+            'meta_value' => $template . '.php'
+        ]);
+    }
 }
 
 
 /**
- * Get first page using a custom template 
+ * Get first page using a custom template
  * @param string $template
  * @return int|bool
  */
 
 if (!function_exists('get_page_id_by_template')) {
-	function get_page_id_by_template($template) {
-		return reset(get_page_ids_by_template($template));
-	}
+    function get_page_id_by_template($template)
+    {
+        return reset(get_page_ids_by_template($template));
+    }
 }
 
 
@@ -46,15 +48,16 @@ if (!function_exists('get_page_id_by_template')) {
  */
 
 if (!function_exists('is_template')) {
-	function is_template($template) {
-		global $post;
+    function is_template($template)
+    {
+        global $post;
 
-		if ( !$post ) {
-			return false;
-		}
+        if (!$post) {
+            return false;
+        }
 
-		return is_page_template( $template . '.php' );
-	}
+        return is_page_template($template . '.php');
+    }
 }
 
 
@@ -63,15 +66,16 @@ if (!function_exists('is_template')) {
  * @return bool
  */
 
-if ( !function_exists('is_post_type') ) {
-	function is_post_type( $post_type, $post = false ) {
-		if ( !$post ) {
-			global $post;
-		} else if ( is_int( $post ) ) {
-			$post = get_post( $post );
-		}
-		return $post->post_type == $post_type;
-	}
+if (!function_exists('is_post_type')) {
+    function is_post_type($post_type, $post = false)
+    {
+        if (!$post) {
+            global $post;
+        } elseif (is_int($post)) {
+            $post = get_post($post);
+        }
+        return $post->post_type == $post_type;
+    }
 }
 
 
@@ -81,20 +85,21 @@ if ( !function_exists('is_post_type') ) {
  * @return string
  */
 
-if ( !function_exists('get_title') ) {
-	function get_title( $post_id = false, $filtered = true ) {
-		if ( !!$post_id ) {
-			$post = get_post( $post_id );
-		} else {
-			global $post;
-		}
+if (!function_exists('get_title')) {
+    function get_title($post_id = false, $filtered = true)
+    {
+        if (!!$post_id) {
+            $post = get_post($post_id);
+        } else {
+            global $post;
+        }
 
-		if ($filtered) {
-			return apply_filters( 'the_title', $post->post_title );
-		}
+        if ($filtered) {
+            return apply_filters('the_title', $post->post_title);
+        }
 
-		return $post->post_title;
-	}
+        return $post->post_title;
+    }
 }
 
 
@@ -104,20 +109,21 @@ if ( !function_exists('get_title') ) {
  * @return string
  */
 
-if ( !function_exists('get_content') ) {
-	function get_content( $post_id = false, $filtered = true ) {
-		if ( !!$post_id ) {
-			$post = get_post( $post_id );
-		} else {
-			global $post;
-		}
+if (!function_exists('get_content')) {
+    function get_content($post_id = false, $filtered = true)
+    {
+        if (!!$post_id) {
+            $post = get_post($post_id);
+        } else {
+            global $post;
+        }
 
-		if ($filtered) {
-			return apply_filters('the_content', $post->post_content);
-		}
+        if ($filtered) {
+            return apply_filters('the_content', $post->post_content);
+        }
 
-		return $post->post_content;
-	}
+        return $post->post_content;
+    }
 }
 
 
@@ -126,30 +132,31 @@ if ( !function_exists('get_content') ) {
  * @return string
  */
 
-if ( !function_exists('get_excerpt') ) {
-	function get_excerpt( $post_id = false, $words = false, $more = false ) {
-		if ( !$words ) {
-			$words = apply_filters('excerpt_length', 55);
-		}
+if (!function_exists('get_excerpt')) {
+    function get_excerpt($post_id = false, $words = false, $more = false)
+    {
+        if (!$words) {
+            $words = apply_filters('excerpt_length', 55);
+        }
 
-		if ( !$more ) {
-			$more = apply_filters('excerpt_more', '...');
-		}
+        if (!$more) {
+            $more = apply_filters('excerpt_more', '...');
+        }
 
-		if ( !!$post_id ) {
-			$post = get_post( $post_id );
-		} else {
-			global $post;
-		}
+        if (!!$post_id) {
+            $post = get_post($post_id);
+        } else {
+            global $post;
+        }
 
-		if ( !empty($post->post_excerpt) ) {
-			return $post->post_excerpt;
-		}
+        if (!empty($post->post_excerpt)) {
+            return $post->post_excerpt;
+        }
 
-		$filtered = apply_filters( 'the_content', $post->post_content );
+        $filtered = apply_filters('the_content', $post->post_content);
 
-		return wp_trim_words( strip_tags($filtered), $words, $more );
-	}
+        return wp_trim_words(strip_tags($filtered), $words, $more);
+    }
 }
 
 
@@ -160,16 +167,17 @@ if ( !function_exists('get_excerpt') ) {
  * @return string
  */
 
-if ( !function_exists('get_author') ) {
-	function get_author( $post_id = false, $field = 'display_name' ) {
-		if ( !!$post_id ) {
-			$post = get_post( $post_id );
-		} else {
-			global $post;
-		}
+if (!function_exists('get_author')) {
+    function get_author($post_id = false, $field = 'display_name')
+    {
+        if (!!$post_id) {
+            $post = get_post($post_id);
+        } else {
+            global $post;
+        }
 
-		return get_the_author_meta( $field, $post->post_author );
-	}
+        return get_the_author_meta($field, $post->post_author);
+    }
 }
 
 
@@ -178,27 +186,30 @@ if ( !function_exists('get_author') ) {
  * @return string
  */
 
-if ( !function_exists('get_featured_image') ) {
-	function get_featured_image( $post_id = false, $size = 'full', $fallback = false ) {
-		if ( !$post_id ) {
-			global $post;
-			if ( !$post ) return $fallback;
-			$post_id = $post->ID;
-		}
-		
-		if ( has_post_thumbnail( $post_id ) ) {
-			$image = wp_get_attachment_image_src(
-				get_post_thumbnail_id($post_id),
-				$size
-			);
-			
-			if ( !empty($image[0]) ) {
-				return $image[0];
-			}
-		}
+if (!function_exists('get_featured_image')) {
+    function get_featured_image($post_id = false, $size = 'full', $fallback = false)
+    {
+        if (!$post_id) {
+            global $post;
+            if (!$post) {
+                return $fallback;
+            }
+            $post_id = $post->ID;
+        }
+        
+        if (has_post_thumbnail($post_id)) {
+            $image = wp_get_attachment_image_src(
+                get_post_thumbnail_id($post_id),
+                $size
+            );
+            
+            if (!empty($image[0])) {
+                return $image[0];
+            }
+        }
 
-		return $fallback;
-	}
+        return $fallback;
+    }
 }
 
 
@@ -207,16 +218,17 @@ if ( !function_exists('get_featured_image') ) {
  * @return string
  */
 
-if ( !function_exists('get_media') ) {
-	function get_media( $attachment_id, $size = 'full', $fallback = false ) {
-		$image = wp_get_attachment_image_src( $attachment_id, $size );
+if (!function_exists('get_media')) {
+    function get_media($attachment_id, $size = 'full', $fallback = false)
+    {
+        $image = wp_get_attachment_image_src($attachment_id, $size);
 
-		if ( !!$image ) {
-			return $image[0];
-		}
+        if (!!$image) {
+            return $image[0];
+        }
 
-		return $fallback;
-	}
+        return $fallback;
+    }
 }
 
 
@@ -225,13 +237,14 @@ if ( !function_exists('get_media') ) {
  * @return string
  */
 
-if ( !function_exists('get_date') ) {
-	function get_date( $post_id = false, $format = false ) {
-		if ( !$post_id ) {
-			global $post;
-			$post_id = $post->ID;
-		}
+if (!function_exists('get_date')) {
+    function get_date($post_id = false, $format = false)
+    {
+        if (!$post_id) {
+            global $post;
+            $post_id = $post->ID;
+        }
 
-		return get_the_date( $format, $post_id );
-	}
+        return get_the_date($format, $post_id);
+    }
 }

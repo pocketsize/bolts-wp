@@ -16,7 +16,9 @@
 		"coverage": "jest --coverage --colors --config config/testing/jest.config.js",
 		"bolts-add:react": "yarn add react@16 react-dom@16 && yarn add --dev @babel/preset-react enzyme enzyme-adapter-react-16 && mkdirp src/js/react src/sass/react",
 		"bolts-remove:react:keep-files": "yarn remove react react-dom @babel/preset-react enzyme enzyme-adapter-react-16",
-		"bolts-remove:react": "yarn run bolts-remove:react:keep-files && rimraf src/js/react src/sass/react"
+		"bolts-remove:react": "yarn run bolts-remove:react:keep-files && rimraf src/js/react src/sass/react",
+        "php-lint": "vendor/bin/phpcs .",
+        "php-fix": "vendor/bin/phpcbf ."
 	},
 	"husky": {
 		"hooks": {
