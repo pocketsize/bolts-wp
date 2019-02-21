@@ -7,3 +7,17 @@
         @include overlay($force-size: true);
     }
 }
+
+%image-wrapper {
+    display: inline;
+}
+
+%disabled-input {
+    opacity: 0.1;
+    cursor: not-allowed;
+}
+
+%fieldset {
+    display: block;
+    width: 100%;
+}

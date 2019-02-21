@@ -1,0 +1,79 @@
+.checkbox {
+    position: relative;
+    white-space: nowrap;
+    user-select: none;
+    display: block;
+
+    // hide real input...
+    &-input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    // ...and replace it with a stylable div
+    &-faux-input {
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        width: 18px;
+        height: 18px;
+        display: inline-block;
+        vertical-align: middle;
+        border: 1px solid gray;
+
+        // when focused
+        .checkbox-input:focus + & {
+            border-color: blue;
+        }
+
+        // when checked
+        .checkbox-input:checked + & {
+            border-color: black;
+        }
+
+        // when checked and focused
+        .checkbox-input:checked:focus + & {
+            box-shadow: 0 0 0 1px black;
+        }
+
+        // when error
+        .checkbox.has-error & {
+            border-color: $color--warning;
+        }
+
+        // when disabled
+        .checkbox-input:disabled + & {
+            @extend %disabled-input;
+        }
+
+        // checkbox fill
+        &:before {
+            content: '';
+            @include overlay;
+            background: black;
+            opacity: 0;
+
+            .checkbox-input:checked + & {
+                opacity: 1;
+            }
+        }
+    }
+
+    &-label {
+        cursor: pointer;
+        vertical-align: middle;
+        display: inline-block;
+        white-space: normal;
+
+        .checkbox.has-error & {
+            color: $color--warning;
+        }
+
+        .checkbox-input:disabled + .checkbox-faux-input + & {
+            // wow such selector very long
+            @extend %disabled-input;
+        }
+    }
+}

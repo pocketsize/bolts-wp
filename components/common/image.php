@@ -1,49 +1,49 @@
 <?php
-/**
- * Image
- *
- * Used for all images. Can be passed either
- * a URL or a media ID for the image. URL always
- * trumps the ID.
- *
- * Image can optionally be lazyloaded by passing true or a string
- * to $lazyload. The string becomes a lazyload-class and therefore
- * we can use different reveal animations on different types of
- * images on the site.
- *
- * This file is also an example of how a basic component
- * is written:
- *
- * - Documentation at the top, with all params as a minimum
- * - Nullchecks and simple data transformation
- * - Markup with as little logic as possible
- *
- * Lets check it out
- *
- * @param string      $url
- * @param int         $media_id
- * @param string      $media_size   - "full" (default)
- * @param string      $caption
- * @param bool        $has_overlay
- * @param string      $overlay_text
- * @param string      $modifier     - "is-overlay"
- * @param string|bool $lazyload     - "default"
- */
+	/**
+	 * Image
+	 *
+	 * Used for all images. Can be passed either
+	 * a URL or a media ID for the image. URL always
+	 * trumps the ID.
+	 *
+	 * Image can optionally be lazyloaded by passing true or a string
+	 * to $lazyload. The string becomes a lazyload-class and therefore
+	 * we can use different reveal animations on different types of
+	 * images on the site.
+	 *
+	 * This file is also an example of how a basic component
+	 * is written:
+	 *
+	 * - Documentation at the top, with all params as a minimum
+	 * - Nullchecks and simple data transformation
+	 * - Markup with as little logic as possible
+	 *
+	 * Lets check it out
+	 *
+	 * @param string      $url
+	 * @param int         $media_id
+	 * @param string      $media_size   - "full" (default)
+	 * @param string      $caption
+	 * @param bool        $has_overlay
+	 * @param string      $overlay_text
+	 * @param string      $modifier     - "is-overlay"
+	 * @param string|bool $lazyload     - "default"
+	 */
 
 
-// Setting up modifiers used for classes
-$modifier        = !empty($modifier) ? ' ' . $modifier : 'is-default';                  // block-level modifiers are in $modifier
-$object_modifier = !empty($has_overlay) || !empty($overlay_text) ? 'has-overlay' : '';  // element-level modifiers are prefixed with the element
-$lazyload        = !empty($lazyload) ? $lazyload : false;
-$lazyload        = !empty($lazyload) && $lazyload === true ? 'default' : $lazyload;
-$lazyload_class  = 'is-lazyload-' . $lazyload;
+	// Setting up modifiers used for classes
+	$modifier        = !empty($modifier) ? ' ' . $modifier : 'is-default';                  // block-level modifiers are in $modifier
+	$object_modifier = !empty($has_overlay) || !empty($overlay_text) ? 'has-overlay' : '';  // element-level modifiers are prefixed with the element
+	$lazyload        = !empty($lazyload) ? $lazyload : false;
+	$lazyload        = !empty($lazyload) && $lazyload === true ? 'default' : $lazyload;
+	$lazyload_class  = 'is-lazyload-' . $lazyload;
 
-// Nullchecks and defaults
-$caption    = !empty($caption)    ? $caption : false;
-$media_size = !empty($media_size) ? $media_size : 'full';
-$media_url  = !empty($media_id)   ? get_media($media_id, $media_size) : false;
-$url        = !empty($url)        ? $url : $media_url;
-$style_tag  = !empty($lazyload)   ? '' : 'style="background-image:url(' . $url .')"';
+	// Nullchecks and defaults
+	$caption    = !empty($caption)    ? $caption : false;
+	$media_size = !empty($media_size) ? $media_size : 'full';
+	$media_url  = !empty($media_id)   ? get_media($media_id, $media_size) : false;
+	$url        = !empty($url)        ? $url : $media_url;
+	$style_tag  = !empty($lazyload)   ? '' : 'style="background-image:url(' . $url .')"';
 ?>
 
 <?php if(!empty($url)): ?>

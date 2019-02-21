@@ -1,16 +1,16 @@
 <?php 
-/**
- * Post preview
- * 
- * A preview of content, mostly post-type posts
- * 
- * @param string $image_url
- * @param string $title
- * @param string $content
- * @param string $link_url
- */
+	/**
+	 * Post preview
+	 * 
+	 * A preview of content, mostly post-type posts
+	 * 
+	 * @param string $image_url
+	 * @param string $title
+	 * @param string $content
+	 * @param string $link_url
+	 */
 
-$image_url = !empty($image_url) ? $image_url : 'http://placehold.it/500';
+	$image_url = !empty($image_url) ? $image_url : 'http://placehold.it/500';
 ?>
 
 <?php if(!empty($title) && !empty($content)): ?>

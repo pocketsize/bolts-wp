@@ -1,7 +1,6 @@
 .button {
     display: inline-block;
     position: relative;
-    border-radius: $radius--base;
     border: 1px solid $color--black;
 
     &.is-theme-default {
@@ -10,7 +9,7 @@
 
     &-inner {
         @extend %text--button;
-        padding: $base--small $base--medium;
+        padding: 10px 20px;
     }
 
     &-link {

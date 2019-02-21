@@ -1,11 +1,12 @@
 <?php
-/**
- * Page builder
- *
- * Outputs components based on ACF flexible content.
- *
- * @param array $data
- */
+	/**
+	 * Page builder
+	 *
+	 * Outputs components based on ACF flexible content.
+	 *
+	 * @param array $data
+	 */
+
 ?>
 
 <?php if(!empty($data)): ?>

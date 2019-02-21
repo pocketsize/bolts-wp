@@ -8,26 +8,58 @@
  */
 
 /**
- * Include theme configuration
+ * Override default Bolts WP options
  */
 
-require_once get_template_directory() . '/bolts-wp-config.php';
+define( 'BOLTS_WP_DISABLE_ADMIN_BAR',     true );
+define( 'BOLTS_WP_DISABLE_EMOJIS',        true );
+define( 'BOLTS_WP_EXCERPT_MORE',          '...' );
+define( 'BOLTS_WP_ENQUEUE_JQUERY',        false );
+define( 'BOLTS_WP_DEFAULT_MENU_LOCATION', 'main' );
 
 /**
- * Require Bolts WP
+ * Require Bolts WP files
  */
 
-require_once get_template_directory() . '/core/bolts-wp.php';
+require_once get_template_directory() . '/lib/bolts-wp.php';
+
+bolts_wp_loader(array(
+	'actions',
+	'filters',
+	'theme-support',
+	'theme-functions',
+	'content',
+	'admin',
+	'acf'
+));
 
 /**
- * Require project specific functions
+ * Print stuff formatted
+ */
+function pad($val) {
+	echo '<pre>';
+	print_r($val);
+	echo '</pre>';
+} 
+
+/**
+ * Print stuff formatted and die
+ */
+function dad($val) {
+	pad($val);
+	die;
+}
+
+
+/**
+ * Register default menu location
  */
 
-require_once get_theme_dir() . '/functions/acf.php';
-require_once get_theme_dir() . '/functions/data.php';
-require_once get_theme_dir() . '/functions/actions.php';
-require_once get_theme_dir() . '/functions/filters.php';
-require_once get_theme_dir() . '/functions/theme.php';
-require_once get_theme_dir() . '/functions/admin.php';
-require_once get_theme_dir() . '/functions/debug.php';
-require_once get_theme_dir() . '/functions/shame.php';
+register_nav_menu( BOLTS_WP_DEFAULT_MENU_LOCATION, 'Menu' );
+
+/**
+ * Require file for data fetching
+ */
+ require_once get_template_directory() . '/functions/data-fetching.php';
+
+// The world is your oyster!

@@ -1,30 +1,30 @@
 <?php 
-/**
- * Menu 
- * 
- * Builds a menu tree recursively from an array.
- * For easy WP integration, use get_menu_object() 
- * defined in data-fetching.php to get $menu data. 
- * 
- * @param string $block_name          - defaults to "menu". becomes block class, (e.g. ".menu-link-outer" when default)
- * @param bool   $has_submenu_toggles - will output the div "<$block_name>-submenu-toggle" inside each "<$block_name>-link-outer"
- * 
- * @param object $menu                - easily gotten with get_menu_object()
- * @param string $menu.title
- * @param string $menu.url
- * @param string $menu.target
- * 
- * @param object $menu.children       - same as $menu
- */
+	/**
+	 * Menu 
+	 * 
+	 * Builds a menu tree recursively from an array.
+	 * For easy WP integration, use get_menu_object() 
+	 * defined in data-fetching.php to get $menu data. 
+	 * 
+	 * @param string $block_name          - defaults to "menu". becomes block class, (e.g. ".menu-link-outer" when default)
+	 * @param bool   $has_submenu_toggles - will output the div "<$block_name>-submenu-toggle" inside each "<$block_name>-link-outer"
+	 * 
+	 * @param object $menu                - easily gotten with get_menu_object()
+	 * @param string $menu.title
+	 * @param string $menu.url
+	 * @param string $menu.target
+	 * 
+	 * @param object $menu.children       - same as $menu
+	 */
 
-$block               = !empty($block_name) ? $block_name : 'menu';
-$ul_class            = $block . '-items';
-$li_class            = $block . '-item';
-$a_outer_class       = $block . '-link-outer';
-$a_class             = $block . '-link';
-$label_class         = $block . '-label';
-$submenu_outer_class = $block . '-submenu-outer';
-$toggle_class       = $block . '-submenu-toggle';
+	$block               = !empty($block_name) ? $block_name : 'menu';
+	$ul_class            = $block . '-items';
+	$li_class            = $block . '-item';
+	$a_outer_class       = $block . '-link-outer';
+	$a_class             = $block . '-link';
+	$label_class         = $block . '-label';
+	$submenu_outer_class = $block . '-submenu-outer';
+	$toggle_class       = $block . '-submenu-toggle';
 ?>
 
 <?php if(isset($menu) && is_array($menu)): ?>
