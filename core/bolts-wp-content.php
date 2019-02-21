@@ -7,7 +7,6 @@
  * http://www.pocketsize.se/
  */
 
-
 /**
  * Get all pages using a custom template
  * @param string $template
@@ -27,7 +26,6 @@ if (!function_exists('get_page_ids_by_template')) {
     }
 }
 
-
 /**
  * Get first page using a custom template
  * @param string $template
@@ -40,7 +38,6 @@ if (!function_exists('get_page_id_by_template')) {
         return reset(get_page_ids_by_template($template));
     }
 }
-
 
 /**
  * Determine if a page has a specific page template
@@ -60,7 +57,6 @@ if (!function_exists('is_template')) {
     }
 }
 
-
 /**
  * Determine if a post has a specific post type
  * @return bool
@@ -77,7 +73,6 @@ if (!function_exists('is_post_type')) {
         return $post->post_type == $post_type;
     }
 }
-
 
 /**
  * Return the title of a post
@@ -102,7 +97,6 @@ if (!function_exists('get_title')) {
     }
 }
 
-
 /**
  * Return the content of a post
  * @param int $post_id
@@ -125,7 +119,6 @@ if (!function_exists('get_content')) {
         return $post->post_content;
     }
 }
-
 
 /**
  * Return the excerpt for a post (manual or automatically generated)
@@ -159,7 +152,6 @@ if (!function_exists('get_excerpt')) {
     }
 }
 
-
 /**
  * Return author information from a post (defaults to display name)
  * @param int $post_id
@@ -179,7 +171,6 @@ if (!function_exists('get_author')) {
         return get_the_author_meta($field, $post->post_author);
     }
 }
-
 
 /**
  * Return the URI for the featured image of a post
@@ -212,7 +203,6 @@ if (!function_exists('get_featured_image')) {
     }
 }
 
-
 /**
  * Return the path to an attachment in the media library
  * @return string
@@ -230,7 +220,6 @@ if (!function_exists('get_media')) {
         return $fallback;
     }
 }
-
 
 /**
  * Get post date

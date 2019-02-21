@@ -65,7 +65,6 @@ function bolts_wp_cleanup()
 }
 add_action('after_setup_theme', 'bolts_wp_cleanup', 15);
 
-
 /**
  * Force the content editor to show on posts page
  */

@@ -7,7 +7,6 @@
  * http://www.pocketsize.se/
  */
 
-
 /**
  * Disable all updates to reinforce composer workflow
  */

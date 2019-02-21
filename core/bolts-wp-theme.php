@@ -20,7 +20,6 @@ if (!function_exists('get_theme_dir')) {
     }
 }
 
-
 /**
  * Return the current theme directory URI
  * TODO: Add support for child themes
@@ -33,7 +32,6 @@ if (!function_exists('get_theme_uri')) {
         return get_template_directory_uri();
     }
 }
-
 
 /**
  * Return the path to a theme asset file
@@ -52,7 +50,6 @@ if (!function_exists('get_asset')) {
         return $fallback;
     }
 }
-
 
 /**
  * Return .svg file parsed for inline use
@@ -78,7 +75,6 @@ function get_svg($asset, $fallback = false)
 
     return $inline;
 }
-
 
 /**
  * Include a template part from the components folder, with optional arguments
@@ -106,7 +102,6 @@ if (!function_exists('component')) {
         require $path;
     }
 }
-
 
 /**
  * Loop through the layout items and output components from their data,
