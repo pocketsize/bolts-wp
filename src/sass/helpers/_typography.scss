@@ -114,10 +114,6 @@ $font-weight--black: 900;
         @extend %embed-wrapper;
     }
 
-    .image-wrapper {
-        @extend %image-wrapper;
-    }
-
     .alignleft,
     .alignright {
         margin-bottom: 10px;
