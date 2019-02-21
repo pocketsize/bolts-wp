@@ -6,7 +6,6 @@
 
 show_admin_bar(false);
 
-
 /**
  * Restrict editor capabilities
  */

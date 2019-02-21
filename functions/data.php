@@ -3,6 +3,7 @@
 /**
  * Getting data from ACF page builder
  */
+
 function prepare_page_builder_data()
 {
     $page_builder = get_field('page-builder');

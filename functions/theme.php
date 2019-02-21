@@ -6,20 +6,17 @@
 
 add_theme_support('post-thumbnails');
 
-
 /**
  * Add support for title tag
  */
 
 add_theme_support('title-tag');
 
-
 /**
  * Register default menu location
  */
 
 register_nav_menu(BOLTS_WP_DEFAULT_MENU_LOCATION, 'Menu');
-
 
 /**
  * Register a custom post type
@@ -69,7 +66,6 @@ if (!function_exists('create_post_type')) {
         return register_post_type($slug, $args);
     }
 }
-
 
 /**
  * Register a custom taxonomy

@@ -38,7 +38,6 @@ if (!function_exists('bolts_build_nav_menu_tree')) {
     }
 }
 
-
 /**
  * Return a nested nav menu array by menu location
  * @param string $location
