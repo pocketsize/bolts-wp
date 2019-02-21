@@ -1,0 +1,28 @@
+.field-info {
+    padding-bottom: 20px;
+
+    &-label-wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    &-label {
+        font-weight: $font-weight--bold;
+    }
+
+    &-description  {
+    }
+
+    &-required-mark {
+    }
+
+    &-validation-message {
+        color: $color--warning;
+        display: block;
+        @include transition-height(
+            '.text-input:not(.has-error) &',
+            $speed--slow,
+            $easing
+        );
+    }
+}

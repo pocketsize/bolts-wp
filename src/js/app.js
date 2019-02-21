@@ -11,6 +11,7 @@ import mainMenu from './components/main-menu';
 import toggleState from './misc/toggle-state';
 //import slider from './components/common/slider';
 //import image from './components/common/image';
+//import choices from './external/choices.js';
 
 (() => {
     document.addEventListener('DOMContentLoaded', function() {
@@ -20,6 +21,7 @@ import toggleState from './misc/toggle-state';
         toggleState.init();
         //slider.init();
         //images.init();
+        //choices.init();
 
         // The world is your oyster!
     });
