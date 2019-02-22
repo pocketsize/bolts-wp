@@ -96,6 +96,13 @@ component('layouts/split', [
                 ]
             ]
         ],
+        [
+            'component' => 'forms/textarea',
+            'data' => [
+                'title'       => 'I am textarea',
+                'description' => 'This my description'
+            ]
+        ]
     ]
 ]);
 

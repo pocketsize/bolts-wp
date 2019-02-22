@@ -1,0 +1,34 @@
+.textarea {
+    width: 100%;
+
+    &-inner {
+    }
+
+    &-faux-input-outer {
+        position: relative;
+    }
+
+    &-faux-input {
+        @include overlay;
+        border: 1px solid black;
+
+        .textarea-input:focus + & {
+            border: 1px solid blue;
+        }
+
+        .textarea-input:disabled + & {
+            @extend %disabled-input;
+        }
+
+        .textarea.has-error & {
+            border: 1px solid $color--warning;
+        }
+    }
+
+    &-input {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        padding: $input--x-padding;
+    }
+}
