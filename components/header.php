@@ -1,11 +1,11 @@
 <?php
-    /**
-     * Header
-     *
-     * The main header of the website
-     *
-     * @param array $menu
-     */
+/**
+ * Header
+ *
+ * The main header of the website
+ *
+ * @param array $menu
+ */
 ?>
 
 <header class="header">
