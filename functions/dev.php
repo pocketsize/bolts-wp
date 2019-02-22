@@ -4,7 +4,7 @@
  * Print stuff formatted
  */
 
-function pad($val)
+function dump($val)
 {
     echo '<pre>';
     print_r($val);
@@ -15,9 +15,9 @@ function pad($val)
  * Print stuff formatted and die
  */
 
-function dad($val)
+function dd($val)
 {
-    pad($val);
+    dump($val);
     die;
 }
 
