@@ -42,7 +42,7 @@ component('button', [
 
 We have been working with components for generations, and through the times we and our ancestors have found two types of commonly used components:
 
-- Common components
+- Basic components
 - Layout components
 
 ### Basic components
