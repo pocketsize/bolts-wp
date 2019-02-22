@@ -1,3 +1,4 @@
 .radio-buttons {
     @extend %fieldset;
+    @extend %form-component-spacing;
 }

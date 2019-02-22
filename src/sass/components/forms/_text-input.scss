@@ -11,6 +11,7 @@
 
 .text-input {
     width: 100%;
+    @extend %form-component-spacing;
 
     &-inner {
         position: relative;
