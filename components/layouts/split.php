@@ -41,13 +41,17 @@ $modifier    = !empty($modifier) ? $modifier : '';
 <div class="layout-split <?php echo $theme_class; ?> <?php echo $modifier; ?>">
     <div class="layout-split-primary">
         <div class="layout-split-primary-inner">
-            <?php layout_items($primary, 'layout-split-item'); ?>
+            <?php if (!empty($primary)) : ?>
+                <?php layout_items($primary, 'layout-split-item'); ?>
+            <?php endif; ?>
         </div>
     </div>
 
     <div class="layout-split-secondary">
         <div class="layout-split-secondary-inner">
-            <?php layout_items($secondary, 'layout-split-item'); ?>
+            <?php if (!empty($secondary)) : ?>
+                <?php layout_items($secondary, 'layout-split-item'); ?>
+            <?php endif; ?>
         </div>
     </div>
 </div>

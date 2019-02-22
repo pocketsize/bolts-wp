@@ -1,3 +1,4 @@
 .checkboxes {
     @extend %fieldset;
+    @extend %form-component-spacing;
 }

@@ -1,2 +1,6 @@
 // Select is styled using choices.js
 // Check it out in sass/external/_choices.scss
+
+.select {
+    @extend %form-component-spacing;
+}

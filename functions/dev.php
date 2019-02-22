@@ -6,9 +6,11 @@
 
 function dump($val)
 {
+    echo '<br>';
     echo '<pre>';
     print_r($val);
     echo '</pre>';
+    echo '<br>';
 }
 
 /**
