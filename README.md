@@ -45,11 +45,11 @@ Bolts WP uses Yarn and provides 5 build scripts for dev:
 - `yarn bolts-add:react` adds all packages, config and directories needed for working with React
 - `yarn bolts-remove:react` removes all React-related packages, config and directories
 - `yarn bolts-remove:react:keep-files` removes all React-related packages and config, but keeps the directories
-- `yarn php-lint` runs phpcs on all .php files
-- `yarn php-fix` runs phpcbf on all .php files
+- `yarn php-lint` runs phpcs on all .php files which reports all style errors and warnings
+- `yarn php-fix` runs phpcbf on all .php files which tries to fix all style errors and warnings
 
 ### For production
-Only one. `yarn prod` bundles a prod-ready theme :)
+Only one. `yarn prod` bundles a prod-ready theme.
 
 ## Configuring
 ### Webpack
@@ -65,41 +65,102 @@ Bolts WP features a couple of defaults used both during the init, but also by so
 
 | Name                             | Type   | Default Value |
 |----------------------------------|--------|---------------|
-| `BOLTS_WP_DISABLE_ADMIN_BAR`     | Bool   | `false`       |
-| `BOLTS_WP_DISABLE_EMOJIS`        | Bool   | `false`       |
-| `BOLTS_WP_EXCERPT_WORDS`         | Int    | `55`          |
-| `BOLTS_WP_EXCERPT_MORE`          | String | `'[...]'`     |
-| `BOLTS_WP_ENQUEUE_JQUERY`        | Bool   | `false`       |
 | `BOLTS_WP_DEFAULT_MENU_LOCATION` | Bool   | `false`       |
 
-## Component workflow and theme functions
+## Content functions
+
+#### get_page_ids_by_template( $template )
+Return an array of page ids that match the specified template
+
+
+------------
+
+<br>
+
+
+#### get_page_id_by_template( $template )
+Return the first page id that matches a template
+
+
+------------
+
+<br>
+
+
+#### is_template( $template, $post_id = false )
+Return whether the current (or specified) post matches a template
+
+
+------------
+
+<br>
+
+#### is_post_type( $post_type, $post = false )
+Determine if a post has a specific post type
+
+
+------------
+
+<br>
+
+#### get_title( $post_id = false, $filtered = false )
+Return the title of a post
+
+
+------------
+
+<br>
+
+#### get_content( $post_id = false, $filtered = false )
+Return the content of a post
+
+
+------------
+
+<br>
+
+#### get_excerpt( $post_id = false, $words = false, $more = false )
+Return the excerpt for a post (manual or automatically generated)
+
+
+------------
+
+<br>
+
+#### get_author( $post_id = false, $field = 'display_name' )
+Return author information from a post (defaults to display name)
+
+
+------------
+
+<br>
+
+#### get_date( $post_id = false, $format = false )
+Return formatted date from a post
+
+
+------------
+
+<br>
+
+#### get_featured_image( $post_id = false, $size = 'full', $fallback = false )
+Return the URI for the featured image of a post
+
+
+------------
+
+<br>
+
+#### get_media( $attachment_id, $size = 'full', $fallback = false )
+Return the path to an attachment in the media library
+
+
+------------
+
+## Theme functions
 
 #### component( $file, $args = false )
 Include a template part from the components folder, with optional arguments
-
-
-------------
-
-<br>
-
-#### get_component($file, $args = false)
-Return a component, mostly used for AJAX
-
-
-------------
-
-<br>
-
-#### layout_items($items, $item_class = false)
-Used in layout components. Loop through the layout items and output components from their data, if a class and a class suffix is present wrap the component in a div.
-
-
-------------
-
-<br>
-
-#### get_menu_object( $location = false )
-Return a nested nav menu object by menu location
 
 
 ------------
@@ -114,24 +175,8 @@ Return the current theme directory
 
 <br>
 
-#### theme_dir()
-Print the current theme directory
-
-
-------------
-
-<br>
-
 #### get_theme_uri()
 Return the current theme directory URI
-
-
-------------
-
-<br>
-
-#### theme_uri()
-Print the current theme directory URI
 
 
 ------------
@@ -146,24 +191,8 @@ Return the path to a theme asset file
 
 <br>
 
-#### asset( $asset, $fallback = false )
-Print the path to a theme asset file
-
-
-------------
-
-<br>
-
 #### get_svg( $asset, $fallback = false )
 Return .svg file parsed for inline use
-
-
-------------
-
-<br>
-
-#### svg( $asset, $fallback = false )
-Echo .svg file parsed for inline use
 
 
 ------------
@@ -184,115 +213,19 @@ Register a custom taxonomy
 
 ------------
 
+
 <br>
 
-
-## Content functions
-
-#### is_post_type( $post_type, $post = false )
-Determine if a post has a specific post type
+#### layout_items($items, $item_class = false)
+Used in layout components. Loop through the layout items and output components from their data, if a class and a class suffix is present wrap the component in a div.
 
 
 ------------
 
 <br>
 
-#### get_title( $post_id = false, $filtered = false )
-Return the title of a post
+#### get_menu_object($location = false)
+Return an object with the full menu structure for a menu location
 
 
 ------------
-
-<br>
-
-#### title( $post_id = false )
-Print the title of a post
-
-
-------------
-
-<br>
-
-#### get_content( $post_id = false, $filtered = false )
-Return the content of a post
-
-
-------------
-
-<br>
-
-#### content( $post_id = false )
-Print the content of a post
-
-
-------------
-
-<br>
-
-#### get_excerpt( $post_id = false, $words = false, $more = false )
-Return the excerpt for a post (manual or automatically generated)
-
-
-------------
-
-<br>
-
-#### excerpt( $post_id = false, $words = false, $more = false )
-Print the excerpt for a post (manual or automatically generated)
-
-
-------------
-
-<br>
-
-#### get_author( $post_id = false, $field = 'display_name' )
-Return author information from a post (defaults to display name)
-
-
-------------
-
-<br>
-
-#### author( $post_id = false, $field = false )
-Print author information from a post (defaults to display name)
-
-
-------------
-
-<br>
-
-#### get_featured_image( $post_id = false, $size = 'full', $fallback = false )
-Return the URI for the featured image of a post
-
-
-------------
-
-<br>
-
-#### featured_image( $post_id = false, $size = 'full', $fallback = false )
-Print the URI for the featured image of a post
-
-
-------------
-
-<br>
-
-#### get_media( $attachment_id, $size = 'full', $fallback = false )
-Return the path to an attachment in the media library
-
-
-------------
-
-<br>
-
-#### media( $attachment_id, $size = 'full', $fallback = false )
-Print the path to an attachment in the media library
-
-
-------------
-
-<br>
-
-
-
-# TODO : Finish this readme

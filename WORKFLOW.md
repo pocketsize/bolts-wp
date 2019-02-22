@@ -21,7 +21,7 @@ The basic premise is as follows, read it for now and don't ask any questions, it
 
 - Everything is **components**
 - All data is fetched with **functions**
-- Templates are for **components** and the ocasional variable **ONLY**
+- Templates are for **components** and the occasional variable **ONLY**
 
 What this (hopefully) creates is simply nice, clean and maintanable code that is easy to reason about.
 
@@ -30,7 +30,7 @@ We also have a plethora of sweet, sweet helper functions to make life easier. Ch
 Now, lets go on to explaining the main workflow.
 
 ## Components
-We live in modern times - lets not rewrite markup like cave people. Inspired by marvels of thechnology like `Laravel Blade` and `React` we created the Bolts Component. If you know your way around WP it's a little similar to `get_template_part()` with the added benefit of being able to pass variables to it without polluting the global scope. Oh, and it looks for the filenames in the `./components`-folder, so no need to write complicated pathnames. Using it in the most basic way looks a little like this:
+We live in modern times - lets not rewrite markup like cave people. Inspired by marvels of thechnology like `Laravel Blade` and `React` we created the Bolts WP Component. If you know your way around WP it's a little similar to `get_template_part()` with the added benefit of being able to pass variables to it without polluting the global scope. Oh, and it looks for the filenames in the `./components`-folder, so no need to write complicated pathnames. Using it in the most basic way looks a little like this:
 
 ```php
 component('button', [
@@ -52,14 +52,14 @@ Never fetch data in a component. Always pass data to it from a template using a 
 
 Style-wise, Basic components should be as fluid as possible, leaving the sizing to the _Layout components_, but this is not a rule, just a guideline to make life easier.
 
-> Check out `./components/image.php` for an example of a basic component
+> Check out `./components/common/image.php` for an example of a basic component
 
 ### Layout components
 The ~ c o o l ~ one. As the name implies, this is a component with _dynamic component slots_ meaning that you pass both the data _AND_ the component name to it. Layout components can also take other layout-specific data. Here's a basic example with a fictional data structure written out:
 
 ```php
 component('layouts/content-with-sidebar', [
-    'content_theme' => 'posts',
+    'theme' => 'posts',
     'content' => [
         [
             'component' => 'thumb',
@@ -99,7 +99,7 @@ In most cases Layout components should be as unstyled as possible, only setting 
 > Check out `./components/layouts/full.php` or `./components/layouts/split.php` for a real-life example.
 
 ## Fetching data
-Clean templates makes a clean mind. Thats why we dont want to pollute our files with data fetching everywhere (been there, done that, got the headeache). All fetching should be done with functions and these functions should be placed in `./functions/data-fetching.php`. When done properly, fetching functions should output correctly formatted data making the above example look super nice and neat like so:
+Clean templates makes a clean mind. Thats why we dont want to pollute our files with data fetching everywhere (been there, done that, got the headeache). All fetching should be done with functions and these functions should be placed in `./functions/data.php`. When done properly, fetching functions should output correctly formatted data making the above example look super nice and neat like so:
 
 ```php
 component('layouts/content-with-sidebar', [
@@ -120,6 +120,8 @@ component('post-preview', prepare_preview_data());
 ```php
 component('social-icons', get_field('social_icons'));
 ```
+
+> Check out `./functions/data.php` for a data function example.
 
 ## JS and SCSS
 The structure in `./src/js/components` and `./src/sass/components` should match the `./components` folder as closely as possible. 1 component per file, nice and clean. Other files (such as helpers etc.) are placed in `./src/js` and `./src/sass`.
@@ -162,29 +164,31 @@ Implementing the conventions above we get something like this:
             <!-- end classless content -->
         </div>
 
-        <div class="event-links">
-            <div class="event-link-outer">
+        <ul class="event-links">
+            <li class="event-link-outer">
                 <a href="#" class="event-link">A link</a>
-            </div>
-        </div>
+            </li>
+        </ul>
 
         <!-- in reality the social icons should probably be broken out to its own component but we put it here for demo purposes -->
-        <div class="event-social-icons">
-            <div class="event-social-icon-outer">
+        <ul class="event-social-icons">
+            <li class="event-social-icon-outer">
                 <a class="event-social-icon is-facebook" href="https://www.facebook.com"></a>
-            </div>
-            <div class="event-social-icon-outer">
+            </li>
+            <li class="event-social-icon-outer">
                 <a class="event-social-icon is-instagram" href="https://www.instagram.com"></a>
-            </div>
-        </div>
+            </li>
+        </ul>
     </div>
 </section>
 ```
 
 ### SCSS
 
+#### Mixins and placeholder classes
 Apart from the Bolts reset, we do not write global styles. For common styles we create placeholder classes that we extend on the relevant elements in each block scope. Mixins are only used in very rare ocasions.
 
+#### Variables
 We use 2 types of SCSS variables: `global` and `local`. "How do you do that?" - you might ask - "I thought all SCSS variables where global?". Yes you are completely correct. 10 points to your Hogwarts house of choice. So what do we mean with this? It all comes down to naming and philosophy.
 
 - Global variables are used for more general values that used by more than one component. They reside in './src/sass/helpers/_variables.scss` and are never to be defined or overwritten *anywhere else*. They are always defined as such: `${scope}--{variable name}`. Examples include: `$color--primary` or `$gutter--base`.
@@ -192,6 +196,7 @@ We use 2 types of SCSS variables: `global` and `local`. "How do you do that?" - 
 
 It is important to honor this naming convention to make sure no important variables are overwritten, and headache is saved.
 
+#### Code style
 Nesting is not advised. Instead we use the `&`-reference to visually scope things together.
 
 
