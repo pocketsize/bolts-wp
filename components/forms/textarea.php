@@ -1,40 +1,32 @@
 <?php
 /**
- * Input
- *
- * Renders a text input with an optional label and description.
- *
- * Label and field id/for-connection is made automatically.
- *
- * Has validation markup prepared, but still waiting for Bolts Validation
- * to be completed (currently prototyped in CIKO).
+ * Textarea
  *
  * @param string $title
  * @param string $description
- * @param string $type - "text", "email", "url", "password", "tel", "search"
  * @param string $name
  * @param string $identifier
  * @param string $value
  * @param string $placeholder
+ * @param int    $rows         - defaults to 4
+ * @param string $maxlength
  * @param string $validate     - validation type
  * @param string $error_text   - displays when validation fails
  * @param bool   $is_disabled
  * @param bool   $is_required
  *
- * TODO: @param string $icon
- * TODO: @param array  $button
- *
  * @param string $theme
  * @param string $modifier
  */
 
-
 $name        = !empty($name) ? $name : $title;
 $value       = !empty($value) ? $value : '';
 $placeholder = !empty($placeholder) ? $placeholder : '';
+$description = !empty($description) ? $description : '';
+$rows        = !empty($rows) ? $rows : 4;
+$maxlength   = !empty($maxlength) ? 'maxlength="' . $maxlength . '"' : '';
 $disabled    = !empty($is_disabled) ? ' disabled' : '';
 $is_required = !empty($is_required) ? $is_required : false;
-$description = !empty($description) ? $description : '';
 $required    = !empty($is_required) ? ' required' : '';
 $identifier  = !empty($identifier) ? $identifier : $title;
 $modifier    = !empty($modifier) ? $modifier : '';
@@ -44,15 +36,10 @@ $error_text  = !empty($error_text) ? $error_text : false;
 $theme       = !empty($theme) ? $theme : 'default';
 $theme_class = 'is-theme-' . $theme;
 $modifier    = !empty($modifier) ? $modifier : '';
-
-$allowed_types = ['text', 'email', 'url', 'password', 'tel', 'search'];
-//$type          = !empty($type) ? $type : 'text';
-$type = in_array($type, $allowed_types) ? $type : 'text';
-
 ?>
 
-<div class="text-input <?php echo $theme_class; ?> <?php echo $modifier; ?>" data-bolts-input-wrapper>
-    <div class="text-input-inner">
+<div class="textarea <?php echo $theme_class; ?> <?php echo $modifier; ?>" data-bolts-input-wrapper>
+    <div class="textarea-inner">
         <?php component('forms/field-info', [
             'title'       => $title,
             'description' => $description,
@@ -61,22 +48,20 @@ $type = in_array($type, $allowed_types) ? $type : 'text';
             'error_text'  => $error_text
         ]); ?>
 
-        <div class="text-input-faux-input-outer">
-            <?php // TODO: icon slot here ?>
-
-            <input
-                id="<?php echo $identifier; ?>"
+        <div class="textarea-faux-input-outer">
+            <textarea
+                class="textarea-input"
                 name="<?php echo $name; ?>"
-                class="text-input-input"
-                type="<?php echo $type; ?>"
-                value="<?php echo $value; ?>"
+                rows="<?php echo $rows; ?>"
+                id="<?php echo $identifier; ?>"
                 placeholder="<?php echo $placeholder; ?>"
+                <?php echo $maxlength; ?>
                 <?php echo $disabled; ?>
                 <?php echo $required; ?>
                 <?php echo $validate; ?>
-            />
-            <div class="text-input-faux-input"></div>
-            <?php // TODO: button slot here ?>
+            ><?php echo $value;  ?></textarea>
+
+            <div class="textarea-faux-input"></div>
         </div>
     </div>
 </div>
