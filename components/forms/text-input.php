@@ -46,8 +46,8 @@ $theme_class = 'is-theme-' . $theme;
 $modifier    = !empty($modifier) ? $modifier : '';
 
 $allowed_types = ['text', 'email', 'url', 'password', 'tel', 'search'];
-//$type          = !empty($type) ? $type : 'text';
-$type = in_array($type, $allowed_types) ? $type : 'text';
+$type          = !empty($type) ? $type : 'text';
+$type          = in_array($type, $allowed_types) ? $type : 'text';
 
 ?>
 
