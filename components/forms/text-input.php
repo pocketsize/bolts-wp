@@ -11,6 +11,7 @@
  *
  * @param string $title
  * @param string $description
+ * @param string $type - "text", "email", "url", "password", "tel", "search"
  * @param string $name
  * @param string $identifier
  * @param string $value
@@ -27,6 +28,7 @@
  * @param string $modifier
  */
 
+
 $name        = !empty($name) ? $name : $title;
 $value       = !empty($value) ? $value : '';
 $placeholder = !empty($placeholder) ? $placeholder : '';
@@ -42,6 +44,11 @@ $error_text  = !empty($error_text) ? $error_text : false;
 $theme       = !empty($theme) ? $theme : 'default';
 $theme_class = 'is-theme-' . $theme;
 $modifier    = !empty($modifier) ? $modifier : '';
+
+$allowed_types = ['text', 'email', 'url', 'password', 'tel', 'search'];
+//$type          = !empty($type) ? $type : 'text';
+$type = in_array($type, $allowed_types) ? $type : 'text';
+
 ?>
 
 <div class="text-input <?php echo $theme_class; ?> <?php echo $modifier; ?>" data-bolts-input-wrapper>
@@ -61,7 +68,7 @@ $modifier    = !empty($modifier) ? $modifier : '';
                 id="<?php echo $identifier; ?>"
                 name="<?php echo $name; ?>"
                 class="text-input-input"
-                type="text"
+                type="<?php echo $type; ?>"
                 value="<?php echo $value; ?>"
                 placeholder="<?php echo $placeholder; ?>"
                 <?php echo $disabled; ?>
