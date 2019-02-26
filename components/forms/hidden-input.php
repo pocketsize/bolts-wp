@@ -15,4 +15,4 @@ $name       = !empty($name) ? 'id="' . $name . '"' : '';
 $value      = !empty($value) ? 'id="' . $value . '"' : '';
 ?>
 
-<input type="hidden" <?php echo $identifier; ?> <?php echo $name; ?> <?php echo $value; ?>
+<input type="hidden" <?php echo $identifier; ?> <?php echo $name; ?> <?php echo $value; ?>>
