@@ -9,8 +9,8 @@
 
     &-tab {
         cursor: pointer;
-        padding: $base--small 0;
-        border-bottom: 1px solid $color--dark-gray;
+        padding: 10px 0;
+        border-bottom: 1px solid gray;
         @include transition(border-bottom);
 
         .accordion-item.is-open & {
@@ -27,6 +27,6 @@
     }
 
     &-content-inner {
-        padding: $base--small 0 $base--medium;
+        padding: 10px 0 20px;
     }
 }
