@@ -24,5 +24,4 @@ foreach ($bolts_wp_options as $option => $value) {
 require_once get_template_directory() . '/core/bolts-wp-actions.php';
 require_once get_template_directory() . '/core/bolts-wp-theme.php';
 require_once get_template_directory() . '/core/bolts-wp-content.php';
-//require_once get_template_directory() . '/core/bolts-wp-menus.php';
 require_once get_template_directory() . '/core/bolts-wp-admin.php';

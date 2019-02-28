@@ -1,16 +1,15 @@
-<?php get_header(); ?>
+<?php
 
-<?php while (have_posts()) {
-    the_post(); ?>
+get_header();
 
-    <section class="page">
-        <div class="page-container">
-            <h2><?php the_title(); ?></h2>
+component('layouts/full', [
+	'content' => [
+		'component' => 'content',
+		'data' => [
+			'title'   => get_title(),
+			'content' => get_content()
+		]
+	]
+]);
 
-            <div class="page-content"><?php the_content(); ?></div>
-        </div>
-    </section>
-
-<?php } ?>
-
-<?php get_footer(); ?>
+get_footer();
