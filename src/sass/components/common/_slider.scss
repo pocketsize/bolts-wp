@@ -20,11 +20,11 @@
     }
 
     &-dot {
-        width: ($base--x-small * 2);
-        height: ($base--x-small * 2);
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
         background-color: rgba($color--black, 0.5);
-        margin: $base--x-small;
+        margin: 5px;
 
         &.is-active {
             background-color: $color--black;
