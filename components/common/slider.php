@@ -34,10 +34,10 @@ $modifier    = !empty($modifier) ? $modifier : '';
 
         <?php if (!empty($has_controls)) : ?>
             <button class="slider-control is-previous" data-control="previous">
-                <?php svg('images/arrow-white'); ?>
+                Prev
             </button>
             <button class="slider-control is-next" data-control="next">
-                <?php svg('images/arrow-white'); ?>
+                Next
             </button>
         <?php endif; ?>
 
