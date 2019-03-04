@@ -51,7 +51,7 @@ module.exports = {
     testPathIgnorePatterns: ['\\\\node_modules\\\\'],
 
     // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
-    testURL: process.env.WP_HOME,
+    testURL: 'http://localhost',
 
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
     transformIgnorePatterns: ['../../node_modules/'],
