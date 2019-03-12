@@ -12,11 +12,7 @@
 
     &-submenu-outer {
         @media (width-to(main-menu)) {
-            @include transition-height(
-                '.main-menu-item:not(.is-open) > &',
-                $speed--base,
-                $easing
-            );
+            @include transition-height('.main-menu-item:not(.is-open) > &');
         }
     }
 }

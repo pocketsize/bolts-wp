@@ -1,7 +1,6 @@
 .layout-split {
-    @include inline-layout($vertical-align: top);
-    @include container(100%, $max-width--layout);
-    padding: 0 $padding--page;
+    @include inline-layout;
+    @include container;
 
     &-primary,
     &-secondary {

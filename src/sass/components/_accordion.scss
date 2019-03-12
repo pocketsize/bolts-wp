@@ -1,6 +1,6 @@
 .accordion {
     &-item {
-        transition: opacity $speed--base $easing;
+        @include transition(opacity);
 
         .accordion.has-open-item > &:not(.is-open) {
             opacity: 0.5;
@@ -19,11 +19,7 @@
     }
 
     &-content {
-        @include transition-height(
-            '.accordion-item:not(.is-open) > &',
-            $speed--base,
-            $easing
-        );
+        @include transition-height('.accordion-item:not(.is-open) > &');
     }
 
     &-content-inner {

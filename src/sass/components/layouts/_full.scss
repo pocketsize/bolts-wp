@@ -1,6 +1,5 @@
 .layout-full {
     &-inner {
-        @include container(100%, $max-width--layout);
-        padding: 0 $padding--page;
+        @include container;
     }
 }

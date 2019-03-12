@@ -8,19 +8,15 @@ $color--warning: $color--red;
 // Metrics
 $gutter--base: 40px;
 
-$padding--page: 5vw;
-
-$max-width--page: 1240px;
-$max-width--layout: calc(#{$max-width--page} + #{$padding--page * 2});
+$width--container: 100%;
+$max-width--container: 1240px;
 
 $input--height: 40px;
 $input--x-padding: 10px;
 
 // Animation related
-$speed--quick: 200ms;
-$speed--base: 500ms;
-$speed--slow: 1000ms;
-$easing: cubic-bezier(0.56, 0.05, 0.12, 1);
+$duration--default: 500ms;
+$easing--default: cubic-bezier(0.56, 0.05, 0.12, 1);
 
 // Z-index
 $z-index--bottom: 0;
