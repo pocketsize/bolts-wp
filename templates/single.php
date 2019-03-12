@@ -4,7 +4,7 @@ get_header();
 
 component('layouts/full', [
     'content' => [
-        'component' => 'content',
+        'component' => 'common/content',
         'data' => [
             'title'   => get_title(),
             'content' => get_content(),

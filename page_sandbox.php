@@ -141,7 +141,7 @@ dump('Content component in full layout');
 
 component('layouts/full', [
     'content' => [
-        'component' => 'content',
+        'component' => 'common/content',
         'data' => [
             'title'   => 'I am title',
             'content' => get_dummy_content()
