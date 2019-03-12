@@ -21,7 +21,7 @@ if (false != $post_id = get_field('404_page', 'option')) {
     // Set $template_path
     $template_path = get_theme_dir() . '/' . $template;
 
-    // Use tpage template if it exists, otherwise use indes.php
+    // Use page template if it exists, otherwise use index.php
     $template_path = file_exists($template_path) ? $template_path : get_theme_dir() . '/index.php';
 
     // Include 404 page post template
