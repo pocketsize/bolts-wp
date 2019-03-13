@@ -23,11 +23,13 @@ $bolts-default-container-width:              $width--container;
 $bolts-default-container-max-width:          $max-width--container;
 $bolts-default-container-align:              center;
 
+
 $bolts-default-background-size:              cover;
 $bolts-default-background-position:          50% 50%;
 
-$bolts-default-transition-duration:          $speed--base;
-$bolts-default-transition-easing:            $easing;
+$bolts-default-transition-duration:          $duration--default;
+$bolts-default-transition-easing:            $easing--default;
+
 
 $bolts-default-inline-layout-vertical-align: top;
 $bolts-default-inline-layout-gutters:        false;
