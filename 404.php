@@ -9,14 +9,23 @@ if (false != $post_id = get_field('404_page', 'option')) {
     // Get 404 page template
     $template = get_page_template_slug($post_id);
 
+    // If template is default template, use page.php
+    $template = $template != '' ? $template : 'page.php';
+
     // Set $post variable to 404 page post object
     $post = $post_object;
 
     // Set up 404 page post data
     setup_postdata($post);
 
+    // Set $template_path
+    $template_path = get_theme_dir() . '/' . $template;
+
+    // Use page template if it exists, otherwise use index.php
+    $template_path = file_exists($template_path) ? $template_path : get_theme_dir() . '/index.php';
+
     // Include 404 page post template
-    include(get_theme_dir() . '/' . $template);
+    include($template_path);
 
     die();
 } else {
