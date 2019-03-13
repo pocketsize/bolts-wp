@@ -12,6 +12,7 @@ import toggleState from './misc/toggle-state';
 //import slider from './components/common/slider';
 //import image from './components/common/image';
 //import choices from './external/choices.js';
+import tabs from './components/common/tabs';
 
 (() => {
     document.addEventListener('DOMContentLoaded', function() {
@@ -22,6 +23,7 @@ import toggleState from './misc/toggle-state';
         //slider.init();
         //images.init();
         //choices.init();
+        //tabs.init();
 
         // The world is your oyster!
     });

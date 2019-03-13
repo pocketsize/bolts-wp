@@ -1,0 +1,29 @@
+.tabs {
+    &-inner {
+    }
+
+    &-toggles {
+        border: 1px solid black;
+    }
+
+    &-toggle {
+        &.is-active {
+            background: green;
+        }
+    }
+
+    &-content-container {
+        border: 1px solid black;
+        overflow: hidden;
+        @include transition(max-height);
+    }
+
+    &-content {
+        max-height: 0;
+        overflow: hidden;
+
+        &.is-active {
+            max-height: none;
+        }
+    }
+}
