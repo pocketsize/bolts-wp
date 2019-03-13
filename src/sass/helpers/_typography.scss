@@ -100,6 +100,14 @@
         text-decoration: underline;
     }
 
+    strong, b { font-weight: bold; }
+
+    em, i { font-style: italic; }
+
+    ins, u { text-decoration: underline; }
+
+    del, s { text-decoration: line-through; }
+
     .embed-wrapper {
         @extend %embed-wrapper;
     }
