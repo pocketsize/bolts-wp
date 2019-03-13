@@ -22,7 +22,7 @@ if ($items) {
         component('post-preview', $item);
     }
 } else {
-    component('content', ['content' => 'Det finns ingenting att visa']);
+    component('common/content', ['content' => 'Det finns ingenting att visa']);
 }
 
 get_footer();
