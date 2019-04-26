@@ -25,6 +25,9 @@
  * @param string $modifier
  */
 
+$attributes = attributes($attributes ?? '');
+$modifier   = modifier($theme ?? null, $modifier ?? null);
+
 $disabled   = !empty($is_disabled) ? ' disabled' : '';
 $required   = !empty($is_required) ? ' required' : '';
 $identifier = !empty($identifier) ? $identifier : $title;
@@ -32,13 +35,9 @@ $name       = !empty($name) ? $name : $title;
 $value      = !empty($value) ? $value : null;
 $checked    = !empty($is_checked) ? ' checked' : '';
 $validate   = !empty($validate) ? 'data-bolts-validate="' . $validate . '"' : '';
-
-$theme       = !empty($theme) ? $theme : 'default';
-$theme_class = 'is-theme-' . $theme;
-$modifier    = !empty($modifier) ? $modifier : '';
 ?>
 
-<label class="radio-button <?php echo $theme_class; ?> <?php echo $modifier; ?>" for="<?php echo $identifier; ?>">
+<label class="radio-button <?php echo $modifier; ?>" for="<?php echo $identifier; ?>" <?php echo $attributes; ?>>
     <input
         id="<?php echo $identifier; ?>"
         class="radio-button-input"

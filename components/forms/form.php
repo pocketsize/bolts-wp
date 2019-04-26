@@ -18,6 +18,9 @@
  * @param array  $content
  */
 
+$attributes = attributes($attributes ?? '');
+$modifier   = modifier($theme ?? null, $modifier ?? null);
+
 $action       = !empty($action) ? 'action="' . $action . '"' : '';
 $method       = !empty($method) ? $method : 'POST';
 $target       = !empty($target) ? 'target="' . $target . '"' : '';
@@ -26,7 +29,7 @@ $autocomplete = !empty($autocomplete) ? 'autocomplete' : '';
 
 ?>
 
-<div class="form">
+<div class="form <?php echo $modifier; ?>" <?php echo $attributes; ?>>
     <div class="form-inner">
         <form
             class="form-element"

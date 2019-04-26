@@ -15,18 +15,17 @@
  * @param array  $options[i].option - see radio-button.php
  */
 
+$attributes = attributes($attributes ?? '');
+$modifier   = modifier($theme ?? null, $modifier ?? null);
+
 $name        = !empty($name) ? $name : $title;
 $identifier  = !empty($identifier) ? $identifier : $title;
 $is_required = !empty($is_required) ? $is_required : false;
 $error_text  = !empty($error_text) ? $error_text : false;
-
-$theme       = !empty($theme) ? $theme : 'default';
-$theme_class = 'is-theme-' . $theme;
-$modifier    = !empty($modifier) ? $modifier : '';
 ?>
 
 <?php if (!empty($options)) : ?>
-    <fieldset class="checkboxes <?php echo $theme_class; ?> <?php echo $modifier; ?>">
+    <fieldset class="checkboxes <?php echo $modifier; ?>" <?php echo $attributes; ?>>
         <?php if (!empty($title) || !empty($description)) : ?>
             <div class="radio-buttons-info">
                 <?php component('forms/field-info', [

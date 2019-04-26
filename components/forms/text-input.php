@@ -28,6 +28,8 @@
  * @param string $modifier
  */
 
+$attributes = attributes($attributes ?? '');
+$modifier   = modifier($theme ?? null, $modifier ?? null);
 
 $name        = !empty($name) ? $name : $title;
 $value       = !empty($value) ? $value : '';
@@ -41,17 +43,13 @@ $modifier    = !empty($modifier) ? $modifier : '';
 $validate    = !empty($validate) ? 'data-bolts-validate="' . $validate . '"' : '';
 $error_text  = !empty($error_text) ? $error_text : false;
 
-$theme       = !empty($theme) ? $theme : 'default';
-$theme_class = 'is-theme-' . $theme;
-$modifier    = !empty($modifier) ? $modifier : '';
-
 $allowed_types = ['text', 'email', 'url', 'password', 'tel', 'search'];
 $type          = !empty($type) ? $type : 'text';
 $type          = in_array($type, $allowed_types) ? $type : 'text';
 
 ?>
 
-<div class="text-input <?php echo $theme_class; ?> <?php echo $modifier; ?>" data-bolts-input-wrapper>
+<div class="text-input <?php echo $modifier; ?>" data-bolts-input-wrapper <?php echo $attributes; ?>>
     <div class="text-input-inner">
         <?php component('forms/field-info', [
             'title'       => $title,
