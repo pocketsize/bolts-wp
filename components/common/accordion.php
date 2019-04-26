@@ -12,12 +12,11 @@
  * @param string $modifier
  */
 
-$theme       = !empty($theme) ? $theme : 'default';
-$theme_class = 'is-theme-' . $theme;
-$modifier    = !empty($modifier) ? $modifier : '';
+$attributes = attributes($attributes ?? '');
+$modifier   = modifier($theme ?? null, $modifier ?? null);
 ?>
 
-<ul class="accordion <?php echo $theme_class; ?> <?php echo $modifier; ?>" data-accordion>
+<ul class="accordion <?php echo $modifier; ?>" <?php echo $attributes; ?> data-accordion>
     <?php foreach ($items as $item) : ?>
         <li class="accordion-item" data-accordion-item>
             <div class="accordion-tab" data-accordion-toggle>

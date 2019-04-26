@@ -4,7 +4,7 @@
  *
  * A preview of content, mostly post-type posts
  *
- * @param string $image_url
+ * @param string $image
  * @param string $title
  * @param string $content
  * @param string $link_url
@@ -13,19 +13,16 @@
  * @param string $modifier
  */
 
-$image_url = !empty($image_url) ? $image_url : 'http://placehold.it/500';
+$attributes = attributes($attributes ?? '');
+$modifier   = modifier($theme ?? null, $modifier ?? null);
 
-$theme       = !empty($theme) ? $theme : 'default';
-$theme_class = 'is-theme-' . $theme;
-$modifier    = !empty($modifier) ? $modifier : '';
+$image = !empty($image) ? $image : false;
 ?>
 
 <?php if (!empty($title) && !empty($content)) : ?>
-    <article class="post-preview <?php echo $theme_class; ?> <?php echo $modifier; ?>">
+    <article class="post-preview <?php echo $modifier; ?>">
         <div class="post-preview-image">
-            <?php component('common/image', [
-                'url'          => $image_url
-            ]); ?>
+            <?php component('common/image', $image); ?>
         </div>
 
         <div class="post-preview-content-outer">
@@ -43,6 +40,5 @@ $modifier    = !empty($modifier) ? $modifier : '';
                 ]); ?>
             </div>
         </div>
-
     </article>
 <?php endif; ?>

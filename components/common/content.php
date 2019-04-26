@@ -5,29 +5,34 @@
  * Basic styling and layout of text content.
  * Please use this as widely as possible. It's awesome.
  *
- * @param string $title
- * @param string $content
- * @param string $title_tag - "h1", "h2"
- *
- * @param string $theme
  * @param string $modifier
+ * @param string $title
+ * @param string $title_tag - "h1", "h2"
+ * @param string $content
+ * @param string $theme
  */
 
-$title_tag = !empty($title_tag) ? $title_tag : 'h2';
-
-$theme       = !empty($theme) ? $theme : 'default';
-$theme_class = 'is-theme-' . $theme;
-$modifier    = !empty($modifier) ? $modifier : '';
+$attributes = attributes($attributes ?? '');
+$modifier   = modifier($theme ?? null, $modifier ?? null);
+$title_tag  = !empty($title_tag) ? $title_tag : 'h2';
 ?>
 
-<div class="content <?php echo $theme_class; ?> <?php echo $modifier; ?>">
+<div class="content <?php echo $modifier; ?>" <?php echo $attributes; ?>>
     <?php if (!empty($title)) : ?>
-        <<?php echo $title_tag; ?> class="content-title">
+        <<?php echo $title_tag; ?> class="content-title <?php echo $title_modifier; ?>">
             <?php echo $title; ?>
         </<?php echo $title_tag; ?>>
     <?php endif; ?>
 
+    <?php if (!empty($lead)) : ?>
+        <div class="content-lead">
+            <?php echo $lead; ?>
+        </div>
+    <?php endif; ?>
+
     <?php if (!empty($content)) : ?>
-        <div class="content-content"><?php echo $content; ?></div>
+        <div class="content-content <?php echo $content_modifier; ?>">
+            <?php echo $content; ?>
+        </div>
     <?php endif; ?>
 </div>

@@ -19,6 +19,9 @@
  * @param string $modifier
  */
 
+$attributes = attributes($attributes ?? '');
+$modifier   = modifier($theme ?? null, $modifier ?? null);
+
 $name        = !empty($name) ? $name : $title;
 $value       = !empty($value) ? $value : '';
 $placeholder = !empty($placeholder) ? $placeholder : '';
@@ -32,13 +35,9 @@ $identifier  = !empty($identifier) ? $identifier : $title;
 $modifier    = !empty($modifier) ? $modifier : '';
 $validate    = !empty($validate) ? 'data-bolts-validate="' . $validate . '"' : '';
 $error_text  = !empty($error_text) ? $error_text : false;
-
-$theme       = !empty($theme) ? $theme : 'default';
-$theme_class = 'is-theme-' . $theme;
-$modifier    = !empty($modifier) ? $modifier : '';
 ?>
 
-<div class="textarea <?php echo $theme_class; ?> <?php echo $modifier; ?>" data-bolts-input-wrapper>
+<div class="textarea <?php echo $modifier; ?>" data-bolts-input-wrapper <?php echo $attributes; ?>>
     <div class="textarea-inner">
         <?php component('forms/field-info', [
             'title'       => $title,

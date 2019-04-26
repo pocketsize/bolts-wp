@@ -25,6 +25,9 @@
  * @param string $modifier
  */
 
+$attributes = attributes($attributes ?? '');
+$modifier   = modifier($theme ?? null, $modifier ?? null);
+
 $disabled   = !empty($is_disabled) ? ' disabled' : '';
 $checked    = !empty($is_checked) ? ' checked' : '';
 $required   = !empty($is_required) ? ' required' : '';
@@ -32,18 +35,14 @@ $identifier = !empty($identifier) ? $identifier : $title;
 $name       = !empty($name) ? $name : $title;
 $checked    = !empty($is_checked)  ? ' checked' : '';
 $validate   = !empty($validate) ? 'data-bolts-validate="' . $validate . '"' : '';
-
-$theme       = !empty($theme) ? $theme : 'default';
-$theme_class = 'is-theme-' . $theme;
-$modifier    = !empty($modifier) ? $modifier : '';
 ?>
 
 <label
     class="checkbox
-    <?php echo $theme_class; ?>
     <?php echo $modifier; ?>"
     for="<?php echo $identifier; ?>"
     data-bolts-input-wrapper
+    <?php echo $attributes; ?>
 >
     <input
         id="<?php echo $identifier; ?>"

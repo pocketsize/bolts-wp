@@ -32,12 +32,10 @@
  * @param string      $modifier     - "is-overlay"
  */
 
-
-// Setting up modifiers used for classes
-$theme           = !empty($theme) ? $theme : 'default';
-$theme_class     = 'is-theme-' . $theme;
-$modifier        = !empty($modifier) ? $modifier : '';
+$modifier        = modifier($theme ?? null, $modifier ?? null);
 $object_modifier = !empty($has_overlay) || !empty($overlay_text) ? 'has-overlay' : '';
+
+// TODO: update this
 $lazyload        = !empty($lazyload) ? $lazyload : false;
 $lazyload        = !empty($lazyload) && $lazyload === true ? 'default' : $lazyload;
 $lazyload_class  = 'is-lazyload-' . $lazyload;
@@ -52,7 +50,7 @@ $style_tag  = !empty($lazyload)   ? '' : 'style="background-image:url(' . $url .
 
 <?php if (!empty($url)) : ?>
     <figure
-        class="image <?php echo $theme_class; ?> <?php echo $modifier; ?> <?php echo $lazyload_class; ?>"
+        class="image <?php echo $modifier; ?> <?php echo $lazyload_class; ?>"
         data-lazy-image-root
     >
         <div class="image-inner">
