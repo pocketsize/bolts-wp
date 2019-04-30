@@ -38,12 +38,12 @@ function attributes($attributes)
 
             $attribute_string .= ' ' . $attribute;
 
-			if ($value !== true) {
-				$attribute_string .= '="' . $value . '"';
-			}
+            if ($value !== true) {
+                $attribute_string .= '="' . $value . '"';
+            }
         }
 
-		return trim($attribute_string);
+        return trim($attribute_string);
     }
 
     return $attributes;
