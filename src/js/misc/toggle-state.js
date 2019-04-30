@@ -8,7 +8,7 @@
  * on a state.
  */
 
-import { state } from 'bolts';
+import { state } from 'bolts-lib';
 
 const toggleState = {
     toggles: null,

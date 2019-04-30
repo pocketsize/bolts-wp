@@ -65,7 +65,7 @@ $bolts-breakpoints: (
     main-menu: 800px
 );
 
-@import '~bolts/src/sass/bolts';
+@import '~bolts-lib/src/sass/bolts';
 
 @include boilerplate;
 
