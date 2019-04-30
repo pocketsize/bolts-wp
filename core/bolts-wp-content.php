@@ -35,7 +35,13 @@ if (!function_exists('get_page_ids_by_template')) {
 if (!function_exists('get_page_id_by_template')) {
     function get_page_id_by_template($template)
     {
-        return reset(get_page_ids_by_template($template));
+        $ids = get_page_ids_by_template($template);
+
+        if (!count($ids)) {
+            return false;
+        }
+
+        return $ids[0];
     }
 }
 
