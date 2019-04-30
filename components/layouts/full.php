@@ -24,12 +24,11 @@
  */
 
 // Setting up a theme class used to give the grid different layouts
-$theme       = !empty($theme) ? $theme : 'default';
-$theme_class = 'is-theme-' . $theme;
-$modifier    = !empty($modifier) ? $modifier : '';
+$attributes = attributes($attributes ?? '');
+$modifier   = modifier($theme ?? null, $modifier ?? null);
 ?>
 
-<div class="layout-full <?php echo $theme_class; ?> <?php echo $modifier; ?>">
+<div class="layout-full <?php echo $modifier; ?>" <?php echo $attributes; ?>>
     <div class="layout-full-inner">
         <?php layout_items($content, 'layout-full-item'); ?>
     </div>
