@@ -12,7 +12,8 @@
  * @param array  $tabs[i].items
  */
 
-$modifier = modifier($theme ?? null, $modifier ?? null);
+$attributes = attributes($attributes ?? '');
+$modifier   = modifier($theme ?? null, $modifier ?? null);
 ?>
 
 <?php if (!empty($tabs)) : ?>

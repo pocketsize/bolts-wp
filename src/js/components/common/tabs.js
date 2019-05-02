@@ -1,4 +1,4 @@
-import { misc } from 'bolts';
+import { misc } from 'bolts-lib';
 
 const tabs = {
     tabs: null,

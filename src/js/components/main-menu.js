@@ -1,4 +1,4 @@
-import { state } from 'bolts';
+import { state } from 'bolts-lib';
 
 const mainMenu = {
     menuToggles: null,

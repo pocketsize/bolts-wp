@@ -29,7 +29,7 @@ const sliderTypes = {
 
 // Imports
 import Siema from 'siema';
-import { timing } from 'bolts';
+import { timing } from 'bolts-lib';
 
 // Pagination
 Siema.prototype.initPagination = function() {

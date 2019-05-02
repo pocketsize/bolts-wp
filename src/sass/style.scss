@@ -8,10 +8,6 @@
 // Importing variables to pass them on to Bolts Scss
 @import 'helpers/variables';
 
-$bolts-page-selector:                        '.bolts-page';
-$bolts-wrapper-selector:                     '.bolts-wrapper';
-$bolts-footer-selector:                      '.bolts-footer';
-
 $bolts-reset-focus-styles:                   false;
 $bolts-reset-list-styles:                    false;
 
@@ -22,13 +18,11 @@ $bolts-default-container-width:              $width--container;
 $bolts-default-container-max-width:          $max-width--container;
 $bolts-default-container-align:              center;
 
-
 $bolts-default-background-size:              cover;
 $bolts-default-background-position:          50% 50%;
 
 $bolts-default-transition-duration:          $duration--default;
 $bolts-default-transition-easing:            $easing--default;
-
 
 $bolts-default-inline-layout-vertical-align: top;
 $bolts-default-inline-layout-gutters:        false;
@@ -65,14 +59,15 @@ $bolts-breakpoints: (
     main-menu: 800px
 );
 
-@import '~bolts/src/sass/bolts';
-
-@include boilerplate;
+@import '~bolts-lib/src/sass/bolts';
 
 // Helpers
 @import 'helpers/typography';
 @import 'helpers/placeholders';
 @import 'helpers/mixins';
+
+// Global
+@import 'global';
 
 // Templates
 @import 'templates/archive';
@@ -81,6 +76,7 @@ $bolts-breakpoints: (
 @import 'components/common/button';
 @import 'components/common/image';
 @import 'components/common/link';
+@import 'components/common/content';
 //@import 'components/common/slider';
 //@import 'components/common/tabs';
 
@@ -89,7 +85,6 @@ $bolts-breakpoints: (
 @import 'components/layouts/split';
 
 // Components
-@import 'components/content';
 @import 'components/footer';
 @import 'components/header';
 @import 'components/main-menu';
@@ -97,6 +92,7 @@ $bolts-breakpoints: (
 //@import 'components/accordion';
 
 // Forms
+@import 'components/forms/form';
 @import 'components/forms/checkbox';
 @import 'components/forms/checkboxes';
 @import 'components/forms/field-info';

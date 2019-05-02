@@ -1,0 +1,6 @@
+.bolts-page {
+    @include sticky-footer(
+    	'.bolts-wrapper',
+    	'.bolts-footer'
+    );
+}

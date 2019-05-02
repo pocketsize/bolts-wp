@@ -6,7 +6,7 @@
  */
 
 import '@babel/polyfill';
-import { Bolts, misc } from 'bolts';
+import { bolts, misc } from 'bolts-lib';
 import mainMenu from './components/main-menu';
 import toggleState from './misc/toggle-state';
 //import slider from './components/common/slider';

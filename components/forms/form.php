@@ -21,12 +21,11 @@
 $attributes = attributes($attributes ?? '');
 $modifier   = modifier($theme ?? null, $modifier ?? null);
 
-$action       = !empty($action) ? 'action="' . $action . '"' : '';
-$method       = !empty($method) ? $method : 'POST';
-$target       = !empty($target) ? 'target="' . $target . '"' : '';
-$novalidate   = !empty($novalidate) ? 'novalidate' : '';
-$autocomplete = !empty($autocomplete) ? 'autocomplete' : '';
-
+$action       = !empty($action)       ? 'action="' . $action . '"' : '';
+$method       = !empty($method)       ? $method                    : 'POST';
+$target       = !empty($target)       ? 'target="' . $target . '"' : '';
+$novalidate   = !empty($novalidate)   ? 'novalidate'               : '';
+$autocomplete = !empty($autocomplete) ? 'autocomplete'             : '';
 ?>
 
 <div class="form <?php echo $modifier; ?>" <?php echo $attributes; ?>>
