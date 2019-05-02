@@ -16,7 +16,7 @@ import tabs from './components/common/tabs';
 
 (() => {
     document.addEventListener('DOMContentLoaded', function() {
-        Bolts.init();
+        bolts.init();
         misc.autoHeight('[data-auto-height]');
         mainMenu.init();
         toggleState.init();
