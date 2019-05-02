@@ -17,7 +17,11 @@ const mainMenu = {
         if (this.menuToggles.length) {
             this.menuToggles.forEach(toggle => {
                 toggle.addEventListener('click', () => {
-                    state.toggle('menu-open');
+                    if (state.get('menu-open')) {
+                        state.set('menu-open', false);
+                    } else {
+                        state.set('menu-open');
+                    }
                 });
             });
         }
