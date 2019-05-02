@@ -17,10 +17,9 @@
         position: relative;
     }
 
-    // Input height is set here
     &-faux-input-outer {
         position: relative;
-        height: $input--height;
+        height: $height--input;
         padding: 0;
         display: flex;
         align-items: center;
@@ -49,13 +48,12 @@
         }
     }
 
-    // X-padding is set here
     &-input {
         position: relative;
         width: 100%;
         height: 100%;
-        padding-left: $input--x-padding;
-        padding-right: $input--x-padding;
+        padding-left: $padding--input-x;
+        padding-right: $padding--input-x;
         z-index: 1;
     }
 }

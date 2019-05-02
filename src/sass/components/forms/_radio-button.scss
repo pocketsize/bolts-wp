@@ -4,7 +4,6 @@
     user-select: none;
     display: block;
 
-    // hide real input...
     &-input {
         position: absolute;
         opacity: 0;
@@ -12,49 +11,43 @@
         height: 0;
     }
 
-    // ...and replace it with a stylable div
     &-faux-input {
         cursor: pointer;
         position: relative;
         overflow: hidden;
         width: 18px;
         height: 18px;
-        border-radius: 9px;
+        border-radius: 50%;
         overflow: hidden;
         display: inline-block;
         vertical-align: middle;
-        border: 1px solid gray;
+        border: 1px solid $color--black;
 
-        // when focused
         .radio-button-input:focus + & {
-            border-color: blue;
         }
 
-        // when checked
         .radio-button-input:checked + & {
-            border-color: black;
         }
 
-        // when checked and focused
         .radio-button-input:checked:focus + & {
-            box-shadow: 0 0 0 1px black;
         }
 
-        // when error
+        .radio-buttons.has-error &,
         .radio-button.has-error & {
             border-color: $color--warning;
         }
 
-        // when disabled
         .radio-button-input:disabled + & {
             @extend %disabled-input;
         }
 
-        // radio-button fill
-        &:before {
+        &:after {
             content: '';
-            @include overlay;
-            background: black;
+            @include center;
+            background: $color--black;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
             opacity: 0;
 
             .radio-button-input:checked + & {
@@ -69,12 +62,12 @@
         display: inline-block;
         white-space: normal;
 
+        .radio-buttons.has-error &,
         .radio-button.has-error & {
             color: $color--warning;
         }
 
         .radio-button-input:disabled + .radio-button-faux-input + & {
-            // wow such selector very long
             @extend %disabled-input;
         }
     }

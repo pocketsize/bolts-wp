@@ -1,10 +1,9 @@
 .checkbox {
     position: relative;
-    white-space: nowrap;
     user-select: none;
     display: block;
+    @include clear-whitespace(null, false);
 
-    // hide real input...
     &-input {
         position: absolute;
         opacity: 0;
@@ -12,7 +11,6 @@
         height: 0;
     }
 
-    // ...and replace it with a stylable div
     &-faux-input {
         cursor: pointer;
         position: relative;
@@ -21,43 +19,49 @@
         height: 18px;
         display: inline-block;
         vertical-align: middle;
-        border: 1px solid gray;
+        border: 1px solid $color--black;
+        background-color: $color--white;
 
-        // when focused
         .checkbox-input:focus + & {
-            border-color: blue;
         }
 
-        // when checked
         .checkbox-input:checked + & {
-            border-color: black;
         }
 
-        // when checked and focused
         .checkbox-input:checked:focus + & {
-            box-shadow: 0 0 0 1px black;
         }
 
-        // when error
+        .checkboxes.has-error &,
         .checkbox.has-error & {
             border-color: $color--warning;
         }
 
-        // when disabled
         .checkbox-input:disabled + & {
             @extend %disabled-input;
         }
 
-        // checkbox fill
-        &:before {
+        &:before,
+        &:after {
             content: '';
-            @include overlay;
+            position: absolute;
+            top: 50%;
+            left: 50%;
             background: black;
+            width: 2px;
+            height: 10px;
             opacity: 0;
 
             .checkbox-input:checked + & {
                 opacity: 1;
             }
+        }
+
+        &:before {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        &:after {
+            transform: translate(-50%, -50%) rotate(45deg);
         }
     }
 
@@ -65,14 +69,14 @@
         cursor: pointer;
         vertical-align: middle;
         display: inline-block;
-        white-space: normal;
+        margin-left: 10px;
 
+        .checkboxes.has-error &,
         .checkbox.has-error & {
             color: $color--warning;
         }
 
         .checkbox-input:disabled + .checkbox-faux-input + & {
-            // wow such selector very long
             @extend %disabled-input;
         }
     }

@@ -1,0 +1,9 @@
+.form {
+    &-element {
+        width: 100%;
+    }
+
+    &-field {
+        @include conditional-spacing;
+    }
+}
