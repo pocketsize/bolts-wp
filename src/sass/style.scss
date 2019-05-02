@@ -62,9 +62,9 @@ $bolts-breakpoints: (
 @import '~bolts-lib/src/sass/bolts';
 
 // Helpers
+@import 'helpers/mixins';
 @import 'helpers/typography';
 @import 'helpers/placeholders';
-@import 'helpers/mixins';
 
 // Global
 @import 'global';
