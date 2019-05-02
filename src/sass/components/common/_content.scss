@@ -1,11 +1,14 @@
 .content {
+    &-title,
+    &-content {
+        @include conditional-spacing;
+    }
+
     &-title {
         @extend %title--h1;
-        @extend %title--h1-spacing;
     }
 
     &-content {
         @extend %content--wysiwyg;
-        @extend %content--wysiwyg-spacing;
     }
 }
