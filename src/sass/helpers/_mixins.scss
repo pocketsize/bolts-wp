@@ -1,1 +1,9 @@
-// Mixins go here
+@mixin conditional-spacing($spacing: false, $direction: false) {
+	@if ($spacing  ==  false) { $spacing: $spacing--default; }
+	$property: bottom;
+	@if ($direction  ==  horizontal) {
+		$property: right;
+	}
+
+	&:not(:last-child) { margin-#{$property}: $spacing; }
+}
