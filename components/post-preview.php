@@ -27,7 +27,7 @@ $image = !empty($image) ? $image : false;
 
         <div class="post-preview-content-outer">
             <div class="post-preview-content">
-                <?php component('content', [
+                <?php component('common/content', [
                     'title'    => $title,
                     'content'  => $content
                 ]); ?>
