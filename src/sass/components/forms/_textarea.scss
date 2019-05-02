@@ -1,5 +1,5 @@
 .textarea {
-    width: 100%;
+    //width: 100%;
 
     &-inner {
     }
@@ -10,25 +10,28 @@
 
     &-faux-input {
         @include overlay;
-        border: 1px solid black;
+        border: 1px solid $color--black;
+        background-color: $color--white;
 
         .textarea-input:focus + & {
-            border: 1px solid blue;
         }
 
         .textarea-input:disabled + & {
-            @extend %disabled-input;
+            opacity: 0.5;
         }
 
         .textarea.has-error & {
-            border: 1px solid $color--warning;
+            border-color: $color--warning;
         }
     }
 
     &-input {
+        display: block;
+        background-color: transparent; /* TODO: should be part of reset */
         width: 100%;
         position: relative;
         z-index: 1;
-        padding: $input--x-padding;
+        padding: $padding--input-y $padding--input-x;
+        resize: none;
     }
 }
