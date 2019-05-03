@@ -73,7 +73,6 @@ $bolts-breakpoints: (
 @import 'templates/archive';
 
 // Common components
-@import 'components/common/button';
 @import 'components/common/image';
 @import 'components/common/link';
 @import 'components/common/content';
@@ -101,6 +100,7 @@ $bolts-breakpoints: (
 @import 'components/forms/select';
 @import 'components/forms/text-input';
 @import 'components/forms/textarea';
+@import 'components/forms/button';
 
 // External
 //@import 'external/choices';
