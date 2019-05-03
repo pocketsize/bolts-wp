@@ -1,6 +1,22 @@
+@include reset;
+
 .bolts-page {
     @include sticky-footer(
     	'.bolts-wrapper',
     	'.bolts-footer'
     );
+}
+
+html, body {
+	position: relative;
+	overflow-x: hidden;
+	width: 100%;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: sans-serif;
 }
