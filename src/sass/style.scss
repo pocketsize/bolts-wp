@@ -8,35 +8,35 @@
 // Importing variables to pass them on to Bolts Scss
 @import 'helpers/variables';
 
-$bolts-reset-focus-styles:                   false;
-$bolts-reset-list-styles:                    false;
+$bolts-reset-focus-styles:                 false;
+$bolts-reset-list-styles:                  false;
 
-$bolts-img-display:                          block;
-$bolts-img-max-width:                        100%;
+$bolts-img-display:                        block;
+$bolts-img-max-width:                      100%;
 
-$bolts-default-container-width:              $width--container;
-$bolts-default-container-max-width:          $max-width--container;
-$bolts-default-container-align:              center;
+$bolts-default-container-width:            $width--container;
+$bolts-default-container-max-width:        $max-width--container;
+$bolts-default-container-align:            center;
 
-$bolts-default-background-size:              cover;
-$bolts-default-background-position:          50% 50%;
+$bolts-default-background-size:            cover;
+$bolts-default-background-position:        50% 50%;
 
-$bolts-default-transition-duration:          $duration--default;
-$bolts-default-transition-easing:            $easing--default;
+$bolts-default-transition-duration:        $duration--default;
+$bolts-default-transition-easing:          $easing--default;
 
-$bolts-default-inline-layout-vertical-align: top;
-$bolts-default-inline-layout-gutters:        false;
+$bolts-default-inline-layout-align:        top;
+$bolts-default-inline-layout-gutters:      false;
 
-$bolts-default-flex-layout-gutters:          false;
+$bolts-default-flex-layout-gutters:        false;
 
-$bolts-default-font-path:                    '../fonts';
+$bolts-default-font-path:                  '../fonts';
 
-$bolts-default-pseudo:                       after;
+$bolts-default-pseudo:                     after;
 
-$bolts-default-auto-col-min:                 1;
-$bolts-default-auto-col-max:                 12;
+$bolts-default-auto-col-min:               1;
+$bolts-default-auto-col-max:               12;
 
-$bolts-default-responsive-font-size-ratio:   1.6;
+$bolts-default-responsive-font-size-ratio: 1.6;
 
 $bolts-selectors: (
     headings: 'h1, h2, h3, h4, h5, h6',

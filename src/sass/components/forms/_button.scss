@@ -1,13 +1,9 @@
 .button {
     display: inline-block;
     position: relative;
-    border: 1px solid $color--black;
+    border: $width--input-border solid $color--input-border;
 
-    &.is-theme-default {
-        background-color: rgba($color--black, 0.1);
-
-        .button-inner {
-            padding: $padding--input-y $padding--input-x;
-        }
+    .button-inner {
+        padding: $padding--input-y $padding--input-x;
     }
 }

@@ -12,16 +12,17 @@
     }
 
     &-faux-input {
+        background-color: $color--input-background;
         cursor: pointer;
         position: relative;
         overflow: hidden;
         width: 18px;
         height: 18px;
-        border-radius: 50%;
         overflow: hidden;
         display: inline-block;
         vertical-align: middle;
-        border: 1px solid $color--black;
+        border: $width--input-border solid $color--input-border;
+        border-radius: 50%;
 
         .radio-button-input:focus + & {
         }

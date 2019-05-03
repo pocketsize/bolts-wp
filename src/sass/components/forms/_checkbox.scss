@@ -19,8 +19,8 @@
         height: 18px;
         display: inline-block;
         vertical-align: middle;
-        border: 1px solid $color--black;
-        background-color: $color--white;
+        border: $width--input-border solid $color--input-border;
+        background-color: $color--input-background;
 
         .checkbox-input:focus + & {
         }
@@ -46,7 +46,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            background: black;
+            background: $color--black;
             width: 2px;
             height: 10px;
             opacity: 0;

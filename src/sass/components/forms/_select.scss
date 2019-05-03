@@ -21,18 +21,18 @@
 
     &-select {
         display: table;
-        padding: 0 30px 0 10px;
+        padding: 0 ($padding--input-x + 20px) 0 $padding--input-x;
         height: $height--input;
-        line-height: 38px;
+        line-height: $height--input - ($width--input-border * 2);
         font-size: $font-size--input;
         width: 100%;
         appearance: none;
-        background-color: $color--white;
+        background-color: $color--input-background;
         background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=');
         background-repeat: no-repeat;
         border-radius: 0;
         cursor: pointer;
-        border: 1px solid;
+    	border: $width--input-border solid $color--input-border;
 
         &::-ms-expand {
             display: none;
