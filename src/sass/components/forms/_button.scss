@@ -5,9 +5,9 @@
 
     &.is-theme-default {
         background-color: rgba($color--black, 0.1);
-    }
 
-    &-inner {
-        padding: 10px 20px;
+        .button-inner {
+            padding: $padding--input-y $padding--input-x;
+        }
     }
 }
