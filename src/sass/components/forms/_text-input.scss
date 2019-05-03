@@ -10,33 +10,21 @@
  */
 
 .text-input {
-    width: 100%;
-    @extend %form-component-spacing;
-
     &-inner {
-        position: relative;
     }
 
     &-faux-input-outer {
         position: relative;
-        height: $height--input;
-        padding: 0;
-        display: flex;
-        align-items: center;
         overflow: hidden;
-        position: relative;
-
-        .text-input.has-error-animation & {
-            animation: error 800ms linear;
-        }
+        height: $height--input;
     }
 
     &-faux-input {
         @include overlay;
-        border: 1px solid black;
+        background-color: $color--input-background;
+        border: $width--input-border solid $color--input-border;
 
         .text-input-input:focus + & {
-            border: 1px solid blue;
         }
 
         .text-input-input:disabled + & {
@@ -44,7 +32,7 @@
         }
 
         .text-input.has-error & {
-            border: 1px solid $color--warning;
+            border-color: $color--warning;
         }
     }
 
@@ -54,6 +42,6 @@
         height: 100%;
         padding-left: $padding--input-x;
         padding-right: $padding--input-x;
-        z-index: 1;
+        z-index: 1; /* probably unnecessary */
     }
 }

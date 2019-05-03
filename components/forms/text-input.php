@@ -74,6 +74,7 @@ $type          = in_array($type, $allowed_types) ? $type : 'text';
                 <?php echo $validate; ?>
             />
             <div class="text-input-faux-input"></div>
+
             <?php // TODO: button slot here ?>
         </div>
     </div>

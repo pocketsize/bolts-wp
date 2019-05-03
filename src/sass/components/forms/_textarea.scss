@@ -1,6 +1,4 @@
 .textarea {
-    //width: 100%;
-
     &-inner {
     }
 
@@ -10,14 +8,14 @@
 
     &-faux-input {
         @include overlay;
-        border: 1px solid $color--black;
-        background-color: $color--white;
+        border: $width--input-border solid $color--input-border;
+        background-color: $color--input-background;
 
         .textarea-input:focus + & {
         }
 
         .textarea-input:disabled + & {
-            opacity: 0.5;
+            @extend %disabled-input;
         }
 
         .textarea.has-error & {
