@@ -11,6 +11,7 @@
  *
  * @param string $theme
  * @param string $modifier
+ * @param string $attributes
  */
 
 $attributes = attributes($attributes ?? '');

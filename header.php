@@ -18,7 +18,9 @@
 <div class="bolts-wrapper">
 
     <?php component('header', [
-        'menu' => get_menu_object('main')
+        'menu'      => get_menu_object('main'),
+        'home_url'  => home_url(),
+        'site_name' => get_bloginfo('name')
     ]); ?>
 
     <main class="main">
