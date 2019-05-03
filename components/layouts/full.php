@@ -17,13 +17,12 @@
  *
  * Lets check it out
  *
- * @param array  $content
- *
  * @param string $theme - "default"
  * @param string $modifier
+ * @param string $attributes
+ * @param array  $content
  */
 
-// Setting up a theme class used to give the grid different layouts
 $attributes = attributes($attributes ?? '');
 $modifier   = modifier($theme ?? null, $modifier ?? null);
 ?>
