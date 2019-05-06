@@ -1,9 +1,8 @@
 .field-info {
-    padding-bottom: 10px;
-
     &-label-wrapper {
-        display: flex;
-        align-items: center;
+        /* display: flex;
+        align-items: center; */
+        @include conditional-spacing(10px);
     }
 
     &-label {

@@ -4,8 +4,9 @@ get_header();
 
 dump('Form components in split layout');
 
-component('layouts/split', [
-    'primary' => [
+component('forms/form', [
+    'action' => '',
+    'fields' => [
         [
             'component' => 'forms/text-input',
             'data' => [
@@ -40,13 +41,11 @@ component('layouts/split', [
                 ]
             ]
         ],
-    ],
-    'secondary' => [
         [
             'component' => 'forms/select',
             'data' => [
                 'title'       => 'I am select',
-                'description' => 'If this is unstyled you should init "src/js/external/choices.js"',
+                'description' => 'You can also use choices by initializing "src/js/external/choices.js"',
                 'options'     => [
                     [
                         'title'       => 'Option 1 (disabled)',
@@ -102,6 +101,13 @@ component('layouts/split', [
                 'title'       => 'I am textarea',
                 'description' => 'This my description'
             ]
+        ],
+        [
+            'component' => 'forms/button',
+            'data' => [
+                'title' => 'I am Button',
+                'url'   => '#'
+            ]
         ]
     ]
 ]);
@@ -148,7 +154,5 @@ component('layouts/full', [
         ]
     ],
 ]);
-
-
 
 get_footer();

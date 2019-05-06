@@ -1,8 +1,9 @@
 .textarea {
-    &-inner {
+    &-field-info {
+        @include conditional-spacing;
     }
 
-    &-faux-input-outer {
+    &-inner {
         position: relative;
     }
 
@@ -25,11 +26,11 @@
 
     &-input {
         display: block;
-        background-color: transparent; /* TODO: should be part of reset */
         width: 100%;
         position: relative;
-        z-index: 1;
         padding: $padding--input-y $padding--input-x;
         resize: none;
+        z-index: 1;
+        background-color: transparent; /* TODO: should be part of reset */
     }
 }

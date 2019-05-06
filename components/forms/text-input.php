@@ -49,8 +49,8 @@ $type          = in_array($type, $allowed_types) ? $type : 'text';
 
 ?>
 
-<div class="text-input <?php echo $modifier; ?>" data-bolts-input-wrapper <?php echo $attributes; ?>>
-    <div class="text-input-inner">
+<div class="text-input <?php echo $modifier; ?>" <?php echo $attributes; ?>>
+    <div class="text-input-field-info">
         <?php component('forms/field-info', [
             'title'       => $title,
             'description' => $description,
@@ -58,24 +58,20 @@ $type          = in_array($type, $allowed_types) ? $type : 'text';
             'is_required' => $is_required,
             'error_text'  => $error_text
         ]); ?>
+    </div>
 
-        <div class="text-input-faux-input-outer">
-            <?php // TODO: icon slot here ?>
-
-            <input
-                id="<?php echo $identifier; ?>"
-                name="<?php echo $name; ?>"
-                class="text-input-input"
-                type="<?php echo $type; ?>"
-                value="<?php echo $value; ?>"
-                placeholder="<?php echo $placeholder; ?>"
-                <?php echo $disabled; ?>
-                <?php echo $required; ?>
-                <?php echo $validate; ?>
-            />
-            <div class="text-input-faux-input"></div>
-
-            <?php // TODO: button slot here ?>
-        </div>
+    <div class="text-input-inner">
+        <input
+            id="<?php echo $identifier; ?>"
+            name="<?php echo $name; ?>"
+            class="text-input-input"
+            type="<?php echo $type; ?>"
+            value="<?php echo $value; ?>"
+            placeholder="<?php echo $placeholder; ?>"
+            <?php echo $disabled; ?>
+            <?php echo $required; ?>
+            <?php echo $validate; ?>
+        />
+        <div class="text-input-faux-input"></div>
     </div>
 </div>

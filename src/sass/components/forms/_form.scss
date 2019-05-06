@@ -3,6 +3,6 @@
     }
 
     &-field {
-        @include conditional-spacing;
+        @include conditional-spacing(40px);
     }
 }
