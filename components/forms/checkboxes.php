@@ -27,7 +27,7 @@ $error_text  = !empty($error_text) ? $error_text : false;
 <?php if (!empty($options)) : ?>
     <fieldset class="checkboxes <?php echo $modifier; ?>" <?php echo $attributes; ?>>
         <?php if (!empty($title) || !empty($description)) : ?>
-            <div class="radio-buttons-info">
+            <div class="checkboxes-field-info">
                 <?php component('forms/field-info', [
                     'title'       => $title,
                     'description' => $description,

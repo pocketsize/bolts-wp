@@ -22,7 +22,7 @@ $color--input-border: $color--black;
 $color--input-background: $color--white;
 $font-size--input: $font-size--default;
 $padding--input-x: 10px;
-$padding--input-y: ($input-height - $font-size--input) / 2;
+$padding--input-y: ($height--input - $font-size--input) / 2;
 
 // Animation related
 $duration--default: 500ms;

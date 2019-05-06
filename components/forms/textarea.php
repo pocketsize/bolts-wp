@@ -38,7 +38,7 @@ $error_text  = !empty($error_text) ? $error_text : false;
 ?>
 
 <div class="textarea <?php echo $modifier; ?>" data-bolts-input-wrapper <?php echo $attributes; ?>>
-    <div class="textarea-inner">
+    <div class="textarea-field-info">
         <?php component('forms/field-info', [
             'title'       => $title,
             'description' => $description,
@@ -46,21 +46,21 @@ $error_text  = !empty($error_text) ? $error_text : false;
             'is_required' => $is_required,
             'error_text'  => $error_text
         ]); ?>
+    </div>
 
-        <div class="textarea-faux-input-outer">
-            <textarea
-                class="textarea-input"
-                name="<?php echo $name; ?>"
-                rows="<?php echo $rows; ?>"
-                id="<?php echo $identifier; ?>"
-                placeholder="<?php echo $placeholder; ?>"
-                <?php echo $maxlength; ?>
-                <?php echo $disabled; ?>
-                <?php echo $required; ?>
-                <?php echo $validate; ?>
-            ><?php echo $value;  ?></textarea>
+    <div class="textarea-inner">
+        <textarea
+            class="textarea-input"
+            name="<?php echo $name; ?>"
+            rows="<?php echo $rows; ?>"
+            id="<?php echo $identifier; ?>"
+            placeholder="<?php echo $placeholder; ?>"
+            <?php echo $maxlength; ?>
+            <?php echo $disabled; ?>
+            <?php echo $required; ?>
+            <?php echo $validate; ?>
+        ><?php echo $value;  ?></textarea>
 
-            <div class="textarea-faux-input"></div>
-        </div>
+        <div class="textarea-faux-input"></div>
     </div>
 </div>

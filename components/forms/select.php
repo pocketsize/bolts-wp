@@ -43,27 +43,31 @@ $error_text  = !empty($error_text) ? $error_text : false;
 
 <?php if (!empty($options)) : ?>
     <div class="select <?php echo $modifier; ?>" <?php echo $attributes; ?>>
-        <?php component('forms/field-info', [
-            'title'       => $title,
-            'description' => $description,
-            'identifier'  => $identifier,
-            'is_required' => $is_required,
-            'error_text'  => $error_text
-        ]); ?>
+        <div class="select-field-info">
+            <?php component('forms/field-info', [
+                'title'       => $title,
+                'description' => $description,
+                'identifier'  => $identifier,
+                'is_required' => $is_required,
+                'error_text'  => $error_text
+            ]); ?>
+        </div>
 
-        <select name="<?php echo $name; ?>" class="select-select" data-bolts-choices="select">
-            <?php foreach ($options as $option) : ?>
-                <?php
-                    $is_disabled = !empty($option['is_disabled']) ? 'disabled' : '';
-                    $is_selected = !empty($option['is_selected']) ? 'selected' : '';
-                ?>
-                <option
-                    value="<?php echo $option['value']; ?>"
-                    <?php echo $is_selected; ?>
-                    <?php echo $is_disabled; ?>>
-                    <?php echo $option['title']; ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
+        <div class="select-inner">
+            <select name="<?php echo $name; ?>" class="select-select" data-bolts-choices="select">
+                <?php foreach ($options as $option) : ?>
+                    <?php
+                        $is_disabled = !empty($option['is_disabled']) ? 'disabled' : '';
+                        $is_selected = !empty($option['is_selected']) ? 'selected' : '';
+                    ?>
+                    <option
+                        value="<?php echo $option['value']; ?>"
+                        <?php echo $is_selected; ?>
+                        <?php echo $is_disabled; ?>>
+                        <?php echo $option['title']; ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
     </div>
 <?php endif; ?>

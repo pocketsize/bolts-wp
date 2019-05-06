@@ -15,7 +15,7 @@
  * @param bool   $novalidate
  * @param bool   $autocomplete
  *
- * @param array  $content
+ * @param array  $fields
  */
 
 $attributes = attributes($attributes ?? '');
@@ -38,7 +38,7 @@ $autocomplete = !empty($autocomplete) ? 'autocomplete'             : '';
             <?php echo $novalidate; ?>
             <?php echo $autocomplete; ?>
         >
-            <?php layout_items($content); ?>
+            <?php layout_items($fields, 'form-field'); ?>
         </form>
     </div>
 </div>
