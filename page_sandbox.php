@@ -116,7 +116,7 @@ dump('Button and link in split layout');
 
 component('layouts/split', [
     'primary' => [
-        'component' => 'common/button',
+        'component' => 'forms/button',
         'data' => [
             'title' => 'I am Button',
             'url'   => '#'
