@@ -46,4 +46,13 @@
             border-color: $color--warning;
         }
     }
+
+    &-input {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding-left: $padding--input-x;
+        padding-right: $padding--input-x;
+        z-index: 1;
+    }
 }
