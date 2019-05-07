@@ -24,10 +24,11 @@ $modifier   = modifier($theme ?? null, $modifier ?? null);
         <button class="header-menu-toggle" data-menu-toggle>Menu</button>
 
         <div class="header-menu" role="navigation">
-            <nav class="main-menu">
+            <?php /* TODO: weird scoping, this menu root element should be a part of the menu component */ ?>
+            <nav class="menu is-main">
                 <?php component('common/menu', [
                     'menu'       => $menu,
-                    'block_name' => 'main-menu'
+                    'block_name' => 'menu'
                 ]); ?>
             </nav>
         </div>

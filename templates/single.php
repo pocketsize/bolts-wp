@@ -1,9 +1,7 @@
 <?php
 
-get_header();
-
-component('layouts/full', [
-    'content' => [
+component('page', [
+    'sections' => [
         'component' => 'common/content',
         'data' => [
             'title'   => get_title(),
@@ -12,5 +10,3 @@ component('layouts/full', [
         ]
     ]
 ]);
-
-get_footer();

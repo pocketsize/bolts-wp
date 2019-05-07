@@ -1,16 +1,10 @@
 @include reset;
 
-.bolts-page {
-    @include sticky-footer(
-    	'.bolts-wrapper',
-    	'.bolts-footer'
-    );
-}
-
-html, body {
-	position: relative;
-	overflow-x: hidden;
-	width: 100%;
+html,
+body {
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 html {
