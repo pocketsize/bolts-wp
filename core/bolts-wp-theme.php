@@ -126,16 +126,10 @@ if (!function_exists('layout_items')) {
         }
 
         if (array_keys($items) !== range(0, count($items) - 1)) {
-            layout_item($items);
+            layout_item($items, $item_class);
         } else {
             foreach ($items as $item) {
-                $modifier = !empty($item['modifier']) ? $item['modifier'] : '';
-
-                echo !empty($item_class) ? '<div class="' . $item_class . ' ' . $modifier . '">' : '';
-
-                layout_item($item);
-
-                echo !empty($item_class) ? '</div>' : '';
+                layout_item($item, $item_class);
             }
         }
     }
@@ -148,13 +142,20 @@ if (!function_exists('layout_items')) {
  */
 
 if (!function_exists('layout_item')) {
-    function layout_item($item)
+    function layout_item($item, $item_class = false)
     {
+        $modifier   = !empty($modifier) ? $item['modifier'] : '';
+        $attributes = attributes($item['attributes'] ?? '');
+
+        echo !empty($item_class) ? '<div class="' . $item_class . ' ' . $modifier . '" ' . $attributes . '>' : '';
+
         if (is_string($item)) {
             echo $item;
         } else {
             component($item['component'], $item['data']);
         }
+
+        echo !empty($item_class) ? '</div>' : '';
     }
 }
 
