@@ -1,27 +1,29 @@
 .layout-split {
-    @include inline-layout;
-    @include container;
+    &.is-theme-default {
+        @include inline-layout;
+        @include container;
 
-    &-primary,
-    &-secondary {
-        text-align: left;
+        .layout-split-primary,
+        .layout-split-secondary {
+            text-align: left;
 
-        @media (width-to(medium)) {
-            width: 100%;
+            @media (width-to(medium)) {
+                width: 100%;
+            }
         }
-    }
 
-    &-primary {
-        @media (width-from(medium)) {
-            width: 50%;
-            padding-right: $gutter--base / 2;
+        .layout-split-primary {
+            @media (width-from(medium)) {
+                width: 50%;
+                padding-right: $gutter--default / 2;
+            }
         }
-    }
 
-    &-secondary {
-        @media (width-from(medium)) {
-            width: 50%;
-            padding-left: $gutter--base / 2;
+        .layout-split-secondary {
+            @media (width-from(medium)) {
+                width: 50%;
+                padding-left: $gutter--default / 2;
+            }
         }
     }
 }
