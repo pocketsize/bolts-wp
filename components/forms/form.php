@@ -38,7 +38,9 @@ $autocomplete = !empty($autocomplete) ? 'autocomplete'             : '';
             <?php echo $novalidate; ?>
             <?php echo $autocomplete; ?>
         >
-            <?php layout_items($fields, 'form-field'); ?>
+            <div class="form-fields">
+                <?php layout_items($fields, 'form-field'); ?>
+            </div>
         </form>
     </div>
 </div>
