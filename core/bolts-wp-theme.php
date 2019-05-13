@@ -144,7 +144,7 @@ if (!function_exists('layout_items')) {
 if (!function_exists('layout_item')) {
     function layout_item($item, $item_class = false)
     {
-        $modifier   = !empty($modifier) ? $item['modifier'] : '';
+        $modifier   = !empty($item['modifier']) ? $item['modifier'] : '';
         $attributes = attributes($item['attributes'] ?? '');
 
         echo !empty($item_class) ? '<div class="' . $item_class . ' ' . $modifier . '" ' . $attributes . '>' : '';
