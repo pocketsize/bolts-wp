@@ -18,6 +18,12 @@ $title_tag  = !empty($title_tag) ? $title_tag : 'h2';
 ?>
 
 <div class="content <?php echo $modifier; ?>" <?php echo $attributes; ?>>
+    <?php if (!empty($meta)) : ?>
+        <div class="content-meta">
+            <?php echo $meta; ?>
+        </div>
+    <?php endif; ?>
+
     <?php if (!empty($title)) : ?>
         <<?php echo $title_tag; ?> class="content-title">
             <?php echo $title; ?>

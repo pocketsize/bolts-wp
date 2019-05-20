@@ -1,6 +1,6 @@
 <?php
 /**
- * Base
+ * Page
  *
  * @param array $sections
  */
@@ -29,17 +29,13 @@
                 ]); ?>
             </div>
 
-            <div class="page-main">
-                <?php component('main', [
-                    'sections' => $sections
-                ]); ?>
-            </div>
+            <main class="page-sections">
+                <?php layout_items($sections, 'page-section'); ?>
+            </main>
         </div>
 
         <div class="page-footer">
-            <?php component('footer', [
-                'content' => 'Copyright &copy; ' . get_bloginfo('name')
-            ]); ?>
+            <?php component('footer', get_footer_content()); ?>
         </div>
 
         <?php wp_footer(); ?>

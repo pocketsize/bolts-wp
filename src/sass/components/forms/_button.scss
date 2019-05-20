@@ -1,9 +1,11 @@
 .button {
-    display: inline-block;
-    position: relative;
-    border: $width--input-border solid $color--input-border;
+    &.is-theme-default {
+        display: inline-block;
+        position: relative;
+        border: $width--input-border solid $color--input-border;
 
-    .button-inner {
-        padding: $padding--input-y $padding--input-x;
+        .button-inner {
+            padding: $padding--input-y $padding--input-x;
+        }
     }
 }

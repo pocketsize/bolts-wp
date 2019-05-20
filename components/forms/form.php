@@ -28,17 +28,16 @@ $novalidate   = !empty($novalidate)   ? 'novalidate'               : '';
 $autocomplete = !empty($autocomplete) ? 'autocomplete'             : '';
 ?>
 
-<div class="form <?php echo $modifier; ?>" <?php echo $attributes; ?>>
-    <div class="form-inner">
-        <form
-            class="form-element"
-            method="<?php echo $method; ?>"
-            <?php echo $action; ?>
-            <?php echo $target; ?>
-            <?php echo $novalidate; ?>
-            <?php echo $autocomplete; ?>
-        >
-            <?php layout_items($fields, 'form-field'); ?>
-        </form>
+<form
+    class="form <?php echo $modifier; ?>"
+    <?php echo $attributes; ?>
+    method="<?php echo $method; ?>"
+    <?php echo $action; ?>
+    <?php echo $target; ?>
+    <?php echo $novalidate; ?>
+    <?php echo $autocomplete; ?>
+>
+    <div class="form-fields">
+        <?php layout_items($fields, 'form-field'); ?>
     </div>
-</div>
+</form>

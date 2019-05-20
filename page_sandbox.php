@@ -113,7 +113,7 @@ component('page', [
             ]
         ],
         [
-            'component' => 'layouts/layout',
+            'component' => 'layouts/flexible',
             'data' => [
                 'theme' => 'split',
                 'modifier' => 'is-fifty-fifty',
@@ -158,6 +158,13 @@ component('page', [
                     'data' => [
                         'url'     => 'https://www.placehold.it/1000',
                         'caption' => 'I am caption'
+                    ]
+                ],
+                'secondary' => [
+                    'component' => 'common/content',
+                    'data' => [
+                        'title'   => 'Text!',
+                        'content' => 'Också text.'
                     ]
                 ]
             ]

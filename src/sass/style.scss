@@ -6,35 +6,36 @@
  */
 
 // Importing variables to pass them on to Bolts Scss
+@import 'helpers/functions';
 @import 'helpers/variables';
 
-$bolts-reset-focus-styles:                 false;
-$bolts-reset-list-styles:                  false;
+$bolts-reset-focus-styles: false;
+$bolts-reset-list-styles: false;
 
-$bolts-img-display:                        block;
-$bolts-img-max-width:                      100%;
+$bolts-img-display: block;
+$bolts-img-max-width: 100%;
 
-$bolts-default-container-width:            $width--container;
-$bolts-default-container-max-width:        $max-width--container;
-$bolts-default-container-align:            center;
+$bolts-default-container-width: $width--container;
+$bolts-default-container-max-width: $max-width--container;
+$bolts-default-container-align: center;
 
-$bolts-default-background-size:            cover;
-$bolts-default-background-position:        50% 50%;
+$bolts-default-background-size: cover;
+$bolts-default-background-position: 50% 50%;
 
-$bolts-default-transition-duration:        $duration--default;
-$bolts-default-transition-easing:          $easing--default;
+$bolts-default-transition-duration: $duration--default;
+$bolts-default-transition-easing: $easing--default;
 
-$bolts-default-inline-layout-align:        top;
-$bolts-default-inline-layout-gutters:      false;
+$bolts-default-inline-layout-align: top;
+$bolts-default-inline-layout-gutters: false;
 
-$bolts-default-flex-layout-gutters:        false;
+$bolts-default-flex-layout-gutters: false;
 
-$bolts-default-font-path:                  '../fonts';
+$bolts-default-font-path: '../fonts';
 
-$bolts-default-pseudo:                     after;
+$bolts-default-pseudo: after;
 
-$bolts-default-auto-col-min:               1;
-$bolts-default-auto-col-max:               12;
+$bolts-default-auto-col-min: 1;
+$bolts-default-auto-col-max: 12;
 
 $bolts-default-responsive-font-size-ratio: 1.6;
 
@@ -69,8 +70,8 @@ $bolts-breakpoints: (
 // Global
 @import 'global';
 
-// Templates
-@import 'templates/archive';
+// Page component that shouldn't be a component
+@import 'components/page';
 
 // Common components
 @import 'components/common/image';
@@ -82,6 +83,7 @@ $bolts-breakpoints: (
 // Layout components
 @import 'components/layouts/full';
 @import 'components/layouts/split';
+@import 'components/layouts/flexible';
 
 // Components
 @import 'components/footer';
@@ -104,6 +106,3 @@ $bolts-breakpoints: (
 
 // External
 //@import 'external/choices';
-
-// 😳 😳 😳
-@import 'shame.scss';

@@ -1,6 +1,12 @@
 <?php
 
-if (false != $post_id = get_field('404_page', 'option')) {
+$post_id = false;
+
+if (function_exists('get_field')) {
+    $post_id = get_field('404_page', 'option');
+}
+
+if ($post_id) {
     global $post;
 
     // Get 404 page post object
@@ -29,17 +35,13 @@ if (false != $post_id = get_field('404_page', 'option')) {
 
     die();
 } else {
-    get_header();
-
-    component('layouts/full', [
-        'content' => [
-            'component' => 'content',
+    component('page', [
+        'sections' => [
+            'component' => 'common/content',
             'data' => [
                 'title'   => '404',
                 'content' => '<p>We could not find what you were looking for</p>'
             ]
         ]
     ]);
-
-    get_footer();
 }

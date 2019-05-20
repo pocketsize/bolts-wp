@@ -1,27 +1,22 @@
+// Split layout features gutter workaround to output fewer elements
 .layout-split {
-    @include inline-layout;
-    @include container;
+    &.is-theme-default {
+        .layout-split-inner {
+            // @include container;
 
-    &-primary,
-    &-secondary {
-        text-align: left;
-
-        @media (width-to(medium)) {
-            width: 100%;
+            @media (width-from(medium)) {
+                @include flex-layout(1 1);
+            }
         }
-    }
 
-    &-primary {
-        @media (width-from(medium)) {
-            width: 50%;
-            padding-right: $gutter--base / 2;
-        }
-    }
+        .layout-split-items {
+            &.is-primary {
+                padding-right: $gutter--default / 2;
+            }
 
-    &-secondary {
-        @media (width-from(medium)) {
-            width: 50%;
-            padding-left: $gutter--base / 2;
+            &.is-secondary {
+                padding-left: $gutter--default / 2;
+            }
         }
     }
 }

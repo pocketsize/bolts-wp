@@ -16,39 +16,35 @@
  * Layout components are dependent on the function layout_items()
  * See it documented in 'lib/bolts-wp-theme-functions.php'
  *
- * Lets check it out
+ * @param string $theme - "default"
+ * @param string $modifier
+ * @param string $attributes
  *
  * @param array  $primary
  * @param string $primary[i].component - what component to use
- * @param string $primary[i].modifier  - optional, if set the component will be wrapped in div.layout-split-<modifier>
  * @param array  $primary[i].data
  *
  * @param array  $secondary
  * @param string $secondary[i].component - what component to use
- * @param string $secondary[i].modifier  - optional, if set the component will be wrapped in div.layout-split-<modifier>
  * @param array  $secondary[i].data
- *
- * @param string $theme
- * @param string $modifier
  */
 
-// Setting up a theme class used to give the grid different layouts
-$theme       = !empty($theme) ? $theme : 'default';
-$theme_class = 'is-theme-' . $theme;
-$modifier    = !empty($modifier) ? $modifier : '';
+$attributes = attributes($attributes ?? '');
+$modifier   = modifier($theme ?? null, $modifier ?? null);
+
+$primary    = !empty($primary)   ? $primary   : false;
+$secondary  = !empty($secondary) ? $secondary : false;
 ?>
 
-<div class="layout-split <?php echo $theme_class; ?> <?php echo $modifier; ?>">
-    <div class="layout-split-primary">
-        <div class="layout-split-primary-inner">
+<div class="layout-split <?php echo $modifier; ?>" <?php echo $attributes; ?>>
+    <div class="layout-split-inner">
+        <div class="layout-split-items is-primary">
             <?php if (!empty($primary)) : ?>
                 <?php layout_items($primary, 'layout-split-item'); ?>
             <?php endif; ?>
         </div>
-    </div>
 
-    <div class="layout-split-secondary">
-        <div class="layout-split-secondary-inner">
+        <div class="layout-split-items is-secondary">
             <?php if (!empty($secondary)) : ?>
                 <?php layout_items($secondary, 'layout-split-item'); ?>
             <?php endif; ?>
