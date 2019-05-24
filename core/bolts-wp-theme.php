@@ -115,21 +115,22 @@ function get_svg($asset, $fallback = false)
  * if a class and a class suffix is present wrap the component in a div.
  * @param array|string $items - loops over items or just outputs string
  * @param string $item_class
+ * @param string $item_tag
  * @return string
  */
 
 if (!function_exists('layout_items')) {
-    function layout_items($items, $item_class = false)
+    function layout_items($items, $item_class = false, $item_tag = 'div')
     {
         if (empty($items)) {
             return false;
         }
 
         if (array_keys($items) !== range(0, count($items) - 1)) {
-            layout_item($items, $item_class);
+            layout_item($items, $item_class, $item_tag);
         } else {
             foreach ($items as $item) {
-                layout_item($item, $item_class);
+                layout_item($item, $item_class, $item_tag);
             }
         }
     }
@@ -138,16 +139,18 @@ if (!function_exists('layout_items')) {
 /**
  * Outputs string or component
  * @param array|string $items - loops over items or just outputs string
+ * @param string $item_class
+ * @param string $item_tag
  * @return string
  */
 
 if (!function_exists('layout_item')) {
-    function layout_item($item, $item_class = false)
+    function layout_item($item, $item_class = false, $item_tag = 'div')
     {
         $modifier   = !empty($modifier) ? $item['modifier'] : '';
         $attributes = attributes($item['attributes'] ?? '');
 
-        echo !empty($item_class) ? '<div class="' . $item_class . ' ' . $modifier . '" ' . $attributes . '>' : '';
+        echo !empty($item_class) ? '<' . $item_tag . ' class="' . $item_class . ' ' . $modifier . '" ' . $attributes . '>' : '';
 
         if (is_string($item)) {
             echo $item;
@@ -157,7 +160,7 @@ if (!function_exists('layout_item')) {
             }
         }
 
-        echo !empty($item_class) ? '</div>' : '';
+        echo !empty($item_class) ? '</' . $item_tag . '>' : '';
     }
 }
 
