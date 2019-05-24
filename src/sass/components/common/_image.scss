@@ -1,60 +1,29 @@
 .image {
-    &.is-overlay {
+    &.is-theme-default {
+        .image-element {
+            display: block;
+            max-width: 100%;
+        }
+    }
+
+    &.is-theme-overlay {
         @include overlay;
-    }
-
-    &-inner {
-        position: relative;
         overflow: hidden;
 
-        .image.is-overlay & {
-            @include overlay;
+        &.is-cover,
+        &:not(.is-contain) {
+            @include background($size: cover);
         }
-    }
 
-    &-object {
-        @include background;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
+        &.is-contain {
+            @include background($size: contain);
+        }
 
-        .image.is-lazyload-default & {
+        .image-element {
+            @include center;
+            min-width: 100%;
+            min-height: 100%;
             opacity: 0;
-            @include transition(opacity);
         }
-
-        .image.is-lazyload-default.is-loaded & {
-            opacity: 1;
-        }
-
-        .image.is-overlay & {
-            @include overlay;
-        }
-
-        &.has-overlay {
-            &:before {
-                content: '';
-                @include overlay;
-                background: rgba($color--black, 0.4);
-            }
-        }
-    }
-
-    &-element {
-        opacity: 0;
-
-        .image.is-theme-default & {
-            width: 100%;
-            height: auto;
-        }
-    }
-
-    &-overlay-text {
-        position: relative;
-        z-index: 1;
-    }
-
-    &-caption {
     }
 }

@@ -16,7 +16,7 @@
 
 $type       = !empty($type) ? $type : 'default';
 $attributes = attributes($attributes ?? '');
-$modifier   = modifier($theme ?? null, $modifier ?? null);
+$modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
 <?php if (!empty($slides)) : ?>
@@ -32,7 +32,8 @@ $modifier   = modifier($theme ?? null, $modifier ?? null);
         <?php if (!empty($has_controls)) : ?>
             <?php component('common/button', [
                 'title'      => 'Previous',
-                'modifier'   => 'is-slider-control is-previous',
+                'theme'      => 'slider-control',
+                'modifier'   => 'is-previous',
                 'attributes' => [
                     'data-bolts-slider-control' => true,
                     'data-bolts-slide-to'       => 'previous'
@@ -41,7 +42,8 @@ $modifier   = modifier($theme ?? null, $modifier ?? null);
 
             <?php component('common/button', [
                 'title'      => 'Next',
-                'modifier'   => 'is-slider-control is-next',
+                'theme'      => 'slider-control',
+                'modifier'   => 'is-next',
                 'attributes' => [
                     'data-bolts-slider-control' => true,
                     'data-bolts-slide-to'       => 'next'

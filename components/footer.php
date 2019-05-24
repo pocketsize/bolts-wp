@@ -12,7 +12,7 @@
  */
 
 $attributes = attributes($attributes ?? '');
-$modifier   = modifier($theme ?? null, $modifier ?? null);
+$modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
 <footer class="footer <?php echo $modifier; ?>" <?php echo $attributes; ?>>

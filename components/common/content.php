@@ -13,7 +13,7 @@
  */
 
 $attributes = attributes($attributes ?? '');
-$modifier   = modifier($theme ?? null, $modifier ?? null);
+$modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 $title_tag  = !empty($title_tag) ? $title_tag : 'h2';
 ?>
 

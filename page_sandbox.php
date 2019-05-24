@@ -3,6 +3,19 @@
 component('page', [
     'sections' => [
         [
+            'component' => 'common/link',
+            'attributes' => [
+                'style' => 'position: relative;'
+            ],
+            'data' => [
+                'theme'  => 'overlay',
+                'modifier' => 'is-pretty-cool',
+                'title'  => 'så här ska det stå',
+                'url'    => '#hit-ska-den-gå',
+                'target' => '_blank',
+            ]
+        ],
+        [
             'component' => 'forms/form',
             'data' => [
                 'action' => '',

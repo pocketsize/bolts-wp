@@ -16,7 +16,7 @@
  */
 
 $attributes = attributes($attributes ?? '');
-$modifier   = modifier($theme ?? null, $modifier ?? null);
+$modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 
 $image   = !empty($image)   ? $image : false;
 $title   = !empty($title)   ? $title : false;

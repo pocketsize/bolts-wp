@@ -10,7 +10,7 @@
  */
 
 $attributes = attributes($attributes ?? '');
-$modifier   = modifier($theme ?? null, $modifier ?? null);
+$modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
 <button class="button <?php echo $modifier; ?>" <?php echo $attributes; ?>>

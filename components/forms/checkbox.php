@@ -26,7 +26,7 @@
  */
 
 $attributes = attributes($attributes ?? '');
-$modifier   = modifier($theme ?? null, $modifier ?? null);
+$modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 
 $disabled   = !empty($is_disabled) ? ' disabled' : '';
 $checked    = !empty($is_checked) ? ' checked' : '';

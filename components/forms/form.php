@@ -18,8 +18,8 @@
  * @param array  $fields
  */
 
-$attributes = attributes($attributes ?? '');
-$modifier   = modifier($theme ?? null, $modifier ?? null);
+$attributes   = attributes($attributes ?? '');
+$modifiers    = modifiers($modifiers ?? null, $theme ?? null);
 
 $action       = !empty($action)       ? 'action="' . $action . '"' : '';
 $method       = !empty($method)       ? $method                    : 'POST';
