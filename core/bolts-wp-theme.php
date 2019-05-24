@@ -152,6 +152,7 @@ if (!function_exists('layout_item')) {
 
         echo !empty($item_class) ? '<' . $item_tag . ' class="' . $item_class . ' ' . $modifier . '" ' . $attributes . '>' : '';
 
+
         if (is_string($item)) {
             echo $item;
         } else {
