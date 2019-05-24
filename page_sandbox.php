@@ -9,7 +9,7 @@ component('page', [
             ],
             'data' => [
                 'theme'  => 'overlay',
-                'modifier' => 'is-pretty-cool',
+                'modifiers' => 'is-pretty-cool',
                 'title'  => 'så här ska det stå',
                 'url'    => '#hit-ska-den-gå',
                 'target' => '_blank',
@@ -129,10 +129,10 @@ component('page', [
             'component' => 'layouts/flexible',
             'data' => [
                 'theme' => 'split',
-                'modifier' => 'is-fifty-fifty',
+                'modifiers' => 'is-fifty-fifty',
                 'areas' => [
                     [
-                        'modifier' => 'is-primary',
+                        'modifiers' => 'is-primary',
                         'items' => [
                             'component' => 'forms/button',
                             'data' => [
@@ -142,7 +142,7 @@ component('page', [
                         ]
                     ],
                     [
-                        'modifier' => 'is-secondary',
+                        'modifiers' => 'is-secondary',
                         'items' => [
                             [
                                 'component' => 'forms/button',

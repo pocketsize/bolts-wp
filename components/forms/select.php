@@ -42,7 +42,7 @@ $error_text  = !empty($error_text) ? $error_text : false;
 ?>
 
 <?php if (!empty($options)) : ?>
-    <div class="select <?php echo $modifier; ?>" <?php echo $attributes; ?>>
+    <div class="select <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
         <div class="select-field-info">
             <?php component('forms/field-info', [
                 'title'       => $title,

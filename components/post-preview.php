@@ -18,12 +18,12 @@
 $attributes = attributes($attributes ?? '');
 $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 
-$image   = !empty($image)   ? $image : false;
-$title   = !empty($title)   ? $title : false;
+$image   = !empty($image)   ? $image   : false;
+$title   = !empty($title)   ? $title   : false;
 $excerpt = !empty($excerpt) ? $excerpt : false;
 ?>
 
-<article class="post-preview <?php echo $modifier; ?>">
+<article class="post-preview <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
     <div class="post-preview-image">
         <?php component('common/image', $image); ?>
     </div>

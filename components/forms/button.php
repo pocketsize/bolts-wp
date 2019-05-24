@@ -13,7 +13,7 @@ $attributes = attributes($attributes ?? '');
 $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
-<button class="button <?php echo $modifier; ?>" <?php echo $attributes; ?>>
+<button class="button <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
 	<?php if (!empty($title)) : ?>
         <div class="button-inner"><?php echo $title; ?></div>
 	<?php endif; ?>

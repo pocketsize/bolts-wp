@@ -15,7 +15,7 @@ $attributes = attributes($attributes ?? '');
 $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
-<footer class="footer <?php echo $modifier; ?>" <?php echo $attributes; ?>>
+<footer class="footer <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
     <div class="footer-inner">
         <?php if (!empty($content)) { ?>
             <p><?php echo $content; ?></p>

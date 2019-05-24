@@ -37,7 +37,7 @@ $checked    = !empty($is_checked) ? ' checked' : '';
 $validate   = !empty($validate) ? 'data-bolts-validate="' . $validate . '"' : '';
 ?>
 
-<label class="radio-button <?php echo $modifier; ?>" for="<?php echo $identifier; ?>" <?php echo $attributes; ?>>
+<label class="radio-button <?php echo $modifiers; ?>" for="<?php echo $identifier; ?>" <?php echo $attributes; ?>>
     <input
         id="<?php echo $identifier; ?>"
         class="radio-button-input"

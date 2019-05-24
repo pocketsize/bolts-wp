@@ -37,7 +37,7 @@ $validate    = !empty($validate) ? 'data-bolts-validate="' . $validate . '"' : '
 $error_text  = !empty($error_text) ? $error_text : false;
 ?>
 
-<div class="textarea <?php echo $modifier; ?>" data-bolts-input-wrapper <?php echo $attributes; ?>>
+<div class="textarea <?php echo $modifiers; ?>" data-bolts-input-wrapper <?php echo $attributes; ?>>
     <div class="textarea-field-info">
         <?php component('forms/field-info', [
             'title'       => $title,

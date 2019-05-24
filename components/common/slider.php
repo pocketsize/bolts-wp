@@ -20,7 +20,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
 <?php if (!empty($slides)) : ?>
-    <section class="slider <?php echo $modifier; ?>" <?php echo $attributes; ?>>
+    <section class="slider <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
         <div class="slider-inner" data-bolts-slider="<?php echo $type; ?>">
             <?php foreach ($slides as $slide) : ?>
                 <div class="slider-slide" data-bolts-slide>
@@ -33,7 +33,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
             <?php component('common/button', [
                 'title'      => 'Previous',
                 'theme'      => 'slider-control',
-                'modifier'   => 'is-previous',
+                'modifiers'  => 'is-previous',
                 'attributes' => [
                     'data-bolts-slider-control' => true,
                     'data-bolts-slide-to'       => 'previous'
@@ -43,7 +43,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
             <?php component('common/button', [
                 'title'      => 'Next',
                 'theme'      => 'slider-control',
-                'modifier'   => 'is-next',
+                'modifiers'  => 'is-next',
                 'attributes' => [
                     'data-bolts-slider-control' => true,
                     'data-bolts-slide-to'       => 'next'

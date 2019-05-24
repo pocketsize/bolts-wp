@@ -39,7 +39,7 @@ $validate   = !empty($validate) ? 'data-bolts-validate="' . $validate . '"' : ''
 
 <label
     class="checkbox
-    <?php echo $modifier; ?>"
+    <?php echo $modifiers; ?>"
     for="<?php echo $identifier; ?>"
     data-bolts-input-wrapper
     <?php echo $attributes; ?>

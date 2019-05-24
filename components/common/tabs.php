@@ -17,7 +17,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
 <?php if (!empty($tabs)) : ?>
-    <div class="tabs <?php echo $modifier; ?>" data-bolts-target="tabs">
+    <div class="tabs <?php echo $modifiers; ?>" data-bolts-target="tabs">
         <div class="tabs-inner">
             <div class="tabs-toggles">
                 <?php foreach ($tabs as $i => $tab) : ?>
