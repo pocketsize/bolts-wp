@@ -16,7 +16,7 @@ $attributes = attributes($attributes ?? '');
 $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
-<ul class="accordion <?php echo $modifier; ?>" <?php echo $attributes; ?> data-accordion>
+<ul class="accordion <?php echo $modifiers; ?>" <?php echo $attributes; ?> data-accordion>
     <?php foreach ($items as $item) : ?>
         <li class="accordion-item" data-accordion-item>
             <div class="accordion-tab" data-accordion-toggle>

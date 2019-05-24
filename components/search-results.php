@@ -8,12 +8,11 @@
  * @param string $modifier
  */
 
-$theme       = !empty($theme) ? $theme : 'default';
-$theme_class = 'is-theme-' . $theme;
-$modifiers   = !empty($modifiers) ? $modifiers : '';
+$attributes = attributes($attributes ?? '');
+$modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
-<div class="search-results <?php echo $theme_class; ?> <?php echo $modifier; ?>">
+<div class="search-results <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
     <div class="search-results-inner">
         <?php if (!empty($items)) : ?>
             <?php foreach ($items as $item) : ?>

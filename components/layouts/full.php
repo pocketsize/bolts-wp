@@ -27,7 +27,7 @@ $attributes = attributes($attributes ?? '');
 $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
-<div class="layout-full <?php echo $modifier; ?>" <?php echo $attributes; ?>>
+<div class="layout-full <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
     <div class="layout-full-inner">
     	<div class="layout-full-items">
         	<?php layout_items($content, 'layout-full-item'); ?>

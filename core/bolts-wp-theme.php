@@ -147,10 +147,10 @@ if (!function_exists('layout_items')) {
 if (!function_exists('layout_item')) {
     function layout_item($item, $item_class = false, $item_tag = 'div')
     {
-        $modifier   = modifiers($item['modifiers'], false);
+        $modifiers  = modifiers($item['modifiers'] ?? null, false);
         $attributes = attributes($item['attributes'] ?? '');
 
-        echo !empty($item_class) ? '<' . $item_tag . ' class="' . $item_class . ' ' . $modifier . '" ' . $attributes . '>' : '';
+        echo !empty($item_class) ? '<' . $item_tag . ' class="' . $item_class . ' ' . $modifiers . '" ' . $attributes . '>' : '';
 
         if (is_string($item)) {
             echo $item;

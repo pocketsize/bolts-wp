@@ -31,7 +31,7 @@ $error_text  = !empty($error_text) ? $error_text : false;
 ?>
 
 <?php if (!empty($options)) : ?>
-    <fieldset class="radio-buttons <?php echo $modifier; ?>" for="<?php echo $identifier; ?>" <?php echo $attributes; ?>>
+    <fieldset class="radio-buttons <?php echo $modifiers; ?>" for="<?php echo $identifier; ?>" <?php echo $attributes; ?>>
         <?php if (!empty($title) || !empty($description)) : ?>
             <div class="radio-buttons-field-info">
                 <?php component('forms/field-info', [

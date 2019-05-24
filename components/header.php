@@ -17,7 +17,7 @@ $attributes = attributes($attributes ?? '');
 $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
-<header class="header <?php echo $modifier; ?>" <?php echo $attributes; ?>>
+<header class="header <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
     <div class="header-inner">
         <a href="<?php echo $home_url; ?>" class="header-logo"><?php echo $site_name; ?></a>
 

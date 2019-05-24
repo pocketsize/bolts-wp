@@ -36,7 +36,7 @@ $primary    = !empty($primary)   ? $primary   : false;
 $secondary  = !empty($secondary) ? $secondary : false;
 ?>
 
-<div class="layout-split <?php echo $modifier; ?>" <?php echo $attributes; ?>>
+<div class="layout-split <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
     <div class="layout-split-inner">
         <div class="layout-split-items is-primary">
             <?php if (!empty($primary)) : ?>

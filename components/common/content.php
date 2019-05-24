@@ -17,7 +17,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 $title_tag  = !empty($title_tag) ? $title_tag : 'h2';
 ?>
 
-<div class="content <?php echo $modifier; ?>" <?php echo $attributes; ?>>
+<div class="content <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
     <?php if (!empty($meta)) : ?>
         <div class="content-meta">
             <?php echo $meta; ?>

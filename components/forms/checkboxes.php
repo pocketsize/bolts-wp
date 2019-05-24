@@ -25,7 +25,7 @@ $error_text  = !empty($error_text) ? $error_text : false;
 ?>
 
 <?php if (!empty($options)) : ?>
-    <fieldset class="checkboxes <?php echo $modifier; ?>" <?php echo $attributes; ?>>
+    <fieldset class="checkboxes <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
         <?php if (!empty($title) || !empty($description)) : ?>
             <div class="checkboxes-field-info">
                 <?php component('forms/field-info', [

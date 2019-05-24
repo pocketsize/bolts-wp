@@ -27,7 +27,7 @@ $id                 = !empty($attributes['id'])       ? $attributes['id']       
 $required           = !empty($attributes['required']) ? $attributes['required'] : false;
 ?>
 
-<div class="text-input <?php echo $modifier; ?>">
+<div class="text-input <?php echo $modifiers; ?>">
     <?php if (!empty($title) || !empty($description) || !empty($error_text)) : ?>
         <div class="text-input-field-info">
             <?php component('forms/field-info', [
