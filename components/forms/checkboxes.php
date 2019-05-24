@@ -15,8 +15,8 @@
  * @param array  $options[i].option - see radio-button.php
  */
 
-$attributes = attributes($attributes ?? '');
-$modifier   = modifier($theme ?? null, $modifier ?? null);
+$attributes  = attributes($attributes ?? '');
+$modifiers   = modifiers($modifiers ?? null, $theme ?? null);
 
 $name        = !empty($name) ? $name : $title;
 $identifier  = !empty($identifier) ? $identifier : $title;

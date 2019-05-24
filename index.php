@@ -1,5 +1,5 @@
 <?php
 
-$items = prepare_posts_for_archive();
-
-include('template_archive.php');
+component('page', [
+    'sections' => get_posts_from_loop()
+]);

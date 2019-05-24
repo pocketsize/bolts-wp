@@ -1,0 +1,18 @@
+.layout-flexible {
+    &.is-theme-default {
+        .layout-flexible-inner {
+        }
+    }
+
+    &.is-theme-split {
+        &.is-fifty-fifty {
+            .layout-flexible-areas {
+                @include flex-layout(1 1);
+            }
+        }
+
+        .layout-flexible-item {
+            @include conditional-spacing(40px);
+        }
+    }
+}

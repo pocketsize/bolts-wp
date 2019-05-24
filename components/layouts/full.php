@@ -1,6 +1,6 @@
 <?php
 /**
- * Fullwidth layout
+ * Full layout
  *
  * Pretty straight forward. Can be used as a grid by passing a
  * fitting theme name and styling .layout-full-inner accordingly.
@@ -24,11 +24,13 @@
  */
 
 $attributes = attributes($attributes ?? '');
-$modifier   = modifier($theme ?? null, $modifier ?? null);
+$modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
 <div class="layout-full <?php echo $modifier; ?>" <?php echo $attributes; ?>>
     <div class="layout-full-inner">
-        <?php layout_items($content, 'layout-full-item'); ?>
+    	<div class="layout-full-items">
+        	<?php layout_items($content, 'layout-full-item'); ?>
+        </div>
     </div>
 </div>

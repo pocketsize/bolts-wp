@@ -2,30 +2,34 @@
 /**
  * Link
  *
+ * @param string $theme
+ * @param string $modifiers
+ * @param string $attributes
+ *
  * @param string $title
  * @param string $target
  * @param string $url
- * @param string $custom_attrs
  *
- * @param string $theme
- * @param string $modifier
  */
 
-$modifier   = modifier($theme ?? null, $modifier ?? null);
-$attributes = attributes($attributes ?? '');
+if (empty($url)) return false;
+$target = !empty($target) ? $target : false;
+$theme  = !empty($theme)  ? $theme  : null;
 
-$target     = !empty($target) ? $target : '';
-$rel        = $target == '_blank' ? 'rel="noopener noreferrer"' : '';
+$modifiers  = modifiers($modifiers ?? null, $theme);
+$attributes = get_attributes($attributes ?? '', [
+    'href'   => $url,
+    'target' => $target
+]);
+
+if (!empty($attributes['target']) && empty($attributes['rel'])) {
+    $attributes['rel'] = 'noopener noreferrer';
+}
+
 ?>
 
-<?php if (!empty($title) && !empty($url)) : ?>
-    <a
-        class="link <?php echo $modifier; ?>"
-        href="<?php echo $url; ?>"
-        target="<?php echo $target; ?>"
-        <?php echo $rel; ?>
-        <?php echo $attributes; ?>
-    >
+<a class="link <?php echo $modifiers; ?>" <?php echo attributes($attributes); ?>>
+    <?php if (!empty($title) && $theme != 'overlay') : ?>
         <span class="link-inner"><?php echo $title; ?></span>
-    </a>
-<?php endif; ?>
+    <?php endif; ?>
+</a>

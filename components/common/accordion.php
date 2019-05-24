@@ -13,7 +13,7 @@
  */
 
 $attributes = attributes($attributes ?? '');
-$modifier   = modifier($theme ?? null, $modifier ?? null);
+$modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
 <ul class="accordion <?php echo $modifier; ?>" <?php echo $attributes; ?> data-accordion>

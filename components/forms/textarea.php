@@ -20,7 +20,7 @@
  */
 
 $attributes = attributes($attributes ?? '');
-$modifier   = modifier($theme ?? null, $modifier ?? null);
+$modifiers   = modifiers($modifiers ?? null, $theme ?? null);
 
 $name        = !empty($name) ? $name : $title;
 $value       = !empty($value) ? $value : '';
@@ -32,7 +32,7 @@ $disabled    = !empty($is_disabled) ? ' disabled' : '';
 $is_required = !empty($is_required) ? $is_required : false;
 $required    = !empty($is_required) ? ' required' : '';
 $identifier  = !empty($identifier) ? $identifier : $title;
-$modifier    = !empty($modifier) ? $modifier : '';
+$modifiers   = !empty($modifiers) ? $modifiers : '';
 $validate    = !empty($validate) ? 'data-bolts-validate="' . $validate . '"' : '';
 $error_text  = !empty($error_text) ? $error_text : false;
 ?>

@@ -11,7 +11,7 @@
 
 .text-input {
     &-field-info {
-        @include conditional-spacing;
+        //@include conditional-spacing;
     }
 
     &-inner {

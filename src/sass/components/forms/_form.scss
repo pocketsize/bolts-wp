@@ -1,8 +1,13 @@
 .form {
-    &-element {
+    &.is-theme-default {
+        .form-field {
+            @include conditional-spacing(40px);
+        }
     }
 
-    &-field {
-        @include conditional-spacing(40px);
+    &.is-theme-search-form {
+        .form-fields {
+            @include flex-layout(2 1);
+        }
     }
 }

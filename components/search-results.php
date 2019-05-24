@@ -10,7 +10,7 @@
 
 $theme       = !empty($theme) ? $theme : 'default';
 $theme_class = 'is-theme-' . $theme;
-$modifier    = !empty($modifier) ? $modifier : '';
+$modifiers   = !empty($modifiers) ? $modifiers : '';
 ?>
 
 <div class="search-results <?php echo $theme_class; ?> <?php echo $modifier; ?>">

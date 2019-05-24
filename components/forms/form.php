@@ -18,8 +18,8 @@
  * @param array  $fields
  */
 
-$attributes = attributes($attributes ?? '');
-$modifier   = modifier($theme ?? null, $modifier ?? null);
+$attributes   = attributes($attributes ?? '');
+$modifiers    = modifiers($modifiers ?? null, $theme ?? null);
 
 $action       = !empty($action)       ? 'action="' . $action . '"' : '';
 $method       = !empty($method)       ? $method                    : 'POST';
@@ -28,19 +28,16 @@ $novalidate   = !empty($novalidate)   ? 'novalidate'               : '';
 $autocomplete = !empty($autocomplete) ? 'autocomplete'             : '';
 ?>
 
-<div class="form <?php echo $modifier; ?>" <?php echo $attributes; ?>>
-    <div class="form-inner">
-        <form
-            class="form-element"
-            method="<?php echo $method; ?>"
-            <?php echo $action; ?>
-            <?php echo $target; ?>
-            <?php echo $novalidate; ?>
-            <?php echo $autocomplete; ?>
-        >
-            <div class="form-fields">
-                <?php layout_items($fields, 'form-field'); ?>
-            </div>
-        </form>
+<form
+    class="form <?php echo $modifier; ?>"
+    <?php echo $attributes; ?>
+    method="<?php echo $method; ?>"
+    <?php echo $action; ?>
+    <?php echo $target; ?>
+    <?php echo $novalidate; ?>
+    <?php echo $autocomplete; ?>
+>
+    <div class="form-fields">
+        <?php layout_items($fields, 'form-field'); ?>
     </div>
-</div>
+</form>

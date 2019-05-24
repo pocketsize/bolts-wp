@@ -1,0 +1,9 @@
+.page {
+    &-body {
+        @include sticky-footer('.page-wrapper', '.page-footer');
+    }
+
+    &-section {
+        @include conditional-spacing(80px);
+    }
+}

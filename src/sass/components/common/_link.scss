@@ -1,7 +1,17 @@
 .link {
-    display: inline-block;
+    &.is-theme-default {
+        display: inline-block;
 
-    &-inner {
-        @extend %text--base;
+        .link-inner {
+            border-bottom: 1px solid;
+        }
+    }
+
+    &.is-theme-overlay {
+        @include overlay;
+
+        .link-inner {
+            display: none;
+        }
     }
 }
