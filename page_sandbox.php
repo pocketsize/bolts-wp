@@ -28,28 +28,50 @@ component('page', [
                         ]
                     ],
                     [
-                        'component' => 'forms/radio-buttons',
+                        'component' => 'forms/fieldset',
                         'data' => [
                             'title' => 'I am radio buttons',
                             'description' => 'This is my description',
-                            'options' => [
+                            'type' => 'radio',
+                            'name' => 'test',
+                            'items' => [
                                 [
+
                                     'title' => 'Option 1 (disabled)',
-                                    'value' => 'one',
-                                    'is_disabled' => true
+                                    'input' => [
+                                        'attributes' => [
+                                            'value' => 'one',
+                                            'disabled' => true
+                                        ]
+                                    ]
                                 ],
                                 [
+
                                     'title' => 'Option 2 (checked)',
-                                    'value' => 'two',
-                                    'is_checked' => true
+                                    'input' => [
+                                        'attributes' => [
+                                            'value' => 'two',
+                                            'checked' => true
+                                        ]
+                                    ]
                                 ],
                                 [
+
                                     'title' => 'Option 3',
-                                    'value' => 'three',
+                                    'input' => [
+                                        'attributes' => [
+                                            'value' => 'three',
+                                        ]
+                                    ]
                                 ],
                                 [
+
                                     'title' => 'Option 4',
-                                    'value' => 'four',
+                                    'input' => [
+                                        'attributes' => [
+                                            'value' => 'four',
+                                        ]
+                                    ]
                                 ]
                             ]
                         ]
@@ -61,49 +83,74 @@ component('page', [
                             'description' => 'You can also use choices by initializing "src/js/external/choices.js"',
                             'options'     => [
                                 [
-                                    'title'       => 'Option 1 (disabled)',
-                                    'value'       => 'one',
-                                    'is_disabled' => true
+                                    'content' => 'Option 1 (disabled)',
+                                    'attributes' => [
+                                        'value' => 'one',
+                                        'disabled' => true
+                                    ]
                                 ],
                                 [
-                                    'title'       => 'Option 2 (selected)',
-                                    'value'       => 'two',
-                                    'is_selected' => true
+                                    'content' => 'Option 2 (selected)',
+                                    'attributes' => [
+                                        'value' => 'two',
+                                        'selected' => true
+                                    ]
                                 ],
                                 [
-                                    'title' => 'Option 3',
-                                    'value' => 'three'
+                                    'content' => 'Option 3',
+                                    'attributes' => [
+                                        'value' => 'three'
+                                    ]
                                 ],
                                 [
-                                    'title' => 'Option 4',
-                                    'value' => 'four'
+                                    'content' => 'Option 4',
+                                    'attributes' => [
+                                        'value' => 'four'
+                                    ]
                                 ]
                             ]
                         ]
                     ],
                     [
-                        'component' => 'forms/checkboxes',
+                        'component' => 'forms/fieldset',
                         'data' => [
                             'title' => 'I am checkboxes',
                             'description' => 'This is my description',
-                            'options' => [
+                            'type' => 'checkbox', // defaults to checkbox
+                            'items' => [
                                 [
                                     'title' => 'Option 1 (disabled)',
-                                    'value' => 'one',
-                                    'is_disabled' => true
+                                    'input' => [
+                                        'attributes' => [
+                                            'value' => 'one',
+                                            'disabled' => true
+                                        ]
+                                    ]
                                 ],
                                 [
                                     'title' => 'Option 2 (checked)',
-                                    'value' => 'two',
-                                    'is_checked' => true
+                                    'input' => [
+                                        'attributes' => [
+                                            'value' => 'two',
+                                            'checked' => true
+                                        ]
+                                    ]
                                 ],
                                 [
                                     'title' => 'Option 3',
-                                    'value' => 'three',
+                                    'input' => [
+                                        'attributes' => [
+                                            'value' => 'three',
+                                        ]
+                                    ]
                                 ],
                                 [
                                     'title' => 'Option 4',
-                                    'value' => 'four',
+                                    'input' => [
+                                        'attributes' => [
+                                            'value' => 'four',
+                                        ]
+                                    ]
                                 ]
                             ]
                         ]
@@ -176,8 +223,9 @@ component('page', [
                 'secondary' => [
                     'component' => 'common/content',
                     'data' => [
-                        'title'   => 'Text!',
-                        'content' => 'Också text.'
+                        'title'   => 'Title',
+                        'lead'    => '<p>Lead paragraph</p>',
+                        'content' => '<p>Content</p>'
                     ]
                 ]
             ]
