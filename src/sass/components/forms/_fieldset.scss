@@ -1,11 +1,11 @@
-.radio-buttons {
+.fieldset {
     @extend %fieldset;
 
     &-field-info {
         @include conditional-spacing;
     }
 
-    &-option {
+    &-item {
         @include conditional-spacing(10px);
     }
 }
