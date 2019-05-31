@@ -32,8 +32,8 @@
 $attributes = attributes($attributes ?? '');
 $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 
-$primary    = !empty($primary)   ? $primary   : false;
-$secondary  = !empty($secondary) ? $secondary : false;
+$primary   = !empty($primary)   ? $primary   : false;
+$secondary = !empty($secondary) ? $secondary : false;
 ?>
 
 <div class="layout-split <?php echo $modifiers; ?>" <?php echo $attributes; ?>>

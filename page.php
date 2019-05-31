@@ -1,11 +1,11 @@
 <?php
 
 component('page', [
-	'sections' => [
-		'component' => 'common/content',
-		'data' => [
-			'title'   => get_title(),
-			'content' => get_content()
-		]
-	]
+    'sections' => [
+        'component' => 'common/content',
+        'data' => [
+            'title'   => get_title(),
+            'content' => get_content()
+        ]
+    ]
 ]);

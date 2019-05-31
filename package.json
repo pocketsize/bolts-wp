@@ -34,9 +34,6 @@
 		"*.scss": [
 			"yarn run fix-styles",
 			"git add"
-		],
-        "*.php": [
-            "vendor/bin/phpcbf --standard=phpcs.xml --runtime-set ignore_warnings_on_exit 1"
 		]
 	},
 	"author": "Pocketsize",
