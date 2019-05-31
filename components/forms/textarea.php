@@ -2,64 +2,49 @@
 /**
  * Textarea
  *
+ * @param string $theme
+ * @param string|array $modifiers
+ * @param string|array $attributes
+ *
  * @param string $title
  * @param string $description
- * @param string $name
- * @param string $identifier
- * @param string $value
- * @param string $placeholder
- * @param int    $rows         - defaults to 4
- * @param string $maxlength
- * @param string $validate     - validation type
- * @param string $error_text   - displays when validation fails
- * @param bool   $is_disabled
- * @param bool   $is_required
+ * @param string $error_text
  *
- * @param string $theme
- * @param string $modifier
+ * @param array $textarea
+ * @param string $value
+ *
  */
 
 $attributes = attributes($attributes ?? '');
-$modifiers   = modifiers($modifiers ?? null, $theme ?? null);
+$modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 
-$name        = !empty($name) ? $name : $title;
-$value       = !empty($value) ? $value : '';
-$placeholder = !empty($placeholder) ? $placeholder : '';
+$textarea               = !empty($textarea) ? $textarea : [];
+$textarea['attributes'] = get_attributes($textarea['attributes'] ?? []);
+
+$title       = !empty($title)       ? $title       : '';
 $description = !empty($description) ? $description : '';
-$rows        = !empty($rows) ? $rows : 4;
-$maxlength   = !empty($maxlength) ? 'maxlength="' . $maxlength . '"' : '';
-$disabled    = !empty($is_disabled) ? ' disabled' : '';
-$is_required = !empty($is_required) ? $is_required : false;
-$required    = !empty($is_required) ? ' required' : '';
-$identifier  = !empty($identifier) ? $identifier : $title;
-$modifiers   = !empty($modifiers) ? $modifiers : '';
-$validate    = !empty($validate) ? 'data-bolts-validate="' . $validate . '"' : '';
-$error_text  = !empty($error_text) ? $error_text : false;
-?>
+$error_text  = !empty($error_text)  ? $error_text  : false;
+$value       = !empty($value)       ? $value       : '';
 
-<div class="textarea <?php echo $modifiers; ?>" data-bolts-input-wrapper <?php echo $attributes; ?>>
-    <div class="textarea-field-info">
-        <?php component('forms/field-info', [
-            'title'       => $title,
-            'description' => $description,
-            'identifier'  => $identifier,
-            'is_required' => $is_required,
-            'error_text'  => $error_text
-        ]); ?>
-    </div>
+$id       = !empty($textarea['attributes']['id'])       ? $textarea['attributes']['id']       : false;
+$required = !empty($textarea['attributes']['required']) ? $textarea['attributes']['required'] : false;
+
+?>
+<div class="textarea <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
+    <?php if (!empty($title) || !empty($description) || !empty($error_text)) : ?>
+        <div class="textarea-field-info">
+            <?php component('forms/field-info', [
+                'title'       => $title,
+                'description' => $description,
+                'id'          => $id,
+                'required'    => $required,
+                'error_text'  => $error_text
+            ]); ?>
+        </div>
+    <?php endif; ?>
 
     <div class="textarea-inner">
-        <textarea
-            class="textarea-input"
-            name="<?php echo $name; ?>"
-            rows="<?php echo $rows; ?>"
-            id="<?php echo $identifier; ?>"
-            placeholder="<?php echo $placeholder; ?>"
-            <?php echo $maxlength; ?>
-            <?php echo $disabled; ?>
-            <?php echo $required; ?>
-            <?php echo $validate; ?>
-        ><?php echo $value;  ?></textarea>
+        <textarea class="textarea-textarea" <?php echo attributes($textarea['attributes']); ?>><?php echo $value; ?></textarea>
 
         <div class="textarea-faux-input"></div>
     </div>

@@ -3,11 +3,11 @@
  * Footer
  *
  * The main footer of the website
- * 
+ *
  * @param string $theme
  * @param string $modifier
  * @param string $attributes
- * 
+ *
  * @param string $content
  */
 

@@ -2,43 +2,52 @@
 /**
  * Content
  *
- * Basic styling and layout of text content.
- * Please use this as widely as possible. It's awesome.
+ * @param string $theme
+ * @param string $modifiers
+ * @param string $attributes
  *
- * @param string $modifier
  * @param string $title
- * @param string $title_tag - "h1", "h2"
  * @param string $content
  * @param string $theme
  */
 
 $attributes = attributes($attributes ?? '');
 $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
-$title_tag  = !empty($title_tag) ? $title_tag : 'h2';
+
+$title = !empty($title) ? $title : false;
+$title = $title && is_string($title) ? ['title' => $title] : $title;
+
+$lead = !empty($lead) ? $lead : false;
+
+if ($lead) {
+    $lead          = is_string($lead) ? ['content' => $lead] : $lead;
+    $lead['theme'] = !empty($lead['theme']) ? $lead['theme'] : 'lead';
+}
+
+$content = !empty($content) ? $content : false;
+$content = $content && is_string($content) ? ['content' => $content] : $content;
 ?>
 
 <div class="content <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
     <?php if (!empty($meta)) : ?>
-        <div class="content-meta">
-            <?php echo $meta; ?>
+        <div class="content-meta"><?php echo $meta; ?></div>
+    <?php endif; ?>
+
+    <?php if ($title) : ?>
+        <div class="content-title">
+            <?php component('common/title', $title); ?>
         </div>
     <?php endif; ?>
 
-    <?php if (!empty($title)) : ?>
-        <<?php echo $title_tag; ?> class="content-title">
-            <?php echo $title; ?>
-        </<?php echo $title_tag; ?>>
-    <?php endif; ?>
-
-    <?php if (!empty($lead)) : ?>
+    <?php if ($lead) : ?>
         <div class="content-lead">
-            <?php echo $lead; ?>
+            <?php component('common/wysiwyg', $lead); ?>
         </div>
     <?php endif; ?>
 
-    <?php if (!empty($content)) : ?>
+    <?php if ($content) : ?>
         <div class="content-content">
-            <?php echo $content; ?>
+            <?php component('common/wysiwyg', $content); ?>
         </div>
     <?php endif; ?>
 </div>

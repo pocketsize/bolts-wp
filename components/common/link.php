@@ -12,7 +12,10 @@
  *
  */
 
-if (empty($url)) return false;
+if (empty($url)) {
+    return false;
+}
+
 $target = !empty($target) ? $target : false;
 $theme  = !empty($theme)  ? $theme  : null;
 
@@ -22,7 +25,7 @@ $attributes = get_attributes($attributes ?? '', [
     'target' => $target
 ]);
 
-if (!empty($attributes['target']) && empty($attributes['rel'])) {
+if (!empty($attributes['target']) && in_array($attributes['target'], ['_blank', '_new']) && empty($attributes['rel'])) {
     $attributes['rel'] = 'noopener noreferrer';
 }
 

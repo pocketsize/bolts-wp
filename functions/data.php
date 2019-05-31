@@ -20,16 +20,16 @@ function get_page_builder_sections()
 
     foreach ($sections as $section) {
         $component = $section['acf_fc_layout'];
-        $data = array_diff_key($section, array_flip(['acf_fc_layout']));
+        $data      = array_diff_key($section, array_flip(['acf_fc_layout']));
 
         switch ($component) {
-            case 'content' :
+            case 'content':
                 $component = 'common/content';
 
                 /* if (!empty($data['image']) {
                     $data['image'] = get_media($data['image'], 'medium');
                 } */
-            break;
+                break;
         }
 
         $items[] = [
@@ -146,7 +146,7 @@ function get_footer_content()
  * Pair an array of componentless data entries with a component
  */
 
-function add_component_to_data_entries($data_entries, $component)
+function add_component_to_data_entries($component, $data_entries)
 {
     if (!$data_entries || !$component || !is_array($data_entries)) {
         return false;

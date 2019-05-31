@@ -7,7 +7,7 @@
  * @param string $theme
  * @param string $modifier
  * @param string $attributes
- * 
+ *
  * @param array $menu
  * @param string $home_url
  * @param string $site_name

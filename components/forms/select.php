@@ -2,72 +2,48 @@
 /**
  * Select
  *
- * Using Choices.js to render a pretty select.
- * Remember to include 'external/_choices.scss'
- * and init 'external/choices.js'.
+ * @param string $theme
+ * @param string|array $modifier
+ * @param string|array $attributes
  *
  * @param string $title
  * @param string $description
- * @param string $name
- * @param string $identifier
- * @param string $value
- * @param string $placeholder
  * @param string $error_text
- * @param bool   $is_required
- * @param string $validate
  *
  * @param array  $options
- * @param string $options.title
- * @param string $options.value
- * @param bool   $options.is_disabled
- * @param bool   $options.is_selected
  *
- * @param string $theme
- * @param string $modifier
  */
 
-$attributes  = attributes($attributes ?? '');
-$modifiers   = modifiers($modifiers ?? null, $theme ?? null);
+$attributes = attributes($attributes ?? '');
+$modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 
-$name        = !empty($name) ? $name : $title;
-$value       = !empty($value) ? $value : '';
-$placeholder = !empty($placeholder) ? $placeholder : '';
-$disabled    = !empty($is_disabled) ? ' disabled' : '';
-$is_required = !empty($is_required) ? $is_required : false;
-$description = !empty($description) ? $description : '';
-$required    = !empty($is_required) ? ' required' : '';
-$identifier  = !empty($identifier) ? $identifier : $title;
-$validate    = !empty($validate) ? 'data-bolts-validate="' . $validate . '"' : '';
-$error_text  = !empty($error_text) ? $error_text : false;
+$select               = !empty($select) ? $select : [];
+$select['attributes'] = get_attributes($select['attributes'] ?? []);
+
+$title       = !empty($title)       ? $title       : false;
+$description = !empty($description) ? $description : false;
+$error_text  = !empty($error_text)  ? $error_text  : false;
+
+$id       = !empty($input['attributes']['id'])       ? $input['attributes']['id']       : false;
+$required = !empty($input['attributes']['required']) ? $input['attributes']['required'] : false;
+
 ?>
-
-<?php if (!empty($options)) : ?>
-    <div class="select <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
+<div class="select <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
+    <?php if (!empty($title) || !empty($description) || !empty($error_text)) : ?>
         <div class="select-field-info">
             <?php component('forms/field-info', [
                 'title'       => $title,
                 'description' => $description,
-                'identifier'  => $identifier,
-                'is_required' => $is_required,
+                'id'          => $id,
+                'required'    => $required,
                 'error_text'  => $error_text
             ]); ?>
         </div>
+    <?php endif; ?>
 
-        <div class="select-inner">
-            <select name="<?php echo $name; ?>" class="select-select" data-bolts-choices="select">
-                <?php foreach ($options as $option) : ?>
-                    <?php
-                        $is_disabled = !empty($option['is_disabled']) ? 'disabled' : '';
-                        $is_selected = !empty($option['is_selected']) ? 'selected' : '';
-                    ?>
-                    <option
-                        value="<?php echo $option['value']; ?>"
-                        <?php echo $is_selected; ?>
-                        <?php echo $is_disabled; ?>>
-                        <?php echo $option['title']; ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-        </div>
+    <div class="select-inner">
+        <select class="select-select" <?php echo attributes($select['attributes']); ?>>
+            <?php layout_items($options, 'select-option', 'option'); ?>
+        </select>
     </div>
-<?php endif; ?>
+</div>

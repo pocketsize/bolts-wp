@@ -13,14 +13,14 @@
 
 $action = !empty($action) ? $action : true;
 
-$attributes   = attributes($attributes ?? '', [
+$attributes = attributes($attributes ?? '', [
     'method' => 'post',
     'action' => $action
 ]);
 
 $modifiers = modifiers($modifiers ?? null, $theme ?? null);
-?>
 
+?>
 <form class="form <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
     <div class="form-fields">
         <?php layout_items($fields, 'form-field'); ?>

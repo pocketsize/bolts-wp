@@ -2,7 +2,7 @@
 
 /**
  * modifiers
- * 
+ *
  * Normalize component theme and modifier classes
  *
  * @param string|null $theme
@@ -32,7 +32,7 @@ function get_modifiers($modifiers = null, $theme = null)
         if ($theme !== null) {
             // if theme is specified, set theme
             $theme_modifier = 'is-theme-' . $theme;
-        } else if (!empty($theme_modifiers)) {
+        } elseif (!empty($theme_modifiers)) {
             // set theme to first theme modifier, if any
             $theme_modifier = $theme_modifiers[0];
         } else {
@@ -66,7 +66,9 @@ function modifiers($modifiers = null, $theme = null)
 
 function attributes_to_array($attributes)
 {
-    if (is_array($attributes)) return $attributes;
+    if (is_array($attributes)) {
+        return $attributes;
+    }
 
     $doc = new DOMDocument();
     $doc->loadHTML("<input $attributes />");
@@ -139,6 +141,7 @@ function get_attributes($attributes, $defaults = [])
  * @return string
  */
 
-function attributes($attributes, $defaults = []) {
+function attributes($attributes, $defaults = [])
+{
     return attributes_to_string(get_attributes($attributes, $defaults));
 }

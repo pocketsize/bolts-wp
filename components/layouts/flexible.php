@@ -17,7 +17,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
     <div class="layout-flexible-inner">
         <?php if (!empty($areas)) : ?>
             <div class="layout-flexible-areas">
-                <?php foreach($areas as $area) : ?>
+                <?php foreach ($areas as $area) : ?>
                     <div class="layout-flexible-area <?php echo !empty($area['modifiers']) ? $area['modifiers'] : ''; ?>">
                         <?php if (!empty($area['items'])) : ?>
                             <div class="layout-flexible-items">

@@ -14,7 +14,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
 <button class="button <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
-	<?php if (!empty($title)) : ?>
+    <?php if (!empty($title)) : ?>
         <div class="button-inner"><?php echo $title; ?></div>
-	<?php endif; ?>
+    <?php endif; ?>
 </button>

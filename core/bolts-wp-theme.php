@@ -155,8 +155,10 @@ if (!function_exists('layout_item')) {
         if (is_string($item)) {
             echo $item;
         } else {
-            if ( !empty($item['component']) && !empty($item['data']) ) {
+            if (!empty($item['component']) && !empty($item['data'])) {
                 component($item['component'], $item['data']);
+            } elseif (!empty($item['content'])) {
+                echo $item['content'];
             }
         }
 
