@@ -48,6 +48,15 @@ function restrict_rest_api_to_localhost()
 add_action('rest_api_init', 'restrict_rest_api_to_localhost', 1);
 
 /**
+ * Disable author queries that uses numerical user ID's (to prevent user enumeration exploits)
+ */
+
+if (!is_admin() && isset($_GET['author'])) {
+    wp_redirect(home_url());
+    die();
+}
+
+/**
  * Filtering all queries and triggering a 404 on all
  * unwanted "auto generated" endpoints.
  */
@@ -56,7 +65,7 @@ function cleanup_queries($query)
 {
     if (is_category() || is_tag() || is_date() || is_author()) {
         global $wp_query;
-        $wp_query->set_404(); //set to 404 not found page
+        $wp_query->set_404();
     }
 }
 add_action('parse_query', 'cleanup_queries');
