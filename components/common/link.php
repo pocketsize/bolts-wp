@@ -6,7 +6,7 @@
  * @param string $modifiers
  * @param string $attributes
  *
- * @param string $title
+ * @param string $content
  * @param string $target
  * @param string $url
  *
@@ -32,7 +32,7 @@ if (!empty($attributes['target']) && in_array($attributes['target'], ['_blank', 
 ?>
 
 <a class="link <?php echo $modifiers; ?>" <?php echo attributes($attributes); ?>>
-    <?php if (!empty($title) && $theme != 'overlay') : ?>
-        <span class="link-inner"><?php echo $title; ?></span>
+    <?php if (!empty($content) && $theme != 'overlay') : ?>
+        <span class="link-inner"><?php echo $content; ?></span>
     <?php endif; ?>
 </a>

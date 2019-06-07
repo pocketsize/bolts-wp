@@ -1,16 +1,10 @@
 .content {
     &.is-theme-default {
+        .content-meta,
         .content-title,
+        .content-lead,
         .content-content {
             @include conditional-spacing;
-        }
-
-        .content-title {
-            @extend %title--h1;
-        }
-
-        .content-content {
-            @extend %content--wysiwyg;
         }
     }
 }

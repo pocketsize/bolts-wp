@@ -1,57 +1,59 @@
 .select {
-    &-field-info {
-        @include conditional-spacing;
-    }
-
-    &-inner {
-        position: relative;
-        display: table;
-
-        &:after {
-            content: '';
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            bottom: 0;
-            width: 8px;
-            height: 8px;
-            color: $color--black;
-            border-left: 2px solid;
-            border-bottom: 2px solid;
-            transform: translateY(-75%) rotate(-45deg);
-            pointer-events: none;
-        }
-    }
-
-    &-select {
-        display: table;
-        padding: 0 ($padding--input-x + 20px) 0 $padding--input-x;
-        height: $height--input;
-        line-height: $height--input - ($width--input-border * 2);
-        font-size: $font-size--input;
-        width: 100%;
-        appearance: none;
-        background-color: $color--input-background;
-        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=');
-        background-repeat: no-repeat;
-        border-radius: 0;
-        cursor: pointer;
-        border: $width--input-border solid $color--input-border;
-
-        &::-ms-expand {
-            display: none;
+    &.is-theme-default {
+        .select-field-info {
+            @include conditional-spacing;
         }
 
-        &:focus {
-            outline: none;
+        .select-inner {
+            position: relative;
+            display: table;
+
+            &:after {
+                content: '';
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                bottom: 0;
+                width: 8px;
+                height: 8px;
+                color: $color--black;
+                border-left: 2px solid;
+                border-bottom: 2px solid;
+                transform: translateY(-75%) rotate(-45deg);
+                pointer-events: none;
+            }
         }
 
-        option {
-            font-size: 16px !important;
-        }
-    }
+        .select-select {
+            display: table;
+            padding: 0 ($padding--input-x + 20px) 0 $padding--input-x;
+            height: $height--input;
+            line-height: $height--input - ($width--input-border * 2);
+            font-size: $font-size--input;
+            width: 100%;
+            appearance: none;
+            background-color: $color--input-background;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=');
+            background-repeat: no-repeat;
+            border-radius: 0;
+            cursor: pointer;
+            border: $width--input-border solid $color--input-border;
 
-    &.has-error &-select {
-        border-color: $color--warning;
+            &::-ms-expand {
+                display: none;
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+            option {
+                font-size: 16px !important;
+            }
+        }
+
+        &.has-error .select-select {
+            border-color: $color--warning;
+        }
     }
 }

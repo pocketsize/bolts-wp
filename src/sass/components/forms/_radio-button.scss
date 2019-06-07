@@ -1,75 +1,77 @@
 .radio-button {
-    position: relative;
-    white-space: nowrap;
-    user-select: none;
-    display: block;
-
-    &-input {
-        position: absolute;
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    &-faux-input {
-        background-color: $color--input-background;
-        cursor: pointer;
+    &.is-theme-default {
         position: relative;
-        overflow: hidden;
-        width: 18px;
-        height: 18px;
-        overflow: hidden;
-        display: inline-block;
-        vertical-align: middle;
-        border: $width--input-border solid $color--input-border;
-        border-radius: 50%;
+        white-space: nowrap;
+        user-select: none;
+        display: block;
 
-        .radio-button-input:focus + & {
-        }
-
-        .radio-button-input:checked + & {
-        }
-
-        .radio-button-input:checked:focus + & {
-        }
-
-        .radio-buttons.has-error &,
-        .radio-button.has-error & {
-            border-color: $color--warning;
-        }
-
-        .radio-button-input:disabled + & {
-            @extend %disabled-input;
-        }
-
-        &:after {
-            content: '';
-            @include center;
-            background: $color--black;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
+        .radio-button-input {
+            position: absolute;
             opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .radio-button-faux-input {
+            background-color: $color--input-background;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            width: 18px;
+            height: 18px;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: middle;
+            border: $width--input-border solid $color--input-border;
+            border-radius: 50%;
+
+            .radio-button-input:focus + & {
+            }
 
             .radio-button-input:checked + & {
-                opacity: 1;
+            }
+
+            .radio-button-input:checked:focus + & {
+            }
+
+            .radio-buttons.has-error &,
+            .radio-button.has-error & {
+                border-color: $color--warning;
+            }
+
+            .radio-button-input:disabled + & {
+                @extend %disabled-input;
+            }
+
+            &:after {
+                content: '';
+                @include center;
+                background: $color--black;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                opacity: 0;
+
+                .radio-button-input:checked + & {
+                    opacity: 1;
+                }
             }
         }
-    }
 
-    &-label {
-        cursor: pointer;
-        vertical-align: middle;
-        display: inline-block;
-        white-space: normal;
+        .radio-button-label {
+            cursor: pointer;
+            vertical-align: middle;
+            display: inline-block;
+            white-space: normal;
 
-        .radio-buttons.has-error &,
-        .radio-button.has-error & {
-            color: $color--warning;
-        }
+            .radio-buttons.has-error &,
+            .radio-button.has-error & {
+                color: $color--warning;
+            }
 
-        .radio-button-input:disabled + .radio-button-faux-input + & {
-            @extend %disabled-input;
+            .radio-button-input:disabled + .radio-button-faux-input + & {
+                @extend %disabled-input;
+            }
         }
     }
 }

@@ -28,7 +28,7 @@ $excerpt = !empty($excerpt) ? $excerpt : false;
         <?php component('common/image', $image); ?>
     </div>
 
-    <div class="post-preview-content">
+    <div class="post-preview-content-outer">
         <div class="post-preview-content">
 
             <?php component('common/content', [

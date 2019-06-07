@@ -14,3 +14,8 @@ html {
 body {
     font-family: sans-serif;
 }
+
+// TODO: lägg till i reset för att motverka overflow problem
+* {
+    outline-offset: -1px;
+}

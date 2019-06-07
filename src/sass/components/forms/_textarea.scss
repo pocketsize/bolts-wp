@@ -1,36 +1,38 @@
 .textarea {
-    &-field-info {
-        @include conditional-spacing;
-    }
-
-    &-inner {
-        position: relative;
-    }
-
-    &-faux-input {
-        @include overlay;
-        border: $width--input-border solid $color--input-border;
-        background-color: $color--input-background;
-
-        .textarea-input:focus + & {
+    &.is-theme-default {
+        .textarea-field-info {
+            @include conditional-spacing;
         }
 
-        .textarea-input:disabled + & {
-            @extend %disabled-input;
+        .textarea-inner {
+            position: relative;
         }
 
-        .textarea.has-error & {
-            border-color: $color--warning;
-        }
-    }
+        .textarea-faux-input {
+            @include overlay;
+            border: $width--input-border solid $color--input-border;
+            background-color: $color--input-background;
 
-    &-input {
-        display: block;
-        width: 100%;
-        position: relative;
-        padding: $padding--input-y $padding--input-x;
-        resize: none;
-        z-index: 1;
-        background-color: transparent; /* TODO: should be part of reset */
+            .textarea-input:focus + & {
+            }
+
+            .textarea-input:disabled + & {
+                @extend %disabled-input;
+            }
+
+            .textarea.has-error & {
+                border-color: $color--warning;
+            }
+        }
+
+        .textarea-input {
+            display: block;
+            width: 100%;
+            position: relative;
+            padding: $padding--input-y $padding--input-x;
+            resize: none;
+            z-index: 1;
+            background-color: transparent; /* TODO: should be part of reset */
+        }
     }
 }

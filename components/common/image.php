@@ -2,11 +2,11 @@
 /**
  * Image
  *
- * @param string $url
- * @param string $alt
- *
  * @param string $theme (default, overlay)
  * @param string $modifiers (is-contain)
+ *
+ * @param string $url
+ * @param string $alt
  *
  */
 

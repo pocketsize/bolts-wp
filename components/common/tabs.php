@@ -24,7 +24,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
                     <?php $toggle_label = !empty($tab['label']) ? $tab['label'] : false; ?>
                     <div class="tabs-toggle">
                         <?php component('common/button', [
-                            'title'      => $toggle_label,
+                            'content'    => $toggle_label,
                             'attributes' => [
                                 'data-bolts-target'       => 'tab',
                                 'data-bolts-tab-to'       => $i,
