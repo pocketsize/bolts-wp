@@ -61,7 +61,7 @@ function get_posts_from_loop()
                     'title'   => get_title(),
                     'excerpt' => get_excerpt(),
                     'link'    => [
-                        'title' => 'Read more label',
+                        'content' => 'Read more label',
                         'url' => get_permalink()
                     ]
                 ]
@@ -82,7 +82,7 @@ function get_search_results()
         [
             'component' => 'forms/form',
             'data' => [
-                'theme' => 'search-form',
+                'theme' => 'search',
                 'method' => 'get',
                 'action' => esc_url(home_url('/')),
                 'fields' => [
@@ -96,7 +96,7 @@ function get_search_results()
                     [
                         'component' => 'forms/button',
                         'data' => [
-                            'title' => 'Search',
+                            'content' => 'Search',
                             'type'  => 'submit',
                         ]
                     ]
@@ -117,7 +117,7 @@ function get_search_results()
                     'title'   => get_title(),
                     'excerpt' => get_excerpt(),
                     'link'    => [
-                        'title' => 'Read more label',
+                        'content' => 'Read more label',
                         'url' => get_permalink()
                     ]
                 ]
@@ -164,4 +164,91 @@ function add_component_to_data_entries($component, $data_entries)
     }
 
     return $result;
+}
+
+
+
+function nav_menu_walker(array &$elements, $parent_id = 0, $toggles = false, $level = 0)
+{
+    global $post;
+
+    $branch = [];
+
+    foreach ($elements as &$element) {
+        $idk = [];
+        $items = [];
+
+        if ($element->menu_item_parent == $parent_id) {
+            $modifiers = [];
+            $modifiers[] = !empty($element->children) ? 'has-children' : '';
+            $modifiers[] = $element->object_id == $post->ID ? 'is-current' : '';
+
+            $target = !empty($element->target) ? $element->target : false;
+
+            $items[] = [
+                'component' => 'common/link',
+                'data' => [
+                    'theme'      => 'menu-link',
+                    'attributes' => ['target' => $target],
+                    'url'        => $element->url,
+                    'content'    => $element->title
+                ],
+            ];
+
+            $children = nav_menu_walker( $elements, $element->ID, $toggles, $level + 1 );
+
+            if ($toggles && !empty($children)) {
+                $items[] = [
+                    'component' => 'forms/button',
+                    'data' => [
+                        'theme' => 'submenu-toggle',
+                        'attributes' => ['data-submenu-toggle' => true],
+                    ]
+                ];
+            }
+
+            if ($children) {
+                $items[] = [
+                    'component' => 'common/menu',
+                    'data' => [
+                        'modifiers' => 'is-level-' . $level,
+                        'items'     => $children
+                    ]
+                ];
+            }
+
+            $idk = [
+                'modifiers' => modifiers($modifiers, false),
+                'items' => $items
+            ];
+
+            $branch[] = $idk;
+
+            unset($element);
+        }
+    }
+
+    return $branch;
+}
+
+function get_nav_menu_array($location = false, $toggles = false)
+{
+    if (!$location) {
+        $location = BOLTS_WP_DEFAULT_MENU_LOCATION;
+    }
+
+    $locations = get_nav_menu_locations();
+    
+    if (empty($locations) || !isset($locations[ $location ])) {
+        return null;
+    }
+
+    $menu_id = $locations[ $location ];
+
+    if (empty($menu_id)) {
+        return false;
+    }
+
+    $items = wp_get_nav_menu_items( $menu_id );
+    return  $items ? nav_menu_walker( $items, 0, $toggles, 1 ) : null;
 }

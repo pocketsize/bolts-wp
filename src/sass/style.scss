@@ -10,7 +10,7 @@
 @import 'helpers/variables';
 
 $bolts-reset-focus-styles: false;
-$bolts-reset-list-styles: false;
+$bolts-reset-list-styles: true;
 
 $bolts-img-display: block;
 $bolts-img-max-width: 100%;
@@ -77,6 +77,8 @@ $bolts-breakpoints: (
 @import 'components/common/image';
 @import 'components/common/link';
 @import 'components/common/content';
+@import 'components/common/menu';
+//@import 'components/common/accordion';
 //@import 'components/common/slider';
 //@import 'components/common/tabs';
 
@@ -88,9 +90,7 @@ $bolts-breakpoints: (
 // Components
 @import 'components/footer';
 @import 'components/header';
-@import 'components/main-menu';
 @import 'components/post-preview';
-//@import 'components/accordion';
 
 // Forms
 @import 'components/forms/form';

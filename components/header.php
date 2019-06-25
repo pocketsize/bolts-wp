@@ -19,18 +19,25 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 
 <header class="header <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
     <div class="header-inner">
-        <a href="<?php echo $home_url; ?>" class="header-logo"><?php echo $site_name; ?></a>
+        <div class="header-link">
+            <?php component('common/link', [
+                'url' => $home_url,
+                'content' => $site_name
+            ]); ?>
+        </div>
 
-        <button class="header-menu-toggle" data-menu-toggle>Menu</button>
+        <div class="header-button">
+            <?php component('forms/button', [
+                'theme' => 'menu-toggle',
+                'attributes' => [
+                    'data-menu-toggle' => true
+                ],
+                'content' => 'Menu',
+            ]); ?>
+        </div>
 
         <div class="header-menu" role="navigation">
-            <?php /* TODO: weird scoping, this menu root element should be a part of the menu component */ ?>
-            <nav class="menu is-main">
-                <?php component('common/menu', [
-                    'menu'       => $menu,
-                    'block_name' => 'menu'
-                ]); ?>
-            </nav>
+            <?php component('common/menu', $menu); ?>
         </div>
     </div>
 </header>

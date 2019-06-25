@@ -1,0 +1,11 @@
+.wysiwyg {
+    &.is-theme-default {
+        // @extend %text--default;
+        @extend %content--wysiwyg;
+    }
+
+    &.is-theme-lead {
+        // @extend %text--lead;
+        @extend %content--wysiwyg;
+    }
+}

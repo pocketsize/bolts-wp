@@ -23,7 +23,10 @@
         <div class="page-wrapper">
             <div class="page-header">
                 <?php component('header', [
-                    'menu'      => get_menu_object('main'),
+                    'menu'      => [
+                        'modifiers' => 'is-level-0',
+                        'items' => get_nav_menu_array('main', true)
+                    ],
                     'home_url'  => home_url(),
                     'site_name' => get_bloginfo('name')
                 ]); ?>

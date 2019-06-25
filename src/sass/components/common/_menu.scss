@@ -1,0 +1,59 @@
+.menu {
+    &.is-theme-default {
+        background-color: #eee;
+        width: 100%;
+
+        &.is-level-0 {
+            @media (width-to(medium)) {
+                @include off-canvas($parent: '.header', $offset: true);
+
+                > .menu-items {
+                    @include container;
+                }
+            }
+
+            @media (width-from(medium)) {
+                > .menu-items {
+                    @include flex-row;
+                    align-items: center;
+
+                    > .menu-item {
+                        @include conditional-spacing(20px, horizontal);
+                    }
+                }
+            }
+        }
+
+        &:not(.is-level-0) {
+            overflow: hidden;
+
+            @media (width-to(medium)) {
+                padding-left: 20px;
+            }
+
+            .menu-item:not([data-bolts-state-open]) > & {
+                height: 0;
+            }
+        }
+
+        &.is-level-1 {
+            @media (width-from(medium)) {
+                position: absolute;
+                top: 100%;
+                left: 0;
+            }
+        }
+
+        &.is-level-2 {
+        }
+
+        .menu-item {
+            @include flex-row;
+            align-items: center;
+
+            @media (width-from(medium)) {
+                position: relative;
+            }
+        }
+    }
+}

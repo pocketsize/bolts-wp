@@ -1,83 +1,85 @@
 .checkbox {
-    position: relative;
-    user-select: none;
-    display: block;
-    @include clear-whitespace(null, false);
-
-    &-input {
-        position: absolute;
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    &-faux-input {
-        cursor: pointer;
+    &.is-theme-default {
         position: relative;
-        overflow: hidden;
-        width: 18px;
-        height: 18px;
-        display: inline-block;
-        vertical-align: middle;
-        border: $width--input-border solid $color--input-border;
-        background-color: $color--input-background;
+        user-select: none;
+        display: block;
+        @include clear-whitespace(null, false);
 
-        .checkbox-input:focus + & {
-        }
-
-        .checkbox-input:checked + & {
-        }
-
-        .checkbox-input:checked:focus + & {
-        }
-
-        .checkboxes.has-error &,
-        .checkbox.has-error & {
-            border-color: $color--warning;
-        }
-
-        .checkbox-input:disabled + & {
-            @extend %disabled-input;
-        }
-
-        &:before,
-        &:after {
-            content: '';
+        .checkbox-input {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            background: $color--black;
-            width: 2px;
-            height: 10px;
             opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .checkbox-faux-input {
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            vertical-align: middle;
+            border: $width--input-border solid $color--input-border;
+            background-color: $color--input-background;
+
+            .checkbox-input:focus + & {
+            }
 
             .checkbox-input:checked + & {
-                opacity: 1;
+            }
+
+            .checkbox-input:checked:focus + & {
+            }
+
+            .checkboxes.has-error &,
+            .checkbox.has-error & {
+                border-color: $color--warning;
+            }
+
+            .checkbox-input:disabled + & {
+                @extend %disabled-input;
+            }
+
+            &:before,
+            &:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                background: $color--black;
+                width: 2px;
+                height: 10px;
+                opacity: 0;
+
+                .checkbox-input:checked + & {
+                    opacity: 1;
+                }
+            }
+
+            &:before {
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+
+            &:after {
+                transform: translate(-50%, -50%) rotate(45deg);
             }
         }
 
-        &:before {
-            transform: translate(-50%, -50%) rotate(-45deg);
-        }
+        .checkbox-label {
+            cursor: pointer;
+            vertical-align: middle;
+            display: inline-block;
+            margin-left: 10px;
 
-        &:after {
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-    }
+            .checkboxes.has-error &,
+            .checkbox.has-error & {
+                color: $color--warning;
+            }
 
-    &-label {
-        cursor: pointer;
-        vertical-align: middle;
-        display: inline-block;
-        margin-left: 10px;
-
-        .checkboxes.has-error &,
-        .checkbox.has-error & {
-            color: $color--warning;
-        }
-
-        .checkbox-input:disabled + .checkbox-faux-input + & {
-            @extend %disabled-input;
+            .checkbox-input:disabled + .checkbox-faux-input + & {
+                @extend %disabled-input;
+            }
         }
     }
 }

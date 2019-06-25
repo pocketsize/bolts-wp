@@ -17,10 +17,10 @@ const mainMenu = {
         if (this.menuToggles.length) {
             this.menuToggles.forEach(toggle => {
                 toggle.addEventListener('click', () => {
-                    if (state.get('menu-open')) {
-                        state.set('menu-open', false);
+                    if (state.get('menu')) {
+                        state.set('menu', false);
                     } else {
-                        state.set('menu-open');
+                        state.set('menu');
                     }
                 });
             });
@@ -31,8 +31,11 @@ const mainMenu = {
         if (this.submenuToggles.length) {
             this.submenuToggles.forEach(toggle => {
                 toggle.addEventListener('click', e => {
-                    const wrapper = e.target.parentNode.parentNode;
-                    wrapper.classList.toggle('is-open');
+                    const wrapper = e.target.parentNode;
+
+                    let stateValue = !state.get('open', wrapper);
+
+                    state.set('open', stateValue, wrapper);
                 });
             });
         }

@@ -1,16 +1,17 @@
 %text--base {
     font-family: sans-serif;
     font-weight: 400;
+    line-height: 1.8;
 }
 
-%title--base {
+%text--title-base {
     font-family: sans-serif;
     font-weight: 700;
     line-height: 1.2;
 }
 
-%title--h1 {
-    @extend %title--base;
+%text--title-primary {
+    @extend %text--title-base;
 
     @media (width-to(medium)) {
         font-size: 25px;
@@ -22,19 +23,13 @@
 }
 
 %text--link {
-    font-weight: 700;
+    @extend %text--base;
+    border-bottom: 1px solid;
 }
 
 %text--button {
     @extend %text--base;
-
-    @media (width-to(medium)) {
-        font-size: 14px;
-    }
-
-    @media (width-from(medium)) {
-        font-size: 16px;
-    }
+    font-weight: 700;
 }
 
 %embed-wrapper {
@@ -52,16 +47,11 @@
     cursor: not-allowed;
 }
 
-%fieldset {
-    display: block;
-    width: 100%;
-}
-
 %content--wysiwyg {
     @include clear;
 
     @include select(headings) {
-        @extend %title--base;
+        @extend %text--title-base;
     }
 
     p,

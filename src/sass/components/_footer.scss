@@ -1,0 +1,7 @@
+.footer {
+    &.is-theme-default {
+        .footer-inner {
+            @include container;
+        }
+    }
+}
