@@ -79,3 +79,20 @@ function bolts_wp_force_posts_page_editor($post)
     add_post_type_support('page', 'editor');
 }
 add_action('edit_form_after_title', 'bolts_wp_force_posts_page_editor', 0);
+
+/**
+ * Make page content available in the global post object (outside the posts loop) on the posts archive page
+ */
+
+function set_posts_page_object()
+{
+    if (!(get_option('page_for_posts') && (is_home() || is_category()))) {
+        return;
+    }
+
+    global $post;
+    $post = get_post(get_option('page_for_posts'));
+
+    setup_postdata($post);
+}
+add_action('wp', 'set_posts_page_object');
