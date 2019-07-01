@@ -1,9 +1,482 @@
 @mixin conditional-spacing($spacing: false, $direction: false) {
-	@if ($spacing  ==  false) { $spacing: $spacing--default; }
-	$property: bottom;
-	@if ($direction  ==  horizontal) {
-		$property: right;
-	}
+    @if ($spacing == false) {
+        $spacing: $spacing--default;
+    }
+    $property: bottom;
+    @if ($direction == horizontal) {
+        $property: right;
+    }
 
-	&:not(:last-child) { margin-#{$property}: $spacing; }
+    &:not(:last-child) {
+        margin-#{$property}: $spacing;
+    }
+}
+
+@mixin burger(
+    $line: false,
+    $spacing: false,
+    $state: 'menu',
+    $toggle: false,
+    $animation: false,
+    $duration: false,
+    $easing: false
+) {
+    @if ($line == false) {
+        $line: 3px;
+    }
+    @if ($state != false and $toggle == false) {
+        $toggle: 'html[data-bolts-state-#{$state}] &';
+    }
+    @if ($duration == false) {
+        $duration: $bolts-default-transition-duration;
+    }
+    @if ($easing == false) {
+        $easing: $bolts-default-transition-easing;
+    }
+
+    position: relative;
+    height: $line;
+    user-select: none;
+    background-color: currentColor;
+    margin-top: calc(#{50%} - #{($line / 2)});
+    margin-bottom: calc(#{50%} - #{($line / 2)});
+
+    &,
+    &:before,
+    &:after {
+        display: block;
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        border-top: $line solid;
+        border-radius: inherit;
+    }
+
+    @if ($toggle != false) {
+        $step: ($duration / 2);
+        @include transition(background-color, 0s, $easing, $step);
+
+        &:before,
+        &:after {
+            @include transition(
+                (left, right, transform),
+                $step,
+                $easing,
+                false,
+                margin-top,
+                $step,
+                $easing
+            );
+        }
+
+        @if ($spacing == false) {
+            &:before {
+                margin-top: calc(#{- (50%)} + #{$line / 2});
+            }
+            &:after {
+                margin-top: calc(#{50%} - #{$line / 2});
+            }
+        } @else {
+            &:before {
+                margin-top: -($spacing + $line);
+            }
+            &:after {
+                margin-top: $spacing + $line;
+            }
+        }
+
+        #{$toggle} {
+            background-color: transparent;
+
+            &:before,
+            &:after {
+                margin-top: 0;
+                left: calc(-20.71% + #{$line / 2});
+                right: calc(-20.71% + #{$line / 2});
+                @include transition(
+                    margin-top,
+                    $step,
+                    $easing,
+                    false,
+                    (left, right, transform),
+                    $step,
+                    $easing
+                );
+            }
+
+            &:before {
+                transform: rotate(45deg);
+            }
+            &:after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
+
+@mixin off-canvas(
+    $state: 'menu',
+    $behavior: false,
+    $position: false,
+    $fixed: false,
+    $offset: false,
+    $fade: false,
+    $parent: false,
+    $page-selector: false,
+    $width: false,
+    $height: false,
+    $overlay: false,
+    $duration: false,
+    $easing: false
+) {
+    $transition-properties: ();
+
+    @if ($page-selector == false) {
+        $page-selector: body;
+    }
+
+    @if ($duration == false) {
+        @if ($bolts-default-transition-duration) {
+            $duration: $bolts-default-transition-duration;
+        } @else {
+            $duration: 0s;
+        }
+    }
+
+    @if ($easing == false) {
+        @if ($bolts-default-transition-easing) {
+            $easing: $bolts-default-transition-easing;
+        } @else {
+            $easing: ease;
+        }
+    }
+
+    @if ($position == false) {
+        $position: top;
+    }
+
+    @if ($behavior == false) {
+        $behavior: static;
+    }
+
+    @if ($overlay == true) {
+        $overlay: rgba(0, 0, 0, 0.5);
+    }
+
+    @if ($behavior == static and $fade == false) {
+        $duration: 0s;
+    }
+
+    @if ($behavior == push and $position == bottom) {
+        @error 'off-canvas: push behavior can not be used with position bottom';
+    }
+
+    @if (
+        $behavior ==
+        push and
+            ($position == left or $position == right) and
+            $width ==
+            false
+    ) {
+        @error 'off-canvas: push behavior from left or right requires a width';
+    }
+
+    @if ($behavior == push and ($position == top) and $height == false) {
+        @error 'off-canvas: push behavior from top requires a height';
+    }
+
+    @if ($position == bottom and $offset) {
+        @error 'off-canvas: bottom position can not be used with offset';
+    }
+
+    @if ($offset and $parent == false) {
+        @error 'off-canvas: offset requires a parent selector to be defined';
+    }
+
+    @if ($position == bottom and $fixed == false) {
+        @error 'off-canvas: bottom position requires fixed';
+    }
+
+    @if ($fixed and $offset) {
+        @error 'off-canvas: fixed can not be used with offset';
+    }
+
+    @if (($position == left or $position == right) and $height != false) {
+        @warn 'off-canvas: height can not be used with position left or right';
+    }
+
+    @if (($position == top or $position == bottom) and $width != false) {
+        @warn 'off-canvas: width can not be used with position top or bottom';
+    }
+
+    @if (
+        ($position == left or $position == right) and
+        $fixed ==
+            false and
+            $width ==
+            false
+    ) {
+        @error 'off-canvas: left or right position with fixed set to false requires a width';
+    }
+
+    @if ($fixed) {
+        position: fixed;
+    } @else {
+        position: absolute;
+    }
+
+    @if (
+        ($behavior == static) or
+        (
+                $behavior ==
+                    slide and
+                    $offset ==
+                    false and
+                    ($fixed or $position == top)
+            )
+    ) {
+        #{$position}: 0;
+    } @else if
+        (
+            (
+                $behavior ==
+                        slide and
+                        $fixed ==
+                        false and
+                        ($position top and $offset == false)
+                ) or
+                ($behavior == push)
+        )
+    {
+        @if ($position == left or $position == right) {
+            #{$position}: -($width);
+        } @else if ($offset == false) {
+            #{$position}: -($height);
+        }
+
+        @if (
+            $behavior ==
+            slide and
+                ($offset == false or ($offset and $position != top)) or
+                (
+                    $behavior ==
+                        push and
+                        ($fixed or ($offset and $position != top))
+                )
+        ) {
+            $transition-properties: append($transition-properties, $position);
+            @include state($state) {
+                #{$position}: 0;
+            }
+        }
+    }
+
+    @if ($position == top or $position == bottom) {
+        left: 0;
+        right: 0;
+
+        @if ($height) {
+            height: $height;
+        }
+    }
+
+    @if ($position == left or $position == right) {
+        @if ($offset == false) {
+            top: 0;
+        }
+        bottom: 0;
+
+        @if ($fixed == false) {
+            &:before {
+                content: '';
+                position: fixed;
+                background: inherit;
+                top: 0;
+                bottom: 0;
+                width: $width;
+                z-index: -1;
+                @if ($behavior == slide or $behavior == push) {
+                    #{$position}: -($width);
+                    @include transition($position, $duration, $easing);
+                    @include state($state) {
+                        #{$position}: 0;
+                    }
+                }
+            }
+        }
+
+        @if ($width) {
+            width: $width;
+        }
+    }
+
+    @if (
+        (
+            $behavior ==
+                    slide and
+                    ($fixed or ($position == top and $fixed == false))
+            ) or
+            ($behavior == push and $position == top and $offset == true)
+    ) {
+        @if ($position == left) {
+            transform: translateX(-100%);
+        }
+
+        @if ($position == right) {
+            transform: translateX(100%);
+        }
+
+        @if ($position == top) {
+            transform: translateY(-100%);
+        }
+
+        @if ($position == bottom) {
+            transform: translateY(100%);
+        }
+
+        $transition-properties: append($transition-properties, transform);
+
+        @include state($state) {
+            @if ($position == left or $position == right) {
+                transform: translateX(0);
+            }
+            @if ($position == top or $position == bottom) {
+                transform: translateY(0);
+            }
+        }
+    }
+
+    @if ($behavior == push and ($position == top and $offset) == false) {
+        $page-position: top;
+
+        @if ($position != top) {
+            $page-position: left;
+        }
+
+        @at-root #{$page-selector} {
+            position: relative;
+            #{$page-position}: 0;
+            @include transition(
+                $page-position,
+                $duration,
+                $easing,
+                $prevent-on-resize: true
+            );
+            @include state($state) {
+                @if ($position == top) {
+                    #{$page-position}: $height;
+                }
+
+                @if ($position == left) {
+                    #{$page-position}: $width;
+                }
+
+                @if ($position == right) {
+                    #{$page-position}: -($width);
+                }
+            }
+        }
+    }
+
+    @if ($fade) {
+        opacity: 0;
+        $transition-properties: append($transition-properties, opacity);
+        @include state($state) {
+            opacity: 1;
+        }
+    }
+
+    @if ($offset) {
+        top: 100%;
+        z-index: -1;
+        @at-root #{$parent} {
+            position: relative;
+            z-index: 1;
+
+            @if ($behavior == push) {
+                $push-property: $position;
+                $push-value: -($width);
+
+                @if ($position == top) {
+                    $push-property: margin-bottom;
+                    $push-value: $height;
+                } @else {
+                    z-index: 1;
+                }
+
+                #{$push-property}: 0;
+                @include transition($push-property, $duration, $easing);
+                @include state($state) {
+                    #{$push-property}: $push-value;
+                }
+            }
+
+            &:after {
+                content: '';
+                @include overlay;
+                background: inherit;
+                z-index: -1;
+                transform: translateZ(1px);
+            }
+        }
+    } @else {
+        z-index: 1;
+    }
+
+    @if ($overlay) {
+        @at-root #{$page-selector}:after {
+            @include overlay($fixed: true);
+            content: '';
+            background: $overlay;
+            opacity: 0;
+            visibility: hidden;
+            @include transition(
+                opacity,
+                $duration,
+                $easing,
+                $queue: visibility
+            );
+            @include state($state) {
+                opacity: 1;
+                visibility: visible;
+                @include transition(opacity, $duration, $easing);
+            }
+        }
+    }
+
+    $queue-properties: visibility;
+
+    @include state($state, false) {
+        visibility: hidden;
+
+        @if ($behavior == push and $position == right and $fixed == false) {
+            $queue-properties: append($queue-properties, width);
+
+            width: 0;
+        }
+    }
+
+    @include transition(
+        $transition-properties,
+        $duration,
+        $easing,
+        $queue: $queue-properties,
+        $prevent-on-resize: true
+    );
+
+    @include state($state) {
+        visibility: visible;
+
+        @if ($transition-properties != ()) {
+            @include transition($transition-properties, $duration, $easing);
+        } @else {
+            transition: none;
+        }
+    }
 }

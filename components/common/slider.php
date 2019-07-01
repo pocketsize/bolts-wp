@@ -31,7 +31,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 
         <?php if (!empty($has_controls)) : ?>
             <?php component('common/button', [
-                'title'      => 'Previous',
+                'content'    => 'Previous',
                 'theme'      => 'slider-control',
                 'modifiers'  => 'is-previous',
                 'attributes' => [
@@ -41,7 +41,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
             ]); ?>
 
             <?php component('common/button', [
-                'title'      => 'Next',
+                'content'    => 'Next',
                 'theme'      => 'slider-control',
                 'modifiers'  => 'is-next',
                 'attributes' => [
@@ -55,7 +55,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
             <nav class="slider-pagination">
                 <?php foreach ($slides as $i => $slide) : ?>
                      <?php component('common/button', [
-                        'title'      => $i + 1,
+                        'content'    => $i + 1,
                         'theme'      => 'slider-dot',
                         'attributes' => [
                             'data-bolts-slider-dot'   => true,

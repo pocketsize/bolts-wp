@@ -1,0 +1,25 @@
+.header {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #ddd;
+
+    &-inner {
+        @include container;
+        @include flex-row;
+        align-items: center;
+        height: 40px;
+    }
+
+    &-link {
+        flex-grow: 1;
+    }
+
+    &-button {
+        @media (width-from(medium)) {
+            display: none;
+        }
+    }
+}

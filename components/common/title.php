@@ -1,6 +1,6 @@
 <?php
 /**
- * Wysiwyg
+ * Title
  *
  * @param string $theme (primary, secondary)
  * @param string $modifiers

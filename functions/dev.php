@@ -235,7 +235,7 @@ function get_dummy_content()
 
     <h3>IFrame</h3>
 
-    <iframe src="HTML5 Test page.html" height="300"></iframe>
+    <iframe src="index.php" height="300"></iframe>
 
     <h2>Form elements</h2>
 

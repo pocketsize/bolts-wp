@@ -15,7 +15,7 @@ $attributes = attributes($attributes ?? '');
 $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 
 $title = !empty($title) ? $title : false;
-$title = $title && is_string($title) ? ['title' => $title] : $title;
+$title = $title && is_string($title) ? ['content' => $title] : $title;
 
 $lead = !empty($lead) ? $lead : false;
 

@@ -2,7 +2,7 @@
 /**
  * Button
  *
- * @param string $title
+ * @param string $content
  * @param string $attributes
  *
  * @param string $theme
@@ -14,7 +14,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
 <button class="button <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
-    <?php if (!empty($title)) : ?>
-        <div class="button-inner"><?php echo $title; ?></div>
+    <?php if (!empty($content)) : ?>
+        <div class="button-inner"><?php echo $content; ?></div>
     <?php endif; ?>
 </button>

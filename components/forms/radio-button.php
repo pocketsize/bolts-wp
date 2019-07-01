@@ -6,7 +6,7 @@
  * @param string|array $modifier
  * @param string|array $attributes
  *
- * @param string $title
+ * @param string $content
  * @param array $input
  *
  */
@@ -18,7 +18,7 @@ $input                       = !empty($input) ? $input : [];
 $input['attributes']         = get_attributes($input['attributes'] ?? []);
 $input['attributes']['type'] = !empty($input['attributes']['type']) ? $input['attributes']['type'] : 'radio';
 
-$title = !empty($title) ? $title : '';
+$content = !empty($content) ? $content : '';
 
 $id       = !empty($input['attributes']['id'])       ? $input['attributes']['id']       : false;
 $required = !empty($input['attributes']['required']) ? $input['attributes']['required'] : false;
@@ -27,5 +27,5 @@ $required = !empty($input['attributes']['required']) ? $input['attributes']['req
 <label class="radio-button <?php echo $modifiers; ?>" <?php echo attributes($attributes); ?>>
     <input class="radio-button-input" <?php echo attributes($input['attributes']); ?> />
     <div class="radio-button-faux-input"></div>
-    <span class="radio-button-label"><?php echo $title; ?></span>
+    <span class="radio-button-label"><?php echo $content; ?></span>
 </label>

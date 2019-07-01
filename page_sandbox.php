@@ -10,7 +10,7 @@ component('page', [
             'data' => [
                 'theme'  => 'overlay',
                 'modifiers' => 'is-pretty-cool',
-                'title'  => 'så här ska det stå',
+                'content'  => 'så här ska det stå',
                 'url'    => '#hit-ska-den-gå',
                 'target' => '_blank',
             ]
@@ -37,7 +37,7 @@ component('page', [
                             'items' => [
                                 [
 
-                                    'title' => 'Option 1 (disabled)',
+                                    'content' => 'Option 1 (disabled)',
                                     'input' => [
                                         'attributes' => [
                                             'value' => 'one',
@@ -47,7 +47,7 @@ component('page', [
                                 ],
                                 [
 
-                                    'title' => 'Option 2 (checked)',
+                                    'content' => 'Option 2 (checked)',
                                     'input' => [
                                         'attributes' => [
                                             'value' => 'two',
@@ -57,7 +57,7 @@ component('page', [
                                 ],
                                 [
 
-                                    'title' => 'Option 3',
+                                    'content' => 'Option 3',
                                     'input' => [
                                         'attributes' => [
                                             'value' => 'three',
@@ -66,7 +66,7 @@ component('page', [
                                 ],
                                 [
 
-                                    'title' => 'Option 4',
+                                    'content' => 'Option 4',
                                     'input' => [
                                         'attributes' => [
                                             'value' => 'four',
@@ -119,7 +119,7 @@ component('page', [
                             'type' => 'checkbox', // defaults to checkbox
                             'items' => [
                                 [
-                                    'title' => 'Option 1 (disabled)',
+                                    'content' => 'Option 1 (disabled)',
                                     'input' => [
                                         'attributes' => [
                                             'value' => 'one',
@@ -128,7 +128,7 @@ component('page', [
                                     ]
                                 ],
                                 [
-                                    'title' => 'Option 2 (checked)',
+                                    'content' => 'Option 2 (checked)',
                                     'input' => [
                                         'attributes' => [
                                             'value' => 'two',
@@ -137,7 +137,7 @@ component('page', [
                                     ]
                                 ],
                                 [
-                                    'title' => 'Option 3',
+                                    'content' => 'Option 3',
                                     'input' => [
                                         'attributes' => [
                                             'value' => 'three',
@@ -145,7 +145,7 @@ component('page', [
                                     ]
                                 ],
                                 [
-                                    'title' => 'Option 4',
+                                    'content' => 'Option 4',
                                     'input' => [
                                         'attributes' => [
                                             'value' => 'four',
@@ -165,7 +165,7 @@ component('page', [
                     [
                         'component' => 'forms/button',
                         'data' => [
-                            'title' => 'I am Button',
+                            'content' => 'I am Button',
                             'url'   => '#'
                         ]
                     ]
@@ -183,7 +183,7 @@ component('page', [
                         'items' => [
                             'component' => 'forms/button',
                             'data' => [
-                                'title' => 'I am Button',
+                                'content' => 'I am Button',
                                 'url'   => '#'
                             ]
                         ]
@@ -194,14 +194,14 @@ component('page', [
                             [
                                 'component' => 'forms/button',
                                 'data' => [
-                                    'title' => 'I am Button',
+                                    'content' => 'I am Button',
                                     'url'   => '#'
                                 ]
                             ],
                             [
                                 'component' => 'common/link',
                                 'data' => [
-                                    'title' => 'I am Link',
+                                    'content' => 'I am Link',
                                     'url'   => '#'
                                 ]
                             ]

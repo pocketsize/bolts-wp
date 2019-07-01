@@ -5,7 +5,7 @@
         }
     }
 
-    &.is-theme-search-form {
+    &.is-theme-search {
         .form-fields {
             @include flex-layout(2 1);
         }

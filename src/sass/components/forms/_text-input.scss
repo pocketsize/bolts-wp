@@ -10,49 +10,51 @@
  */
 
 .text-input {
-    &-field-info {
-        @include conditional-spacing;
-    }
-
-    &-inner {
-        position: relative;
-        overflow: hidden;
-        height: $height--input;
-    }
-
-    &-input {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        padding-left: $padding--input-x;
-        padding-right: $padding--input-x;
-        z-index: 1;
-        background-color: transparent; /* TODO: should be part of reset */
-    }
-
-    &-faux-input {
-        @include overlay;
-        background-color: $color--input-background;
-        border: $width--input-border solid $color--input-border;
-
-        .text-input-input:focus + & {
+    &.is-theme-default {
+        .text-input-field-info {
+            @include conditional-spacing;
         }
 
-        .text-input-input:disabled + & {
-            @extend %disabled-input;
+        .text-input-inner {
+            position: relative;
+            overflow: hidden;
+            height: $height--input;
         }
 
-        .text-input.has-error & {
-            border-color: $color--warning;
+        .text-input-input {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding-left: $padding--input-x;
+            padding-right: $padding--input-x;
+            z-index: 1;
+            background-color: transparent; /* TODO: should be part of reset */
         }
-    }
 
-    &-input {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        padding-left: $padding--input-x;
-        padding-right: $padding--input-x;
-        z-index: 1;
+        .text-input-faux-input {
+            @include overlay;
+            background-color: $color--input-background;
+            border: $width--input-border solid $color--input-border;
+
+            .text-input-input:focus + & {
+            }
+
+            .text-input-input:disabled + & {
+                @extend %disabled-input;
+            }
+
+            .text-input.has-error & {
+                border-color: $color--warning;
+            }
+        }
+
+        .text-input-input {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding-left: $padding--input-x;
+            padding-right: $padding--input-x;
+            z-index: 1;
+        }
     }
 }

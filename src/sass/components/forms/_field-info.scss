@@ -1,23 +1,24 @@
 .field-info {
-    &-label-wrapper {
-        /* display: flex;
-        align-items: center; */
-        @include conditional-spacing(10px);
-    }
+    &.is-theme-default {
+        .field-info-label-wrapper {
+            @include conditional-spacing(10px);
+        }
 
-    &-label {
-        font-weight: 700;
-    }
+        .field-info-label {
+            font-weight: 700;
+        }
 
-    &-description  {
-    }
+        .field-info-description  {
+        }
 
-    &-required-mark {
-    }
+        .field-info-required-mark {
+            color: $color--warning;
+        }
 
-    &-validation-message {
-        color: $color--warning;
-        display: block;
-        @include transition-height('.text-input:not(.has-error) &');
+        .field-info-validation-message {
+            color: $color--warning;
+            display: block;
+            @include transition-height('.text-input:not(.has-error) &');
+        }
     }
 }

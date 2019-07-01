@@ -1,11 +1,11 @@
 .fieldset {
-    @extend %fieldset;
+    &.is-theme-default {
+        .fieldset-field-info {
+            @include conditional-spacing;
+        }
 
-    &-field-info {
-        @include conditional-spacing;
-    }
-
-    &-item {
-        @include conditional-spacing(10px);
+        .fieldset-item {
+            @include conditional-spacing(10px);
+        }
     }
 }
