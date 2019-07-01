@@ -1,0 +1,14 @@
+.list {
+    &.is-theme-default {
+        &.is-ordered {
+            list-style-type: decimal;
+        }
+        &.is-unordered {
+            list-style-type: disc;
+        }
+    }
+
+    &.is-theme-inline {
+        @include inline-layout;
+    }
+}
