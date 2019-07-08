@@ -83,21 +83,27 @@ function get_search_results()
             'component' => 'forms/form',
             'data' => [
                 'theme' => 'search',
-                'method' => 'get',
-                'action' => esc_url(home_url('/')),
+                'attributes' => [
+                    'method' => 'get',
+                    'action' => esc_url(home_url('/'))
+                ],
                 'fields' => [
                     [
                         'component' => 'forms/text-input',
                         'data' => [
                             'label' => 'Search label',
-                            'name'  => 's'
+                            'input' => [
+                                'attributes' => [
+                                    'name'  => 's'
+                                ]
+                            ]
                         ]
                     ],
                     [
                         'component' => 'forms/button',
                         'data' => [
                             'content' => 'Search',
-                            'type'  => 'submit',
+                            'type' => 'submit',
                         ]
                     ]
                 ]
@@ -110,7 +116,7 @@ function get_search_results()
             the_post();
 
             $items[] = [
-                'component' => 'post-preview',
+                'component' => 'news-card',
                 'data' => [
                     'image'   => get_featured_image(),
                     'meta'    => get_date(),
