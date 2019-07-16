@@ -480,3 +480,22 @@
         }
     }
 }
+
+@mixin mimic-contain($position: left) {
+    @if ($position != left) {
+        $position: right;
+    }
+
+    $breakpoint--container: $max-width--container *
+        strip-unit($width--page / $width--container);
+
+    @media (width-to($breakpoint--container)) {
+        padding-#{$position}: ($width--page - $width--container) / 2;
+    }
+
+    @media (width-from($breakpoint--container)) {
+        padding-#{$position}: calc(
+            (#{$width--page} - #{$max-width--container}) / 2
+        );
+    }
+}
