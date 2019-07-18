@@ -58,6 +58,28 @@ component('page', [
             ]
         ],
         [
+            'component' => 'common/slider',
+            'data' => [
+                'arrows' => true,
+                'dots' => true,
+                'items' => [
+                    [
+                        'component' => 'common/image',
+                        'data' => [
+                            'url' => 'http://placehold.it/900x450?text=nummer 1'
+                        ]
+                    ],
+                    [
+                        'component' => 'common/image',
+                        'data' => [
+                            'url' => 'http://placehold.it/900x450?text=nummer 2'
+                        ]
+
+                    ]
+                ]
+            ]
+        ],
+        [
             'component' => 'forms/form',
             'data' => [
                 'action' => '',

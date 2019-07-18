@@ -1,11 +1,6 @@
-/**
- * Slider
- */
-
-// Imports
 import Siema from 'siema';
 import { timing, state } from 'bolts-lib';
-import { select, selectAll } from '../../misc/element';
+import { select, selectAll } from '../../helpers/element';
 
 // Controls
 Siema.prototype.initControls = function() {

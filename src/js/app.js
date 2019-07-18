@@ -9,7 +9,7 @@ import '@babel/polyfill';
 import { bolts, misc } from 'bolts-lib';
 import toggleState from './helpers/toggle-state';
 import { select, selectAll, selectAllBy } from './helpers/element';
-//import slider from './components/common/slider';
+import slider from './components/common/slider';
 //import image from './components/common/image';
 //import choices from './external/choices.js';
 //import tabs from './components/common/tabs';
