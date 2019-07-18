@@ -208,7 +208,12 @@ function nav_menu_walker(array &$elements, $parent_id = 0, $toggles = false, $le
                     'component' => 'forms/button',
                     'data' => [
                         'theme' => 'submenu-toggle',
-                        'attributes' => ['data-submenu-toggle' => true],
+                        'attributes' => [
+                            'data-bolts-action' => 'toggle',
+                            'data-bolts-target' => 'menu-item',
+                            'data-bolts-value' => 'open',
+                            'data-bolts-parameters' => 'closest'
+                        ],
                     ]
                 ];
             }

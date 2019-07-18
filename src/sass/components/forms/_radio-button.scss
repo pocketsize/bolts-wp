@@ -25,24 +25,6 @@
             border: $width--input-border solid $color--input-border;
             border-radius: 50%;
 
-            .radio-button-input:focus + & {
-            }
-
-            .radio-button-input:checked + & {
-            }
-
-            .radio-button-input:checked:focus + & {
-            }
-
-            .radio-buttons.has-error &,
-            .radio-button.has-error & {
-                border-color: $color--warning;
-            }
-
-            .radio-button-input:disabled + & {
-                @extend %disabled-input;
-            }
-
             &:after {
                 content: '';
                 @include center;
@@ -51,11 +33,28 @@
                 height: 8px;
                 border-radius: 50%;
                 opacity: 0;
-
-                .radio-button-input:checked + & {
-                    opacity: 1;
-                }
             }
+        }
+
+        .radio-button-input:focus + .radio-button-faux-input {
+        }
+
+        .radio-button-input:checked + .radio-button-faux-input {
+            &:after {
+                opacity: 1;
+            }
+        }
+
+        .radio-button-input:checked:focus + .radio-button-faux-input {
+        }
+
+        .radio-buttons.has-error &,
+        .radio-button.has-error & {
+            border-color: $color--warning;
+        }
+
+        .radio-button-input:disabled + .radio-button-faux-input {
+            @extend %disabled-input;
         }
 
         .radio-button-label {
@@ -68,10 +67,12 @@
             .radio-button.has-error & {
                 color: $color--warning;
             }
+        }
 
-            .radio-button-input:disabled + .radio-button-faux-input + & {
-                @extend %disabled-input;
-            }
+        .radio-button-input:disabled
+        + .radio-button-faux-input
+        + .radio-button-label {
+            @extend %disabled-input;
         }
     }
 }

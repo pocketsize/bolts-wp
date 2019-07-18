@@ -1,29 +1,23 @@
 .tabs {
-    &-inner {
+    .tabs-inner {
+        border: 1px solid;
     }
 
-    &-toggles {
-        border: 1px solid black;
+    .tabs-toggles {
+        @include inline-layout;
     }
 
-    &-toggle {
-        &.is-active {
-            background: green;
+    .tabs-items {
+        border-top: 1px solid;
+    }
+
+    .tabs-item {
+        @include state(active, false, false) {
+            display: none;
         }
     }
 
-    &-content-container {
-        border: 1px solid black;
-        overflow: hidden;
-        @include transition(max-height);
-    }
-
-    &-content {
-        max-height: 0;
-        overflow: hidden;
-
-        &.is-active {
-            max-height: none;
-        }
+    .tabs-item-inner {
+        padding: 20px;
     }
 }
