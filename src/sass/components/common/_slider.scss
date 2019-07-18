@@ -10,7 +10,9 @@
         position: relative;
 
         @include state(initialized, false, false) {
-            .slider-slide:not(:first-child) {
+            .slider-item:not(:first-child),
+            .slider-arrow,
+            .slider-dots {
                 display: none;
             }
         }

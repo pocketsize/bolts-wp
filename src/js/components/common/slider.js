@@ -1,3 +1,4 @@
+// Imports
 import Siema from 'siema';
 import { timing, state } from 'bolts-lib';
 import { select, selectAll } from '../../helpers/element';
@@ -103,7 +104,7 @@ const slider = {
             easing: options.easing,
             duration: options.duration,
             onInit() {
-                state.set('initialized', true, slider.element);
+                state.set('initialized', true, sliderElement.element);
 
                 this.initControls();
 
