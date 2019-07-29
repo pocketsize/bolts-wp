@@ -9,6 +9,7 @@ const BoltsElement = function(element) {
     const elementObject = {
         element: element,
         selector: element.getAttribute('data-bolts-selector'),
+        id: element.getAttribute('data-bolts-id'),
         action: element.getAttribute('data-bolts-action'),
         target: element.getAttribute('data-bolts-target'),
         value: element.getAttribute('data-bolts-value'),
