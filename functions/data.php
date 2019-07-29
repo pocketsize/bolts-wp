@@ -83,21 +83,27 @@ function get_search_results()
             'component' => 'forms/form',
             'data' => [
                 'theme' => 'search',
-                'method' => 'get',
-                'action' => esc_url(home_url('/')),
+                'attributes' => [
+                    'method' => 'get',
+                    'action' => esc_url(home_url('/'))
+                ],
                 'fields' => [
                     [
                         'component' => 'forms/text-input',
                         'data' => [
                             'label' => 'Search label',
-                            'name'  => 's'
+                            'input' => [
+                                'attributes' => [
+                                    'name'  => 's'
+                                ]
+                            ]
                         ]
                     ],
                     [
                         'component' => 'forms/button',
                         'data' => [
                             'content' => 'Search',
-                            'type'  => 'submit',
+                            'type' => 'submit',
                         ]
                     ]
                 ]
@@ -110,7 +116,7 @@ function get_search_results()
             the_post();
 
             $items[] = [
-                'component' => 'post-preview',
+                'component' => 'news-card',
                 'data' => [
                     'image'   => get_featured_image(),
                     'meta'    => get_date(),
@@ -202,7 +208,12 @@ function nav_menu_walker(array &$elements, $parent_id = 0, $toggles = false, $le
                     'component' => 'forms/button',
                     'data' => [
                         'theme' => 'submenu-toggle',
-                        'attributes' => ['data-submenu-toggle' => true],
+                        'attributes' => [
+                            'data-bolts-action' => 'toggle',
+                            'data-bolts-target' => 'menu-item',
+                            'data-bolts-value' => 'open',
+                            'data-bolts-parameters' => 'closest'
+                        ],
                     ]
                 ];
             }

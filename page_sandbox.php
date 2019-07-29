@@ -16,6 +16,70 @@ component('page', [
             ]
         ],
         [
+            'component' => 'common/tabs',
+            'data' => [
+                'items' => [
+                    [
+                        'label' => 'NUMMER ETT',
+                        'items' => [
+                            'component' => 'common/content',
+                            'data' => [
+                                'title' => 'DET HÄR ÄR RUBRIKEN FÖR NUMMER ETT',
+                                'content' => 'DET HÄR ÄR INNEHÅLLET FÖR NUMMER ETT'
+                            ]
+                        ]
+                    ],
+                    [
+                        'label' => 'NUMMER TVÅ',
+                        'items' => [
+                            'component' => 'common/content',
+                            'data' => [
+                                'title' => 'DET HÄR ÄR RUBRIKEN FÖR NUMMER TVÅ',
+                                'content' => 'DET HÄR ÄR INNEHÅLLET FÖR NUMMER TVÅ'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ],
+        [
+            'component' => 'common/accordion',
+            'data' => [
+                'items' => [
+                    [
+                        'title' => 'hello errbody',
+                        'content' => 'this is what it says in the content'
+                    ],
+                    [
+                        'title' => 'and like it or not',
+                        'content' => 'there\'s more where that came from'
+                    ]
+                ]
+            ]
+        ],
+        [
+            'component' => 'common/slider',
+            'data' => [
+                'arrows' => true,
+                'dots' => true,
+                'items' => [
+                    [
+                        'component' => 'common/image',
+                        'data' => [
+                            'url' => 'http://placehold.it/900x450?text=nummer 1'
+                        ]
+                    ],
+                    [
+                        'component' => 'common/image',
+                        'data' => [
+                            'url' => 'http://placehold.it/900x450?text=nummer 2'
+                        ]
+
+                    ]
+                ]
+            ]
+        ],
+        [
             'component' => 'forms/form',
             'data' => [
                 'action' => '',

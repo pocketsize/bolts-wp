@@ -30,7 +30,8 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
             <?php component('forms/button', [
                 'theme' => 'menu-toggle',
                 'attributes' => [
-                    'data-menu-toggle' => true
+                    'data-bolts-action' => 'toggle',
+                    'data-bolts-value' => 'menu'
                 ],
                 'content' => 'Menu',
             ]); ?>

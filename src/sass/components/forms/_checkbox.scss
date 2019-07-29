@@ -23,24 +23,6 @@
             border: $width--input-border solid $color--input-border;
             background-color: $color--input-background;
 
-            .checkbox-input:focus + & {
-            }
-
-            .checkbox-input:checked + & {
-            }
-
-            .checkbox-input:checked:focus + & {
-            }
-
-            .checkboxes.has-error &,
-            .checkbox.has-error & {
-                border-color: $color--warning;
-            }
-
-            .checkbox-input:disabled + & {
-                @extend %disabled-input;
-            }
-
             &:before,
             &:after {
                 content: '';
@@ -51,10 +33,6 @@
                 width: 2px;
                 height: 10px;
                 opacity: 0;
-
-                .checkbox-input:checked + & {
-                    opacity: 1;
-                }
             }
 
             &:before {
@@ -64,6 +42,28 @@
             &:after {
                 transform: translate(-50%, -50%) rotate(45deg);
             }
+
+            .checkboxes.has-error &,
+            .checkbox.has-error & {
+                border-color: $color--warning;
+            }
+        }
+
+        .checkbox-input:focus + .checkbox-faux-input {
+        }
+
+        .checkbox-input:checked + .checkbox-faux-input {
+            &:before,
+            &:after {
+                opacity: 1;
+            }
+        }
+
+        .checkbox-input:checked:focus + .checkbox-faux-input {
+        }
+
+        .checkbox-input:disabled + .checkbox-faux-input {
+            @extend %disabled-input;
         }
 
         .checkbox-label {
@@ -76,10 +76,10 @@
             .checkbox.has-error & {
                 color: $color--warning;
             }
+        }
 
-            .checkbox-input:disabled + .checkbox-faux-input + & {
-                @extend %disabled-input;
-            }
+        .checkbox-input:disabled + .checkbox-faux-input + .checkbox-label {
+            @extend %disabled-input;
         }
     }
 }

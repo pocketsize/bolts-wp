@@ -2,66 +2,66 @@
 /**
  * Slider
  *
- * @param array  $slides
- * @param string $slides.component
- * @param string $slides.data
- *
- * @param string $type
- * @param bool   $has_controls
- * @param bool   $has_pagination
- *
+ * @param string $attributes
  * @param string $theme
- * @param string $modifier
+ * @param string $modifiers
+ *
+ * @param array $items
+ * @param bool $arrows
+ * @param bool $dots
  */
 
-$type       = !empty($type) ? $type : 'default';
-$attributes = attributes($attributes ?? '');
+$attributes = get_attributes($attributes ?? '');
+$attributes['data-bolts-selector'] = 'slider';
 $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
-?>
 
-<?php if (!empty($slides)) : ?>
-    <section class="slider <?php echo $modifiers; ?>" <?php echo $attributes; ?>>
-        <div class="slider-inner" data-bolts-slider="<?php echo $type; ?>">
-            <?php foreach ($slides as $slide) : ?>
-                <div class="slider-slide" data-bolts-slide>
-                    <?php layout_items($slide); ?>
+?>
+<?php if (!empty($items)) : ?>
+    <section class="slider <?php echo $modifiers; ?>" <?php echo attributes($attributes); ?>>
+        <div class="slider-items" data-bolts-selector="items">
+            <?php foreach ($items as $item) : ?>
+                <div class="slider-item" data-bolts-selector="item">
+                    <?php layout_items($item); ?>
                 </div>
             <?php endforeach; ?>
         </div>
 
-        <?php if (!empty($has_controls)) : ?>
-            <?php component('common/button', [
-                'content'    => 'Previous',
-                'theme'      => 'slider-control',
-                'modifiers'  => 'is-previous',
-                'attributes' => [
-                    'data-bolts-slider-control' => true,
-                    'data-bolts-slide-to'       => 'previous'
-                ]
-            ]); ?>
+        <?php if (!empty($arrows) && count($items) > 1) : ?>
+            <div class="slider-arrow is-previous">
+                <?php component('forms/button', [
+                    'theme' => 'slider-arrow',
+                    'attributes' => [
+                        'data-bolts-action' => 'go-to',
+                        'data-bolts-value' => 'previous'
+                    ],
+                    'content' => 'Previous'
+                ]); ?>
+            </div>
 
-            <?php component('common/button', [
-                'content'    => 'Next',
-                'theme'      => 'slider-control',
-                'modifiers'  => 'is-next',
-                'attributes' => [
-                    'data-bolts-slider-control' => true,
-                    'data-bolts-slide-to'       => 'next'
-                ]
-            ]); ?>
+            <div class="slider-arrow is-next">
+                <?php component('forms/button', [
+                    'theme' => 'slider-arrow',
+                    'attributes' => [
+                        'data-bolts-action' => 'go-to',
+                        'data-bolts-value' => 'next'
+                    ],
+                    'content' => 'Next'
+                ]); ?>
+            </div>
         <?php endif; ?>
 
-        <?php if (!empty($has_pagination) && count($slides) > 1) : ?>
-            <nav class="slider-pagination">
-                <?php foreach ($slides as $i => $slide) : ?>
-                     <?php component('common/button', [
-                        'content'    => $i + 1,
-                        'theme'      => 'slider-dot',
+        <?php if (!empty($dots) && count($items) > 1) : ?>
+            <nav class="slider-dots">
+                <?php foreach ($items as $i => $item) : ?>
+                     <?php component('forms/button', [
+                        'theme' => 'slider-dot',
                         'attributes' => [
-                            'data-bolts-slider-dot'   => true,
-                            'data-bolts-slide-to'     => $i,
+                            'data-bolts-selector' => 'dot',
+                            'data-bolts-action' => 'go-to',
+                            'data-bolts-value' => $i,
                             'data-bolts-state-active' => $i == 0
-                        ]
+                        ],
+                        'content' => $i + 1
                     ]); ?>
                 <?php endforeach; ?>
             </nav>

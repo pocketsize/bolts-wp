@@ -1,28 +1,38 @@
+/**
+ * Accordion
+ *
+ * Note: Appearance of button elements are configured in the
+ * accordion button theme in ../forms/button
+ */
+
 .accordion {
-    &-item {
-        @include transition(opacity);
+    &.is-theme-default {
+        border: 1px solid;
 
-        .accordion.has-open-item > &:not(.is-open) {
-            opacity: 0.5;
+        .accordion-item {
+            @include state(active, false, false) {
+                .accordion-content {
+                    height: 0 !important;
+                }
+            }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid;
+            }
         }
-    }
 
-    &-tab {
-        cursor: pointer;
-        padding: 10px 0;
-        border-bottom: 1px solid gray;
-        @include transition(border-bottom);
-
-        .accordion-item.is-open & {
-            border-bottom-color: $color--black;
+        .accordion-button {
+            background-color: #eee;
         }
-    }
 
-    &-content {
-        @include transition-height('.accordion-item:not(.is-open) > &');
-    }
+        .accordion-content {
+            overflow: hidden;
+            @include transition(height);
+        }
 
-    &-content-inner {
-        padding: 10px 0 20px;
+        .accordion-content-inner {
+            padding: 20px;
+            border-top: 1px solid;
+        }
     }
 }

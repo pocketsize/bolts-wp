@@ -165,14 +165,14 @@ if (!function_exists('get_excerpt')) {
         } else {
             global $post;
         }
+        
+        $content = $post->post_content;
 
         if (!empty($post->post_excerpt)) {
-            return $post->post_excerpt;
+            $content = $post->post_excerpt;
         }
 
-        $filtered = apply_filters('the_content', $post->post_content);
-
-        return wp_trim_words(strip_tags($filtered), $words, $more);
+        return apply_filters('the_content', wp_trim_words($content, $words, $more));
     }
 }
 

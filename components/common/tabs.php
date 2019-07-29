@@ -2,34 +2,38 @@
 /**
  * Tabs
  *
- * Wraps components and lets you tab between them
- *
+ * @param string $attributes
  * @param string $theme
- * @param string $modifier
+ * @param string $modifiers
  *
- * @param array  $tabs
- * @param string $tabs[i].label - label on toggle button
- * @param array  $tabs[i].items
+ * @param array  $items
+ * @param string $items[i][label] - label on toggle button
+ * @param array  $items[i][items]
  */
 
-$attributes = attributes($attributes ?? '');
+$attributes = get_attributes($attributes ?? '');
+$attributes['data-bolts-selector'] = 'tabs';
 $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
-<?php if (!empty($tabs)) : ?>
-    <div class="tabs <?php echo $modifiers; ?>" data-bolts-target="tabs">
+<?php if (!empty($items)) : ?>
+    <div class="tabs <?php echo $modifiers; ?>" <?php echo attributes($attributes); ?>>
         <div class="tabs-inner">
             <div class="tabs-toggles">
-                <?php foreach ($tabs as $i => $tab) : ?>
-                    <?php $toggle_label = !empty($tab['label']) ? $tab['label'] : false; ?>
+                <?php foreach ($items as $i => $item) : ?>
+                    <?php $toggle_label = !empty($item['label']) ? $item['label'] : false; ?>
                     <div class="tabs-toggle">
-                        <?php component('common/button', [
+                        <?php component('forms/button', [
+                            'theme'      => 'tabs-toggle',
                             'content'    => $toggle_label,
                             'attributes' => [
-                                'data-bolts-target'       => 'tab',
-                                'data-bolts-tab-to'       => $i,
-                                'data-bolts-state-active' => $i == 0,
-                                'data-bolts-tab-slug'     => !empty($tab['slug']) ? $tab['slug'] : false
+                                'data-bolts-scope'        => 'tabs',
+                                'data-bolts-selector'     => 'toggle',
+                                'data-bolts-action'       => 'toggle',
+                                'data-bolts-value'        => 'active',
+                                'data-bolts-target'       => 'item',
+                                'data-bolts-parameters'   => 'set unique index self',
+                                'data-bolts-state-active' => $i == 0
                             ]
                         ]); ?>
                     </div>
@@ -37,12 +41,14 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
             </div>
 
             <div class="tabs-items">
-                <?php foreach ($tabs as $i => $tab) : ?>
-                    <?php $item_state = $i == 0 ? 'data-bolts-state-active' : ''; ?>
-
-                    <div class="tabs-item" data-bolts-tab-index="<?php echo $i; ?>" data-bolts-target="tab-content" <?php echo $item_state; ?>>
+                <?php foreach ($items as $i => $item) : ?>
+                    <?php $item_attributes = get_attributes($item['attributes'] ?? null, [
+                        'data-bolts-state-active' => $i == 0,
+                        'data-bolts-selector'     => 'item'
+                    ]); ?>
+                    <div class="tabs-item" <?php echo attributes($item_attributes); ?>>
                         <div class="tabs-item-inner">
-                            <?php layout_items($tab['items']); ?>
+                            <?php layout_items($item['items']); ?>
                         </div>
                     </div>
                 <?php endforeach; ?>

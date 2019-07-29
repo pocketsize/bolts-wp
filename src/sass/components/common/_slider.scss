@@ -1,39 +1,38 @@
+/**
+ * Slider
+ *
+ * Note: Appearance of arrow and dot elements are configured in the
+ * slider-arrow and slider-dot themes in ../forms/button
+ */
+
 .slider {
-    position: relative;
+    &.is-theme-default {
+        position: relative;
 
-    &-control {
-        @include center(vertical);
-
-        &.is-previous {
-            left: 0;
-        }
-
-        &.is-next {
-            right: 0;
-        }
-    }
-
-    &-pagination {
-        text-align: center;
-        cursor: default;
-        @include inline-layout();
-    }
-
-    &-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background-color: rgba($color--black, 0.5);
-        margin: 5px;
-
-        &.is-active {
-            background-color: $color--black;
-        }
-
-        &:hover {
-            @include hover {
-                background-color: rgba($color--black, 0.75);
+        @include state(initialized, false, false) {
+            .slider-item:not(:first-child),
+            .slider-arrow,
+            .slider-dots {
+                display: none;
             }
+        }
+
+        .slider-arrow {
+            @include center(vertical);
+
+            &.is-previous {
+                left: 0;
+            }
+
+            &.is-next {
+                right: 0;
+            }
+        }
+
+        .slider-dots {
+            text-align: center;
+            cursor: default;
+            @include inline-layout();
         }
     }
 }

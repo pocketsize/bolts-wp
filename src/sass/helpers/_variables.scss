@@ -12,8 +12,9 @@ $font-size--default: 16px;
 $duration--default: 500ms;
 $easing--default: cubic-bezier(0.56, 0.05, 0.12, 1);
 
-// Container
-$width--container: 90%;
+// Page and containers
+$width--page: 100vw;
+$width--container: 90vw;
 $max-width--container: 1080px;
 
 // Forms
@@ -24,3 +25,61 @@ $color--input-background: $color--white;
 $font-size--input: $font-size--default;
 $padding--input-x: 10px;
 $padding--input-y: ($height--input - $font-size--input) / 2;
+
+/**
+ * Bolts
+ */
+
+$bolts-reset-focus-styles: false;
+$bolts-reset-list-styles: true;
+
+$bolts-img-display: block;
+$bolts-img-max-width: 100%;
+
+$bolts-default-container-width: $width--container;
+$bolts-default-container-max-width: $max-width--container;
+$bolts-default-container-align: center;
+
+$bolts-default-background-size: cover;
+$bolts-default-background-position: 50% 50%;
+
+$bolts-default-transition-duration: $duration--default;
+$bolts-default-transition-easing: $easing--default;
+
+$bolts-default-inline-layout-align: top;
+$bolts-default-inline-layout-gutters: false;
+
+$bolts-default-flex-layout-gutters: false;
+
+$bolts-default-font-path: '../fonts';
+
+$bolts-default-pseudo: after;
+
+$bolts-default-auto-col-min: 1;
+$bolts-default-auto-col-max: 12;
+
+$bolts-default-responsive-font-size-ratio: 1.6;
+
+$bolts-selectors: (
+    headings: 'h1, h2, h3, h4, h5, h6',
+    block-elements:
+    'h1, h2, h3, h4, h5, h6, p, ul, ol, blockquote, dl, form, fieldset, table, legend, figure',
+    inputs:
+    'input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea',
+    text-elements:
+    'h1, h2, h3, h4, h5, h6, p, ol li, ul li, dl dt, dl dd, address',
+    text-inputs:
+    'input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="search"], input[type="url"], input[type="number"], textarea, input[type="date"], input[type="month"], input[type="week"], input[type="datetime"], input[type="datetime-local"]',
+    buttons:
+    'button, input[type="reset"], input[type="submit"], input[type="button"]',
+    embed-elements: 'iframe, object, embed, video'
+);
+
+$bolts-breakpoints: (
+    xsmall: 350px,
+    small: 500px,
+    medium: 900px,
+    large: 1200px,
+    xlarge: 1600px,
+    main-menu: 800px
+);

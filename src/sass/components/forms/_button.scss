@@ -1,4 +1,6 @@
 .button {
+    cursor: pointer;
+
     &.is-theme-default {
         display: inline-block;
         position: relative;
@@ -21,6 +23,14 @@
         }
     }
 
+    &.is-theme-accordion-label {
+        position: relative;
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 20px;
+    }
+
     &.is-theme-submenu-toggle {
         position: relative;
         height: 20px;
@@ -39,6 +49,60 @@
             .menu-item:not([data-bolts-state-open]) > & {
                 transform: translate(-50%, -50%) rotate(180deg);
             }
+        }
+    }
+
+    &.is-theme-slider-arrow {
+        position: relative;
+        width: 40px;
+        height: 40px;
+
+        .button-inner {
+            font-size: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border-bottom: 2px solid;
+            border-right: 2px solid;
+
+            .slider-arrow.is-previous & {
+                transform: translate(-25%, -50%) rotate(135deg);
+            }
+
+            .slider-arrow.is-next & {
+                transform: translate(-75%, -50%) rotate(-45deg);
+            }
+        }
+    }
+
+    &.is-theme-slider-dot {
+        padding: 10px;
+
+        .button-inner {
+            border: solid 5px;
+            border-radius: 50%;
+            font-size: 0;
+        }
+
+        @include state(active, false, false) {
+            .button-inner {
+                opacity: 0.5;
+            }
+
+            &:hover {
+                .button-inner {
+                    opacity: 0.75;
+                }
+            }
+        }
+    }
+
+    &.is-theme-tabs-toggle {
+        padding: 20px;
+        @include state(active, true, false) {
+            background-color: yellow;
         }
     }
 }
