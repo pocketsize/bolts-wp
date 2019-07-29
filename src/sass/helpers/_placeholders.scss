@@ -54,12 +54,14 @@
         @extend %text--title-base;
     }
 
-    p,
-    ul,
-    ol {
-        &:not(:last-child) {
-            padding-bottom: 20px;
+    @for $i from 1 through 6 {
+        h#{$i} {
+            font-size: 1.7em - $i / 10;
         }
+    }
+
+    @include select(block-elements) {
+        @include conditional-spacing(20px);
     }
 
     ul,
@@ -68,8 +70,45 @@
     }
 
     p,
-    li {
+    li,
+    blockquote,
+    td,
+    caption,
+    figcaption,
+    dt,
+    dd {
         @extend %text--base;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto !important;
+    }
+
+    @include select(text-inputs) {
+        border: 1px solid;
+        padding: 5px 10px;
+    }
+
+    @include select(buttons) {
+        appearance: none;
+        border: 1px solid;
+        background-color: #eee;
+        padding: 5px 10px;
+    }
+
+    ul {
+        list-style: disc;
+    }
+
+    ol {
+        list-style: decimal;
+    }
+
+    td,
+    th {
+        border: 1px solid;
+        padding: 5px 10px;
     }
 
     /*
@@ -78,12 +117,20 @@
     }
     */
 
+    label {
+        display: block;
+        margin: 20px 0 10px;
+    }
+
     a:hover {
         text-decoration: underline;
     }
 
+    legend,
     strong,
-    b {
+    b,
+    label,
+    dt {
         font-weight: bold;
     }
 
