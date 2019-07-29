@@ -1,6 +1,8 @@
+const eventListeners = {};
+
 const on = function(type, selector, callback) {
-    if (!on.eventListeners[type]) {
-        const listeners = (on.eventListeners[type] = []);
+    if (!eventListeners[type]) {
+        const listeners = (eventListeners[type] = []);
 
         document.addEventListener(type, function(event) {
             for (
@@ -21,9 +23,7 @@ const on = function(type, selector, callback) {
         });
     }
 
-    on.eventListeners[type].push({ selector, callback });
+    eventListeners[type].push({ selector, callback });
 };
-
-on.eventListeners = {};
 
 export { on };
