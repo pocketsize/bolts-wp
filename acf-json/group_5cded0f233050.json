@@ -1,6 +1,6 @@
 {
     "key": "group_5cded0f233050",
-    "title": "Page Builder",
+    "title": "Page builder",
     "fields": [
         {
             "key": "field_5cded1033aef0",
@@ -75,7 +75,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-builder.php"
+                "value": "templates/page-builder.php"
             }
         ]
     ],
