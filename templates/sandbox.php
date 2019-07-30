@@ -1,4 +1,8 @@
-<?php // Template Name: Sandbox
+<?php
+
+/**
+ * Template Name: Sandbox
+ */
 
 component('page', [
     'sections' => [
@@ -10,8 +14,8 @@ component('page', [
             'data' => [
                 'theme'  => 'overlay',
                 'modifiers' => 'is-pretty-cool',
-                'content'  => 'så här ska det stå',
-                'url'    => '#hit-ska-den-gå',
+                'content'  => 'Link content',
+                'url'    => '#link-url',
                 'target' => '_blank',
             ]
         ],
@@ -20,22 +24,22 @@ component('page', [
             'data' => [
                 'items' => [
                     [
-                        'label' => 'NUMMER ETT',
+                        'label' => 'Number One',
                         'items' => [
                             'component' => 'common/content',
                             'data' => [
-                                'title' => 'DET HÄR ÄR RUBRIKEN FÖR NUMMER ETT',
-                                'content' => 'DET HÄR ÄR INNEHÅLLET FÖR NUMMER ETT'
+                                'title' => 'Title for Number One',
+                                'content' => 'Content for Number One'
                             ]
                         ]
                     ],
                     [
-                        'label' => 'NUMMER TVÅ',
+                        'label' => 'Number Two',
                         'items' => [
                             'component' => 'common/content',
                             'data' => [
-                                'title' => 'DET HÄR ÄR RUBRIKEN FÖR NUMMER TVÅ',
-                                'content' => 'DET HÄR ÄR INNEHÅLLET FÖR NUMMER TVÅ'
+                                'title' => 'Title for Number Two',
+                                'content' => 'Content for Number Two'
                             ]
                         ]
                     ]
@@ -47,12 +51,12 @@ component('page', [
             'data' => [
                 'items' => [
                     [
-                        'title' => 'hello errbody',
-                        'content' => 'this is what it says in the content'
+                        'title' => 'Hello errbody',
+                        'content' => 'This is what it says in the content'
                     ],
                     [
-                        'title' => 'and like it or not',
-                        'content' => 'there\'s more where that came from'
+                        'title' => 'And like it or not',
+                        'content' => 'There\'s more where that came from'
                     ]
                 ]
             ]
@@ -66,13 +70,13 @@ component('page', [
                     [
                         'component' => 'common/image',
                         'data' => [
-                            'url' => 'http://placehold.it/900x450?text=nummer 1'
+                            'url' => 'http://placehold.it/900x450?text=Number+One'
                         ]
                     ],
                     [
                         'component' => 'common/image',
                         'data' => [
-                            'url' => 'http://placehold.it/900x450?text=nummer 2'
+                            'url' => 'http://placehold.it/900x450?text=Number+Two'
                         ]
 
                     ]
