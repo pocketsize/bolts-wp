@@ -30,3 +30,18 @@ function remove_admin_menu_items()
     }
 }
 add_action('admin_head', 'remove_admin_menu_items');
+
+/**
+ * Force the content editor to show on posts page
+ */
+
+function bolts_wp_force_posts_page_editor($post)
+{
+    if ($post->ID != get_option('page_for_posts')) {
+        return;
+    }
+
+    remove_action('edit_form_after_title', '_wp_posts_page_notice');
+    add_post_type_support('page', 'editor');
+}
+add_action('edit_form_after_title', 'bolts_wp_force_posts_page_editor', 0);
