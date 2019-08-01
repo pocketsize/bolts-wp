@@ -45,7 +45,5 @@ $required                  = !empty($input['attributes']['required']) ? $input['
 
     <div class="text-input-inner">
         <input class="text-input-input" <?php echo attributes($input['attributes']); ?> />
-
-        <div class="text-input-faux-input"></div>
     </div>
 </div>

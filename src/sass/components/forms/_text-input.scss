@@ -22,39 +22,23 @@
         }
 
         .text-input-input {
-            position: relative;
             width: 100%;
             height: 100%;
             padding-left: $padding--input-x;
             padding-right: $padding--input-x;
-            z-index: 1;
-            background-color: transparent; /* TODO: should be part of reset */
-        }
-
-        .text-input-faux-input {
-            @include overlay;
             background-color: $color--input-background;
             border: $width--input-border solid $color--input-border;
 
-            .text-input-input:focus + & {
+            &:focus {
             }
 
-            .text-input-input:disabled + & {
+            &:disabled {
                 @extend %disabled-input;
             }
 
             .text-input.has-error & {
                 border-color: $color--warning;
             }
-        }
-
-        .text-input-input {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            padding-left: $padding--input-x;
-            padding-right: $padding--input-x;
-            z-index: 1;
         }
     }
 }

@@ -45,7 +45,5 @@ $required = !empty($textarea['attributes']['required']) ? $textarea['attributes'
 
     <div class="textarea-inner">
         <textarea class="textarea-textarea" <?php echo attributes($textarea['attributes']); ?>><?php echo $value; ?></textarea>
-
-        <div class="textarea-faux-input"></div>
     </div>
 </div>
