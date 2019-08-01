@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * Bolts WP v1.0.0
+ *
+ * Developed by Pocketsize
+ * http://www.pocketsize.se/
+ */
+
+/**
  * modifiers
  *
  * Normalize component theme and modifier classes
