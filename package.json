@@ -1,9 +1,10 @@
 {
 	"name": "bolts-wp",
-	"version": "0.2.0",
+	"version": "1.0.0",
 	"description": "",
 	"main": "index.php",
-	"license": "",
+	"license": "UNLICENSED",
+	"private": true,
 	"scripts": {
 		"dev": "cross-env ENV=dev webpack --config config/bundling/webpack.config.js --mode development",
 		"prod": "cross-env ENV=prod webpack --config config/bundling/webpack.config.js --mode production",
@@ -77,7 +78,7 @@
 		"webpack-dev-server": "^3.1.10"
 	},
 	"dependencies": {
-		"bolts-lib": "^1.0.3",
+		"bolts-lib": "^1.0.4",
 		"siema": "^1.5.1",
 		"vanilla-lazyload": "^10.20.1"
 	}

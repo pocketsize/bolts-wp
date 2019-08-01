@@ -1425,9 +1425,10 @@ body-parser@1.18.3:
     raw-body "2.3.3"
     type-is "~1.6.16"
 
-bolts-lib@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/bolts-lib/-/bolts-lib-1.0.3.tgz#0587076a3d0301031b965433a48cb6426b1b1832"
+bolts-lib@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/bolts-lib/-/bolts-lib-1.0.4.tgz#2a87fdfb44c8185528c212e15854df99fb0543e8"
+  integrity sha512-ulsJ5uG0mYPbKSqskmGimEsljDX2OfWsS+Nd46qU4WU8761z4e/LmYgr7QHjqJr2KBWB4E/F70zRw39BWR1gUA==
 
 bonjour@^3.5.0:
   version "3.5.0"
