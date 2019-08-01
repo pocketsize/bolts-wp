@@ -8,31 +8,24 @@
             position: relative;
         }
 
-        .textarea-faux-input {
-            @include overlay;
+        .textarea-textarea {
+            display: block;
+            width: 100%;
+            padding: $padding--input-y $padding--input-x;
             border: $width--input-border solid $color--input-border;
             background-color: $color--input-background;
+            resize: none;
 
-            .textarea-input:focus + & {
+            &:focus {
             }
 
-            .textarea-input:disabled + & {
+            &:disabled {
                 @extend %disabled-input;
             }
 
             .textarea.has-error & {
                 border-color: $color--warning;
             }
-        }
-
-        .textarea-input {
-            display: block;
-            width: 100%;
-            position: relative;
-            padding: $padding--input-y $padding--input-x;
-            resize: none;
-            z-index: 1;
-            background-color: transparent; /* TODO: should be part of reset */
         }
     }
 }
