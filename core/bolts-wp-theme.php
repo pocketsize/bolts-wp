@@ -99,7 +99,7 @@ function get_svg($asset, $fallback = false)
     }
 
     if (!file_exists($path)) {
-        throw new Exception('Asset not found: ' . $path);
+        return false;
     }
 
     $inline = preg_replace('/\s*<\?xml.*?\?>\s*/si', '', file_get_contents($path));
