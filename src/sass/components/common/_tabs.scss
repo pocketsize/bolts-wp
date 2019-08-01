@@ -19,7 +19,7 @@
     }
 
     .tabs-item {
-        @include state(active, false, false) {
+        @include state(active, false, true) {
             display: none;
         }
     }

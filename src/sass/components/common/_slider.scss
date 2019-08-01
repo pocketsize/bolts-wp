@@ -9,7 +9,7 @@
     &.is-theme-default {
         position: relative;
 
-        @include state(initialized, false, false) {
+        @include state(initialized, false, true) {
             .slider-item:not(:first-child),
             .slider-arrow,
             .slider-dots {

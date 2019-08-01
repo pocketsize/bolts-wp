@@ -10,7 +10,7 @@
         border: 1px solid;
 
         .accordion-item {
-            @include state(active, false, false) {
+            @include state(active, false, true) {
                 .accordion-content {
                     height: 0 !important;
                 }

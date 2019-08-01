@@ -86,7 +86,7 @@
             font-size: 0;
         }
 
-        @include state(active, false, false) {
+        @include state(active, false, true) {
             .button-inner {
                 opacity: 0.5;
             }
@@ -101,7 +101,7 @@
 
     &.is-theme-tabs-toggle {
         padding: 20px;
-        @include state(active, true, false) {
+        @include state(active, true, true) {
             background-color: yellow;
         }
     }
