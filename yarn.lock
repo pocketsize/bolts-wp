@@ -1425,9 +1425,9 @@ body-parser@1.18.3:
     raw-body "2.3.3"
     type-is "~1.6.16"
 
-bolts-lib@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/bolts-lib/-/bolts-lib-1.0.2.tgz#fce225adf4047a0188a16eb299a9a727217e2c4e"
+bolts-lib@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/bolts-lib/-/bolts-lib-1.0.3.tgz#0587076a3d0301031b965433a48cb6426b1b1832"
 
 bonjour@^3.5.0:
   version "3.5.0"
@@ -8889,6 +8889,10 @@ shebang-regex@^1.0.0:
 shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
+
+siema@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/siema/-/siema-1.5.1.tgz#eff312b77e8340fa4d81d5d053ebbeb9113ff888"
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
