@@ -1,5 +1,5 @@
 /**
- * Bolts WP v1.0 | MIT License
+ * Bolts WP v1.0.0
  *
  * Developed by Pocketsize
  * http://www.pocketsize.se/

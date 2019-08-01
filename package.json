@@ -3,6 +3,7 @@
 	"version": "0.2.0",
 	"description": "",
 	"main": "index.php",
+	"license": "",
 	"scripts": {
 		"dev": "cross-env ENV=dev webpack --config config/bundling/webpack.config.js --mode development",
 		"prod": "cross-env ENV=prod webpack --config config/bundling/webpack.config.js --mode production",
@@ -17,8 +18,8 @@
 		"bolts-add:react": "yarn add react@16 react-dom@16 && yarn add --dev @babel/preset-react enzyme enzyme-adapter-react-16 && mkdirp src/js/react src/sass/react",
 		"bolts-remove:react:keep-files": "yarn remove react react-dom @babel/preset-react enzyme enzyme-adapter-react-16",
 		"bolts-remove:react": "yarn run bolts-remove:react:keep-files && rimraf src/js/react src/sass/react",
-        "php-lint": "vendor/bin/phpcs . --standard=phpcs.xml",
-        "php-fix": "vendor/bin/phpcbf . --standard=phpcs.xml"
+		"php-lint": "vendor/bin/phpcs . --standard=phpcs.xml",
+		"php-fix": "vendor/bin/phpcbf . --standard=phpcs.xml"
 	},
 	"husky": {
 		"hooks": {
@@ -77,6 +78,7 @@
 	},
 	"dependencies": {
 		"bolts-lib": "^1.0.3",
+		"siema": "^1.5.1",
 		"vanilla-lazyload": "^10.20.1"
 	}
 }
