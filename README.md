@@ -11,9 +11,7 @@ Bolts WP has a modern workflow and many of the build tools you´ve come to love 
 - **ESLint**, **Stylelint** and **Prettier** for linting and code formatting
 - **Husky** (with **Lint Staged**) for git hooks
 - **Imagemin** for image optimization
-- **Bolts** for doing all mundane styling tasks you hate
-
-(Ok, you might not have expected that last one, but trust us, [you will after you´ve tried it](http:s//github.com/pocketsize/bolts "you will after you´ve tried it"))
+- **Bolts** front-end library
 
 As for the PHP, Bolts WP is component oriented and features helpers to keep your code as DRY as possible. Just use the `component()` function, pass in your data and never write any markup in your page templates again.
 
