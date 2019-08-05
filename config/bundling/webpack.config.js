@@ -1,8 +1,9 @@
 // !!! DONT EDIT THIS FILE !!!
 // Changes to the Webpack settings are better done in [./editable.config.js].
-// Only edit this file if you REEEEALY want to get freaky with the config.
 
-require('dotenv').config({ path: '../../../../../../' }); // lol TODO: Make this better for when we launch this outside of coolbelt
+// TODO: Get .env directory in a more efficient way
+require('dotenv').config({ path: '../../../../../../' });
+
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');

@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
-<ruleset name="Bolts">
-
+<ruleset name="Bolts WP">
     <!-- Phpcs configuration -->
-    <description>Bolts Custom ruleset</description>
+    <description>Bolts WP Custom ruleset</description>
 
     <!-- Default paths to check -->
     <file>.</file>
