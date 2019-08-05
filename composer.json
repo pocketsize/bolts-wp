@@ -2,7 +2,8 @@
   "name": "pocketsize/bolts-wp",
   "description": "A starter theme for WordPress using Bolts",
   "type": "wordpress-theme",
-  "version": "1.0",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
   "keywords": [
     "bolts",
     "theme",

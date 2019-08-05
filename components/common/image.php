@@ -18,6 +18,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 $attributes = get_attributes($attributes ?? '');
 
 $attributes['style'] = !empty($theme) && $theme == 'overlay' ? 'background-image: url(' . $url . ');' : false;
+
 $element_attributes  = get_attributes($element_attributes ?? null, [
     'src' => $url,
     'alt' => true
