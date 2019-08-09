@@ -9,6 +9,7 @@
 
 /**
  * Get all pages using a custom template
+ * 
  * @param string $template
  * @return array|bool
  */
@@ -28,6 +29,7 @@ if (!function_exists('get_page_ids_by_template')) {
 
 /**
  * Get first page using a custom template
+ * 
  * @param string $template
  * @return int|bool
  */
@@ -47,6 +49,7 @@ if (!function_exists('get_page_id_by_template')) {
 
 /**
  * Determine if a page has a specific page template
+ * 
  * @param string $template
  * @param int $post_id
  * @return bool
@@ -71,6 +74,7 @@ if (!function_exists('is_template')) {
 
 /**
  * Determine if a post has a specific post type
+ * 
  * @param string $post_type
  * @param object $post_id
  * @return bool
@@ -95,6 +99,7 @@ if (!function_exists('is_post_type')) {
 
 /**
  * Return the title of a post
+ * 
  * @param int $post_id
  * @param bool $filtered
  * @return string
@@ -119,6 +124,7 @@ if (!function_exists('get_title')) {
 
 /**
  * Return the content of a post
+ * 
  * @param int $post_id
  * @param bool $filtered
  * @return string
@@ -143,6 +149,7 @@ if (!function_exists('get_content')) {
 
 /**
  * Return the excerpt for a post (manual or automatically generated)
+ * 
  * @param int $post_id
  * @param int $words
  * @param string $more
@@ -178,6 +185,7 @@ if (!function_exists('get_excerpt')) {
 
 /**
  * Return author information from a post (defaults to display name)
+ * 
  * @param int $post_id
  * @param string $field
  * @return string
@@ -198,6 +206,7 @@ if (!function_exists('get_author')) {
 
 /**
  * Get post date
+ * 
  * @param int $post_id
  * @param string $format
  * @return string
@@ -217,6 +226,7 @@ if (!function_exists('get_date')) {
 
 /**
  * Return the URI for the featured image of a post
+ * 
  * @param int $post_id
  * @param string $size
  * @param string $fallback
@@ -251,8 +261,9 @@ if (!function_exists('get_featured_image')) {
 
 /**
  * Return the path to an attachment in the media library
+ * 
  * @param int $attachment_id
- * @param string $size
+ * @param string $size (if attachment is an image)
  * @param string $fallback
  * @return string
  */
@@ -260,10 +271,16 @@ if (!function_exists('get_featured_image')) {
 if (!function_exists('get_media')) {
     function get_media($attachment_id, $size = 'full', $fallback = false)
     {
-        $image = wp_get_attachment_image_src($attachment_id, $size);
+        $media = wp_get_attachment_image_src($attachment_id, $size);
 
-        if (!!$image) {
-            return $image[0];
+        if (empty($media)) {
+            $media = wp_get_attachment_url($attachment_id);
+        }
+
+        if (is_array($media) && !empty($media[0])) {
+            return $media[0];
+        } else if (!empty($media)) {
+            return $media;
         }
 
         return $fallback;
