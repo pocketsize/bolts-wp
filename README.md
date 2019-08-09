@@ -1,4 +1,6 @@
 # Bolts WP
+*1.0.0*
+
 Bolts WP is your new favourite developer theme (at least for WordPress) - tough enough to power (and easily maintain) websites of any shape and size, yet so simple that you can become a power user within a day. It focuses on removing complexity and streamlining development without creating a whole new workflow. Its not trying to recreate the wheel, just make it rounder.
 
 Bolts WP has a modern workflow and many of the build tools you´ve come to love and expect, out of the box:
@@ -28,8 +30,8 @@ The theme also features a lot of handy functions and cleaning defaults, removing
   - [Jest and Enzyme](#jest-and-enzyme "Jest and Enzyme")
 
 ## Installation
-1. `git clone` the repo in your themes directory
-2. Run `yarn install`
+1. Run `git clone` in your themes directory to install the theme
+2. Run `yarn install` to install all npm packages
 
 ## Build scripts
 ### For development

@@ -9,6 +9,7 @@
 
 /**
  * Include a template part from the components folder, with optional arguments
+ * 
  * @param string $file
  * @param array $args
  * @return string
@@ -40,6 +41,7 @@ if (!function_exists('component')) {
 /**
  * Return the current theme directory
  * TODO: Add support for child themes
+ * 
  * @return string
  */
 
@@ -53,6 +55,7 @@ if (!function_exists('get_theme_dir')) {
 /**
  * Return the current theme directory URI
  * TODO: Add support for child themes
+ * 
  * @return string
  */
 
@@ -65,6 +68,7 @@ if (!function_exists('get_theme_uri')) {
 
 /**
  * Return the path to a theme asset file
+ * 
  * @param string $asset
  * @param string $fallback
  * @return string
@@ -85,6 +89,7 @@ if (!function_exists('get_asset')) {
 
 /**
  * Return .svg file parsed for inline use
+ * 
  * @param string $asset
  * @param string $fallback
  * @return string
@@ -113,6 +118,7 @@ function get_svg($asset, $fallback = false)
 /**
  * Loop through the layout items and output components from their data,
  * if a class and a class suffix is present wrap the component in a div.
+ * 
  * @param array|string $items - loops over items or just outputs string
  * @param string $item_class
  * @param string $item_tag
@@ -138,6 +144,7 @@ if (!function_exists('layout_items')) {
 
 /**
  * Outputs string or component
+ * 
  * @param array|string $items - loops over items or just outputs string
  * @param string $item_class
  * @param string $item_tag
