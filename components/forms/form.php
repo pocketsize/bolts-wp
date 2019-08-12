@@ -11,11 +11,11 @@
  * @param array  $fields
  */
 
-$action = !empty($action) ? $action : true;
+$action = !empty($action) ? $action : admin_url('admin-post.php');
 
 $attributes = attributes($attributes ?? '', [
     'method' => 'post',
-    'action' => $action
+    'action' => esc_url($action)
 ]);
 
 $modifiers = modifiers($modifiers ?? null, $theme ?? null);
