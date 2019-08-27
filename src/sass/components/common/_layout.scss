@@ -1,17 +1,22 @@
-.layout-flexible {
+.layout {
+    &.is-contained &-inner {
+        @include container;
+    }
+
     &.is-theme-default {
-        .layout-flexible-inner {
+        .layout-item {
+            @include conditional-spacing(40px);
         }
     }
 
     &.is-theme-split {
         &.is-fifty-fifty {
-            .layout-flexible-areas {
+            .layout-areas {
                 @include flex-layout(1 1);
             }
         }
 
-        .layout-flexible-item {
+        .layout-item {
             @include conditional-spacing(40px);
         }
     }

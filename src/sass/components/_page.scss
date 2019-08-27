@@ -1,9 +1,15 @@
 .page {
-    &-body {
-        @include sticky-footer('.page-wrapper', '.page-footer');
-    }
+    &.is-theme-default {
+        .page-body {
+            @include sticky-footer('.page-wrapper', '.page-footer');
+        }
 
-    &-section {
-        @include conditional-spacing(80px);
+        &:not(.has-no-offset) .page-sections {
+            padding-top: $height--header;
+        }
+
+        .page-section {
+            @include conditional-spacing(80px);
+        }
     }
 }

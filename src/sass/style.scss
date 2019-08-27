@@ -19,10 +19,13 @@
 // Global
 @import 'global';
 
-// Page component that shouldn't be a component
+// Page
 @import 'components/page';
+@import 'components/header';
+@import 'components/footer';
 
 // Common components
+@import 'components/common/layout';
 @import 'components/common/content';
 @import 'components/common/title';
 @import 'components/common/wysiwyg';
@@ -33,14 +36,7 @@
 @import 'components/common/slider';
 @import 'components/common/tabs';
 
-// Layout components
-@import 'components/layouts/full';
-@import 'components/layouts/split';
-@import 'components/layouts/flexible';
-
-// Components
-@import 'components/footer';
-@import 'components/header';
+// Custom
 @import 'components/post-preview';
 
 // Forms

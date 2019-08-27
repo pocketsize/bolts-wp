@@ -6,25 +6,27 @@
  */
 
 .tabs {
-    .tabs-inner {
-        border: 1px solid;
-    }
-
-    .tabs-toggles {
-        @include inline-layout;
-    }
-
-    .tabs-items {
-        border-top: 1px solid;
-    }
-
-    .tabs-item {
-        @include state(active, false, true) {
-            display: none;
+    &.is-theme-default {
+        .tabs-inner {
+            border: 1px solid;
         }
-    }
 
-    .tabs-item-inner {
-        padding: 20px;
+        .tabs-toggles {
+            @include inline-layout;
+        }
+
+        .tabs-items {
+            border-top: 1px solid;
+        }
+
+        .tabs-item {
+            @include state(active, false, true) {
+                display: none;
+            }
+        }
+
+        .tabs-item-inner {
+            padding: 20px;
+        }
     }
 }
