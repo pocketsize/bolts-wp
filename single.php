@@ -1,6 +1,6 @@
 <?php
 
-component('page', [
+page([
     'sections' => [
         'component' => 'common/content',
         'data' => [

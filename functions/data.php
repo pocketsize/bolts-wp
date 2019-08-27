@@ -1,265 +1,298 @@
 <?php
 
 /**
- * Getting data from ACF page builder
+ * Get wp_head()
  */
 
-function get_page_builder_sections()
-{
-    if (!function_exists('get_field')) {
-        return false;
-    }
-
-    $sections = get_field('sections');
-
-    if (empty($sections)) {
-        return false;
-    }
-
-    $items = [];
-
-    foreach ($sections as $section) {
-        $component = $section['acf_fc_layout'];
-        $data      = array_diff_key($section, array_flip(['acf_fc_layout']));
-
-        switch ($component) {
-            case 'content':
-                $component = 'common/content';
-
-                /* if (!empty($data['image']) {
-                    $data['image'] = get_media($data['image'], 'medium');
-                } */
-                break;
-        }
-
-        $items[] = [
-            'component' => $component,
-            'data'      => $data
-        ];
-    }
-
-    return ['sections' => $items];
+function get_wp_head() {
+    ob_start();
+    wp_head();
+    return ob_get_clean();
 }
 
 /**
- * Get and format posts from loop
+ * Get wp_footer()
  */
 
-function get_posts_from_loop()
-{
-    $items = [];
-
-    if (have_posts()) {
-        while (have_posts()) {
-            the_post();
-
-            $items[] = [
-                'component' => 'post-preview',
-                'data' => [
-                    'image'   => get_featured_image(),
-                    'meta'    => get_date(),
-                    'title'   => get_title(),
-                    'excerpt' => get_excerpt(),
-                    'link'    => [
-                        'content' => 'Read more label',
-                        'url' => get_permalink()
-                    ]
-                ]
-            ];
-        }
-    }
-
-    return $items;
+function get_wp_footer() {
+    ob_start();
+    wp_footer();
+    return ob_get_clean();
 }
 
 /**
- * Get and format search results from the loop
+ * Get header data
  */
 
-function get_search_results()
-{
-    $items = [
-        [
-            'component' => 'forms/form',
-            'data' => [
-                'theme' => 'search',
-                'attributes' => [
-                    'method' => 'get',
-                    'action' => esc_url(home_url('/'))
-                ],
-                'fields' => [
-                    [
-                        'component' => 'forms/text-input',
-                        'data' => [
-                            'label' => 'Search label',
-                            'input' => [
-                                'attributes' => [
-                                    'name'  => 's'
-                                ]
-                            ]
-                        ]
-                    ],
-                    [
-                        'component' => 'forms/button',
-                        'data' => [
-                            'content' => 'Search',
-                            'type' => 'submit',
-                        ]
-                    ]
-                ]
-            ]
-        ]
+function get_header_data() {
+    return [
+        'menu' => [
+            'modifiers' => 'is-level-0',
+            'items' => get_nav_menu_array('main', true)
+        ],
+        'home_url'  => home_url(),
+        'site_name' => get_bloginfo('name')
     ];
-
-    if (have_posts()) {
-        while (have_posts()) {
-            the_post();
-
-            $items[] = [
-                'component' => 'news-card',
-                'data' => [
-                    'image'   => get_featured_image(),
-                    'meta'    => get_date(),
-                    'title'   => get_title(),
-                    'excerpt' => get_excerpt(),
-                    'link'    => [
-                        'content' => 'Read more label',
-                        'url' => get_permalink()
-                    ]
-                ]
-            ];
-        }
-    } else {
-        $items = [
-            'component' => 'common/content',
-            'data' => [
-                'title' => 'No results message'
-            ]
-        ];
-    }
-
-    return $items;
 }
 
-function get_footer_content()
+/**
+ * Get footer data
+ */
+
+function get_footer_data()
 {
     return [
         'content' => 'Footer content'
     ];
 }
 
+function page($data) {
+    $header = get_header_data();
+    $footer = get_footer_data();
+
+    $defaults = [
+        'attributes' => [
+            'lang' => get_bloginfo('language')
+        ],
+        'charset'   => get_bloginfo('charset'),
+        'wp_head'   => get_wp_head(),
+        'header'    => $header,
+        'footer'    => $footer,
+        'wp_footer' => get_wp_footer()
+    ];
+
+    $data = array_merge_recursive($defaults, $data);
+
+    component('page', $data);
+}
+
 /**
- * Pair an array of componentless data entries with a component
+ * Get fallback image
  */
 
-function add_component_to_data_entries($component, $data_entries)
+function get_fallback_image()
 {
-    if (!$data_entries || !$component || !is_array($data_entries)) {
-        return false;
+    return 'http://placehold.it/640x480?text=placeholder';
+}
+
+/**
+ * Convert media id to complete set of image component data
+ */
+
+function format_image($media_id, $args = [], $size = false)
+{
+    if (empty($media_id)) return false;
+
+    $image = [
+        'url' => get_media($media_id, $size)
+    ];
+
+    return array_merge_recursive($image, $args);
+}
+
+/**
+ * Convert acf link field data to complete set of link component data
+ */
+
+function format_link($link, $args = [])
+{
+    if (empty($link)) return false;
+
+    $link['content'] = $link['title'];
+    array_diff_key($link, array_flip(['title']));
+
+    return array_merge_recursive($link, $args);
+}
+
+/**
+ * Format acf flexible content field to set of page component section data
+ */
+
+function format_section($section) {
+    if (empty($section)) return false;
+
+    $type = $section['acf_fc_layout'];
+    $data = array_diff_key($section, array_flip(['acf_fc_layout']));
+
+    switch ($type) {
+        case 'text':
+            $component = 'common/content';
+
+            break;
+
+        case 'image':
+            $component = 'common/image';
+
+            if (!empty($data['image'])) {
+                $data = format_image($data['image']);
+            }
+
+        // add and edit cases to correspont to your configured page builder types
+
+            break;
     }
 
-    $result = [];
+    return [
+        'component' => $component,
+        'data'      => $data
+    ];
+}
 
-    if (!empty($data_entries)) {
-        foreach ($data_entries as $data) {
-            $result[] = [
-                'component' => $component,
-                'data'      => $data
+/**
+ * Getting data from ACF page builder
+ */
+
+function get_page_builder_sections()
+{
+    $sections = get_field('sections');
+
+    if (empty($sections)) return false;
+
+    $items = [];
+
+    foreach ($sections as $section) {
+        $items[] = format_section($section);
+    }
+
+    return $items;
+}
+
+/**
+ * Format radio button
+ */
+
+function format_radio_button($content = false, $input_attributes = []) {
+    $args = [];
+
+    if (!empty($input_attributes)) {
+        $args['input'] = [
+            'attributes' => $input_attributes
+        ];
+    }
+
+    $defaults = [
+        'content' => $content,
+    ];
+
+    return [
+        'component' => 'forms/radio-button',
+        'data' => array_merge_recursive($defaults, $args)
+    ];
+}
+
+/**
+ * Format checkbox
+ */
+
+function format_checkbox($content = false, $input_attributes = []) {
+    $args = [];
+
+    if (!empty($input_attributes)) {
+        $args['input'] = [
+            'attributes' => $input_attributes
+        ];
+    }
+
+    $defaults = [
+        'content' => $content,
+    ];
+
+    return [
+        'component' => 'forms/checkbox',
+        'data' => array_merge_recursive($defaults, $args)
+    ];
+}
+
+/**
+ * Format social icon
+ */
+
+function format_social_icon($url, $icon, $args = [])
+{
+    $modifiers = [
+        'is-' . $icon
+    ];
+
+    $defaults = [
+        'theme' => 'social-icon',
+        'modifiers' => $modifiers,
+        'url' => $url,
+        'attributes' => [
+            'target' => '_blank'
+        ]
+    ];
+
+    $data = array_merge_recursive($defaults, $args);
+
+    return [
+        'component' => 'common/link',
+        'data' => $data
+    ];
+}
+
+/**
+ * Get social icons
+ */
+
+function get_social_icons($icons)
+{
+    $items = [];
+
+    $social_icons = !empty($icons) ? $icons : get_field('social_icons', 'option');
+
+    if (!empty($social_icons)) {
+        foreach ($social_icons as $social_icon) {
+            $modifiers = [
+                'is-' . $social_icon['icon']
             ];
+
+            $items[] = format_social_icon(
+                $social_icon['url'],
+                $social_icon['icon']
+            );
         }
     }
 
-    return $result;
+    return $items;
 }
 
+/**
+ * Get share icons
+ */
 
-
-function nav_menu_walker(array &$elements, $parent_id = 0, $toggles = false, $level = 0)
+function get_share_icons($url = false, $title = false)
 {
-    global $post;
+    $items = [];
 
-    $branch = [];
+    $url = !empty($url) ? $url : $get_permalink();
+    $title = !empty($title) ? $title : get_title();
 
-    foreach ($elements as &$element) {
-        $idk = [];
-        $items = [];
+    $share_icons = [
+        [
+            'icon' => 'facebook',
+            'url' => 'https://www.facebook.com/sharer.php?u=' . urlencode($url)
+        ],
+        [
+            'icon' => 'twitter',
+            'url' => 'https://twitter.com/share?url=' . urlencode($url) . '&text=' . $title
+        ],
+        [
+            'icon' => 'linkedin',
+            'url' => 'https://www.linkedin.com/shareArticle?url=' . urlencode($url) . '&title=' . $title
+        ]
+    ];
 
-        if ($element->menu_item_parent == $parent_id) {
-            $modifiers = [];
-            $modifiers[] = !empty($element->children) ? 'has-children' : '';
-            $modifiers[] = $element->object_id == $post->ID ? 'is-current' : '';
-
-            $target = !empty($element->target) ? $element->target : false;
-
-            $items[] = [
-                'component' => 'common/link',
-                'data' => [
-                    'theme'      => 'menu-link',
-                    'attributes' => ['target' => $target],
-                    'url'        => $element->url,
-                    'content'    => $element->title
-                ],
-            ];
-
-            $children = nav_menu_walker( $elements, $element->ID, $toggles, $level + 1 );
-
-            if ($toggles && !empty($children)) {
-                $items[] = [
-                    'component' => 'forms/button',
-                    'data' => [
-                        'theme' => 'submenu-toggle',
-                        'attributes' => [
-                            'data-bolts-action' => 'toggle',
-                            'data-bolts-target' => 'menu-item',
-                            'data-bolts-value' => 'open',
-                            'data-bolts-parameters' => 'closest'
-                        ],
-                    ]
-                ];
-            }
-
-            if ($children) {
-                $items[] = [
-                    'component' => 'common/menu',
-                    'data' => [
-                        'modifiers' => 'is-level-' . $level,
-                        'items'     => $children
-                    ]
-                ];
-            }
-
-            $idk = [
-                'modifiers' => modifiers($modifiers, false),
-                'items' => $items
-            ];
-
-            $branch[] = $idk;
-
-            unset($element);
-        }
+    foreach ($share_icons as $share_icon) {
+        $items[] = format_social_icon(
+            $share_icon['url'],
+            $share_icon['icon'],
+            [
+                'attributes' => [
+                    'data-bolts-action' => 'popup'
+                ]
+            ]
+        );
     }
 
-    return $branch;
-}
-
-function get_nav_menu_array($location = false, $toggles = false)
-{
-    if (!$location) {
-        $location = BOLTS_WP_DEFAULT_MENU_LOCATION;
-    }
-
-    $locations = get_nav_menu_locations();
-    
-    if (empty($locations) || !isset($locations[ $location ])) {
-        return null;
-    }
-
-    $menu_id = $locations[ $location ];
-
-    if (empty($menu_id)) {
-        return false;
-    }
-
-    $items = wp_get_nav_menu_items( $menu_id );
-    return  $items ? nav_menu_walker( $items, 0, $toggles, 1 ) : null;
+    return $items;
 }

@@ -30,17 +30,11 @@ $error_text  = !empty($error_text)  ? $error_text  : false;
 $id       = !empty($fieldset['attributes']['id'])       ? $fieldset['attributes']['id']       : false;
 $required = !empty($fieldset['attributes']['required']) ? $fieldset['attributes']['required'] : false;
 
-$type  = !empty($type)  ? $type  : false;
 $items = !empty($items) ? $items : [];
 $name  = !empty($name)  ? $name  : false;
 
 foreach ($items as &$item) {
     $item['input']['attributes']['name'] = !empty($item['input']['attributes']['name']) ? $item['input']['attributes']['name'] : $name;
-}
-
-if ($type && $items) {
-    $component = $type == 'radio' ? 'forms/radio-button' : 'forms/checkbox';
-    $items     = add_component_to_data_entries($component, $items);
 }
 
 ?>

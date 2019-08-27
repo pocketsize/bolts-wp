@@ -4,21 +4,8 @@
  * Template Name: Sandbox
  */
 
-component('page', [
+page([
     'sections' => [
-        [
-            'component' => 'common/link',
-            'attributes' => [
-                'style' => 'position: relative;'
-            ],
-            'data' => [
-                'theme'  => 'overlay',
-                'modifiers' => 'is-pretty-cool',
-                'content'  => 'Link content',
-                'url'    => '#link-url',
-                'target' => '_blank',
-            ]
-        ],
         [
             'component' => 'common/tabs',
             'data' => [
@@ -100,47 +87,25 @@ component('page', [
                         'data' => [
                             'title' => 'I am radio buttons',
                             'description' => 'This is my description',
-                            'type' => 'radio',
-                            'name' => 'test',
                             'items' => [
-                                [
-
-                                    'content' => 'Option 1 (disabled)',
-                                    'input' => [
-                                        'attributes' => [
-                                            'value' => 'one',
-                                            'disabled' => true
-                                        ]
-                                    ]
-                                ],
-                                [
-
-                                    'content' => 'Option 2 (checked)',
-                                    'input' => [
-                                        'attributes' => [
-                                            'value' => 'two',
-                                            'checked' => true
-                                        ]
-                                    ]
-                                ],
-                                [
-
-                                    'content' => 'Option 3',
-                                    'input' => [
-                                        'attributes' => [
-                                            'value' => 'three',
-                                        ]
-                                    ]
-                                ],
-                                [
-
-                                    'content' => 'Option 4',
-                                    'input' => [
-                                        'attributes' => [
-                                            'value' => 'four',
-                                        ]
-                                    ]
-                                ]
+                                format_radio_button('Option 1 (disabled)', [
+                                    'name' => 'radio',
+                                    'value' => 'one',
+                                    'disabled' => true
+                                ]),
+                                format_radio_button('Option 2 (checked)', [
+                                    'name' => 'radio',
+                                    'value' => 'two',
+                                    'checked' => true
+                                ]),
+                                format_radio_button('Option 3', [
+                                    'name' => 'radio',
+                                    'value' => 'three',
+                                ]),
+                                format_radio_button('Option 4', [
+                                    'name' => 'radio',
+                                    'value' => 'four',
+                                ])
                             ]
                         ]
                     ],
@@ -184,42 +149,25 @@ component('page', [
                         'data' => [
                             'title' => 'I am checkboxes',
                             'description' => 'This is my description',
-                            'type' => 'checkbox', // defaults to checkbox
                             'items' => [
-                                [
-                                    'content' => 'Option 1 (disabled)',
-                                    'input' => [
-                                        'attributes' => [
-                                            'value' => 'one',
-                                            'disabled' => true
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    'content' => 'Option 2 (checked)',
-                                    'input' => [
-                                        'attributes' => [
-                                            'value' => 'two',
-                                            'checked' => true
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    'content' => 'Option 3',
-                                    'input' => [
-                                        'attributes' => [
-                                            'value' => 'three',
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    'content' => 'Option 4',
-                                    'input' => [
-                                        'attributes' => [
-                                            'value' => 'four',
-                                        ]
-                                    ]
-                                ]
+                                format_checkbox('Option 1 (disabled)', [
+                                    'name' => 'check',
+                                    'value' => 'one',
+                                    'disabled' => true
+                                ]),
+                                format_checkbox('Option 2 (checked)', [
+                                    'name' => 'check',
+                                    'value' => 'two',
+                                    'checked' => true
+                                ]),
+                                format_checkbox('Option 3', [
+                                    'name' => 'check',
+                                    'value' => 'three',
+                                ]),
+                                format_checkbox('Option 4', [
+                                    'name' => 'check',
+                                    'value' => 'four',
+                                ])
                             ]
                         ]
                     ],
@@ -241,7 +189,7 @@ component('page', [
             ]
         ],
         [
-            'component' => 'layouts/flexible',
+            'component' => 'common/layout',
             'data' => [
                 'theme' => 'split',
                 'modifiers' => 'is-fifty-fifty',
@@ -279,33 +227,37 @@ component('page', [
             ]
         ],
         [
-            'component' => 'layouts/split',
+            'component' => 'common/layout',
             'data' => [
-                'primary' => [
-                    'component' => 'common/image',
-                    'data' => [
-                        'url'     => 'https://www.placehold.it/1000',
-                        'caption' => 'I am caption'
-                    ]
-                ],
-                'secondary' => [
-                    'component' => 'common/content',
-                    'data' => [
-                        'title'   => 'Title',
-                        'lead'    => '<p>Lead paragraph</p>',
-                        'content' => '<p>Content</p>'
+                'items' => [
+                    [
+                        'component' => 'common/image',
+                        'data' => [
+                            'url'     => 'https://www.placehold.it/1000',
+                            'caption' => 'I am caption'
+                        ]
+                    ],
+                    [
+                        'component' => 'common/content',
+                        'data' => [
+                            'title'   => 'Title',
+                            'lead'    => '<p>Lead paragraph</p>',
+                            'content' => '<p>Content</p>'
+                        ]
                     ]
                 ]
             ]
         ],
         [
-            'component' => 'layouts/full',
+            'component' => 'common/layout',
             'data' => [
-                'content' => [
-                    'component' => 'common/content',
-                    'data' => [
-                        'title'   => 'I am title',
-                        'content' => get_dummy_content()
+                'items' => [
+                    [
+                        'component' => 'common/content',
+                        'data' => [
+                            'title'   => 'I am title',
+                            'content' => get_dummy_content()
+                        ]
                     ]
                 ],
             ]

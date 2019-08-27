@@ -1,5 +1,5 @@
 .header {
-    position: absolute !important;
+    position: $display--header !important;
     top: 0;
     left: 0;
     width: 100%;
@@ -10,7 +10,7 @@
         @include container;
         @include flex-row;
         align-items: center;
-        height: 40px;
+        height: $height--header;
     }
 
     &-link {
