@@ -1,0 +1,7 @@
+.post-card {
+    &-image,
+    &-content,
+    &-link {
+        @include conditional-spacing;
+    }
+}

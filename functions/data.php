@@ -79,13 +79,15 @@ function get_fallback_image()
  * Convert media id to complete set of image component data
  */
 
-function format_image($media_id, $args = [], $size = false)
+function format_image($image, $args = [], $size = false)
 {
-    if (empty($media_id)) return false;
-
-    $image = [
-        'url' => get_media($media_id, $size)
-    ];
+    if (is_int($image)) {
+        $image = [
+            'url' => get_media($image, $size)
+        ];
+    } else if (!is_array($image)) {
+        return false;
+    }
 
     return array_merge_recursive($image, $args);
 }
@@ -234,7 +236,7 @@ function format_social_icon($url, $icon, $args = [])
  * Get social icons
  */
 
-function get_social_icons($icons)
+function get_social_icons($icons = false)
 {
     $items = [];
 
@@ -295,4 +297,46 @@ function get_share_icons($url = false, $title = false)
     }
 
     return $items;
+}
+
+/**
+ * Get pagination links
+ */
+
+function get_pagination_links() {
+
+    global $paged, $wp_query;
+
+    $paged = $paged ?: 1;
+    $max_page = $wp_query->max_num_pages;
+    $next_page = intval($paged) + 1;
+
+    $previous = $paged > 1              ? get_previous_posts_page_link() : false;
+    $next     = $next_page <= $max_page ? get_next_posts_page_link()     : false;
+
+    $links = [];
+
+    if (!empty($previous)) {
+        $links[] = [
+            'modifiers' => 'is-previous',
+            'component' => 'common/link',
+            'data' => [
+                'content' => 'Föregående sida',
+                'url'     => $previous
+            ]
+        ];
+    }
+
+    if (!empty($next)) {
+        $links[] = [
+            'modifiers' => 'is-next',
+            'component' => 'common/link',
+            'data' => [
+                'content' => 'Nästa sida',
+                'url'     => $next
+            ]
+        ];
+    }
+
+    return $links;
 }

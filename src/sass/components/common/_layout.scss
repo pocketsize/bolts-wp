@@ -1,8 +1,4 @@
 .layout {
-    &.is-contained &-inner {
-        @include container;
-    }
-
     &.is-theme-default {
         .layout-item {
             @include conditional-spacing(40px);
@@ -18,6 +14,45 @@
 
         .layout-item {
             @include conditional-spacing(40px);
+        }
+    }
+
+    &.is-theme-cards {
+        .layout-items {
+            @media (width(small, medium)) {
+                @include flex-layout(1 1);
+            }
+
+            @media (width-from(medium)) {
+                @include flex-layout(1 1 1);
+            }
+        }
+
+        .layout-item {
+            @media (width-to(small)) {
+                @include conditional-spacing(40px);
+            }
+        }
+    }
+
+    &.is-theme-pagination {
+        .layout-items {
+            @media (width-from(small)) {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+
+        .layout-item {
+            @media (width-to(small)) {
+                @include conditional-spacing(20px);
+            }
+
+            @media (width-from(small)) {
+                &.is-next:only-child {
+                    margin-left: auto;
+                }
+            }
         }
     }
 }

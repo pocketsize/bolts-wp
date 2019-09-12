@@ -34,28 +34,37 @@ $sections = [
 ];
 
 if (have_posts()) {
+    $items = [];
+
     while (have_posts()) {
         the_post();
 
-        $sections[] = [
-            'component' => 'post-preview',
+        $items[] = [
+            'component' => 'cards/search-card',
             'data' => [
-                'image'   => get_featured_image(),
-                'meta'    => get_date(),
-                'title'   => get_title(),
-                'excerpt' => get_excerpt(),
-                'link'    => [
-                    'content' => 'Read more label',
+                'post_type' => get_post_type(),
+                'title'     => get_title(),
+                'excerpt'   => get_excerpt(),
+                'link'      => [
+                    'content' => 'Read more',
                     'url' => get_permalink()
                 ]
             ]
         ];
     }
+
+    $sections[] = [
+        'component' => 'common/layout',
+        'data' => [
+            'theme' => 'cards',
+            'items' => $items
+        ]
+    ];
 } else {
     $sections = [
         'component' => 'common/content',
         'data' => [
-            'title' => 'No results message'
+            'content' => 'No results message'
         ]
     ];
 }

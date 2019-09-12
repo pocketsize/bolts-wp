@@ -1,0 +1,6 @@
+.search-card {
+    &-content,
+    &-link {
+        @include conditional-spacing;
+    }
+}

@@ -14,8 +14,11 @@ $easing--default: cubic-bezier(0.56, 0.05, 0.12, 1);
 
 // Page and containers
 $width--page: 100vw;
+$max-width--page: 1200px;
 $width--container: 90vw;
 $max-width--container: 1080px;
+// $width--text: 70vw;
+// $max-width--text: 840px;
 
 // Header
 $display--header: fixed;
