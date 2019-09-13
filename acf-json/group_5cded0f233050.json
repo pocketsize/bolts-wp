@@ -26,7 +26,7 @@
                             "key": "field_5cded1783aef1",
                             "label": "Title",
                             "name": "title",
-                            "type": "text",
+                            "type": "clone",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -35,11 +35,13 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
+                            "clone": [
+                                "group_5d7b49eb21346"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         },
                         {
                             "key": "field_5cded17f3aef2",
@@ -123,5 +125,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1566826322
+    "modified": 1568361407
 }
