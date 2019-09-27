@@ -499,11 +499,3 @@
         );
     }
 }
-
-// TODO: add configurable default and add to bolts-lib core?
-@mixin line-clamp($rows) {
-    display: -webkit-box;
-    -webkit-line-clamp: $rows;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}

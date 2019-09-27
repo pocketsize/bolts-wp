@@ -1,3 +1,7 @@
+/**
+ * Text
+ */
+
 %text--base {
     font-family: sans-serif;
     line-height: 1.8;
@@ -13,6 +17,11 @@
     }
 }
 
+%text--lead {
+    @extend %text--default;
+    font-size: 20px;
+}
+
 %text--title-base {
     font-family: sans-serif;
     font-weight: 700;
@@ -23,11 +32,35 @@
     @extend %text--title-base;
 
     @media (width-to(medium)) {
-        font-size: 25px;
+        font-size: 30px;
     }
 
     @media (width-from(medium)) {
-        font-size: 40px;
+        font-size: 60px;
+    }
+}
+
+%text--title-secondary {
+    @extend %text--title-base;
+
+    @media (width-to(medium)) {
+        font-size: 24px;
+    }
+
+    @media (width-from(medium)) {
+        font-size: 48px;
+    }
+}
+
+%text--title-tertiary {
+    @extend %text--title-base;
+
+    @media (width-to(medium)) {
+        font-size: 18px;
+    }
+
+    @media (width-from(medium)) {
+        font-size: 36px;
     }
 }
 
@@ -64,11 +97,29 @@
         @extend %text--title-base;
     }
 
-    @for $i from 1 through 6 {
-        h#{$i} {
-            font-size: 1.7em - $i / 10;
-        }
+    h1 {
+        @extend %text--title-primary;
     }
+
+    h2 {
+        @extend %text--title-secondary;
+    }
+
+    h3 {
+        @extend %text--title-tertiary;
+    }
+
+    /* h4 {
+        @extend %text--title-quaternary;
+    }
+
+    h5 {
+        @extend %text--title-quinary;
+    }
+
+    h6 {
+        @extend %text--title-senary;
+    } */
 
     @include select(block-elements) {
         @include conditional-spacing(20px);

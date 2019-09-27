@@ -1,5 +1,13 @@
 .title {
-    &.is-theme-default {
+    &.is-theme-primary {
         @extend %text--title-primary;
+    }
+
+    &.is-theme-secondary {
+        @extend %text--title-secondary;
+    }
+
+    &.is-theme-tertiary {
+        @extend %text--title-tertiary;
     }
 }

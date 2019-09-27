@@ -1,6 +1,6 @@
 .image {
     &.is-theme-default {
-        .image-element {
+        .image-img {
             display: block;
             max-width: 100%;
         }
@@ -19,7 +19,7 @@
             @include background($size: contain);
         }
 
-        .image-element {
+        .image-img {
             @include center;
             min-width: 100%;
             min-height: 100%;

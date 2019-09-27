@@ -1,4 +1,8 @@
 .layout {
+    &.is-contained .layout-inner {
+        @include container;
+    }
+
     &.is-theme-default {
         .layout-item {
             @include conditional-spacing(40px);
