@@ -22,7 +22,7 @@ $items = !empty($items) ? $items : false;
         <?php if (!empty($areas)) : ?>
             <div class="layout-areas">
                 <?php foreach ($areas as $area) : ?>
-                    <div class="layout-area <?php modifiers($area['modifiers'] ?? null, false); ?>">
+                    <div class="layout-area <?php echo modifiers($area['modifiers'] ?? null, false); ?>">
                         <?php if (!empty($area['items'])) : ?>
                             <div class="layout-items">
                                 <?php layout_items($area['items'], 'layout-item'); ?>

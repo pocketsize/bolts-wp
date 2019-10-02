@@ -4,8 +4,8 @@
         @extend %content--wysiwyg;
     }
 
-    /* &.is-theme-lead {
+    &.is-theme-lead {
         @extend %text--lead;
         @extend %content--wysiwyg;
-    } */
+    }
 }

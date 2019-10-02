@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     z-index: 1;
-    background-color: #ddd;
+    background-color: rgba(#ddd, 0.5);
 
     &-inner {
         @include container;
