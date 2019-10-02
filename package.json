@@ -8,24 +8,29 @@
   "author": "Pocketsize <kontakt@pocketsize.se> (http://www.pocketsize.se)",
   "scripts": {
     "dev": "yarn run development",
-    "development": "webpack --mode=development --progress --hide-modules --config=webpack.config.babel.js",
+    "development": "webpack --mode=development --progress --hide-modules --config=webpack.config.js",
     "watch": "yarn run development --watch",
     "prod": "yarn run production",
-    "production": "webpack --mode=production --no-progress --hide-modules --config=webpack.config.babel.js"
+    "production": "webpack --mode=production --no-progress --hide-modules --config=webpack.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
     "@babel/register": "^7.6.2",
+    "@babel/runtime": "^7.6.2",
+    "@babel/runtime-corejs3": "^7.6.2",
     "babel-loader": "^8.0.6",
+    "babel-runtime": "^6.26.0",
     "copy-webpack-plugin": "^5.0.4",
-    "core-js": "3",
+    "core-js": "^3.2.1",
     "cross-env": "^5.2.1",
     "css-loader": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
+    "sass": "^1.23.0",
     "sass-loader": "^8.0.0",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9"

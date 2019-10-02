@@ -1,5 +1,5 @@
-import "core-js/stable";
-import "regenerator-runtime/runtime";
+require('core-js/stable');
+require('regenerator-runtime/runtime');
 
 const path = require('path');
 
@@ -8,7 +8,10 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
 	entry: {
-		main: ['./src/js/app.js', './src/scss/style.scss'],
+		main: [
+			'./src/js/app.js',
+			'./src/scss/style.scss'
+		],
 	},
 	output: {
 		path: path.resolve(__dirname, 'public'),
@@ -18,21 +21,18 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js$/,
-				exclude: '/node_modules/',
+				exclude: /node_modules(?!\/bolts-lib)/,
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['@babel/preset-env'],
-					}
-				}
-			},
-			{
-				test: /\.js$/,
-				include: '/node_modules/bolts-lib/src/js',
-				use: {
-					loader: 'babel-loader',
-					options: {
-						presets: ['@babel/preset-env'],
+						plugins: [
+							['@babel/plugin-transform-runtime', {
+								corejs: 3,
+							}]
+						],
+						presets: [
+							['@babel/preset-env']
+						],
 					}
 				}
 			},
@@ -56,7 +56,12 @@ module.exports = {
 							]
 						}
 					},
-					'sass-loader',
+					{
+						loader: 'sass-loader',
+						options: {
+							implementation: require('sass'),
+						},
+					},
 				],
 			}
 		]
