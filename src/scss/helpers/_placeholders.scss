@@ -214,4 +214,29 @@
         float: right;
         margin-left: 20px;
     }
+
+    .gallery {
+        @include inline-layout($gutters: 20px, $align: middle);
+
+		.gallery-item {
+            @media ( width-to(xsmall) ) { width: 100%; }
+            @media ( width(xsmall, medium) ) { width: 50%; }
+        }
+
+        @media ( width-from(medium) ) {
+            @for $i from 1 through 12 {
+                &.gallery-columns-#{$i} .gallery-item { width: percentage(1 / $i); }
+            }
+        }
+
+        .gallery-icon img {
+            width: 100%;
+            height: auto;
+        }
+
+        br,
+        .gallery-caption {
+            display: none;
+        }
+    }
 }
