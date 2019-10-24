@@ -39,17 +39,3 @@ if (!is_admin() && isset($_GET['author'])) {
     wp_redirect(home_url());
     die();
 }
-
-/**
- * Filtering all queries and triggering a 404 on all
- * unwanted "auto generated" endpoints.
- */
-
-function cleanup_queries($query)
-{
-    if (is_category() || is_tag() || is_date() || is_author()) {
-        global $wp_query;
-        $wp_query->set_404();
-    }
-}
-add_action('parse_query', 'cleanup_queries');
