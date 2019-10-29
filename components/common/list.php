@@ -3,7 +3,7 @@
  * List
  * 
  * @param string $theme
- * @param string $modifier
+ * @param string $modifiers
  * @param string $attributes
  * 
  * @param null|bool $ordered
@@ -15,7 +15,7 @@ if (empty($items)) {
 }
 
 $attributes = attributes($attributes ?? '');
-$modifiers  = get_modifiers($modifier ?? null, $theme ?? null);
+$modifiers  = get_modifiers($modifiers ?? null, $theme ?? null);
 
 $ordered  = isset($ordered) ? $ordered : false;
 $list_tag = $ordered ? 'ol' : 'ul';
