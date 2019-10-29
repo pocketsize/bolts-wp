@@ -5,7 +5,6 @@
  * http://www.pocketsize.se/
  */
 
-import '@babel/polyfill';
 import { bolts, misc } from 'bolts-lib';
 import toggleState from './helpers/toggle-state';
 import { select, selectAll, selectAllBy } from './helpers/element';
