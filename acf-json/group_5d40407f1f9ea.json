@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_5d40408fa9d5b",
-            "label": "Scripts inside <head>",
+            "label": "Scripts inside &lt;head&gt;",
             "name": "head_scripts",
             "type": "acf_code_field",
             "instructions": "",
@@ -22,7 +22,7 @@
         },
         {
             "key": "field_5d4040c8a9d5c",
-            "label": "Scripts inside <body>",
+            "label": "Scripts inside &lt;body&gt;",
             "name": "body_scripts",
             "type": "acf_code_field",
             "instructions": "",
