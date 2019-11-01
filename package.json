@@ -36,7 +36,7 @@
     "webpack-cli": "^3.3.9"
   },
   "dependencies": {
-    "bolts-lib": "^1.0.4",
+    "bolts-lib": "^1.0.5",
     "siema": "^1.5.1"
   }
 }
