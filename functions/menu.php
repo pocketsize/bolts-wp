@@ -8,6 +8,8 @@ function nav_menu_walker(array &$elements, $parent_id = 0, $toggles = false, $le
 {
     global $post;
 
+    $queried_object = get_queried_object();
+
     $branches = [];
 
     foreach ($elements as &$element) {
@@ -16,7 +18,12 @@ function nav_menu_walker(array &$elements, $parent_id = 0, $toggles = false, $le
         if ($element->menu_item_parent == $parent_id) {
             $modifiers = [];
             $modifiers[] = !empty($element->children) ? 'has-children' : '';
-            $modifiers[] = $element->object_id == $post->ID ? 'is-current' : '';
+
+            if (!empty($queried_object->term_id)) {
+                $modifiers[] = $element->object_id == $queried_object->term_id ? 'is-current' : '';
+            } else if ($queried_object) {
+                $modifiers[] = $element->object_id == $post->ID ? 'is-current' : '';
+            }
 
             $target = !empty($element->target) ? $element->target : false;
 
