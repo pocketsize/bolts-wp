@@ -13,7 +13,7 @@
         @include overlay;
 
         .link-inner {
-            display: none;
+            @include visually-hidden;
         }
     }
 

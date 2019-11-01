@@ -28,11 +28,9 @@ $attributes = get_attributes($attributes ?? '', [
 if (!empty($attributes['target']) && in_array($attributes['target'], ['_blank', '_new']) && empty($attributes['rel'])) {
     $attributes['rel'] = 'noopener noreferrer';
 }
-
 ?>
-
 <a class="link <?php echo $modifiers; ?>" <?php echo attributes($attributes); ?>>
-    <?php if (!empty($content) && $theme != 'overlay') : ?>
+    <?php if (!empty($content)) : ?>
         <span class="link-inner"><?php echo $content; ?></span>
     <?php endif; ?>
 </a>
