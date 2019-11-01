@@ -43,6 +43,16 @@ add_filter('embed_oembed_html', 'bolts_wp_wrap_embed_elements', 10, 3);
 add_filter('video_embed_html', 'bolts_wp_wrap_embed_elements');
 
 /**
+ * Wrap user entered embed elements in a div with a custom class
+ */
+
+function bolts_wp_wrap_user_embed_elements($content)
+{
+    return preg_replace('~(<iframe.*</iframe>|<embed.*</embed>)~', bolts_wp_wrap_embed_elements('$1'), $content);
+}
+add_filter('the_content', 'bolts_wp_wrap_user_embed_elements');
+
+/**
  * Add a custom class to all paragraphs containing images
  */
 
