@@ -25,7 +25,7 @@ $attributes = get_attributes($attributes ?? '', [
     'target' => $target
 ]);
 
-if (!empty($attributes['target']) && in_array($attributes['target'], ['_blank', '_new']) && empty($attributes['rel'])) {
+if (!empty($attributes['target']) && in_array($attributes['target'], ['_blank', '_new']) && (isset($attributes['rel']) && $attributes['rel'] !== false)) {
     $attributes['rel'] = 'noopener noreferrer';
 }
 ?>
