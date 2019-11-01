@@ -49,7 +49,7 @@ add_action('edit_form_after_title', 'bolts_wp_force_posts_page_editor', 0);
 /**
  * Hide unwanted TinyMCE block formats
  */
-function tiny_mce_remove_unused_formats( $formats ) {
+function tiny_mce_remove_unused_formats($formats) {
     $formats['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;';
     return $formats;
 }
