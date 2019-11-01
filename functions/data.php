@@ -61,7 +61,7 @@ function page($data) {
         'wp_footer' => get_wp_footer()
     ];
 
-    $data = array_merge_recursive($defaults, $data);
+    $data = array_replace_recursive($defaults, $data);
 
     component('page', $data);
 }
@@ -89,7 +89,7 @@ function format_image($image, $args = [], $size = false)
         return false;
     }
 
-    return array_merge_recursive($image, $args);
+    return array_replace_recursive($image, $args);
 }
 
 /**
@@ -103,7 +103,7 @@ function format_link($link, $args = [])
     $link['content'] = $link['title'];
     array_diff_key($link, array_flip(['title']));
 
-    return array_merge_recursive($link, $args);
+    return array_replace_recursive($link, $args);
 }
 
 /**
@@ -178,7 +178,7 @@ function format_radio_button($content = false, $input_attributes = []) {
 
     return [
         'component' => 'forms/radio-button',
-        'data' => array_merge_recursive($defaults, $args)
+        'data' => array_replace_recursive($defaults, $args)
     ];
 }
 
@@ -201,7 +201,7 @@ function format_checkbox($content = false, $input_attributes = []) {
 
     return [
         'component' => 'forms/checkbox',
-        'data' => array_merge_recursive($defaults, $args)
+        'data' => array_replace_recursive($defaults, $args)
     ];
 }
 
@@ -224,7 +224,7 @@ function format_social_icon($url, $icon, $args = [])
         ]
     ];
 
-    $data = array_merge_recursive($defaults, $args);
+    $data = array_replace_recursive($defaults, $args);
 
     return [
         'component' => 'common/link',
