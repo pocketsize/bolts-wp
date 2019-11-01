@@ -17,22 +17,19 @@ if (empty($url)) {
 }
 
 $target = !empty($target) ? $target : false;
-$theme  = !empty($theme)  ? $theme  : null;
 
-$modifiers  = modifiers($modifiers ?? null, $theme);
+$modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 $attributes = get_attributes($attributes ?? '', [
     'href'   => $url,
     'target' => $target
 ]);
 
-if (!empty($attributes['target']) && in_array($attributes['target'], ['_blank', '_new']) && empty($attributes['rel'])) {
+if (!empty($attributes['target']) && in_array($attributes['target'], ['_blank', '_new']) && (isset($attributes['rel']) && $attributes['rel'] !== false)) {
     $attributes['rel'] = 'noopener noreferrer';
 }
-
 ?>
-
 <a class="link <?php echo $modifiers; ?>" <?php echo attributes($attributes); ?>>
-    <?php if (!empty($content) && $theme != 'overlay') : ?>
+    <?php if (!empty($content)) : ?>
         <span class="link-inner"><?php echo $content; ?></span>
     <?php endif; ?>
 </a>
