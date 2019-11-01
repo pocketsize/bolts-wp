@@ -17,7 +17,7 @@ if (empty($url)) {
 }
 
 $target = !empty($target) ? $target : false;
-$theme  = !empty($theme)  ? $theme  : null;
+$theme  = isset($theme)   ? $theme  : null;
 
 $modifiers  = modifiers($modifiers ?? null, $theme);
 $attributes = get_attributes($attributes ?? '', [
