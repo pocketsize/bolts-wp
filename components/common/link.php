@@ -17,9 +17,8 @@ if (empty($url)) {
 }
 
 $target = !empty($target) ? $target : false;
-$theme  = isset($theme)   ? $theme  : null;
 
-$modifiers  = modifiers($modifiers ?? null, $theme);
+$modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 $attributes = get_attributes($attributes ?? '', [
     'href'   => $url,
     'target' => $target
