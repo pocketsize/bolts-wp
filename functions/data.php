@@ -304,36 +304,51 @@ function get_share_icons($url = false, $title = false)
  */
 
 function get_pagination_links() {
-
     global $paged, $wp_query;
 
-    $paged = $paged ?: 1;
-    $max_page = $wp_query->max_num_pages;
-    $next_page = intval($paged) + 1;
+    if (is_single()) {
+        $previous_post = get_adjacent_post(false, '', false);
+        $next_post     = get_adjacent_post(false, '', true);
 
-    $previous = $paged > 1              ? get_previous_posts_page_link() : false;
-    $next     = $next_page <= $max_page ? get_next_posts_page_link()     : false;
+        $previous = !empty($previous_post) ? get_permalink($previous_post->ID) : false;
+        $next     = !empty($next_post)     ? get_permalink($next_post->ID)     : false;
+
+        $previous_title = 'Föregående inlägg';
+        $next_title     = 'Nästa inlägg';
+    } else {
+        $paged     = $paged ?: 1;
+        $max_page  = $wp_query->max_num_pages;
+        $next_page = intval($paged) + 1;
+
+        $previous = $paged > 1              ? get_previous_posts_page_link() : false;
+        $next     = $next_page <= $max_page ? get_next_posts_page_link()     : false;
+
+        $previous_title = 'Föregående sida';
+        $next_title     = 'Nästa sida';
+    }
 
     $links = [];
 
     if (!empty($previous)) {
         $links[] = [
-            'modifiers' => 'is-previous',
+            'modifier' => 'is-previous',
             'component' => 'common/link',
             'data' => [
-                'content' => 'Föregående sida',
-                'url'     => $previous
+                'modifier' => 'has-arrow-left',
+                'title'    => $previous_title,
+                'url'      => $previous
             ]
         ];
     }
 
     if (!empty($next)) {
         $links[] = [
-            'modifiers' => 'is-next',
+            'modifier' => 'is-next',
             'component' => 'common/link',
             'data' => [
-                'content' => 'Nästa sida',
-                'url'     => $next
+                'modifier' => 'has-arrow-right',
+                'title'    => $next_title,
+                'url'      => $next
             ]
         ];
     }
