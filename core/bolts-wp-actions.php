@@ -55,10 +55,16 @@ function bolts_wp_cleanup()
     {
         return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
     }
+    
+    function remove_block_library_css()
+    {
+        wp_dequeue_style('wp-block-library');
+    }
 
     add_action('init', 'bolts_wp_head_cleanup');
     add_action('wp_head', 'bolts_wp_remove_recent_comments_style', 1);
-    
+    add_action('wp_enqueue_scripts', 'remove_block_library_css');
+
     add_filter('the_generator', 'bolts_wp_rss_version');
     add_filter('wp_head', 'bolts_wp_remove_wp_widget_recent_comments_style', 1);
     add_filter('gallery_style', 'bolts_wp_gallery_style');
