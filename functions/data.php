@@ -270,7 +270,7 @@ function get_share_icons($url = false, $title = false)
 {
     $items = [];
 
-    $url = !empty($url) ? $url : $get_permalink();
+    $url = !empty($url) ? $url : get_permalink();
     $title = !empty($title) ? $title : get_title();
 
     $share_icons = [
