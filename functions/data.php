@@ -110,10 +110,12 @@ function format_link($link, $args = [])
  * Format acf flexible content field to set of page component section data
  */
 
-function format_section($section) {
-    if (empty($section)) return false;
-
-    $type = $section['acf_fc_layout'];
+function format_section($section, $type)
+{
+    if (empty($section)) {
+        return false;
+    }
+    
     $data = array_diff_key($section, array_flip(['acf_fc_layout']));
 
     switch ($type) {
@@ -129,9 +131,9 @@ function format_section($section) {
                 $data = format_image($data['image']);
             }
 
-        // add and edit cases to correspont to your configured page builder types
-
             break;
+
+        // add and edit cases to correspont to your configured page builder types
     }
 
     return [
@@ -152,8 +154,10 @@ function get_page_builder_sections()
 
     $items = [];
 
-    foreach ($sections as $section) {
-        $items[] = format_section($section);
+    foreach ($sections as $key => $section) {
+        $type = !empty($section['acf_fc_layout']) ? $section['acf_fc_layout'] : $key;
+
+        $items[] = format_section($section, $type);
     }
 
     return $items;
