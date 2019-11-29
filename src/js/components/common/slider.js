@@ -1,7 +1,8 @@
 // Imports
-import Siema from 'siema';
-import { timing, state } from 'bolts-lib';
-import { select, selectAll } from '../../helpers/element';
+import Siema from 'siema'
+import { state } from 'bolts-lib'
+import { select, selectAll } from '../../helpers/element'
+import timing from '../../helpers/timing'
 
 // Controls
 Siema.prototype.initControls = function() {
@@ -94,9 +95,10 @@ const slider = {
 
         let sliderItemsElement = select(options.selector);
         let sliderElement = sliderItemsElement.closest('slider');
-        let itemElements = sliderItemsElement.selectAll('item');
 
-        if (sliderElement.selectAll('item').length < 2) return false;
+        if (sliderElement.selectAll('item').length < 2) {
+            return false;
+        }
 
         return new Siema({
             selector: options.selector,
