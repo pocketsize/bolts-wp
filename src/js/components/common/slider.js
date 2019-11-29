@@ -1,82 +1,94 @@
-// Imports
 import Siema from 'siema'
 import { state } from 'bolts-lib'
-import { select, selectAll } from '../../helpers/element'
+import { select } from '../../helpers/element'
 import timing from '../../helpers/timing'
 
-// Controls
+/**
+ * Controls
+ */
+
 Siema.prototype.initControls = function() {
-    const siema = this;
-    const slider = select(this.selector).closest('slider');
-    const controls = slider.selectAllBy('action', 'go-to');
+    const siema = this
+    const slider = select(this.selector).closest('slider')
+    const controls = slider.selectAllBy('action', 'go-to')
 
     if (controls.length) {
         controls.forEach(function(control) {
             control.element.addEventListener('click', function() {
                 switch (control.value) {
-                case 'previous':
-                    siema.prev();
-                    break;
+                    case 'previous':
+                        siema.prev()
+                        break
 
-                case 'next':
-                    siema.next();
-                    break;
+                    case 'next':
+                        siema.next()
+                        break
 
-                default:
-                    if (!isNaN(parseFloat(control.value))) {
-                        siema.goTo(control.value);
-                        break;
-                    }
+                    default:
+                        if (!isNaN(parseFloat(control.value))) {
+                            siema.goTo(control.value)
+                            break
+                        }
 
-                    throw new Error(
-                        'Unhandled click action provided in slider.js'
-                    );
+                        throw new Error(
+                            'Unhandled click action provided in slider.js'
+                        )
                 }
-            });
-        });
+            })
+        })
     }
-};
+}
 
-// Autoplay
+/**
+ * Autoplay
+ */
+
 Siema.prototype.initAutoplay = function(interval) {
     this.autoslide = new timing.Interval(
         () => {
-            this.next();
+            this.next()
         },
         interval,
         false
-    );
+    )
 
-    this.autoslide.start();
+    this.autoslide.start()
 
     this.selector.parentElement.addEventListener('mouseenter', () => {
-        this.autoslide.stop();
-    });
+        this.autoslide.stop()
+    })
 
     this.selector.parentElement.addEventListener('touchstart', () => {
-        this.autoslide.stop();
-    });
+        this.autoslide.stop()
+    })
 
     this.selector.parentElement.addEventListener('mouseleave', () => {
-        this.autoslide.start();
-    });
+        this.autoslide.start()
+    })
 
     this.selector.parentElement.addEventListener('touchend', () => {
-        this.autoslide.start();
-    });
-};
+        this.autoslide.start()
+    })
+}
 
-// Update active classes
+/**
+ * Active states
+ */
+
 Siema.prototype.updateActive = function() {
-    const slider = select(this.selector).closest('slider');
-    const dots = slider.selectAll('dot');
+    const slider = select(this.selector).closest('slider')
+    const dots = slider.selectAll('dot')
 
     if (dots.length) {
         for (let i = 0; i < this.innerElements.length; i++) {
-            state.set('active', this.currentSlide === i, dots[i].element);
+            state.set('active', this.currentSlide === i, dots[i].element)
         }
     }
-};
+}
+
+/**
+ * Define slider module
+ */
 
 const slider = {
     init: function(options) {
@@ -87,17 +99,19 @@ const slider = {
             interval: null,
             easing: null,
             duration: null,
-        };
+        }
 
-        options = Object.assign({}, defaults, options);
+        options = Object.assign({}, defaults, options)
 
-        if (!options.selector) return false;
+        if (!options.selector) {
+            return false
+        }
 
-        let sliderItemsElement = select(options.selector);
-        let sliderElement = sliderItemsElement.closest('slider');
+        let sliderItemsElement = select(options.selector)
+        let sliderElement = sliderItemsElement.closest('slider')
 
         if (sliderElement.selectAll('item').length < 2) {
-            return false;
+            return false
         }
 
         return new Siema({
@@ -106,27 +120,27 @@ const slider = {
             easing: options.easing,
             duration: options.duration,
             onInit() {
-                state.set('initialized', true, sliderElement.element);
+                state.set('initialized', true, sliderElement.element)
 
-                this.initControls();
+                this.initControls()
 
                 if (options.autoplay && options.interval) {
-                    this.initAutoplay(options.interval);
+                    this.initAutoplay(options.interval)
                 }
 
                 if (typeof options.onInit != 'undefined') {
-                    options.onInit();
+                    options.onInit()
                 }
             },
             onChange() {
-                this.updateActive();
+                this.updateActive()
 
                 if (typeof options.onChange != 'undefined') {
-                    options.onChange();
+                    options.onChange()
                 }
             },
-        });
+        })
     },
-};
+}
 
-export default slider;
+export default slider

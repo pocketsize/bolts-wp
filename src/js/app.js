@@ -5,10 +5,10 @@
  * http://www.pocketsize.se/
  */
 
-import { bolts, misc } from 'bolts-lib';
+import { bolts, state, misc, addDelegatedEventListener as on } from 'bolts-lib';
+import { selector, selectBy, selectAllBy, selectAll, select } from './helpers/element';
 import toggleState from './helpers/toggle-state';
-import { selector, select, selectAll, selectAllBy } from './helpers/element';
-import slider from './components/common/slider';
+import slider from './components/common/slider'
 
 (() => {
     document.addEventListener('DOMContentLoaded', function() {
@@ -16,37 +16,37 @@ import slider from './components/common/slider';
          * Initialize Bolts
          */
 
-        bolts.init();
+        bolts.init()
 
         /**
          * State toggles
          */
 
-        const stateToggles = selectAllBy('action', 'toggle');
+        const stateToggles = selectAllBy('action', 'toggle')
 
-        toggleState.init(stateToggles);
+        toggleState.init(stateToggles)
 
         /**
          * Sliders
          */
 
-        const sliderElements = selectAll('slider');
+        const sliderElements = selectAll('slider')
 
         sliderElements.forEach(function(sliderElement) {
-            const sliderItemsElement = sliderElement.select('items').element;
+            const sliderItemsElement = sliderElement.select('items').element
 
             slider.init({
                 selector: sliderItemsElement,
                 loop: true,
                 duration: 1000,
                 easing: 'cubic-bezier(.45, .08, .26, .99)',
-            });
-        });
+            })
+        })
 
         /**
          * Auto height
          */
 
-        misc.autoHeight(selector('action', 'auto-height'));
-    });
-})();
+        misc.autoHeight(selector('action', 'auto-height'))
+    })
+})()
