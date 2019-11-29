@@ -7,14 +7,15 @@
 
 import { bolts, misc } from 'bolts-lib';
 import toggleState from './helpers/toggle-state';
-import { select, selectAll, selectAllBy } from './helpers/element';
+import { selector, select, selectAll, selectAllBy } from './helpers/element';
 import slider from './components/common/slider';
-//import image from './components/common/image';
-//import choices from './external/choices.js';
-//import tabs from './components/common/tabs';
 
 (() => {
     document.addEventListener('DOMContentLoaded', function() {
+        /**
+         * Initialize Bolts
+         */
+
         bolts.init();
 
         /**
@@ -46,8 +47,6 @@ import slider from './components/common/slider';
          * Auto height
          */
 
-        misc.autoHeight('[data-bolts-action="auto-height"]');
-
-        // The world is your oyster!
+        misc.autoHeight(selector('action', 'auto-height'));
     });
 })();
