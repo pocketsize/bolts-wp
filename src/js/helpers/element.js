@@ -1,150 +1,172 @@
 const BoltsElement = function(element) {
-    let parameters = element.getAttribute('data-bolts-parameters')
-        ? element
-            .getAttribute('data-bolts-parameters')
-            .replace(/\s\s+/g, ' ')
-            .split(' ')
-        : [];
+    if (element instanceof BoltsElement) {
+        return element
+    }
 
-    const elementObject = {
-        element: element,
-        selector: element.getAttribute('data-bolts-selector'),
-        id: element.getAttribute('data-bolts-id'),
-        action: element.getAttribute('data-bolts-action'),
-        target: element.getAttribute('data-bolts-target'),
-        value: element.getAttribute('data-bolts-value'),
-        scope: element.getAttribute('data-bolts-scope'),
-        parameters: parameters,
-    };
+    let attributes = element.attributes || []
 
-    elementObject.selectBy = function(attribute, selector) {
-        const selectedElement = this.element.querySelector(
-            '[data-bolts-' + attribute + '="' + selector + '"]'
-        );
+    attributes = Array.from(attributes)
 
-        if (!selectedElement) {
-            return false;
-        }
-
-        return new BoltsElement(selectedElement);
-    };
-
-    elementObject.select = function(selector) {
-        return this.selectBy('selector', selector);
-    };
-
-    elementObject.selectAllBy = function(attribute, selector) {
-        const elements = Array.from(
-            this.element.querySelectorAll(
-                '[data-bolts-' + attribute + '="' + selector + '"]'
+    let properties = {
+        element,
+        selectAllBy(attribute, selector) {
+            const elements = Array.from(
+                this.element.querySelectorAll('[data-bolts-' + attribute + '="' + selector + '"]')
             )
-        );
 
-        const boltsElements = [];
+            const boltsElements = []
 
-        elements.forEach(function(element) {
-            boltsElements.push(new BoltsElement(element));
-        });
+            elements.forEach(function(element) {
+                boltsElements.push(new BoltsElement(element))
+            })
 
-        return boltsElements;
-    };
+            return boltsElements
+        },
+        selectBy(attribute, selector) {
+            const boltsElements = this.selectAllBy(attribute, selector)
 
-    elementObject.selectAll = function(selector) {
-        return this.selectAllBy('selector', selector);
-    };
-
-    elementObject.closest = function(selector) {
-        let element = this.element;
-
-        while (element.parentNode) {
-            element = element.parentNode;
-
-            if (!element.tagName) break;
-
-            if (element.getAttribute('data-bolts-selector') == selector) {
-                return new BoltsElement(element);
+            if (!boltsElements.length) {
+                return false
             }
 
-            if (
-                this.scope &&
-                element.getAttribute('data-bolts-selector') == this.scope
-            ) {
-                return null;
+            return boltsElements[0]
+        },
+        selectAll(selector) {
+            return this.selectAllBy('selector', selector)
+        },
+        select(selector) {
+            const boltsElements = this.selectAll(selector)
+
+            if (!boltsElements.length) {
+                return false
             }
+
+            return boltsElements[0]
+        },
+        closestBy(attribute, selector) {
+            let element = this.element
+
+            while (element.parentNode) {
+                element = element.parentNode
+
+                if (!element.tagName) {
+                    break
+                }
+
+                if (element.getAttribute('data-bolts-' + attribute) == selector) {
+                    return new BoltsElement(element)
+                }
+
+                if (
+                    this.scope
+                    && element.getAttribute('data-bolts-' + attribute) == this.scope
+                ) {
+                    return null
+                }
+            }
+
+            return null
+        },
+        closest(selector) {
+            return this.closestBy('selector', selector)
+        },
+        on(event, callback) {
+            this.element.addEventListener(event, (e) => {
+                callback.call(this, e)
+            })
         }
-
-        return null;
-    };
-
-    return elementObject;
-};
-
-const selectBy = function(attribute, selector) {
-    const selectedElement = document.querySelector(
-        '[data-bolts-' + attribute + '="' + selector + '"]'
-    );
-
-    if (!selectedElement) {
-        return false;
     }
 
-    return new BoltsElement(selectedElement);
-};
+    attributes.forEach(function(attribute) {
+        if (attribute.nodeName.indexOf('data-bolts-') === 0) {
+            const key = attribute.nodeName.replace('data-bolts-', '').replace(/-([a-z])/g, function(g) {
+                return g[1].toUpperCase()
+            })
 
-const select = function(selector) {
-    let element;
+            const value = !!attribute.nodeValue ? attribute.nodeValue : true
 
-    if (typeof selector == 'string') {
-        element = document.querySelector(
-            '[data-bolts-selector="' + selector + '"]'
-        );
-    } else {
-        element = selector;
-    }
+            properties[key] = value
+        }
+    })
 
-    if (!element) {
-        return false;
-    }
+    Object.assign(this, properties)
 
-    return new BoltsElement(element);
-};
+    return this
+}
 
 const selectAllBy = function(attribute, selector) {
     const elements = Array.from(
         document.querySelectorAll(
             '[data-bolts-' + attribute + '="' + selector + '"]'
         )
-    );
+    )
 
-    const boltsElements = [];
+    const boltsElements = []
 
     elements.forEach(function(element) {
-        boltsElements.push(new BoltsElement(element));
-    });
+        boltsElements.push(new BoltsElement(element))
+    })
 
-    return boltsElements;
-};
+    return boltsElements
+}
 
-const selectAll = function(selector) {
-    let elements;
+const selectBy = function(attribute, selector) {
+    const boltsElements = selectAllBy(attribute, selector)
 
-    if (typeof selector == 'string') {
-        elements = document.querySelectorAll(
-            '[data-bolts-selector="' + selector + '"]'
-        );
-    } else {
-        elements = selector;
+    if (!boltsElements.length) {
+        return false
     }
 
-    elements = Array.from(elements);
+    return boltsElements[0]
+}
 
-    const boltsElements = [];
+const selectAll = function(selector) {
+    if (selector instanceof HTMLCollection || selector instanceof NodeList || selector instanceof Array) {
+        let elements = Array.from(selector),
+            boltsElements = []
 
-    elements.forEach(function(element) {
-        boltsElements.push(new BoltsElement(element));
-    });
+        elements.forEach((element) => {
+            boltsElements.push(new BoltsElement(element))
+        })
 
-    return boltsElements;
-};
+        return boltsElements
+    }
 
-export { BoltsElement, selectBy, select, selectAllBy, selectAll };
+    if (typeof selector == 'string') {
+        return selectAllBy('selector', selector)
+    }
+
+    throw 'selectAll: selectAll accepts either a selector string, a HTMLCollection/NodeList, or an array of HTMLElements/BoltsElements'
+}
+
+const select = function(selector) {
+    if (selector instanceof HTMLElement || selector instanceof BoltsElement) {
+        return new BoltsElement(selector)
+    }
+
+    if (typeof selector == 'string') {
+        const boltsElements = selectAll(selector)
+
+        if (!boltsElements.length) {
+            return false
+        }
+
+        return boltsElements[0]
+    }
+
+    throw 'select: select accepts either a selector string, or a HTMLElement/BoltsElement'
+}
+
+const selector = function() {
+    let selector = '[data-bolts-'
+
+    if (arguments.length == 1) {
+        return selector + 'selector="' + arguments[0] + '"]'
+    } else if (arguments.length == 2) {
+        return selector + arguments[0] + '="' + arguments[1] + '"]'
+    } else {
+        throw 'selector: selector accepts either one or two arguments (parameter, selector or selector)'
+    }
+}
+
+export { BoltsElement, selectBy, selectAllBy, selectAll, select, selector }
