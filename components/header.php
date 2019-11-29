@@ -31,7 +31,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
                 'theme' => 'menu-toggle',
                 'attributes' => [
                     'data-bolts-action' => 'toggle',
-                    'data-bolts-value' => 'menu'
+                    'data-bolts-name' => 'menu'
                 ],
                 'content' => 'Menu',
             ]); ?>
