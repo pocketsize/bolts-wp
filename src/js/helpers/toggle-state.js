@@ -3,7 +3,7 @@ import { selector, select } from './element'
 
 const toggleState = {
     init: function() {
-        on('click', selector('action', 'toggle'), function(e) {
+        on('click', selector('action', 'toggle') + ', ' + selector('action', 'set'), function(e) {
             let currentToggle = select(this);
             let root;
 
@@ -49,9 +49,6 @@ const toggleState = {
             // If targetElement is set, set targetElement to DOM element
             targetElement = targetElement ? targetElement.element : false
 
-            // Determine if we should toggle or set the state value
-            let method = currentToggle.parameterSet ? 'set' : 'toggle'
-
             let toggleValues = currentToggle.value ? [currentToggle.value, false] : [true, false]
 
             // If current toggle has "unique" parameter
@@ -73,12 +70,12 @@ const toggleState = {
                 state.set(currentToggle.name, toggleValues[0], targetElement)
             } else {
                 // Toggle/set state
-                state[method](currentToggle.name, method == 'set' ? toggleValues[0] : toggleValues, targetElement)
+                state[currentToggle.action](currentToggle.name, currentToggle.action == 'set' ? toggleValues[0] : toggleValues, targetElement)
             }
 
             // If current toggle has "self" parameter, toggle/set state on itself as well
             if (currentToggle.parameterSelf) {
-                state[method](currentToggle.name, method == 'set' ? toggleValues[0] : toggleValues, currentToggle.element)
+                state[currentToggle.action](currentToggle.name, currentToggle.action == 'set' ? toggleValues[0] : toggleValues, currentToggle.element)
             }
         })
     },
