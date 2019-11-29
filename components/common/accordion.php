@@ -26,7 +26,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
                         'attributes' => [
                             'data-bolts-scope'      => 'accordion',
                             'data-bolts-action'     => 'toggle',
-                            'data-bolts-parameters' => 'closest',
+                            'data-bolts-closest'    => true,
                             'data-bolts-target'     => 'item',
                             'data-bolts-value'      => 'active'
                         ],

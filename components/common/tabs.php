@@ -32,7 +32,10 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
                                 'data-bolts-action'       => 'toggle',
                                 'data-bolts-value'        => 'active',
                                 'data-bolts-target'       => 'item',
-                                'data-bolts-parameters'   => 'set unique index self',
+                                'data-bolts-set'          => true,
+                                'data-bolts-unique'       => true,
+                                'data-bolts-index'        => true,
+                                'data-bolts-self'         => true,
                                 'data-bolts-state-active' => $i == 0
                             ]
                         ]); ?>
