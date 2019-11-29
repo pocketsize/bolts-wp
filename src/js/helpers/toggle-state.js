@@ -24,12 +24,12 @@ const toggleState = {
             // If current toggle has a target
             if (currentToggle.target) {
                 // and "closest" parameter, set targetElement to closest element matching the target selector
-                if (currentToggle.parameters.indexOf('closest') != -1) {
+                if (currentToggle.closest) {
                     targetElement = currentToggle.closest(currentToggle.target);
                 }
 
                 // and "index" parameter, set targetElement to element matching the toggle index (in same scope) and target selector
-                if (currentToggle.parameters.indexOf('index') != -1) {
+                if (currentToggle.index) {
                     let allToggles = root.selectAll(currentToggle.selector);
 
                     allToggles.forEach(function (oneToggle) {
@@ -53,11 +53,11 @@ const toggleState = {
             let toggleValues = currentToggle.value ? [currentToggle.value, false] : [true, false];
 
             // If current toggle has and "unique" parameters
-            if (currentToggle.parameters.indexOf('unique') != -1) {
+            if (currentToggle.unique) {
                 let items = root.selectAll(currentToggle.target);
 
                 // If current toggle has "self" parameter, add all toggles to items to remove states from
-                if (currentToggle.parameters.indexOf('self') != -1) {
+                if (currentToggle.self) {
                     let allToggles = root.selectAll(currentToggle.selector);
 
                     items = items.concat(allToggles);
@@ -74,7 +74,7 @@ const toggleState = {
             }
 
             // If current toggle has "self" parameter, toggle state on itself as well
-            if (currentToggle.parameters.indexOf('self') != -1) {
+            if (currentToggle.self) {
                 state.set(
                     currentToggle.name,
                     !hasState,
