@@ -27,16 +27,16 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
                             'theme'      => 'tabs-toggle',
                             'content'    => $toggle_label,
                             'attributes' => [
-                                'data-bolts-scope'        => 'tabs',
-                                'data-bolts-selector'     => 'toggle',
-                                'data-bolts-action'       => 'toggle',
-                                'data-bolts-value'        => 'active',
-                                'data-bolts-target'       => 'item',
-                                'data-bolts-set'          => true,
-                                'data-bolts-unique'       => true,
-                                'data-bolts-index'        => true,
-                                'data-bolts-self'         => true,
-                                'data-bolts-state-active' => $i == 0
+                                'data-bolts-scope'            => 'tabs',
+                                'data-bolts-selector'         => 'toggle',
+                                'data-bolts-action'           => 'toggle',
+                                'data-bolts-name'             => 'active',
+                                'data-bolts-target'           => 'item',
+                                'data-bolts-parameter-set'    => true,
+                                'data-bolts-parameter-unique' => true,
+                                'data-bolts-parameter-index'  => true,
+                                'data-bolts-parameter-self'   => true,
+                                'data-bolts-state-active'     => $i == 0
                             ]
                         ]); ?>
                     </div>

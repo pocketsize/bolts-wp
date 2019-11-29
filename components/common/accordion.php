@@ -24,11 +24,11 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
                     <?php component('forms/button', [
                         'theme' => 'accordion-label',
                         'attributes' => [
-                            'data-bolts-scope'      => 'accordion',
-                            'data-bolts-action'     => 'toggle',
-                            'data-bolts-closest'    => true,
-                            'data-bolts-target'     => 'item',
-                            'data-bolts-value'      => 'active'
+                            'data-bolts-scope'             => 'accordion',
+                            'data-bolts-action'            => 'toggle',
+                            'data-bolts-target'            => 'item',
+                            'data-bolts-name'              => 'active',
+                            'data-bolts-parameter-closest' => true
                         ],
                         'content' => $item['title']
                     ]); ?>
