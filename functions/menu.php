@@ -19,10 +19,12 @@ function nav_menu_walker(array &$elements, $parent_id = 0, $toggles = false, $le
             $modifiers = [];
             $modifiers[] = !empty($element->children) ? 'has-children' : '';
 
-            if (!empty($queried_object->term_id)) {
-                $modifiers[] = $element->object_id == $queried_object->term_id ? 'is-current' : '';
-            } else if ($queried_object) {
-                $modifiers[] = $element->object_id == $post->ID ? 'is-current' : '';
+            if (
+                   ($queried_object->ID && $queried_object->ID == $element->object_id)
+                || ($queried_object->term_id && $queried_object->term_id == $element->object_id)
+                || (is_home() && $element->object_id == get_option('page_for_posts'))
+            ) {
+                $modifiers[] = 'is-current';
             }
 
             $target = !empty($element->target) ? $element->target : false;
