@@ -6,9 +6,9 @@
  * @param string $theme
  * @param string $modifiers
  *
- * @param array  $items
- * @param string $items[i][label] - label on toggle button
- * @param array  $items[i][items]
+ * @param array  $tabs
+ * @param string $tabs[i][label] - label on toggle button
+ * @param array  $tabs[i][items]
  */
 
 $attributes = get_attributes($attributes ?? '');
@@ -16,12 +16,12 @@ $attributes['data-bolts-selector'] = 'tabs';
 $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
 ?>
 
-<?php if (!empty($items)) : ?>
+<?php if (!empty($tabs)) : ?>
     <div class="tabs <?php echo $modifiers; ?>" <?php echo attributes($attributes); ?>>
         <div class="tabs-inner">
             <div class="tabs-toggles">
-                <?php foreach ($items as $i => $item) : ?>
-                    <?php $toggle_label = !empty($item['label']) ? $item['label'] : false; ?>
+                <?php foreach ($tabs as $i => $tab) : ?>
+                    <?php $toggle_label = !empty($tab['label']) ? $tab['label'] : false; ?>
                     <div class="tabs-toggle">
                         <?php component('forms/button', [
                             'theme'      => 'tabs-toggle',
@@ -31,7 +31,7 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
                                 'data-bolts-selector'         => 'button',
                                 'data-bolts-action'           => 'set',
                                 'data-bolts-name'             => 'active',
-                                'data-bolts-target'           => 'item',
+                                'data-bolts-target'           => 'tab',
                                 'data-bolts-parameter-unique' => true,
                                 'data-bolts-parameter-index'  => true,
                                 'data-bolts-parameter-self'   => true,
@@ -42,16 +42,18 @@ $modifiers  = modifiers($modifiers ?? null, $theme ?? null);
                 <?php endforeach; ?>
             </div>
 
-            <div class="tabs-items">
-                <?php foreach ($items as $i => $item) : ?>
-                    <?php $item_attributes = get_attributes($item['attributes'] ?? null, [
+            <div class="tabs-tabs">
+                <?php foreach ($tabs as $i => $tab) : ?>
+                    <?php $tab_attributes = get_attributes($tab['attributes'] ?? null, [
                         'data-bolts-state-active' => $i == 0,
-                        'data-bolts-selector'     => 'item'
+                        'data-bolts-selector'     => 'tab'
                     ]); ?>
-                    <div class="tabs-item" <?php echo attributes($item_attributes); ?>>
-                        <div class="tabs-item-inner">
-                            <?php layout_items($item['items']); ?>
-                        </div>
+                    <div class="tabs-tab" <?php echo attributes($tab_attributes); ?>>
+                        <?php if (!empty($tab['items'])) : ?>
+                            <div class="tabs-items">
+                                <?php layout_items($tab['items'], 'tabs-item'); ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>
