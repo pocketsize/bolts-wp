@@ -60,7 +60,7 @@ function modifiers($modifiers = null, $theme = null)
     $modifiers = get_modifiers($modifiers, $theme);
 
     // return modifiers string
-    return implode($modifiers, ' ');
+    return implode(' ', $modifiers);
 }
 
 /**
