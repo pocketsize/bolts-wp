@@ -157,6 +157,8 @@ if (!function_exists('layout_item')) {
         $modifiers  = modifiers($item['modifiers'] ?? null, false);
         $attributes = attributes($item['attributes'] ?? '');
 
+        $item_tag = (!empty($item['tag'])) ? $item['tag'] : $item_tag;
+
         echo !empty($item_class) ? '<' . $item_tag . ' class="' . $item_class . ' ' . $modifiers . '" ' . $attributes . '>' : '';
 
         if (is_string($item)) {
