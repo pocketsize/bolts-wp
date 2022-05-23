@@ -1,5 +1,5 @@
 # Bolts WP
-*1.0.0*
+*1.0.1*
 
 Bolts WP is your new favourite developer theme (at least for WordPress) - tough enough to power (and easily maintain) websites of any shape and size, yet so simple that you can become a power user within a day. It focuses on removing complexity and streamlining development without creating a whole new workflow. Its not trying to recreate the wheel, just make it rounder.
 

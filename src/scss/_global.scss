@@ -15,8 +15,3 @@ html {
 body {
     font-family: sans-serif;
 }
-
-// TODO: lägg till i reset för att motverka att klipps av i containers med overflow: hidden
-* {
-    outline-offset: -1px;
-}
