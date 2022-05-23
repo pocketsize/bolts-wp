@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Bolts WP v1.0.0
+ * Bolts WP v1.0.1
  *
  * Developed by Pocketsize
- * http://www.pocketsize.se/
+ * https://pocketsize.se
  */
 
 /**

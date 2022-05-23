@@ -1,79 +1,72 @@
-require('core-js/stable');
-require('regenerator-runtime/runtime');
+require('core-js/stable')
+require('regenerator-runtime/runtime')
 
-const path = require('path');
+const path = require('path')
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
 	entry: {
 		main: [
-			'./src/js/app.js',
-			'./src/scss/style.scss'
-		],
+			'./src/js/polyfills.js',
+			'./src/js/main.js',
+			'./src/scss/main.scss'
+		]
 	},
 	output: {
 		path: path.resolve(__dirname, 'public'),
-		filename: 'js/app.js',
+		filename: 'js/[name].js'
 	},
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
-				exclude: /node_modules(?!\/bolts-lib)/,
+				test: /\.js|\.jsx$/,
+				exclude: /node_modules/,
 				use: {
 					loader: 'babel-loader',
 					options: {
 						plugins: [
-							['@babel/plugin-transform-runtime', {
-								corejs: 3,
-							}]
+							[
+								'@babel/plugin-transform-runtime',
+								{
+									corejs: 3
+								}
+							]
 						],
-						presets: [
-							['@babel/preset-env']
-						],
+						presets: ['@babel/preset-env', '@babel/preset-react']
 					}
 				}
 			},
 			{
 				test: /\.scss$/,
-				include: path.resolve(__dirname, 'src/scss'),
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
 						loader: 'css-loader',
 						options: {
-							url: false,
-						},
+							url: false
+						}
 					},
 					{
 						loader: 'postcss-loader',
 						options: {
 							ident: 'postcss',
-							plugins: [
-								require('autoprefixer')(),
-							]
+							plugins: [require('autoprefixer')()]
 						}
 					},
 					{
 						loader: 'sass-loader',
 						options: {
-							implementation: require('sass'),
-						},
-					},
-				],
+							implementation: require('sass')
+						}
+					}
+				]
 			}
 		]
 	},
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: 'css/style.css',
-		}),
-
-		new CopyPlugin([
-			{ from: 'src/images', to: 'images' },
-			{ from: 'src/fonts', to: 'fonts' },
-		]),
-	],
-};
+			filename: 'css/[name].css'
+		})
+	]
+}
