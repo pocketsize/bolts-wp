@@ -8,11 +8,7 @@ Bolts WP has a modern workflow and many of the build tools you´ve come to love 
 - **Webpack** for bundling and task running
 - **Babel** for transpiling and polyfilling ES6+
 - **Sass** with **Autoprefixer**, **CSSNano** and **MQPacker** for styles
-- **BrowserSync** for browser testing and autoreloading CSS, JS and PHP
-- **Jest** for testing,
 - **ESLint**, **Stylelint** and **Prettier** for linting and code formatting
-- **Husky** (with **Lint Staged**) for git hooks
-- **Imagemin** for image optimization
 - **Bolts** front-end library
 
 As for the PHP, Bolts WP is component oriented and features helpers to keep your code as DRY as possible. Just use the `component()` function, pass in your data and never write any markup in your page templates again.
